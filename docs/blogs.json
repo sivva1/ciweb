@@ -1,0 +1,119 @@
+[
+  {
+  "title_en": "All Information About Application programming interface (API)",
+  "title_hi": "API ke bare m sari jankariya jo apko pta honi chahiye ",
+  "desc_en": "API explained with live demos ",
+  "desc_hi": "seekhe API from strating to pro",
+  "tag": "API",
+  "date": "21 March 2026",
+  "link": "blogs/LearnAPI.html"
+  },
+  {
+  "title_en": "How Hackers Hack Accounts — And How to Stay Safe",
+  "title_hi": "Hackers Accounts Kaise Hack Karte Hain — Aur Safe Kaise Rahein",
+  "desc_en": "8 real hacking methods explained with live demos — phishing, brute force, keyloggers, SIM swapping. Plus 5 tasks to secure yourself today.",
+  "desc_hi": "8 real hacking methods live demos ke saath — phishing, brute force, keyloggers, SIM swapping. Plus 5 tasks aaj khud ko secure karne ke liye.",
+  "tag": "Security",
+  "date": "19 March 2026",
+  "link": "blogs/how-hackers-hack.html"
+  },
+{
+  "title_en": "Instagram Remove Encryption.. learn what is encryption",
+  "title_hi": "Instagram ne kiya Encryption remove, janiye Encryption kya hota hai",
+  "desc_en": "In 2025, Instagram (Meta) removed default end-to-end encryption from DMs worldwide — not just in the US. Every Instagram user on the planet is affected. Here's what it means, how encryption actually works, and how to protect yourself.",
+  "desc_hi": "In 2025, Instagram (Meta) ne DMs se default end-to-end encryption remove kar diya — sirf US me nahi, balki poori duniya me. Har Instagram user isse affect hua hai. Ye samajhna zaroori hai ki iska kya matlab hai, encryption actually kaise kaam karta hai, aur aap apne aap ko kaise protect kar sakte ho.",
+  "tag": "Tutorial",
+  "date": "17 March 2026",
+  "link": "blogs/encryption.html"
+  },
+  {
+  "title_en": "Pi Day — The Most Mysterious Number in the Universe",
+  "title_hi": "Pi Day — Brahmaand Ka Sabse Rahasymaya Number π",
+  "desc_en": "π never ends, never repeats, shows up everywhere. 7 unsolved mysteries, 5000 years of history, mind-blowing facts and a quiz.",
+  "desc_hi": "π kabhi khatam nahi hota, kabhi repeat nahi karta. 7 unsolved mysteries, 5000 saal ki history, aur ek quiz.",
+  "tag": "Math",
+  "date": "14 March 2026",
+  "link": "blogs/PiDay.html"
+  },
+  {
+  "title_en": "AI Coding Tools Making Developers 10x Faster",
+  "title_hi": "AI Coding Tools Jo Developers Ko 10x Faster Bana Rahe Hain",
+  "desc_en": "Top AI coding tools of 2026 — GitHub Copilot, Cursor, Claude, Codeium — with real examples, free vs paid comparison, and a complete beginner roadmap.",
+  "desc_hi": "2026 ke top AI coding tools — GitHub Copilot, Cursor, Claude, Codeium — real examples, free vs paid comparison, aur beginner roadmap ke saath.",
+  "tag": "AI Tools",
+  "date": "13 March 2026",
+  "link": "blogs/10xYourFasterCoding.html"
+  },
+  {
+  "title_hi": "Firebase Mein Database Kaise Banaye — Poori Guide 2026",
+  "title_en": "How to Create a Firebase Database — Complete Guide 2026",
+  "desc_hi": "Free tier, Realtime DB vs Firestore, rules, REST API, SDK, queries, auth — sab kuch ek jagah. Quiz bhi!",
+  "desc_en": "Free tier limits, Realtime DB vs Firestore, security rules, REST API, SDK, queries, auth rules — everything covered!",
+  "tag": "Firebase",
+  "date": "12 March 2026",
+  "link": "blogs/learn-firebase.html"
+},
+  {
+  "title_hi": "Apna Pehla Website 1 Ghante Mein Banao — GitHub Pages Pe Free Host Karo!",
+  "title_en": "Build Your First Website in 1 Hour — Host FREE on GitHub Pages!",
+  "desc_hi": "Coding nahi aati? Koi baat nahi! Step-by-step guide se HTML website banao aur GitHub Pages pe bilkul free mein host karo. Quiz bhi hai!",
+  "desc_en": "Complete beginner? No problem! Step-by-step guide to build an HTML website and host it FREE on GitHub Pages. Includes a quiz!",
+  "tag": "Tutorial",
+  "date": "12 March 2026",
+  "link": "blogs/Build-Your-First-Website.html"
+},
+  {
+  "title_hi": "84% Duniya Ne Kabhi AI Use Nahi Kiya — 2026 Ka Shocking Sach",
+  "title_en": "84% of the World Has Never Used AI — The Shocking Truth of 2026",
+  "desc_hi": "8.1 billion mein sirf 1.3 billion ne AI use kiya hai. Interactive dot visualization ke saath poora data dekho — Hindi mein!",
+  "desc_en": "Only 1.3 billion out of 8.1 billion have ever used AI. See the full data with interactive dot visualization!",
+  "tag": "AI Data",
+  "date": "12 March 2026",
+  "link": "blogs/ai-adoption-data-2026.html"
+},
+  {
+    "title_hi": "Free Mein Coding Seekhne Ke 7 Best Websites 2026",
+    "title_en": "7 Best Free Coding Websites in 2026 — Complete Guide",
+    "desc_hi": "Paise nahi hain fees ke liye? Koi baat nahi! freeCodeCamp, Sololearn, W3Schools jaise 7 platforms se bilkul FREE mein coding seekho — certificate bhi milega!",
+    "desc_en": "No money for fees? No problem! Learn coding completely FREE with freeCodeCamp, Sololearn, W3Schools and 4 more platforms — certificates included!",
+    "tag": "Free Resources",
+    "date": "12 March 2026",
+    "link": "blogs/blog5.html"
+  },
+  {
+    "title_hi": "HTML Quiz — Apna Knowledge Test Karo Aur Certificate Pao!",
+    "title_en": "HTML Quiz — Test Your Knowledge & Get a Certificate!",
+    "desc_hi": "20 tricky HTML questions — sahi jawab do, certificate download karo aur leaderboard mein apna naam daalo!",
+    "desc_en": "20 tricky HTML questions — answer correctly, download certificate and get on the leaderboard!",
+    "tag": "Quiz",
+    "date": "10 March 2026",
+    "link": "blogs/blog4.html"
+  },
+  {
+    "title_hi": "Google Gemini Kya Hai Aur 2026 Mein Free Mein Kaise Use Kare",
+    "title_en": "Google Gemini — What Is It And How To Use It For Free in 2026",
+    "desc_hi": "Google ka sabse powerful AI tool bilkul free hai! Poori guide simple Hindi mein.",
+    "desc_en": "Google's most powerful AI tool is completely free! Complete guide in simple language.",
+    "tag": "AI Tools",
+    "date": "10 March 2026",
+    "link": "blogs/blog3.html"
+  },
+  {
+    "title_hi": "Programming Seekhte Waqt Motivated Kaise Rahe",
+    "title_en": "How to Stay Motivated While Learning Programming",
+    "desc_hi": "Motivation kho raha hai? Yeh 7 proven tips tumhari coding journey badal denge!",
+    "desc_en": "Losing motivation? These 7 proven tips will change your coding journey!",
+    "tag": "Motivation",
+    "date": "10 March 2026",
+    "link": "blogs/blog2.html"
+  },
+  {
+    "title_hi": "Top 10 Free AI Tools Jo Aapki Zindagi Aasaan Kar Denge",
+    "title_en": "Top 10 Free AI Tools That Will Make Your Life Easier",
+    "desc_hi": "2026 mein yeh AI tools bilkul free hain aur inse aapka kaam 10x fast ho jayega!",
+    "desc_en": "In 2026, these AI tools are completely free and will make your work 10x faster!",
+    "tag": "AI Tools",
+    "date": "10 March 2026",
+    "link": "blogs/blog1.html"
+  }
+]
