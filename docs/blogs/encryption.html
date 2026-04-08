@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Instagram Removed Encryption Worldwide — What Is Encryption & Why It Matters | CIWeb</title>
+  <meta name="description" content="Instagram removed end-to-end encryption from DMs globally in 2025. Learn what encryption is, how it works, why it matters, with animated explanations and code."/>
+  <meta name="keywords" content="instagram encryption removed worldwide,instagram removed e2e encryption globally,what is encryption,end to end encryption,encryption explained,build your own encryption,caesar cipher,AES encryption,RSA encryption,encryption for beginners,digital privacy,instagram DM security,encryption real life,how encryption works"/>
+  <meta name="author" content="CIWeb — Coding Infinite"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://ciweb.in/blogs/encryption.html"/>
+  <meta property="og:title" content="Instagram Removed Encryption Worldwide — What Is It & Why It Matters"/>
+  <meta property="og:description" content="Instagram removed end-to-end encryption globally. Here's what it means, how encryption works, and how to protect yourself."/>
+  <meta property="og:type" content="article"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#f5f3ee;--ink:#1a1814;--muted:#7a7570;--accent:#e8401c;
+  --card:#fff;--border:#e2ddd6;--pi:#2563eb;--pi-light:#eff6ff;
+  --gold:#d97706;--gold-bg:#fffbeb;--green:#16a34a;--green-bg:#f0fff4;
+  --red:#dc2626;--red-bg:#fff0f0;
+  --dark:#0f0f18;--dark2:#1a1a28;--lock:#7c3aed;--lock-light:#f5f3ff;
+}
+body{font-family:"Outfit",sans-serif;background:var(--bg);color:var(--ink);line-height:1.75;overflow-x:hidden}
+nav{position:sticky;top:0;z-index:100;background:rgba(245,243,238,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:62px}
+.logo{font-family:"Playfair Display",serif;font-size:1.5rem;font-weight:900;color:var(--ink);text-decoration:none}
+.logo span{color:var(--accent)}
+.nav-links{display:flex;gap:1.4rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+@media(max-width:640px){.nav-links{display:none}}
+.enc-hero{background:var(--dark);color:#fff;position:relative;overflow:hidden;padding:5rem 5% 4rem;text-align:center}
+.enc-hero::before{content:'010110001011010001001101010010110100010110100010110100101101000101101001011010001011010010110100010110101010101010010110100010110100101101000101101001011010010110100010110100101101000101010101010';position:absolute;inset:0;font-size:.65rem;font-family:"Courier New",monospace;color:rgba(124,58,237,.07);word-break:break-all;line-height:1.3;padding:1rem;pointer-events:none;animation:scrollbin 30s linear infinite;}
+@keyframes scrollbin{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.hero-breaking{display:inline-flex;align-items:center;gap:.5rem;background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.3);border-radius:100px;padding:6px 20px;font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#fca5a5;margin-bottom:1.5rem;position:relative;z-index:1;animation:pulse-red 2s ease-in-out infinite}
+@keyframes pulse-red{0%,100%{box-shadow:0 0 0 0 rgba(220,38,38,.3)}50%{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+.hero-lock{font-size:clamp(4rem,14vw,9rem);line-height:1;position:relative;z-index:1;margin-bottom:.5rem;display:block;animation:lock-bob 4s ease-in-out infinite}
+@keyframes lock-bob{0%,100%{transform:translateY(0) rotate(0deg)}25%{transform:translateY(-8px) rotate(-3deg)}75%{transform:translateY(-4px) rotate(3deg)}}
+.enc-hero h1{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,4.5vw,3rem);font-weight:900;position:relative;z-index:1;margin-bottom:.8rem;line-height:1.1}
+.enc-hero h1 .clr{color:#c084fc}
+.enc-hero .hero-sub{color:rgba(255,255,255,.58);font-size:.95rem;max-width:600px;margin:0 auto 2rem;position:relative;z-index:1;line-height:1.8}
+.hero-stats{display:flex;justify-content:center;gap:2.5rem;flex-wrap:wrap;position:relative;z-index:1}
+.hs{text-align:center}
+.hs-num{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:#c084fc}
+.hs-lab{font-size:.72rem;color:rgba(255,255,255,.38);text-transform:uppercase;letter-spacing:.6px;margin-top:.2rem}
+.blog-content{max-width:860px;margin:0 auto;padding:0 5% 40px}
+.breaking-banner{background:linear-gradient(135deg,#450a0a,#7f1d1d);border-radius:16px;padding:1.4rem 1.8rem;margin:2rem 0;display:flex;gap:1.2rem;align-items:flex-start;border:1px solid rgba(220,38,38,.4)}
+.bb-badge{background:#dc2626;color:#fff;font-size:.65rem;font-weight:800;letter-spacing:1px;padding:4px 10px;border-radius:6px;text-transform:uppercase;flex-shrink:0;margin-top:2px;animation:blink-b 1.5s infinite}
+@keyframes blink-b{0%,100%{opacity:1}50%{opacity:.5}}
+.bb-text{color:#fecaca;font-size:.9rem;line-height:1.7}
+.bb-text strong{color:#fff}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.4rem 1.8rem;margin:2rem 0}
+.toc h4{font-weight:700;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.9rem}
+.toc ol{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:.35rem .8rem;counter-reset:tc}
+@media(max-width:500px){.toc ol{grid-template-columns:1fr}}
+.toc li{counter-increment:tc;display:flex;align-items:center;gap:.45rem;font-size:.84rem}
+.toc li::before{content:counter(tc);min-width:22px;height:22px;background:var(--lock);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;flex-shrink:0}
+.toc a{color:var(--ink);text-decoration:none;font-weight:500}
+.toc a:hover{color:var(--lock)}
+.sec-title{font-family:"Playfair Display",serif;font-size:1.55rem;font-weight:900;margin:3rem 0 1.2rem;padding-bottom:.5rem;border-bottom:2px solid var(--border);scroll-margin-top:75px}
+.sec-title .emoji{margin-right:.4rem}
+p.body-p{font-size:.93rem;line-height:1.9;margin-bottom:1rem}
+.anim-lock-wrap{background:var(--dark);border-radius:24px;padding:2.5rem 2rem;margin:1.5rem 0;text-align:center;overflow:hidden}
+.anim-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);margin-bottom:1.5rem}
+.lock-demo{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.msg-bubble{background:rgba(124,58,237,.12);border:1.5px solid rgba(124,58,237,.35);border-radius:14px;padding:.8rem 1.2rem;font-size:.85rem;color:#e9d5ff;font-family:"Courier New",monospace}
+.msg-bubble.enc{background:rgba(239,68,68,.1);border-color:rgba(239,68,68,.25);color:#fca5a5;animation:scramble 3s ease-in-out infinite}
+@keyframes scramble{0%,35%,100%{letter-spacing:.5px;opacity:1}50%{letter-spacing:3px;opacity:.7}65%{letter-spacing:.5px}}
+.arrow-i{font-size:1.4rem;color:rgba(255,255,255,.25);flex-shrink:0}
+.key-spin{font-size:2.5rem;display:inline-block;animation:kspin 4s ease-in-out infinite}
+@keyframes kspin{0%,70%,100%{transform:rotate(0) scale(1)}40%{transform:rotate(360deg) scale(1.2)}}
+.lock-states{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap}
+.lock-state{text-align:center}
+.ls-icon{font-size:2.5rem;display:block;margin-bottom:.4rem}
+.ls-icon.unlocked{animation:bounce-up 2s ease-in-out infinite}
+.ls-icon.locked{animation:wobble 3.5s ease-in-out infinite}
+@keyframes bounce-up{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+@keyframes wobble{0%,80%,100%{transform:rotate(0)}85%{transform:rotate(-7deg)}92%{transform:rotate(7deg)}}
+.ls-label{font-size:.72rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px}
+.tunnel-wrap{background:var(--dark2);border-radius:24px;padding:2rem;margin:1.5rem 0;overflow:hidden}
+.tunnel-row{display:flex;align-items:stretch;gap:.5rem;overflow-x:auto;padding-bottom:.5rem}
+.tnode{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:14px;padding:.8rem .7rem;text-align:center;flex:1;min-width:80px}
+.tnode .tn-icon{font-size:1.6rem;display:block;margin-bottom:.3rem}
+.tnode .tn-lbl{font-size:.62rem;color:rgba(255,255,255,.35);text-transform:uppercase;letter-spacing:.5px}
+.tnode .tn-val{font-size:.65rem;color:#a78bfa;font-family:"Courier New",monospace;margin-top:.3rem;word-break:break-all;line-height:1.3}
+.tarrow{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;flex-shrink:0;padding:0 2px}
+.tarrow span{font-size:1rem;color:rgba(124,58,237,.45);animation:pulse-a 1.5s ease-in-out infinite}
+.tarrow span:nth-child(2){animation-delay:.25s}
+.tarrow span:nth-child(3){animation-delay:.5s}
+@keyframes pulse-a{0%,100%{opacity:.3;transform:scale(1)}50%{opacity:1;transform:scale(1.2)}}
+.secure-badge{display:flex;align-items:center;gap:.5rem;background:rgba(22,163,74,.12);border:1px solid rgba(22,163,74,.25);border-radius:100px;padding:6px 16px;font-size:.72rem;font-weight:700;color:#86efac;width:fit-content;margin:1rem auto 0}
+.sec-dot{width:7px;height:7px;border-radius:50%;background:#22c55e;animation:sec-blink 1.5s infinite}
+@keyframes sec-blink{0%,100%{opacity:1}50%{opacity:.2}}
+.cipher-demo{background:var(--dark);border-radius:24px;padding:2rem;margin:1.5rem 0}
+.key-shift-box{background:rgba(124,58,237,.12);border:1.5px solid rgba(124,58,237,.25);border-radius:14px;padding:1rem;text-align:center;margin-bottom:1.2rem}
+.ks-lbl{font-size:.65rem;color:rgba(255,255,255,.3);text-transform:uppercase;letter-spacing:.8px;margin-bottom:.3rem}
+.ks-val{font-size:1.4rem;font-weight:700;color:#c084fc;margin-bottom:.5rem}
+.shift-btns{display:flex;justify-content:center;gap:.5rem}
+.shift-btn{background:rgba(124,58,237,.18);border:1px solid rgba(124,58,237,.35);color:#c084fc;padding:5px 16px;border-radius:8px;font-family:"Outfit",sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;transition:all .18s}
+.shift-btn:hover{background:rgba(124,58,237,.35)}
+.cipher-boxes{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem;margin-bottom:1rem}
+@media(max-width:440px){.cipher-boxes{grid-template-columns:1fr;text-align:center}}
+.cbox{background:rgba(255,255,255,.04);border:1.5px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center}
+.cbox .cb-lbl{font-size:.62rem;color:rgba(255,255,255,.28);text-transform:uppercase;letter-spacing:.7px;margin-bottom:.4rem}
+.cbox .cb-val{font-family:"Playfair Display",serif;font-size:1.6rem;font-weight:700;letter-spacing:.08em;word-break:break-all}
+.cbox.plain .cb-val{color:#fff}
+.cbox.encrypted .cb-val{color:#f9a8d4}
+.cipher-arrow-center{font-size:1.8rem;color:rgba(255,255,255,.18);text-align:center}
+.alpha-strip{display:flex;gap:3px;overflow-x:auto;padding:.5rem 0;flex-wrap:wrap}
+.ac{width:23px;height:23px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:700;border-radius:4px;transition:all .25s;flex-shrink:0}
+.ac.plain-c{background:rgba(255,255,255,.06);color:rgba(255,255,255,.4)}
+.ac.shift-c{background:rgba(124,58,237,.28);color:#c084fc}
+.keyex-wrap{background:var(--dark2);border-radius:24px;padding:2rem;margin:1.5rem 0;overflow:hidden}
+.keyex-stage{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:1.5rem}
+.kperson{text-align:center;flex:0 0 auto;width:70px}
+.kp-icon{font-size:2.2rem;display:block;margin-bottom:.3rem}
+.kp-lbl{font-size:.65rem;color:rgba(255,255,255,.35);font-weight:700;text-transform:uppercase;letter-spacing:.5px}
+.kex-middle{flex:1;position:relative;height:70px}
+.key-fly{position:absolute;font-size:1.1rem;top:50%;transform:translateY(-50%);animation-duration:3s;animation-timing-function:ease-in-out;animation-iteration-count:infinite}
+.key-fly.kf1{animation-name:fly-right;left:0}
+.key-fly.kf2{animation-name:fly-left;right:0;animation-delay:1.5s}
+@keyframes fly-right{0%{left:-10px;opacity:0}15%{opacity:1}85%{opacity:1}100%{left:calc(100% + 10px);opacity:0}}
+@keyframes fly-left{0%{right:-10px;opacity:0}15%{opacity:1}85%{opacity:1}100%{right:calc(100% + 10px);opacity:0}}
+.snoop-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center}
+.snoop-eye{font-size:1.8rem;display:block;animation:eye-shake 2.5s ease-in-out infinite}
+@keyframes eye-shake{0%,70%,100%{transform:rotate(0)}75%{transform:rotate(-12deg)}82%{transform:rotate(12deg)}89%{transform:rotate(-6deg)}}
+.snoop-lbl{font-size:.58rem;color:rgba(239,68,68,.5);font-weight:700;text-transform:uppercase;display:block;margin-top:.1rem}
+.snoop-sees{font-size:.58rem;color:rgba(239,68,68,.35);display:block}
+.keyex-legend{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap}
+.kl-i{display:flex;align-items:center;gap:.4rem;font-size:.7rem;color:rgba(255,255,255,.35)}
+.kl-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:520px){.compare-grid{grid-template-columns:1fr}}
+.cmp-card{border-radius:20px;padding:1.5rem;border:2px solid transparent}
+.cmp-card.good{background:linear-gradient(135deg,#f0fff4,#dcfce7);border-color:#86efac}
+.cmp-card.bad{background:linear-gradient(135deg,#fff5f5,#fee2e2);border-color:#fca5a5}
+.cmp-icon{font-size:2.2rem;margin-bottom:.6rem;display:block}
+.cmp-title{font-weight:800;font-size:.92rem;margin-bottom:.8rem}
+.cmp-card.good .cmp-title{color:#15803d}
+.cmp-card.bad .cmp-title{color:#b91c1c}
+.cmp-list{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.cmp-list li{font-size:.8rem;display:flex;align-items:flex-start;gap:.5rem;line-height:1.5}
+.cmp-card.good .cmp-list li::before{content:'✓';color:#16a34a;font-weight:700;flex-shrink:0}
+.cmp-card.bad .cmp-list li::before{content:'✗';color:#dc2626;font-weight:700;flex-shrink:0}
+.https-row{display:flex;gap:1rem;margin:1.5rem 0;flex-wrap:wrap}
+.https-card{flex:1;min-width:200px;border-radius:18px;padding:1.4rem;border:2px solid}
+.https-card.sec{background:var(--green-bg);border-color:#86efac}
+.https-card.insec{background:var(--red-bg);border-color:#fca5a5}
+.https-bar{background:rgba(0,0,0,.05);border-radius:8px;padding:.45rem .8rem;font-family:"Courier New",monospace;font-size:.75rem;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.https-card.sec .https-bar{color:#15803d}
+.https-card.insec .https-bar{color:#b91c1c}
+.https-info{font-size:.8rem;line-height:1.6}
+.https-card.sec .https-info{color:#166534}
+.https-card.insec .https-info{color:#991b1b}
+.tip-box{background:var(--gold-bg);border-left:4px solid var(--gold);border-radius:0 12px 12px 0;padding:1rem 1.3rem;margin:1.2rem 0}
+.tip-box p{font-size:.88rem;line-height:1.75}
+.info-box{background:var(--lock-light);border-left:4px solid var(--lock);border-radius:0 12px 12px 0;padding:1rem 1.3rem;margin:1.2rem 0}
+.info-box p{font-size:.88rem;line-height:1.75}
+.warn-box{background:var(--red-bg);border-left:4px solid var(--red);border-radius:0 12px 12px 0;padding:1rem 1.3rem;margin:1.2rem 0}
+.warn-box p{font-size:.88rem;line-height:1.75}
+.wow-box{background:var(--dark);border-radius:16px;padding:1.4rem 1.6rem;margin:1.5rem 0;color:#fff}
+.wow-box p{font-size:.9rem;line-height:1.8;color:rgba(255,255,255,.75)}
+.wow-box strong{color:#c084fc}
+.formula{background:var(--dark2);border-radius:14px;padding:1.2rem 1.5rem;margin:1rem 0;font-family:"Courier New",monospace;font-size:.85rem;color:#e0d8c8;text-align:center}
+.formula .hi{color:#c084fc;font-weight:700}
+.formula small{color:rgba(255,255,255,.3);display:block;margin-top:.35rem;font-size:.72rem}
+.mb-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:560px){.mb-grid{grid-template-columns:1fr}}
+.mb-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:1.4rem;transition:all .25s}
+.mb-card:hover{border-color:var(--lock);transform:translateY(-3px);box-shadow:0 8px 28px rgba(124,58,237,.1)}
+.mb-num{font-family:"Playfair Display",serif;font-size:1.8rem;font-weight:900;color:var(--lock);margin-bottom:.4rem}
+.mb-title{font-weight:700;font-size:.9rem;margin-bottom:.4rem}
+.mb-desc{font-size:.82rem;color:var(--muted);line-height:1.65}
+.mystery-list{display:flex;flex-direction:column;gap:1.2rem;margin:1.5rem 0}
+.myst-card{background:var(--card);border:1.5px solid var(--border);border-radius:20px;padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;transition:all .2s}
+.myst-card:hover{border-color:var(--lock);box-shadow:0 4px 20px rgba(124,58,237,.08)}
+.myst-num{width:44px;height:44px;border-radius:12px;background:var(--lock-light);border:1.5px solid #ddd6fe;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.myst-body h4{font-weight:700;font-size:.95rem;margin-bottom:.4rem}
+.myst-body p{font-size:.85rem;color:var(--muted);line-height:1.7}
+.myst-body b{color:var(--ink)}
+.uc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.9rem;margin:1.5rem 0}
+@media(max-width:600px){.uc-grid{grid-template-columns:1fr 1fr}}
+.uc-card{background:var(--card);border:1.5px solid var(--border);border-radius:18px;padding:1.1rem .9rem;text-align:center;transition:all .25s}
+.uc-card:hover{border-color:var(--lock);transform:translateY(-3px);box-shadow:0 8px 24px rgba(124,58,237,.1)}
+.uc-icon{font-size:2rem;margin-bottom:.4rem}
+.uc-title{font-weight:700;font-size:.8rem;margin-bottom:.2rem}
+.uc-desc{font-size:.72rem;color:var(--muted);line-height:1.5}
+.timeline{position:relative;margin:2rem 0;padding-left:2rem}
+.timeline::before{content:'';position:absolute;left:.8rem;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--lock),var(--accent));border-radius:2px}
+.tl-item{position:relative;margin-bottom:1.5rem}
+.tl-dot{position:absolute;left:-1.65rem;top:.3rem;width:14px;height:14px;border-radius:50%;background:var(--lock);border:2px solid var(--bg);box-shadow:0 0 0 3px var(--lock)}
+.tl-year{font-size:.72rem;font-weight:700;color:var(--lock);text-transform:uppercase;letter-spacing:.6px;margin-bottom:.2rem}
+.tl-text{font-size:.88rem;line-height:1.7}
+.tl-text b{color:var(--accent)}
+.quiz-wrap{background:var(--dark);border-radius:24px;padding:2rem;margin:2.5rem 0;color:#fff}
+.quiz-wrap h3{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:900;margin-bottom:1.5rem;text-align:center}
+.q-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:16px;padding:1.3rem;margin-bottom:1rem}
+.q-text{font-size:.9rem;font-weight:600;margin-bottom:.9rem;color:#f0eee8}
+.q-opts{display:flex;flex-direction:column;gap:.5rem}
+.q-opt{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:.6rem 1rem;font-size:.84rem;cursor:pointer;color:rgba(255,255,255,.75);transition:all .18s;text-align:left;font-family:"Outfit",sans-serif}
+.q-opt:hover:not(:disabled){background:rgba(124,58,237,.25);border-color:rgba(124,58,237,.5)}
+.q-opt.correct{background:rgba(22,163,74,.2);border-color:#16a34a;color:#86efac}
+.q-opt.wrong{background:rgba(239,68,68,.2);border-color:#ef4444;color:#fca5a5}
+.q-opt:disabled{cursor:default}
+.q-exp{display:none;background:rgba(255,255,255,.04);border-radius:10px;padding:.7rem 1rem;margin-top:.7rem;font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.65}
+.q-exp.show{display:block}
+.quiz-score{display:none;text-align:center;padding:1.5rem 0 .5rem}
+.qs-num{font-family:"Playfair Display",serif;font-size:3rem;font-weight:900;color:#c084fc}
+.qs-label{font-size:.85rem;color:rgba(255,255,255,.4);margin-top:.3rem}
+.engage-wrap{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem 1.8rem;margin:3rem 0}
+.like-section{text-align:center;padding-bottom:2rem;border-bottom:2px dashed var(--border);margin-bottom:2rem}
+.like-section p{font-size:.9rem;color:var(--muted);margin-bottom:1.2rem;font-weight:500}
+.like-btn{display:inline-flex;align-items:center;gap:.8rem;background:var(--bg);border:2px solid var(--border);border-radius:100px;padding:14px 32px;font-family:"Outfit",sans-serif;font-size:1rem;font-weight:700;cursor:pointer;transition:all .28s;color:var(--ink);box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.like-btn:hover{border-color:var(--accent);color:var(--accent);transform:scale(1.04)}
+.like-btn.liked{background:linear-gradient(135deg,#fff0ec,#ffe4dc);border-color:var(--accent);color:var(--accent)}
+.like-btn .heart{font-size:1.4rem;transition:transform .28s}
+.like-btn.liked .heart{animation:hbeat .4s ease}
+@keyframes hbeat{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+.like-count{font-size:.82rem;color:var(--muted);margin-top:.8rem;display:block}
+.cmt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.cmt-header h3{font-family:"Playfair Display",serif;font-size:1.3rem;font-weight:900;margin:0}
+.cmt-live-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--green-bg);border:1px solid #86efac;border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:700;color:var(--green)}
+.cmt-live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:livepulse 1.5s infinite}
+@keyframes livepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
+.comment-form{background:linear-gradient(135deg,#faf9f6,#fff);border:1.5px solid var(--border);border-radius:20px;padding:1.6rem;margin-bottom:1.8rem;position:relative;overflow:hidden}
+.comment-form::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--lock),var(--accent))}
+.cmt-form-title{font-family:"Playfair Display",serif;font-size:1rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.5rem}
+.prompt-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem}
+.chip{background:var(--bg);border:1px solid var(--border);border-radius:100px;padding:5px 14px;font-size:.74rem;font-weight:500;cursor:pointer;transition:all .18s;color:var(--muted)}
+.chip:hover{border-color:var(--lock);color:var(--lock);background:var(--lock-light)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem}
+@media(max-width:500px){.cf-row{grid-template-columns:1fr}}
+.cf-input{width:100%;padding:11px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;font-size:.88rem;background:var(--card);color:var(--ink);transition:border-color .22s;outline:none}
+.cf-input:focus{border-color:var(--lock);box-shadow:0 0 0 3px rgba(124,58,237,.08)}
+.cf-textarea{width:100%;padding:11px 16px;border:1.5px solid var(--border);border-radius:12px;font-family:"Outfit",sans-serif;font-size:.88rem;background:var(--card);color:var(--ink);resize:vertical;min-height:90px;transition:border-color .22s;outline:none;margin-bottom:.8rem}
+.cf-textarea:focus{border-color:var(--lock);box-shadow:0 0 0 3px rgba(124,58,237,.08)}
+.cf-bottom{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.cf-char{font-size:.72rem;color:var(--muted);margin-left:auto}
+.cf-submit{background:var(--ink);color:#fff;border:none;padding:11px 28px;border-radius:100px;font-family:"Outfit",sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;transition:all .22s;display:inline-flex;align-items:center;gap:.5rem}
+.cf-submit:hover:not(:disabled){background:var(--lock);transform:translateY(-2px);box-shadow:0 6px 20px rgba(124,58,237,.22)}
+.cf-submit:disabled{opacity:.55;cursor:not-allowed}
+.cf-msg{font-size:.84rem;font-weight:600;padding:.5rem 1rem;border-radius:8px}
+.cf-msg.success{color:var(--green);background:var(--green-bg);border:1px solid #86efac;display:inline-block}
+.cf-msg.error{color:var(--red);background:var(--red-bg);border:1px solid #fca5a5;display:inline-block}
+.cmt-empty{text-align:center;padding:2.5rem 1rem;color:var(--muted)}
+.cmt-empty-icon{font-size:3rem;margin-bottom:.8rem;display:block;animation:float 3s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.cmt-empty h4{font-family:"Playfair Display",serif;font-size:1.1rem;font-weight:700;margin-bottom:.4rem;color:var(--ink)}
+.cmt-empty p{font-size:.85rem;line-height:1.6}
+.comment-list{display:flex;flex-direction:column;gap:1rem}
+.comment-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.3rem 1.5rem;animation:slideIn .35s cubic-bezier(.34,1.56,.64,1);transition:all .2s}
+.comment-card:hover{border-color:var(--lock);box-shadow:0 4px 18px rgba(124,58,237,.07);transform:translateY(-1px)}
+@keyframes slideIn{from{opacity:0;transform:translateY(12px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.comment-header{display:flex;align-items:center;gap:.8rem;margin-bottom:.5rem}
+.ci-avatar{width:40px;height:40px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;flex-shrink:0}
+.comment-meta{flex:1;min-width:0}
+.comment-name{font-weight:700;font-size:.9rem;display:block}
+.comment-date{font-size:.72rem;color:var(--muted)}
+.comment-text{font-size:.9rem;color:var(--ink);line-height:1.7;margin-top:.3rem;padding-left:3rem}
+#cw-ana-btn{position:fixed;bottom:28px;right:28px;z-index:10000;background:rgba(20,18,15,.92);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.1);border-radius:100px;padding:9px 16px;font-size:.75rem;color:rgba(255,255,255,.42);cursor:pointer;font-family:"Outfit",sans-serif;font-weight:700;box-shadow:0 8px 28px rgba(0,0,0,.2);transition:all .28s;letter-spacing:.5px;white-space:nowrap}
+#cw-ana-btn:hover{color:#fff;border-color:rgba(255,255,255,.22)}
+#cw-ana-btn.open{background:rgba(232,64,28,.12);border-color:rgba(232,64,28,.38);color:#e8401c}
+#cw-ana-panel{position:fixed;bottom:72px;right:28px;z-index:9999;background:rgba(20,18,15,.95);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:16px 18px 12px;min-width:190px;box-shadow:0 20px 56px rgba(0,0,0,.32);transform:translateY(10px) scale(.96);opacity:0;pointer-events:none;transition:all .22s}
+#cw-ana-panel.show{transform:translateY(0) scale(1);opacity:1;pointer-events:all}
+#cw-ana-panel .ap-title{font-size:.63rem;letter-spacing:1.5px;text-transform:uppercase;color:rgba(255,255,255,.26);margin-bottom:10px;font-family:"Outfit",sans-serif;font-weight:700;display:flex;align-items:center;gap:6px}
+#cw-ana-panel .ap-title::before{content:"";display:block;width:6px;height:6px;border-radius:50%;background:#e8401c;box-shadow:0 0 6px #e8401c;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.ap-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.ap-row:last-child{border-bottom:none}
+.ap-lbl{font-size:.7rem;color:rgba(255,255,255,.38);font-family:"Outfit",sans-serif}
+.ap-val{font-size:.76rem;color:#fff;font-weight:700;font-family:"Outfit",sans-serif}
+.ap-val.accent{color:#e8401c}
+.ap-divider{height:1px;background:rgba(255,255,255,.05);margin:6px 0}
+.ap-bar-wrap{margin-top:3px}
+.ap-bar-label{display:flex;justify-content:space-between;font-size:.63rem;color:rgba(255,255,255,.28);font-family:"Outfit",sans-serif;margin-bottom:3px}
+.ap-bar{height:3px;background:rgba(255,255,255,.07);border-radius:100px;overflow:hidden}
+.ap-bar-fill{height:100%;background:linear-gradient(90deg,#e8401c,#ff6b4a);border-radius:100px;transition:width 1s;width:0%}
+footer{border-top:1px solid var(--border);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;margin-top:3rem}
+footer p{font-size:.8rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="logo">CI<span>Web</span></a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-en="Home" data-hi="Home">Home</a></li>
+    <li><a href="../blogs.html" data-en="Blogs" data-hi="Blogs">Blogs</a></li>
+    <li><a href="../about.html" data-en="About" data-hi="Hamare Baare Mein">About</a></li>
+    <!-- lang.js injects toggle button here -->
+  </ul>
+</nav>
+
+<div class="enc-hero">
+  <div class="hero-breaking" data-en="🚨 Breaking — Instagram Removed Encryption Worldwide" data-hi="🚨 Breaking — Instagram Ne Duniya Bhar Se Encryption Hatayi">🚨 Breaking — Instagram Removed Encryption Worldwide</div>
+  <span class="hero-lock">🔓</span>
+  <h1>
+    <span class="clr" data-en="Instagram Removed Encryption" data-hi="Instagram Ne Encryption Hata Di">Instagram Removed Encryption</span><br/>
+    <span data-en="Globally — What Is It &amp; Why It Matters" data-hi="Duniya Bhar Se — Kya Hai Aur Kyun Zaruri Hai">Globally — What Is It &amp; Why It Matters</span>
+  </h1>
+  <p class="hero-sub" data-en="In 2025, Instagram (Meta) removed default end-to-end encryption from DMs worldwide — not just in the US. Every Instagram user on the planet is affected. Here's what it means, how encryption actually works, and how to protect yourself." data-hi="2025 mein Instagram (Meta) ne duniya bhar ke DMs se default end-to-end encryption hata di — sirf US mein nahi. Poori duniya ke har Instagram user pe asar pada. Jaano iska matlab, encryption kaise kaam karta hai, aur khud ko protect karo.">In 2025, Instagram (Meta) removed default end-to-end encryption from DMs worldwide — not just in the US. Every Instagram user on the planet is affected. Here's what it means, how encryption actually works, and how to protect yourself.</p>
+  <div class="hero-stats">
+    <div class="hs"><div class="hs-num">2B+</div><div class="hs-lab" data-en="Global users affected" data-hi="Duniya bhar ke users">Global users affected</div></div>
+    <div class="hs"><div class="hs-num">256-bit</div><div class="hs-lab" data-en="AES key size" data-hi="AES key size">AES key size</div></div>
+    <div class="hs"><div class="hs-num">∞</div><div class="hs-lab" data-en="Years to brute-force" data-hi="Crack karne ke saal">Years to brute-force</div></div>
+    <div class="hs"><div class="hs-num">🔐</div><div class="hs-lab" data-en="Your privacy matters" data-hi="Tumhari privacy matters">Your privacy matters</div></div>
+  </div>
+</div>
+
+<div class="blog-content">
+
+<div class="breaking-banner">
+  <span class="bb-badge" data-en="BREAKING" data-hi="BREAKING">BREAKING</span>
+  <p class="bb-text">
+    <strong data-en="Instagram (Meta) removed default end-to-end encryption from DMs globally in 2025" data-hi="Instagram (Meta) ne 2025 mein duniya bhar ke DMs se default end-to-end encryption hata di">Instagram (Meta) removed default end-to-end encryption from DMs globally in 2025</strong>
+    <span data-en=" — this is NOT limited to the US. Every single Instagram account worldwide is affected. Governments globally can now legally request your DM history, and Meta employees technically have access. This blog explains exactly what was taken from you and why it matters." data-hi=" — yeh sirf US tak seemit nahi hai. Duniya bhar ke har Instagram account pe asar padta hai. Ab duniya bhar ki governments tumhara DM history legally request kar sakti hain. Yeh blog explain karta hai kya liya gaya aur kyun matter karta hai."> — this is NOT limited to the US. Every single Instagram account worldwide is affected. Governments globally can now legally request your DM history, and Meta employees technically have access. This blog explains exactly what was taken from you and why it matters.</span>
+  </p>
+</div>
+
+<div class="toc">
+  <h4 data-en="📋 What's Inside" data-hi="📋 Andar Kya Hai">📋 What's Inside</h4>
+  <ol>
+    <li><a href="#s-what" data-en="What Is Encryption?" data-hi="Encryption Kya Hai?">What Is Encryption?</a></li>
+    <li><a href="#s-how" data-en="How Does It Work?" data-hi="Kaise Kaam Karta Hai?">How Does It Work?</a></li>
+    <li><a href="#s-types" data-en="Types of Encryption" data-hi="Encryption Ke Types">Types of Encryption</a></li>
+    <li><a href="#s-e2e" data-en="End-to-End Encryption" data-hi="E2E Encryption">End-to-End Encryption</a></li>
+    <li><a href="#s-insta" data-en="Why Did Instagram Remove It?" data-hi="Instagram Ne Kyun Hatayi?">Why Did Instagram Remove It?</a></li>
+    <li><a href="#s-impact" data-en="What It Means For You" data-hi="Tumhare Liye Kya Matlab?">What It Means For You</a></li>
+    <li><a href="#s-reallife" data-en="Encryption in Real Life" data-hi="Real Life Mein Encryption">Encryption in Real Life</a></li>
+    <li><a href="#s-history" data-en="History of Encryption" data-hi="Encryption Ka History">History of Encryption</a></li>
+    <li><a href="#s-quiz" data-en="Encryption Quiz" data-hi="Encryption Quiz">Encryption Quiz</a></li>
+    <li><a href="#s-protect" data-en="How To Stay Safe" data-hi="Safe Kaise Raho?">How To Stay Safe</a></li>
+  </ol>
+</div>
+
+<!-- S1: WHAT IS ENCRYPTION -->
+<div class="sec-title" id="s-what"><span class="emoji">🔐</span><span data-en="What Is Encryption? — Simple Explanation" data-hi="Encryption Kya Hai? — Simple Explanation">What Is Encryption? — Simple Explanation</span></div>
+<p class="body-p" data-en="Imagine sending a secret letter to your friend — through a post office where many strangers work. Anyone could pick it up and read it. So what do you do? You write it in a <b>secret code</b> that only your friend understands. That's encryption." data-hi="Socho tumne ek secret letter apne dost ke liye likha — ek post office ke zariye jahan kai log kaam karte hain. Koi bhi uthake padh sakta hai. Toh tum kya karoge? Tum ek <b>secret code</b> mein likho — aisa code jo sirf tumhara dost samjhe. Yahi hai encryption.">Imagine sending a secret letter to your friend — through a post office where many strangers work. Anyone could pick it up and read it. So what do you do? You write it in a <b>secret code</b> that only your friend understands. That's encryption.</p>
+<p class="body-p" data-en="Technically: <b>Encryption is a mathematical process that converts readable data (plaintext) into an unreadable format (ciphertext) using a key and an algorithm.</b> Only someone with the correct key can decode it back." data-hi="Technical language mein: <b>Encryption ek mathematical process hai jo readable data (plaintext) ko unreadable format (ciphertext) mein convert kar deta hai — ek key aur algorithm use karke.</b> Sirf woh padh sakta hai jiske paas correct decryption key ho.">Technically: <b>Encryption is a mathematical process that converts readable data (plaintext) into an unreadable format (ciphertext) using a key and an algorithm.</b> Only someone with the correct key can decode it back.</p>
+
+<div class="anim-lock-wrap">
+  <div class="anim-label" data-en="🎬 Animation — Watch a message get encrypted" data-hi="🎬 Animation — Message Encrypt Ho Raha Hai">🎬 Animation — Watch a message get encrypted</div>
+  <div class="lock-demo">
+    <div class="msg-bubble">Hello Priya! 👋<br/>Meet at 5pm.</div>
+    <div class="arrow-i">→</div>
+    <span class="key-spin">🔑</span>
+    <div class="arrow-i">→</div>
+    <div class="msg-bubble enc">K2#xP!9@mQr$<br/>7nZ&amp;wL*4vB^q</div>
+  </div>
+  <div class="lock-states">
+    <div class="lock-state">
+      <span class="ls-icon unlocked">🔓</span>
+      <div class="ls-label" data-en="Before Encryption<br/><small>Anyone can read</small>" data-hi="Before Encryption<br/><small>Koi bhi padh sakta</small>">Before Encryption<br/><small>Anyone can read</small></div>
+    </div>
+    <div style="display:flex;align-items:center;color:rgba(255,255,255,.15);font-size:2rem;padding:0 .5rem">→</div>
+    <div class="lock-state">
+      <span class="ls-icon locked">🔒</span>
+      <div class="ls-label" data-en="After Encryption<br/><small>Only key-holder reads</small>" data-hi="After Encryption<br/><small>Sirf key-holder padhe</small>">After Encryption<br/><small>Only key-holder reads</small></div>
+    </div>
+  </div>
+</div>
+
+<div class="info-box">
+  <p data-en="<strong>💡 Real-life analogy:</strong> Encryption is like a <b>combination lock diary</b> — only the right combination opens it. If someone grabs it, they see nothing useful. <b>The key = the combination that turns gibberish back into readable language.</b>" data-hi="<strong>💡 Real-life analogy:</strong> Encryption ek <b>combination lock diary</b> ki tarah hai — sirf sahi combination se khulti hai. Koi aur uthale — sirf gibberish dikhega. <b>Key = woh combination jo gibberish ko wapas readable language mein badal deta hai.</b>"><strong>💡 Real-life analogy:</strong> Encryption is like a <b>combination lock diary</b> — only the right combination opens it. If someone grabs it, they see nothing useful. <b>The key = the combination that turns gibberish back into readable language.</b></p>
+</div>
+
+<div class="mb-grid">
+  <div class="mb-card">
+    <div class="mb-num">📄</div>
+    <div class="mb-title" data-en="Plaintext" data-hi="Plaintext">Plaintext</div>
+    <div class="mb-desc" data-en="Original readable data. &quot;Hello Priya!&quot; — anyone can read it." data-hi="Original readable data. 'Hello Priya!' — koi bhi padh sakta hai.">Original readable data. "Hello Priya!" — anyone can read it.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num">🔑</div>
+    <div class="mb-title" data-en="Key" data-hi="Key (Chabi)">Key</div>
+    <div class="mb-desc" data-en="The secret value controlling encryption. Longer key = harder to crack." data-hi="Secret value jo encryption control karta hai. Jitni lambi key, utna mushkil crack karna.">The secret value controlling encryption. Longer key = harder to crack.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num">⚙️</div>
+    <div class="mb-title" data-en="Algorithm" data-hi="Algorithm">Algorithm</div>
+    <div class="mb-desc" data-en="The mathematical recipe that converts plaintext + key → ciphertext. AES and RSA are popular examples." data-hi="Mathematical recipe jo plaintext + key ko ciphertext mein convert karta hai. AES aur RSA popular hain.">The mathematical recipe that converts plaintext + key → ciphertext. AES and RSA are popular examples.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num">🔒</div>
+    <div class="mb-title" data-en="Ciphertext" data-hi="Ciphertext">Ciphertext</div>
+    <div class="mb-desc" data-en="The encrypted output. &quot;K2#xP!9@mQ&quot; — useless gibberish without the key." data-hi="Encrypted output. 'K2#xP!9@mQ' — bina key ke completely useless gibberish.">The encrypted output. "K2#xP!9@mQ" — useless gibberish without the key.</div>
+  </div>
+</div>
+
+<!-- S2: HOW IT WORKS -->
+<div class="sec-title" id="s-how"><span class="emoji">⚙️</span><span data-en="How Does Encryption Work? — Step by Step" data-hi="Encryption Kaise Kaam Karta Hai? — Step by Step">How Does Encryption Work? — Step by Step</span></div>
+<p class="body-p" data-en="The core idea is 4000 years old — only the complexity has changed. Let's start with the simplest cipher ever — the Caesar Cipher — then understand how modern AES-256 works." data-hi="Core idea 4000 saal purana hai — sirf complexity change hui hai. Sabse simple cipher se shuru karte hain — Caesar Cipher — phir modern AES-256 samjhenge.">The core idea is 4000 years old — only the complexity has changed. Let's start with the simplest cipher ever — the Caesar Cipher — then understand how modern AES-256 works.</p>
+
+<div class="cipher-demo">
+  <div class="anim-label" style="color:rgba(255,255,255,.3);font-size:.7rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;font-weight:700" data-en="🎮 Interactive — Try the Caesar Cipher live" data-hi="🎮 Interactive — Caesar Cipher Live Try Karo">🎮 Interactive — Try the Caesar Cipher live</div>
+  <div class="key-shift-box">
+    <div class="ks-lbl" data-en="Shift Value (Key)" data-hi="Shift Value (Key)">Shift Value (Key)</div>
+    <div class="ks-val" id="shift-val">+3</div>
+    <div class="shift-btns">
+      <button class="shift-btn" onclick="changeShift(-1)">← −1</button>
+      <button class="shift-btn" onclick="changeShift(1)">+1 →</button>
+    </div>
+  </div>
+  <div class="cipher-boxes">
+    <div class="cbox plain">
+      <div class="cb-lbl" data-en="Original (Plaintext)" data-hi="Original (Plaintext)">Original (Plaintext)</div>
+      <div class="cb-val" id="plain-word">HELLO</div>
+    </div>
+    <div class="cipher-arrow-center">🔑</div>
+    <div class="cbox encrypted">
+      <div class="cb-lbl" data-en="Encrypted (Ciphertext)" data-hi="Encrypted (Ciphertext)">Encrypted (Ciphertext)</div>
+      <div class="cb-val" id="enc-word">KHOOR</div>
+    </div>
+  </div>
+  <div class="alpha-strip" id="alpha-strip"></div>
+  <p style="color:rgba(255,255,255,.2);font-size:.7rem;text-align:center;margin-top:.8rem;font-style:italic" data-en="Each letter shifts by the key value. A→D, B→E (shift 3). Modern encryption: same idea at 2^256 complexity!" data-hi="Har letter shift hota hai key value se. A→D, B→E (shift 3 ke saath). Modern encryption: same idea — sirf 2^256 complexity!">Each letter shifts by the key value. A→D, B→E (shift 3). Modern encryption: same idea at 2^256 complexity!</p>
+</div>
+
+<div class="tunnel-wrap">
+  <div class="anim-label" style="color:rgba(255,255,255,.28);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.2rem;font-weight:700;text-align:center" data-en="🔄 How Your Encrypted WhatsApp Message Travels" data-hi="🔄 Tumhara Encrypted WhatsApp Message Kaise Travel Karta Hai">🔄 How Your Encrypted WhatsApp Message Travels</div>
+  <div class="tunnel-row">
+    <div class="tnode"><span class="tn-icon">📱</span><div class="tn-lbl" data-en="Your Phone" data-hi="Tumhara Phone">Your Phone</div><div class="tn-val" data-en='"Meet at 5pm"' data-hi='"5 baje milte hain"'>"Meet at 5pm"</div></div>
+    <div class="tarrow"><span>→</span><span>→</span><span>→</span></div>
+    <div class="tnode"><span class="tn-icon">🔐</span><div class="tn-lbl" data-en="Encryption" data-hi="Encryption">Encryption</div><div class="tn-val">AES-256 + Key</div></div>
+    <div class="tarrow"><span>→</span><span>→</span><span>→</span></div>
+    <div class="tnode"><span class="tn-icon">🌐</span><div class="tn-lbl" data-en="Internet" data-hi="Internet">Internet</div><div class="tn-val">x9#Kp!2@mQ$r</div></div>
+    <div class="tarrow"><span>→</span><span>→</span><span>→</span></div>
+    <div class="tnode"><span class="tn-icon">🔓</span><div class="tn-lbl" data-en="Decryption" data-hi="Decryption">Decryption</div><div class="tn-val" data-en="Receiver's key" data-hi="Receiver ki key">Receiver's key</div></div>
+    <div class="tarrow"><span>→</span><span>→</span><span>→</span></div>
+    <div class="tnode"><span class="tn-icon">📱</span><div class="tn-lbl" data-en="Priya's Phone" data-hi="Priya Ki Phone">Priya's Phone</div><div class="tn-val" data-en='"Meet at 5pm"' data-hi='"5 baje milte hain"'>"Meet at 5pm"</div></div>
+  </div>
+  <div class="secure-badge"><span class="sec-dot"></span><span data-en="E2E Secured — Server cannot read anything" data-hi="E2E Secured — Server kuch nahi padh sakta">E2E Secured — Server cannot read anything</span></div>
+</div>
+
+<div class="formula">
+  <span class="hi">Encrypt:</span> plaintext + key → algorithm → ciphertext<br/>
+  <span class="hi">Decrypt:</span> ciphertext + key → algorithm⁻¹ → plaintext
+  <small data-en="Same key (symmetric) or different keys (asymmetric) — depending on encryption type" data-hi="Same key (symmetric) ya alag key (asymmetric) — encryption type pe depend karta hai">Same key (symmetric) or different keys (asymmetric) — depending on encryption type</small>
+</div>
+
+<!-- S3: TYPES -->
+<div class="sec-title" id="s-types"><span class="emoji">📦</span><span data-en="Types of Encryption — Clearly Explained" data-hi="Encryption Ke Types — Clearly Explained">Types of Encryption — Clearly Explained</span></div>
+<div class="mb-grid">
+  <div class="mb-card">
+    <div class="mb-num" style="font-size:1.3rem">🔑</div>
+    <div class="mb-title" data-en="Symmetric Encryption" data-hi="Symmetric Encryption">Symmetric Encryption</div>
+    <div class="mb-desc" data-en="<b>One key</b> for both locking and unlocking. Sender and receiver share the same key. Very fast. Example: <b>AES-256</b> — used in banks, hard drives." data-hi="<b>Ek hi key</b> se lock aur unlock. Sender aur receiver ke paas same secret key. Bahut fast. Example: <b>AES-256</b> — banks, hard drives mein use."><b>One key</b> for both locking and unlocking. Sender and receiver share the same key. Very fast. Example: <b>AES-256</b> — used in banks, hard drives.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num" style="font-size:1.3rem">🗝️🗝️</div>
+    <div class="mb-title" data-en="Asymmetric Encryption" data-hi="Asymmetric Encryption">Asymmetric Encryption</div>
+    <div class="mb-desc" data-en="<b>Two keys:</b> Public Key (share with everyone — for locking) + Private Key (only you — for unlocking). Example: <b>RSA-2048</b> — used in HTTPS, emails." data-hi="<b>Do keys:</b> Public Key (sabko do — lock karne ke liye) + Private Key (sirf tumhare paas — unlock ke liye). Example: <b>RSA-2048</b> — HTTPS, emails mein."><b>Two keys:</b> Public Key (share with everyone — for locking) + Private Key (only you — for unlocking). Example: <b>RSA-2048</b> — used in HTTPS, emails.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num" style="font-size:1.3rem">🔗</div>
+    <div class="mb-title" data-en="Hashing (One-Way)" data-hi="Hashing (One-Way)">Hashing (One-Way)</div>
+    <div class="mb-desc" data-en="Encrypt yes — decrypt no. <b>Passwords are always stored as hashes</b> — that's why companies don't know your actual password. Example: <b>SHA-256</b>." data-hi="Encrypt haan — decrypt nahi. <b>Passwords hamesha hash mein store hote hain</b> — isiliye companies actual password nahi jaantein. Example: <b>SHA-256</b>.">Encrypt yes — decrypt no. <b>Passwords are always stored as hashes</b> — that's why companies don't know your actual password. Example: <b>SHA-256</b>.</div>
+  </div>
+  <div class="mb-card">
+    <div class="mb-num" style="font-size:1.3rem">🤝</div>
+    <div class="mb-title" data-en="TLS/SSL (Hybrid)" data-hi="TLS/SSL (Hybrid)">TLS/SSL (Hybrid)</div>
+    <div class="mb-desc" data-en="The browser's <b>🔒 icon</b>. Uses asymmetric for key exchange, then symmetric for data. <b>HTTPS = HTTP + TLS.</b> Every secure website uses this." data-hi="Browser ka <b>🔒 icon</b>. Pehle asymmetric se key exchange, phir symmetric se data. <b>HTTPS = HTTP + TLS.</b> Har secure website yahi use karti hai.">The browser's <b>🔒 icon</b>. Uses asymmetric for key exchange, then symmetric for data. <b>HTTPS = HTTP + TLS.</b> Every secure website uses this.</div>
+  </div>
+</div>
+
+<div class="formula">
+  AES-256 possible keys: 2<sup>256</sup> ≈ <span class="hi">1.16 × 10<sup>77</sup></span>
+  <small data-en="If every atom in the observable universe was a computer running since the Big Bang — they still couldn't crack AES-256" data-hi="Agar observable universe ka har atom ek computer hota aur Big Bang se chal raha hota — tab bhi AES-256 crack nahi hota">If every atom in the observable universe was a computer running since the Big Bang — they still couldn't crack AES-256</small>
+</div>
+
+<div class="https-row">
+  <div class="https-card sec">
+    <div class="https-bar">🔒 https://ciweb.in</div>
+    <div class="https-info" data-en="<strong>✅ HTTPS — Encrypted</strong><br/>All data TLS encrypted. Password, card numbers — everything safe." data-hi="<strong>✅ HTTPS — Encrypted</strong><br/>Sab data TLS encrypted. Password, card — sab safe."><strong>✅ HTTPS — Encrypted</strong><br/>All data TLS encrypted. Password, card numbers — everything safe.</div>
+  </div>
+  <div class="https-card insec">
+    <div class="https-bar">⚠️ http://somesite.com</div>
+    <div class="https-info" data-en="<strong>❌ HTTP — Plain Text</strong><br/>Zero encryption. Anyone on the same WiFi can intercept everything. <b>Never enter passwords on HTTP!</b>" data-hi="<strong>❌ HTTP — Plain Text</strong><br/>Koi encryption nahi. Same WiFi pe koi bhi sab intercept kar sakta hai. <b>Kabhi bhi password HTTP pe mat daalo!</b>"><strong>❌ HTTP — Plain Text</strong><br/>Zero encryption. Anyone on the same WiFi can intercept everything. <b>Never enter passwords on HTTP!</b></div>
+  </div>
+</div>
+
+<!-- S4: E2E -->
+<div class="sec-title" id="s-e2e"><span class="emoji">🤝</span><span data-en="End-to-End Encryption — The Gold Standard" data-hi="End-to-End Encryption — The Gold Standard">End-to-End Encryption — The Gold Standard</span></div>
+<p class="body-p" data-en="In regular encryption, messages are decrypted at the server — <b>meaning the company can read them</b>. End-to-End is different: <b>messages are encrypted only on your device and decrypted only on the receiver's device.</b> Nobody in between — not the server, not the company, not any government — has the keys to read it." data-hi="Regular encryption mein message server pe decrypt hota hai — <b>matlab company padh sakti hai</b>. End-to-End alag hai: <b>message sirf tumhare device pe encrypt hota hai aur sirf receiver ke device pe decrypt hota hai.</b> Beech mein koi — server bhi nahi, company bhi nahi, government bhi nahi — keys rakhta hai.">In regular encryption, messages are decrypted at the server — <b>meaning the company can read them</b>. End-to-End is different: <b>messages are encrypted only on your device and decrypted only on the receiver's device.</b> Nobody in between — not the server, not the company, not any government — has the keys to read it.</p>
+
+<div class="keyex-wrap">
+  <div class="anim-label" style="color:rgba(255,255,255,.28);font-size:.68rem;text-transform:uppercase;letter-spacing:1px;margin-bottom:1.5rem;font-weight:700;text-align:center" data-en="🎬 E2E Key Exchange in Action" data-hi="🎬 E2E Key Exchange Animation">🎬 E2E Key Exchange in Action</div>
+  <div class="keyex-stage">
+    <div class="kperson"><span class="kp-icon">👦</span><div class="kp-lbl">Rahul</div></div>
+    <div class="kex-middle">
+      <span class="key-fly kf1">🔑</span>
+      <span class="key-fly kf2">🔑</span>
+      <div class="snoop-center">
+        <span class="snoop-eye">👁️</span>
+        <span class="snoop-lbl" data-en="Server/Hacker" data-hi="Server/Hacker">Server/Hacker</span>
+        <span class="snoop-sees" data-en="Only sees: x9#!@$%" data-hi="Sirf: x9#!@$%">Only sees: x9#!@$%</span>
+      </div>
+    </div>
+    <div class="kperson"><span class="kp-icon">👧</span><div class="kp-lbl">Priya</div></div>
+  </div>
+  <div class="keyex-legend">
+    <div class="kl-i"><div class="kl-dot" style="background:#a78bfa"></div><span data-en="Public keys exchanged openly" data-hi="Public keys freely exchange hoti hain">Public keys exchanged openly</span></div>
+    <div class="kl-i"><div class="kl-dot" style="background:#22c55e"></div><span data-en="Message: Fully E2E encrypted" data-hi="Message: Fully E2E Encrypted">Message: Fully E2E encrypted</span></div>
+    <div class="kl-i"><div class="kl-dot" style="background:#ef4444"></div><span data-en="Server: Cannot decrypt" data-hi="Server: Decrypt kar hi nahi sakta">Server: Cannot decrypt</span></div>
+  </div>
+</div>
+
+<div class="compare-grid">
+  <div class="cmp-card good">
+    <span class="cmp-icon">🔐</span>
+    <div class="cmp-title" data-en="With E2E (WhatsApp, Signal)" data-hi="E2E ke saath (WhatsApp, Signal)">With E2E (WhatsApp, Signal)</div>
+    <ul class="cmp-list">
+      <li data-en="Only you and the receiver can read" data-hi="Sirf tum aur receiver padh sako">Only you and the receiver can read</li>
+      <li data-en="Company server cannot decrypt" data-hi="Company ka server bhi decrypt nahi kar sakta">Company server cannot decrypt</li>
+      <li data-en="Court orders yield nothing" data-hi="Court order aaye toh bhi kuch nahi milega">Court orders yield nothing</li>
+      <li data-en="Hackers see only gibberish" data-hi="Hackers intercept karein — sirf gibberish">Hackers see only gibberish</li>
+      <li data-en="Data breach? Encrypted data is worthless" data-hi="Data breach mein bhi safe">Data breach? Encrypted data is worthless</li>
+    </ul>
+  </div>
+  <div class="cmp-card bad">
+    <span class="cmp-icon">🔓</span>
+    <div class="cmp-title" data-en="Without E2E (Instagram DMs — Worldwide Now)" data-hi="E2E ke bina (Instagram DMs — Ab Duniya Bhar)">Without E2E (Instagram DMs — Worldwide Now)</div>
+    <ul class="cmp-list">
+      <li data-en="Company server can read messages" data-hi="Company server pe readable ho sakta hai">Company server can read messages</li>
+      <li data-en="Meta employees can access content" data-hi="Meta employees technically access kar sakte hain">Meta employees can access content</li>
+      <li data-en="Governments globally can request data" data-hi="Duniya bhar ki governments data request kar sakti hain">Governments globally can request data</li>
+      <li data-en="Data breach exposes real DM content" data-hi="Data breach mein DMs expose ho sakte hain">Data breach exposes real DM content</li>
+      <li data-en="Conversations can feed ad targeting" data-hi="Conversations ad targeting ke liye analyze ho sakti hain">Conversations can feed ad targeting</li>
+    </ul>
+  </div>
+</div>
+
+<!-- S5: INSTAGRAM -->
+<div class="sec-title" id="s-insta"><span class="emoji">📸</span><span data-en="Why Did Instagram Remove Encryption — Globally?" data-hi="Instagram Ne Encryption Kyun Hatayi — Duniya Bhar Se?">Why Did Instagram Remove Encryption — Globally?</span></div>
+
+<div class="warn-box">
+  <p data-en="<strong>⚠️ What happened exactly:</strong> Instagram (Meta) removed default end-to-end encryption from DMs <b>for users worldwide</b> in 2025 — not just in the US. This was a global rollout. Meta cited government compliance, but the move affects every Instagram user on the planet. No major announcement was made." data-hi="<strong>⚠️ Kya hua exactly:</strong> Instagram (Meta) ne 2025 mein DMs ki default end-to-end encryption <b>duniya bhar ke users ke liye</b> hata di — sirf US mein nahi. Yeh global rollout tha. Meta ne government compliance ka hawala diya, lekin yeh poori duniya ke har Instagram user ko affect karta hai."><strong>⚠️ What happened exactly:</strong> Instagram (Meta) removed default end-to-end encryption from DMs <b>for users worldwide</b> in 2025 — not just in the US. This was a global rollout. Meta cited government compliance, but the move affects every Instagram user on the planet. No major announcement was made.</p>
+</div>
+
+<div class="mystery-list">
+  <div class="myst-card">
+    <div class="myst-num">🏛️</div>
+    <div class="myst-body">
+      <h4 data-en="Government Pressure — Worldwide" data-hi="Government Pressure — Duniya Bhar Se">Government Pressure — Worldwide</h4>
+      <p data-en="Multiple governments — not just the US — have pushed hard against E2E encryption. Their argument: it blocks evidence in <b>criminal investigations, child safety, terrorism prevention</b>. Several countries have passed laws requiring tech companies to maintain access to user communications." data-hi="Kai governments — sirf US nahi — E2E encryption ke khilaf push kar rahi hain. Unka argument: yeh <b>criminal investigations, child safety, terrorism prevention</b> mein evidence block karta hai. Kai deshon ne laws pass kiye hain.">Multiple governments — not just the US — have pushed hard against E2E encryption. Their argument: it blocks evidence in <b>criminal investigations, child safety, terrorism prevention</b>. Several countries have passed laws requiring tech companies to maintain access to user communications.</p>
+    </div>
+  </div>
+  <div class="myst-card">
+    <div class="myst-num">💰</div>
+    <div class="myst-body">
+      <h4 data-en="Business Model — Ad Targeting" data-hi="Business Model — Ad Targeting">Business Model — Ad Targeting</h4>
+      <p data-en="With E2E on, even Meta cannot read your DMs. Without it, <b>conversation data can potentially be used for ad targeting and content analysis</b> — perfectly aligned with Meta's core business of monetising user behaviour." data-hi="E2E on hone se Meta khud bhi DMs nahi padh sakta. Without encryption, <b>conversation data potentially ad targeting aur content analysis ke liye available</b> ho jaata hai — Meta ke core business ke saath perfectly align.">With E2E on, even Meta cannot read your DMs. Without it, <b>conversation data can potentially be used for ad targeting and content analysis</b> — perfectly aligned with Meta's core business of monetising user behaviour.</p>
+    </div>
+  </div>
+  <div class="myst-card">
+    <div class="myst-num">⚖️</div>
+    <div class="myst-body">
+      <h4 data-en="Privacy vs Safety — The Real Tension" data-hi="Privacy vs Safety — Real Tension">Privacy vs Safety — The Real Tension</h4>
+      <p data-en="Genuine dilemma: <b>Privacy advocates</b> say encryption is a fundamental right — protecting journalists, activists, domestic abuse survivors globally. <b>Law enforcement</b> says the 'going dark' problem enables crime. But removing it <b>globally</b> — affecting 2 billion+ users — is a massive step." data-hi="Genuine dilemma: <b>Privacy advocates</b> kehte hain encryption fundamental right hai — journalists, activists, domestic abuse survivors ko globally protect karta hai. <b>Law enforcement</b> kehta hai 'going dark' crime enable karta hai. Lekin <b>globally</b> hataana — 2 billion+ users — bahut bada step hai.">Genuine dilemma: <b>Privacy advocates</b> say encryption is a fundamental right — protecting journalists, activists, domestic abuse survivors globally. <b>Law enforcement</b> says the 'going dark' problem enables crime. But removing it <b>globally</b> — affecting 2 billion+ users — is a massive step.</p>
+    </div>
+  </div>
+  <div class="myst-card">
+    <div class="myst-num">🔄</div>
+    <div class="myst-body">
+      <h4 data-en="WhatsApp Is Still E2E (For Now)" data-hi="WhatsApp Abhi Bhi E2E Hai (Abhi Ke Liye)">WhatsApp Is Still E2E (For Now)</h4>
+      <p data-en="Important distinction: <b>WhatsApp — also Meta — still has E2E encryption by default globally.</b> Instagram DMs and WhatsApp are separate systems. For genuinely private conversations: use WhatsApp or Signal instead of Instagram DMs." data-hi="Important: <b>WhatsApp — bhi Meta — abhi bhi globally by default E2E encrypted hai.</b> Instagram DMs aur WhatsApp alag systems hain. Genuinely private conversations ke liye: Instagram DMs ki jagah WhatsApp ya Signal use karo.">Important distinction: <b>WhatsApp — also Meta — still has E2E encryption by default globally.</b> Instagram DMs and WhatsApp are separate systems. For genuinely private conversations: use WhatsApp or Signal instead of Instagram DMs.</p>
+    </div>
+  </div>
+</div>
+
+<!-- S6: IMPACT -->
+<div class="sec-title" id="s-impact"><span class="emoji">😰</span><span data-en="What This Means For You — Practically" data-hi="Tumhare Liye Practically Kya Matlab Hai?">What This Means For You — Practically</span></div>
+<div class="mb-grid">
+  <div class="mb-card" style="border-color:#fca5a5">
+    <div class="mb-num" style="font-size:1.4rem;color:var(--red)">😬</div>
+    <div class="mb-title" data-en="Personal Conversations at Risk" data-hi="Personal Conversations at Risk">Personal Conversations at Risk</div>
+    <div class="mb-desc" data-en="Everything you share in Instagram DMs — personal matters, relationships, health, finances — is now potentially readable by Meta staff and accessible to authorities worldwide via legal processes." data-hi="Instagram DMs mein jo bhi share karte ho — personal matters, relationships, health, finances — ab potentially Meta employees padh sakte hain aur duniya bhar ki authorities legal processes se access kar sakti hain.">Everything you share in Instagram DMs — personal matters, relationships, health, finances — is now potentially readable by Meta staff and accessible to authorities worldwide via legal processes.</div>
+  </div>
+  <div class="mb-card" style="border-color:#fde68a">
+    <div class="mb-num" style="font-size:1.4rem;color:var(--gold)">📊</div>
+    <div class="mb-title" data-en="Ad Targeting on Steroids" data-hi="Ad Targeting on Steroids">Ad Targeting on Steroids</div>
+    <div class="mb-desc" data-en="DM content can feed Meta's ad algorithms. Mention a product in a message — expect ads for it. This is Meta's core revenue model." data-hi="DM content potentially Meta ke ad algorithms mein ja sakta hai. Message mein kisi product ka name lo — expect ads for it. Yeh Meta ka core revenue model hai.">DM content can feed Meta's ad algorithms. Mention a product in a message — expect ads for it. This is Meta's core revenue model.</div>
+  </div>
+  <div class="mb-card" style="border-color:#93c5fd">
+    <div class="mb-num" style="font-size:1.4rem;color:var(--pi)">🏛️</div>
+    <div class="mb-title" data-en="Government Access — Globally" data-hi="Government Access — Globally">Government Access — Globally</div>
+    <div class="mb-desc" data-en="Any government worldwide can now request your DM history from Meta via a legal process. With E2E, Meta would have had nothing readable to hand over." data-hi="Duniya bhar ki koi bhi government ab tumhara DM history Meta se legal process ke zariye request kar sakti hai. E2E hoti toh Meta ke paas dene ke liye kuch readable hota hi nahi.">Any government worldwide can now request your DM history from Meta via a legal process. With E2E, Meta would have had nothing readable to hand over.</div>
+  </div>
+  <div class="mb-card" style="border-color:#ddd6fe">
+    <div class="mb-num" style="font-size:1.4rem;color:var(--lock)">💥</div>
+    <div class="mb-title" data-en="Data Breach Risk" data-hi="Data Breach Risk">Data Breach Risk</div>
+    <div class="mb-desc" data-en="If Meta's servers are ever hacked — which has happened before — plain text DMs could be exposed worldwide. With E2E, encrypted data is worthless to hackers." data-hi="Agar Meta ke servers hack ho jaayein — jo pehle bhi ho chuka hai — plain text DMs duniya bhar ke hackers ke paas ja sakta hai. E2E mein encrypted data attackers ke kisi kaam ka nahi.">If Meta's servers are ever hacked — which has happened before — plain text DMs could be exposed worldwide. With E2E, encrypted data is worthless to hackers.</div>
+  </div>
+</div>
+
+<div class="wow-box">
+  <p data-en="<strong>🤔 Think about this:</strong> In 2014, Facebook bought WhatsApp for $19 billion — a company with <strong>zero user data to sell</strong> because of E2E encryption. That privacy was WhatsApp's core strength. Now removing E2E from Instagram globally is both a <strong>compliance move and a business decision</strong>." data-hi="<strong>🤔 Sochne wali baat:</strong> 2014 mein Facebook ne WhatsApp $19 billion mein kharida — ek company jiske paas <strong>zero user data tha sell karne ke liye</strong> E2E encryption ki wajah se. Woh privacy WhatsApp ka core strength tha. Ab Instagram se globally E2E hataana ek <strong>compliance move aur business decision</strong> dono hai."><strong>🤔 Think about this:</strong> In 2014, Facebook bought WhatsApp for $19 billion — a company with <strong>zero user data to sell</strong> because of E2E encryption. That privacy was WhatsApp's core strength. Now removing E2E from Instagram globally is both a <strong>compliance move and a business decision</strong>.</p>
+</div>
+
+<!-- S7: REAL LIFE -->
+<div class="sec-title" id="s-reallife"><span class="emoji">🌍</span><span data-en="Encryption in Real Life — It Protects Everything" data-hi="Real Life Mein Encryption — Har Jagah Protect Karta Hai">Encryption in Real Life — It Protects Everything</span></div>
+<p class="body-p" data-en="It's not just WhatsApp. Encryption silently protects your entire digital life." data-hi="Sirf WhatsApp nahi — encryption silently tumhari poori digital life protect karta hai.">It's not just WhatsApp. Encryption silently protects your entire digital life.</p>
+
+<div class="uc-grid">
+  <div class="uc-card"><div class="uc-icon">🏦</div><div class="uc-title" data-en="Online Banking" data-hi="Online Banking">Online Banking</div><div class="uc-desc" data-en="Every UPI, bank transfer is AES-256 encrypted. Without it — anyone could intercept your transaction." data-hi="Har UPI, bank transfer AES-256 encrypted. Bina iske — koi bhi intercept kar sakta hai.">Every UPI, bank transfer is AES-256 encrypted. Without it — anyone could intercept your transaction.</div></div>
+  <div class="uc-card"><div class="uc-icon">🔑</div><div class="uc-title" data-en="Passwords" data-hi="Passwords">Passwords</div><div class="uc-desc" data-en="Your Gmail password is stored as a SHA-256 hash. Google itself doesn't know your actual password." data-hi="Tumhara Gmail password SHA-256 hash hai. Google khud actual password nahi jaanta.">Your Gmail password is stored as a SHA-256 hash. Google itself doesn't know your actual password.</div></div>
+  <div class="uc-card"><div class="uc-icon">💳</div><div class="uc-title" data-en="Online Shopping" data-hi="Online Shopping">Online Shopping</div><div class="uc-desc" data-en="Card numbers on Amazon/Flipkart travel via TLS 1.3. The 🔒 icon means safe." data-hi="Amazon/Flipkart pe card number TLS 1.3 se encrypt hota hai. 🔒 = safe.">Card numbers on Amazon/Flipkart travel via TLS 1.3. The 🔒 icon means safe.</div></div>
+  <div class="uc-card"><div class="uc-icon">📧</div><div class="uc-title" data-en="Email" data-hi="Email">Email</div><div class="uc-desc" data-en="Gmail = transit encrypted, NOT E2E. Google can read it. ProtonMail = fully E2E." data-hi="Gmail = transit encrypted, NOT E2E. Google padh sakta hai. ProtonMail = fully E2E.">Gmail = transit encrypted, NOT E2E. Google can read it. ProtonMail = fully E2E.</div></div>
+  <div class="uc-card"><div class="uc-icon">🏥</div><div class="uc-title" data-en="Medical Records" data-hi="Medical Records">Medical Records</div><div class="uc-desc" data-en="Hospital records and prescriptions are all encrypted. Health data is especially sensitive." data-hi="Hospital ke digital records, prescriptions — sab encrypted. Health data bahut sensitive hai.">Hospital records and prescriptions are all encrypted. Health data is especially sensitive.</div></div>
+  <div class="uc-card"><div class="uc-icon">📡</div><div class="uc-title" data-en="WiFi (WPA3)" data-hi="WiFi (WPA3)">WiFi (WPA3)</div><div class="uc-desc" data-en="WPA3 encrypts your home WiFi. Public WiFi = no encryption — never enter passwords there!" data-hi="WPA3 home WiFi encrypt karta hai. Public WiFi = koi encryption nahi — wahan password kabhi mat type karo!">WPA3 encrypts your home WiFi. Public WiFi = no encryption — never enter passwords there!</div></div>
+</div>
+
+<div class="tip-box">
+  <p data-en="<strong>💡 Amazing fact:</strong> When you do a ₹10 UPI recharge — that single transaction crosses <b>at least 5 separate encryption layers</b>: your phone's TLS → payment gateway → bank internal network → NPCI → recipient bank. All simultaneously encrypted. Modern finance literally cannot exist without encryption." data-hi="<strong>💡 Amazing fact:</strong> Jab tum ₹10 ka UPI recharge karte ho — woh single transaction <b>minimum 5 different encryption layers cross karta hai</b>: tumhara phone TLS → payment gateway → bank internal network → NPCI → recipient bank. Sab simultaneously encrypted. Modern finance bina encryption ke exist hi nahi kar sakta."><strong>💡 Amazing fact:</strong> When you do a ₹10 UPI recharge — that single transaction crosses <b>at least 5 separate encryption layers</b>: your phone's TLS → payment gateway → bank internal network → NPCI → recipient bank. All simultaneously encrypted. Modern finance literally cannot exist without encryption.</p>
+</div>
+
+<!-- S8: HISTORY -->
+<div class="sec-title" id="s-history"><span class="emoji">📜</span><span data-en="4000 Years of Encryption History" data-hi="Encryption Ka 4000 Saal Purana Safar">4000 Years of Encryption History</span></div>
+<div class="timeline">
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="~1900 BCE — Ancient Egypt" data-hi="~1900 BCE — Prachin Egypt">~1900 BCE — Ancient Egypt</div>
+    <div class="tl-text" data-en="A scribe used non-standard hieroglyphs — arguably the earliest deliberate encryption to restrict readership." data-hi="Ek scribe ne non-standard hieroglyphs use kiye — arguably pehla deliberate encryption.">A scribe used non-standard hieroglyphs — arguably the earliest deliberate encryption to restrict readership.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="~100 BCE — Julius Caesar" data-hi="~100 BCE — Julius Caesar">~100 BCE — Julius Caesar</div>
+    <div class="tl-text" data-en="The famous <b>Caesar Cipher</b> — ROT-3 letter shift. Secured Roman military communications." data-hi="Famous <b>Caesar Cipher</b> — ROT-3 letter shift. Roman military communications protect karne ke liye.">The famous <b>Caesar Cipher</b> — ROT-3 letter shift. Secured Roman military communications.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="1940s — Enigma Machine (WWII)" data-hi="1940s — Enigma Machine (WWII)">1940s — Enigma Machine (WWII)</div>
+    <div class="tl-text" data-en="Nazi Germany's electromechanical cipher. <b>Alan Turing</b> cracked it — potentially shortening WWII by 2-4 years, saving millions of lives." data-hi="Nazi Germany ka electromechanical cipher. <b>Alan Turing</b> ne crack kiya — arguably WWII 2-4 saal pehle khatam karke millions lives bachi.">Nazi Germany's electromechanical cipher. <b>Alan Turing</b> cracked it — potentially shortening WWII by 2-4 years, saving millions of lives.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="1976 — Diffie-Hellman Key Exchange" data-hi="1976 — Diffie-Hellman Key Exchange">1976 — Diffie-Hellman Key Exchange</div>
+    <div class="tl-text" data-en="<b>Diffie and Hellman</b> invented public-key cryptography — safely exchanging keys over an insecure channel. The foundation of all modern internet security." data-hi="<b>Diffie aur Hellman</b> ne public-key cryptography invent ki — insecure channel pe safely key exchange karna. Modern internet security ki foundation."><b>Diffie and Hellman</b> invented public-key cryptography — safely exchanging keys over an insecure channel. The foundation of all modern internet security.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="2001 — AES Standard" data-hi="2001 — AES Standard">2001 — AES Standard</div>
+    <div class="tl-text" data-en="NIST adopted <b>Advanced Encryption Standard (AES)</b> — the world's most used symmetric cipher. Used in HTTPS, WhatsApp, banking, and government today." data-hi="NIST ne <b>Advanced Encryption Standard (AES)</b> adopt kiya — duniya ka most used symmetric cipher. HTTPS, WhatsApp, banking, government sab mein use.">NIST adopted <b>Advanced Encryption Standard (AES)</b> — the world's most used symmetric cipher. Used in HTTPS, WhatsApp, banking, and government today.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="2013 — Snowden Revelations" data-hi="2013 — Snowden Revelations">2013 — Snowden Revelations</div>
+    <div class="tl-text" data-en="Edward Snowden exposed NSA mass surveillance. Encryption awareness skyrocketed — Signal downloads surged, ProtonMail went mainstream." data-hi="Edward Snowden ne NSA mass surveillance expose ki. Encryption awareness dramatically badhi — Signal downloads spike hue, ProtonMail mainstream hua.">Edward Snowden exposed NSA mass surveillance. Encryption awareness skyrocketed — Signal downloads surged, ProtonMail went mainstream.</div>
+  </div>
+  <div class="tl-item"><div class="tl-dot"></div>
+    <div class="tl-year" data-en="2025 — Instagram Removes E2E Globally" data-hi="2025 — Instagram Ne Globally E2E Hatayi">2025 — Instagram Removes E2E Globally</div>
+    <div class="tl-text" data-en="<b>Instagram (Meta) removed default E2E encryption from DMs worldwide</b> — under government pressure globally. The privacy-vs-surveillance debate enters its most mainstream chapter." data-hi="<b>Instagram (Meta) ne duniya bhar ke DMs ki default E2E encryption hata di</b> — global government pressure mein. Privacy-vs-surveillance debate ka sabse mainstream chapter."><b>Instagram (Meta) removed default E2E encryption from DMs worldwide</b> — under government pressure globally. The privacy-vs-surveillance debate enters its most mainstream chapter.</div>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="sec-title" id="s-quiz"><span class="emoji">🧠</span><span data-en="Encryption Quiz — How Much Did You Learn?" data-hi="Encryption Quiz — Kitna Seekha Tumne?">Encryption Quiz — How Much Did You Learn?</span></div>
+<div class="quiz-wrap">
+  <h3 data-en="🔐 Test Your Encryption Knowledge" data-hi="🔐 Apna Encryption Gyaan Test Karo">🔐 Test Your Encryption Knowledge</h3>
+
+  <div class="q-item">
+    <div class="q-text" data-en="Encrypting 'HELLO' with Caesar shift 3 gives?" data-hi="Caesar shift 3 se 'HELLO' encrypt karne par kya milega?">Encrypting 'HELLO' with Caesar shift 3 gives?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,0,0,false)" data-en="IFMMP" data-hi="IFMMP">IFMMP</button>
+      <button class="q-opt" onclick="ans(this,0,1,true)" data-en="KHOOR" data-hi="KHOOR">KHOOR</button>
+      <button class="q-opt" onclick="ans(this,0,2,false)" data-en="GDKKN" data-hi="GDKKN">GDKKN</button>
+      <button class="q-opt" onclick="ans(this,0,3,false)" data-en="LIPPS" data-hi="LIPPS">LIPPS</button>
+    </div>
+    <div class="q-exp" id="exp0" data-en="H+3=K, E+3=H, L+3=O, L+3=O, O+3=R → KHOOR. Each letter shifts 3 positions forward." data-hi="H+3=K, E+3=H, L+3=O, L+3=O, O+3=R → KHOOR. Har letter 3 positions aage shift karo.">H+3=K, E+3=H, L+3=O, L+3=O, O+3=R → KHOOR. Each letter shifts 3 positions forward.</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-text" data-en="In End-to-End Encryption, what can the server read?" data-hi="End-to-End Encryption mein server kya padh sakta hai?">In End-to-End Encryption, what can the server read?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,1,0,false)" data-en="Everything" data-hi="Sab kuch">Everything</button>
+      <button class="q-opt" onclick="ans(this,1,1,false)" data-en="Only text, not images" data-hi="Sirf text, images nahi">Only text, not images</button>
+      <button class="q-opt" onclick="ans(this,1,2,true)" data-en="Nothing — only encrypted gibberish" data-hi="Kuch bhi nahi — sirf encrypted gibberish">Nothing — only encrypted gibberish</button>
+      <button class="q-opt" onclick="ans(this,1,3,false)" data-en="Only sender's name" data-hi="Sirf sender ka naam">Only sender's name</button>
+    </div>
+    <div class="q-exp" id="exp1" data-en="E2E: message is encrypted on sender's device and decrypted only on receiver's device. Server has no keys — it only forwards encrypted data." data-hi="E2E mein message sirf sender ke device pe encrypt hota hai aur sirf receiver ke device pe decrypt. Server ke paas keys nahi hoti — woh sirf encrypted data forward karta hai.">E2E: message is encrypted on sender's device and decrypted only on receiver's device. Server has no keys — it only forwards encrypted data.</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-text" data-en="In AES-256, what does '256' mean?" data-hi="AES-256 mein '256' ka matlab kya hai?">In AES-256, what does '256' mean?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,2,0,false)" data-en="256 MB of data" data-hi="256 MB data">256 MB of data</button>
+      <button class="q-opt" onclick="ans(this,2,1,false)" data-en="256 different algorithms" data-hi="256 different algorithms">256 different algorithms</button>
+      <button class="q-opt" onclick="ans(this,2,2,true)" data-en="256-bit key — 2^256 possible combinations" data-hi="256-bit key — 2^256 possible combinations">256-bit key — 2^256 possible combinations</button>
+      <button class="q-opt" onclick="ans(this,2,3,false)" data-en="Takes 256 seconds" data-hi="256 seconds lagte hain">Takes 256 seconds</button>
+    </div>
+    <div class="q-exp" id="exp2" data-en="AES-256 uses a 256-bit key — meaning 2^256 possible keys. Even all computers on Earth combined couldn't crack it in the universe's lifetime." data-hi="AES-256 mein 256-bit key use hoti hai — matlab 2^256 possible keys. Duniya ke saare computers milke bhi universe ki age mein crack nahi kar sakte.">AES-256 uses a 256-bit key — meaning 2^256 possible keys. Even all computers on Earth combined couldn't crack it in the universe's lifetime.</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-text" data-en="Instagram removed E2E encryption — who is affected?" data-hi="Instagram ne E2E encryption hatayi — kaun affect hua?">Instagram removed E2E encryption — who is affected?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,3,0,false)" data-en="Only US users" data-hi="Sirf US users">Only US users</button>
+      <button class="q-opt" onclick="ans(this,3,1,false)" data-en="Only users in strict internet law countries" data-hi="Sirf strict internet laws wale deshon ke users">Only users in strict internet law countries</button>
+      <button class="q-opt" onclick="ans(this,3,2,true)" data-en="All Instagram users worldwide — 2 billion+" data-hi="Duniya bhar ke sab Instagram users — 2 billion+">All Instagram users worldwide — 2 billion+</button>
+      <button class="q-opt" onclick="ans(this,3,3,false)" data-en="Only users who had opted into E2E" data-hi="Sirf woh users jinhone E2E opt-in kiya tha">Only users who had opted into E2E</button>
+    </div>
+    <div class="q-exp" id="exp3" data-en="Instagram's removal was GLOBAL — it affects all 2 billion+ users worldwide, not just those in any specific country. This is a key fact many people don't know." data-hi="Instagram ka removal GLOBAL tha — duniya bhar ke sab 2 billion+ users pe asar, na ki sirf kisi specific country ke. Yeh ek key fact hai jo bahut log nahi jaante.">Instagram's removal was GLOBAL — it affects all 2 billion+ users worldwide, not just those in any specific country. This is a key fact many people don't know.</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-text" data-en="Why are passwords stored as hashes and not plain text?" data-hi="Passwords plain text mein kyun nahi store hote?">Why are passwords stored as hashes and not plain text?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,4,0,false)" data-en="To save storage space" data-hi="Storage bachane ke liye">To save storage space</button>
+      <button class="q-opt" onclick="ans(this,4,1,false)" data-en="It's faster to look up" data-hi="Lookup faster hota hai">It's faster to look up</button>
+      <button class="q-opt" onclick="ans(this,4,2,true)" data-en="So even if the database leaks, real passwords stay safe" data-hi="Taaki database leak bhi ho toh actual passwords safe rahein">So even if the database leaks, real passwords stay safe</button>
+      <button class="q-opt" onclick="ans(this,4,3,false)" data-en="Government requires it" data-hi="Government require karta hai">Government requires it</button>
+    </div>
+    <div class="q-exp" id="exp4" data-en="Hashing is one-way — you can't reverse a hash to get the original password. So even if hackers steal the database, they get hashes — not real passwords. Login works by hashing your input and comparing hashes." data-hi="Hashing one-way hai — hash se original password wapas nahi milta. Hackers database steal karein toh hashes milenge — real passwords nahi. Login mein tumhara input hash hota hai aur stored hash se compare hota hai.">Hashing is one-way — you can't reverse a hash to get the original password. So even if hackers steal the database, they get hashes — not real passwords. Login works by hashing your input and comparing hashes.</div>
+  </div>
+
+  <div class="q-item">
+    <div class="q-text" data-en="Which app is still E2E encrypted by default globally (also Meta-owned)?" data-hi="Kaun sa app abhi bhi globally by default E2E encrypted hai (Meta ka hi)?">Which app is still E2E encrypted by default globally (also Meta-owned)?</div>
+    <div class="q-opts">
+      <button class="q-opt" onclick="ans(this,5,0,false)" data-en="Instagram DMs" data-hi="Instagram DMs">Instagram DMs</button>
+      <button class="q-opt" onclick="ans(this,5,1,false)" data-en="Facebook Messenger" data-hi="Facebook Messenger">Facebook Messenger</button>
+      <button class="q-opt" onclick="ans(this,5,2,true)" data-en="WhatsApp" data-hi="WhatsApp">WhatsApp</button>
+      <button class="q-opt" onclick="ans(this,5,3,false)" data-en="Threads" data-hi="Threads">Threads</button>
+    </div>
+    <div class="q-exp" id="exp5" data-en="WhatsApp — also owned by Meta — still uses the Signal Protocol and has E2E encryption enabled by default globally. Use it for sensitive conversations instead of Instagram DMs." data-hi="WhatsApp — bhi Meta ka — abhi bhi Signal Protocol use karta hai aur globally by default E2E on hai. Sensitive conversations ke liye Instagram DMs ki jagah yeh use karo.">WhatsApp — also owned by Meta — still uses the Signal Protocol and has E2E encryption enabled by default globally. Use it for sensitive conversations instead of Instagram DMs.</div>
+  </div>
+
+  <div class="quiz-score" id="quizScore">
+    <div class="qs-num" id="scoreNum">0/6</div>
+    <div class="qs-label" id="scoreLabel" data-en="Quiz Complete!" data-hi="Quiz Complete!">Quiz Complete!</div>
+  </div>
+</div>
+
+<!-- S9: PROTECT -->
+<div class="sec-title" id="s-protect"><span class="emoji">🛡️</span><span data-en="How To Stay Safe — Practical Steps" data-hi="Safe Kaise Raho? — Practical Steps">How To Stay Safe — Practical Steps</span></div>
+<div class="mystery-list">
+  <div class="myst-card" style="border-color:#86efac">
+    <div class="myst-num">📱</div>
+    <div class="myst-body">
+      <h4 data-en="Use Signal or WhatsApp for Sensitive Conversations" data-hi="Sensitive Baatein Signal ya WhatsApp Pe Karo">Use Signal or WhatsApp for Sensitive Conversations</h4>
+      <p data-en="<b>Signal</b> — fully open source, best privacy, used by journalists and activists globally. <b>WhatsApp</b> — Signal Protocol, E2E by default worldwide. Avoid Instagram DMs for anything personal or sensitive." data-hi="<b>Signal</b> — fully open source, best privacy, duniya bhar ke journalists aur activists use karte hain. <b>WhatsApp</b> — Signal Protocol, globally E2E by default. Kuch bhi sensitive Instagram DMs pe mat karo."><b>Signal</b> — fully open source, best privacy, used by journalists and activists globally. <b>WhatsApp</b> — Signal Protocol, E2E by default worldwide. Avoid Instagram DMs for anything personal or sensitive.</p>
+    </div>
+  </div>
+  <div class="myst-card" style="border-color:#93c5fd">
+    <div class="myst-num">🔒</div>
+    <div class="myst-body">
+      <h4 data-en="Always Check for HTTPS 🔒" data-hi="Hamesha HTTPS Check Karo 🔒">Always Check for HTTPS 🔒</h4>
+      <p data-en="Before entering passwords or card details, always verify the <b>🔒 icon</b>. Never submit sensitive info on HTTP sites. Modern browsers mark HTTP as 'Not Secure' — treat it as a serious warning." data-hi="Password ya card details daalne se pehle browser mein <b>🔒 icon verify karo</b>. HTTP sites pe kuch bhi sensitive mat daalо. Modern browsers HTTP ko 'Not Secure' mark karte hain — yeh serious warning hai.">Before entering passwords or card details, always verify the <b>🔒 icon</b>. Never submit sensitive info on HTTP sites. Modern browsers mark HTTP as 'Not Secure' — treat it as a serious warning.</p>
+    </div>
+  </div>
+  <div class="myst-card" style="border-color:#fde68a">
+    <div class="myst-num">🔑</div>
+    <div class="myst-body">
+      <h4 data-en="Strong Unique Passwords + 2FA" data-hi="Strong Unique Passwords + 2FA">Strong Unique Passwords + 2FA</h4>
+      <p data-en="Use a different password for every site. <b>Bitwarden</b> (free, open source) or <b>1Password</b> manage them for you. Enable <b>2FA</b> via an authenticator app — even if your password leaks, account stays locked." data-hi="Har site pe different password. <b>Bitwarden</b> (free, open source) ya <b>1Password</b> sab manage karo. <b>2FA</b> authenticator app se enable karo — password leak bhi ho toh account secure rahega.">Use a different password for every site. <b>Bitwarden</b> (free, open source) or <b>1Password</b> manage them for you. Enable <b>2FA</b> via an authenticator app — even if your password leaks, account stays locked.</p>
+    </div>
+  </div>
+  <div class="myst-card" style="border-color:#f9a8d4">
+    <div class="myst-num">📧</div>
+    <div class="myst-body">
+      <h4 data-en="For Email: ProtonMail or Tutanota" data-hi="Email ke Liye: ProtonMail ya Tutanota">For Email: ProtonMail or Tutanota</h4>
+      <p data-en="Gmail is <b>NOT</b> E2E encrypted — Google can technically read your emails. <b>ProtonMail</b> (Switzerland) and <b>Tutanota</b> (Germany) are fully E2E encrypted free email services — far better for sensitive communications." data-hi="Gmail <b>E2E encrypted nahi hai</b> — Google technically tumhare emails padh sakta hai. <b>ProtonMail</b> (Switzerland) aur <b>Tutanota</b> (Germany) fully E2E encrypted free email services hain — sensitive communications ke liye far better.">Gmail is <b>NOT</b> E2E encrypted — Google can technically read your emails. <b>ProtonMail</b> (Switzerland) and <b>Tutanota</b> (Germany) are fully E2E encrypted free email services — far better for sensitive communications.</p>
+    </div>
+  </div>
+</div>
+
+<div class="wow-box" style="text-align:center;padding:2rem">
+  <p style="font-size:1.05rem">
+    <strong style="font-size:1.2rem" data-en="🔐 Final Thought" data-hi="🔐 Final Thought">🔐 Final Thought</strong><br/><br/>
+    <span data-en="Encryption is a fundamental right — a digital lock protecting your conversations, money, and identity. Instagram removed that lock from 2 billion+ people worldwide. Now you understand exactly what was taken, how it worked, and what you can do about it.<br/><br/><strong>Invest in your privacy — or someone else will make that decision for you.</strong>" data-hi="Encryption ek fundamental right hai — ek digital taala jo tumhari conversations, money aur identity protect karta hai. Instagram ne woh taala duniya bhar ke 2 billion+ logon se hata diya. Ab tum exactly jaante ho kya liya gaya, kaise kaam karta tha, aur tum kya kar sakte ho.<br/><br/><strong>Apni privacy mein invest karo — warna koi aur tumhare liye yeh decision le lega.</strong>">Encryption is a fundamental right — a digital lock protecting your conversations, money, and identity. Instagram removed that lock from 2 billion+ people worldwide. Now you understand exactly what was taken, how it worked, and what you can do about it.<br/><br/><strong>Invest in your privacy — or someone else will make that decision for you.</strong></span>
+  </p>
+</div>
+
+<!-- LIKE + COMMENTS -->
+<div class="engage-wrap">
+  <div class="like-section">
+    <p id="like-q" data-en="Found this useful? Share it with your friends!" data-hi="Helpful laga? Apne dosto ke saath share karo!">Found this useful? Share it with your friends!</p>
+    <span id="ana-likes" style="display:none">0</span>
+    <button class="like-btn" id="like-btn" onclick="toggleLike()">
+      <span class="heart">🤍</span>
+      <span id="like-label" data-en="Like this" data-hi="Like karo">Like this</span>
+    </button>
+    <span class="like-count" id="like-count">0 likes</span>
+  </div>
+  <div class="comments-section">
+    <div class="cmt-header">
+      <h3 id="comments-title">💬 Comments (<span id="cmt-count">0</span>)</h3>
+      <span class="cmt-live-badge"><span class="cmt-live-dot"></span><span data-en="Live" data-hi="Live">Live</span></span>
+    </div>
+    <div class="comment-form">
+      <div class="cmt-form-title"><span>✏️</span><span data-en="What do you think about encryption?" data-hi="Encryption ke baare mein kya sochte ho?">What do you think about encryption?</span></div>
+      <div class="prompt-chips">
+        <span class="chip" onclick="setPrompt(this)" data-en="🔐 Instagram's decision is wrong!" data-hi="🔐 Instagram ka decision galat hai!">🔐 Instagram's decision is wrong!</span>
+        <span class="chip" onclick="setPrompt(this)" data-en="📱 I use Signal for privacy" data-hi="📱 Main Signal use karta hoon">📱 I use Signal for privacy</span>
+        <span class="chip" onclick="setPrompt(this)" data-en="😮 I had no idea about this!" data-hi="😮 Pehli baar samjha yeh!">😮 I had no idea about this!</span>
+        <span class="chip" onclick="setPrompt(this)" data-en="💡 This blog was really helpful" data-hi="💡 Yeh blog bahut helpful tha">💡 This blog was really helpful</span>
+      </div>
+      <div class="cf-row">
+        <input class="cf-input" id="c-name" placeholder="Your name *" data-placeholder-en="Your name *" data-placeholder-hi="Tumhara naam *" maxlength="50"/>
+        <input class="cf-input" id="c-email" placeholder="Email (optional)" type="email"/>
+      </div>
+      <textarea class="cf-textarea" id="c-text" placeholder="What do you think? 🔐" data-placeholder-en="What do you think? 🔐" data-placeholder-hi="Kya socha tumne? 🔐" maxlength="500" oninput="updateCharCount(this)"></textarea>
+      <div class="cf-bottom">
+        <button class="cf-submit" id="cf-btn" onclick="postComment()">
+          <span>💬</span>
+          <span id="cf-btn-text" data-en="Post Comment" data-hi="Comment Post Karo">Post Comment</span>
+        </button>
+        <span class="cf-char" id="cf-char">0 / 500</span>
+        <span class="cf-msg" id="cf-msg"></span>
+      </div>
+    </div>
+    <div id="comments-list" class="comment-list"></div>
+  </div>
+</div>
+
+</div><!-- /blog-content -->
+
+<footer>
+  <a href="../index.html" class="logo">CI<span>Web</span></a>
+  <p data-en="© 2026 CIWeb. Stay Encrypted 🔐" data-hi="© 2026 CIWeb. Encrypted Raho 🔐">© 2026 CIWeb. Stay Encrypted 🔐</p>
+  <p>Published 2026</p>
+</footer>
+
+<button id="cw-ana-btn" onclick="_cwToggleAna()">📊 Stats</button>
+<div id="cw-ana-panel">
+  <div class="ap-title">Live Analytics</div>
+  <div class="ap-row"><span class="ap-lbl">👁 Page Views</span><span class="ap-val accent" id="ap-views">—</span></div>
+  <div class="ap-row"><span class="ap-lbl">⏱ Time Spent</span><span class="ap-val" id="ap-time">0s</span></div>
+  <div class="ap-row"><span class="ap-lbl">🌐 Language</span><span class="ap-val" id="ap-lang">—</span></div>
+  <div class="ap-row"><span class="ap-lbl">📄 Page</span><span class="ap-val" id="ap-page">—</span></div>
+  <div class="ap-divider"></div>
+  <div class="ap-bar-wrap">
+    <div class="ap-bar-label"><span>Read Progress</span><span id="ap-scroll-pct">0%</span></div>
+    <div class="ap-bar"><div class="ap-bar-fill" id="ap-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- Stubs for onclick before module loads -->
+<script>
+var _pendingLike=false;
+function toggleLike(){if(window._toggleLike)window._toggleLike();else _pendingLike=true;}
+function postComment(){if(window._postComment)window._postComment();}
+function ans(btn,qi,oi,correct){if(window._ans)window._ans(btn,qi,oi,correct);}
+</script>
+
+<!-- Firebase -->
+<script type="module">
+import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import{getDatabase,ref,push,onValue,runTransaction}from"https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+const cfg={apiKey:"AIzaSyBfdO3j72hOx28yrTcLZ0QCOvYrQIOWx98",authDomain:"testingdata-2ae22.firebaseapp.com",databaseURL:"https://testingdata-2ae22-default-rtdb.firebaseio.com",projectId:"testingdata-2ae22",storageBucket:"testingdata-2ae22.firebasestorage.app",messagingSenderId:"533117463843",appId:"1:533117463843:web:e8affeea47c5db63643096"};
+const db=getDatabase(initializeApp(cfg));
+const BID='encryption-2026',lRef=ref(db,'likes/'+BID),cRef=ref(db,'comments/'+BID);
+let liked=localStorage.getItem('liked_'+BID)==='true';
+function updLike(count){const btn=document.getElementById('like-btn'),lbl=document.getElementById('like-label'),lang=localStorage.getItem('ciweb_lang')||'en';if(liked){btn.classList.add('liked');btn.querySelector('.heart').textContent='❤️';lbl.textContent='Liked!';}else{btn.classList.remove('liked');btn.querySelector('.heart').textContent='🤍';lbl.textContent=lang==='en'?'Like this':'Like karo';}document.getElementById('like-count').textContent=(count||0)+' likes';const al=document.getElementById('ana-likes');if(al)al.textContent=count||0;}
+onValue(lRef,s=>updLike(s.val()?.count||0));
+if(window._pendingLike){window._pendingLike=false;window._toggleLike&&window._toggleLike();}
+window._toggleLike=async()=>{liked=!liked;localStorage.setItem('liked_'+BID,liked);await runTransaction(lRef,c=>({count:Math.max(0,(c?.count||0)+(liked?1:-1))}));};
+onValue(cRef,snap=>{
+  const list=document.getElementById('comments-list'),title=document.getElementById('comments-title');
+  const lang=localStorage.getItem('ciweb_lang')||'en',data=snap.val();
+  if(!data){list.innerHTML='<div class="cmt-empty"><span class="cmt-empty-icon">💬</span><h4>'+(lang==='en'?'Be the first to comment!':'Pehla comment tum karo!')+'</h4><p>'+(lang==='en'?'What do you think about encryption?':'Encryption ke baare mein kya sochte ho?')+'</p></div>';title.innerHTML='💬 Comments (<span id="cmt-count">0</span>)';return;}
+  const cs=Object.values(data).reverse();
+  title.innerHTML='💬 Comments (<span id="cmt-count">'+cs.length+'</span>)';
+  list.innerHTML=cs.map((cm,i)=>{
+    const colors=['#7c3aed','#2563eb','#16a34a','#e8401c','#d97706','#0891b2'];
+    const col=colors[cm.name.charCodeAt(0)%colors.length],init=esc(cm.name).charAt(0).toUpperCase();
+    return'<div class="comment-card" style="animation-delay:'+(i*.05)+'s"><div class="comment-header"><div class="ci-avatar" style="background:'+col+'">'+init+'</div><div class="comment-meta"><span class="comment-name">'+esc(cm.name)+'</span><span class="comment-date">'+fmt(cm.timestamp)+'</span></div></div><p class="comment-text">'+esc(cm.comment||cm.text||'')+'</p></div>';
+  }).join('');
+});
+window._postComment=async()=>{
+  const n=document.getElementById('c-name').value.trim(),cm=document.getElementById('c-text').value.trim();
+  const btn=document.getElementById('cf-btn'),msg=document.getElementById('cf-msg');
+  const lang=localStorage.getItem('ciweb_lang')||'en';
+  msg.className='cf-msg';msg.textContent='';
+  if(!n){msg.className='cf-msg error';msg.textContent=lang==='en'?'⚠️ Enter name!':'⚠️ Naam daalo!';return;}
+  if(!cm||cm.length<3){msg.className='cf-msg error';msg.textContent=lang==='en'?'⚠️ Write a comment!':'⚠️ Comment likho!';return;}
+  btn.disabled=true;document.getElementById('cf-btn-text').textContent=lang==='en'?'Posting...':'Post ho raha hai...';
+  try{await push(cRef,{blogId:BID,name:n,comment:cm,timestamp:new Date().toISOString()});msg.className='cf-msg success';msg.textContent=lang==='en'?'✅ Comment posted!':'✅ Comment post ho gaya!';document.getElementById('c-name').value='';document.getElementById('c-email').value='';document.getElementById('c-text').value='';const cc=document.getElementById('cf-char');if(cc)cc.textContent='0 / 500';}
+  catch{msg.className='cf-msg error';msg.textContent=lang==='en'?'❌ Error!':'❌ Error aaya!';}
+  finally{btn.disabled=false;document.getElementById('cf-btn-text').textContent=lang==='en'?'Post Comment':'Comment Post Karo';}
+};
+function esc(s){return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function fmt(iso){try{return new Date(iso).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'});}catch{return '';}}
+let qA=[false,false,false,false,false,false],qS=0;
+window._ans=(btn,qi,oi,correct)=>{
+  if(qA[qi])return;qA[qi]=true;
+  const opts=btn.parentElement.querySelectorAll('.q-opt');
+  opts.forEach(o=>o.disabled=true);
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct)opts.forEach(o=>{if(o.getAttribute('onclick')?.includes(',true)'))o.classList.add('correct');});
+  const exp=document.getElementById('exp'+qi);if(exp){const lang=localStorage.getItem('ciweb_lang')||'en';exp.textContent=lang==='en'?exp.dataset.en:exp.dataset.hi;exp.classList.add('show');}
+  if(correct)qS++;
+  if(qA.every(Boolean)){
+    const sc=document.getElementById('quizScore');sc.style.display='block';
+    document.getElementById('scoreNum').textContent=qS+'/6';
+    const lang=localStorage.getItem('ciweb_lang')||'en';
+    const lbs=lang==='en'?['Keep learning! 📖','Getting there! 🔐','Not bad! 🔒','Good job! 🛡️','Excellent! 🔑','Encryption Master! 🏆']:['Aur seekhna padega! 📖','Achha start! 🔐','Not bad! 🔒','Achha kiya! 🛡️','Excellent! 🔑','Encryption Master! 🏆'];
+    document.getElementById('scoreLabel').textContent=lbs[qS]||'Master!';
+  }
+};
+</script>
+
+<script>
+// Caesar cipher interactive
+var shift=3;
+function caesarEnc(str,sh){sh=((sh%26)+26)%26;return str.split('').map(c=>{const code=c.charCodeAt(0);if(code>=65&&code<=90)return String.fromCharCode(((code-65+sh)%26)+65);if(code>=97&&code<=122)return String.fromCharCode(((code-97+sh)%26)+97);return c;}).join('');}
+function renderCipher(){
+  document.getElementById('shift-val').textContent=(shift>=0?'+':'')+shift;
+  document.getElementById('enc-word').textContent=caesarEnc('HELLO',shift);
+  const strip=document.getElementById('alpha-strip');
+  strip.innerHTML='ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('').map((c,i)=>{
+    const enc=String.fromCharCode(((i+((shift%26+26)%26))%26)+65);
+    return'<div class="ac '+(('HELLO'.includes(c))?'shift-c':'plain-c')+'" title="'+c+'→'+enc+'">'+c+'</div>';
+  }).join('');
+}
+function changeShift(d){shift=((shift+d)%26+26)%26;renderCipher();}
+
+// Comment utils
+function updateCharCount(el){const cnt=document.getElementById('cf-char');if(cnt){cnt.textContent=el.value.length+' / 500';cnt.style.color=el.value.length>450?'#dc2626':''}}
+function setPrompt(chip){const ta=document.getElementById('c-text');if(ta){const lang=localStorage.getItem('ciweb_lang')||'en';ta.value=(lang==='en'?chip.dataset.en:chip.dataset.hi)||chip.textContent.trim();ta.focus();updateCharCount(ta);}}
+
+// Analytics
+(function(){
+  const pg=location.pathname.split('/').pop()||'encryption.html';
+  const vk='ciweb_views_'+pg;
+  const views=parseInt(localStorage.getItem(vk)||'0')+1;
+  localStorage.setItem(vk,views);
+  const vEl=document.getElementById('ap-views');if(vEl)vEl.textContent=views;
+  const pgEl=document.getElementById('ap-page');if(pgEl)pgEl.textContent=pg;
+  let secs=0;
+  setInterval(()=>{secs++;const t=document.getElementById('ap-time');if(t)t.textContent=secs<60?secs+'s':Math.floor(secs/60)+'m '+(secs%60)+'s';},1000);
+  window.addEventListener('scroll',()=>{
+    const h=document.documentElement;
+    const pct=Math.round((h.scrollTop||document.body.scrollTop)/(h.scrollHeight-h.clientHeight)*100)||0;
+    const pEl=document.getElementById('ap-scroll-pct');if(pEl)pEl.textContent=pct+'%';
+    const bEl=document.getElementById('ap-bar-fill');if(bEl)bEl.style.width=pct+'%';
+  },{passive:true});
+})();
+
+function _cwToggleAna(){document.getElementById('cw-ana-panel').classList.toggle('show');document.getElementById('cw-ana-btn').classList.toggle('open');}
+
+// TOC smooth scroll
+document.querySelectorAll('.toc a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{e.preventDefault();const t=document.getElementById(a.getAttribute('href').slice(1));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-80,behavior:'smooth'});});
+});
+
+// Update analytics lang display when lang.js fires
+document.addEventListener('DOMContentLoaded',()=>{
+  renderCipher();
+  const lang=localStorage.getItem('ciweb_lang')||'en';
+  const al=document.getElementById('ap-lang');if(al)al.textContent=lang==='en'?'English':'Hinglish';
+});
+</script>
+
+<!-- lang.js — loaded last, base = English, injects nav toggle button -->
+<script src="lang.js"></script>
+
+</body>
+</html>
