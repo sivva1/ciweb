@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>How Hackers Hack Accounts — And How to Stay Safe | CIWeb</title>
+  <meta name="description" content="Learn all hacking methods — Phishing, Brute Force, Social Engineering, Keyloggers — and how to protect yourself. Live security tasks included."/>
+  <meta name="keywords" content="how hackers hack accounts, hacking methods, cybersecurity, stay safe online, phishing, brute force, social engineering"/>
+  <meta name="author" content="CIWeb — Coding Infinite"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://ciweb.in/blogs/how-hackers-hack.html"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMMH6KDM6V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KMMH6KDM6V');</script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#080c10;--card:#0d1117;--card2:#111820;
+  --border:#1e2832;--border2:#243040;
+  --ink:#e8f0f8;--muted:#5a7090;--muted2:#7a90a8;
+  --red:#e8401c;--red2:#ff5533;--redbg:rgba(232,64,28,.08);
+  --green:#00d084;--greenbg:rgba(0,208,132,.08);
+  --blue:#0ea5e9;--bluebg:rgba(14,165,233,.08);
+  --yellow:#f59e0b;--yellowbg:rgba(245,158,11,.08);
+  --pi:#2563eb;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+
+/* ── MATRIX RAIN CANVAS ── */
+#matrix-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.04;pointer-events:none}
+
+/* ── NAV ── */
+nav{position:sticky;top:0;z-index:100;background:rgba(8,12,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:900;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
+.logo em{color:var(--red);font-style:normal}
+.nav-links{display:flex;gap:1.2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted2);text-decoration:none;font-size:.83rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted2);text-decoration:none;font-size:.8rem;font-weight:500;border:1px solid var(--border2);border-radius:100px;padding:5px 14px;transition:all .2s}
+.back-btn:hover{border-color:var(--red);color:var(--red)}
+@media(max-width:640px){.nav-links{display:none}}
+
+/* ── HERO ── */
+.hero{position:relative;z-index:1;text-align:center;padding:5rem 5% 3rem;overflow:hidden}
+.hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 800px 500px at 50% 0%,rgba(232,64,28,.12),transparent 70%);
+  pointer-events:none;
+}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(232,64,28,.12);border:1px solid rgba(232,64,28,.3);border-radius:100px;padding:5px 16px;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--red2);margin-bottom:1.5rem;animation:fadeDown .5s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;animation:fadeUp .6s .1s ease both}
+.hero h1 .red{color:var(--red2)}
+.hero-sub{color:var(--muted2);font-size:.95rem;line-height:1.8;max-width:560px;margin:0 auto 2rem;animation:fadeUp .6s .2s ease both;position:relative;z-index:1}
+.hero-meta{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.5rem;animation:fadeUp .6s .3s ease both;position:relative;z-index:1}
+.hero-meta span{font-size:.76rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+.threat-bar{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;position:relative;z-index:1;animation:fadeUp .6s .4s ease both}
+.threat-pill{background:var(--card);border:1px solid var(--border2);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:600;display:flex;align-items:center;gap:.4rem}
+.tp-red{border-color:rgba(232,64,28,.4);color:var(--red2)}
+.tp-yellow{border-color:rgba(245,158,11,.4);color:var(--yellow)}
+.tp-green{border-color:rgba(0,208,132,.4);color:var(--green)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── CONTENT WRAPPER ── */
+.blog-wrap{max-width:900px;margin:0 auto;padding:0 5% 60px;position:relative;z-index:1}
+
+/* ── TOC ── */
+.toc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:2rem 0 3rem}
+.toc-hd{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.toc-hd::before{content:'';width:20px;height:1.5px;background:var(--red)}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem}
+@media(max-width:500px){.toc-grid{grid-template-columns:1fr}}
+.toc-item{display:flex;align-items:center;gap:.5rem;font-size:.83rem;color:var(--muted2);text-decoration:none;padding:.3rem .5rem;border-radius:8px;transition:all .2s}
+.toc-item:hover{background:var(--card2);color:var(--ink)}
+.toc-num{width:20px;height:20px;background:var(--red);color:#fff;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;flex-shrink:0}
+
+/* ── SECTION TITLES ── */
+.sec-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:900;margin:4rem 0 1.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);scroll-margin-top:72px;display:flex;align-items:center;gap:.7rem}
+.sec-title .snum{width:32px;height:32px;background:var(--red);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0}
+
+/* ── HACK METHOD CARDS ── */
+.hack-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:1.5rem 0;transition:all .3s;position:relative}
+.hack-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad,var(--red));transition:opacity .3s}
+.hack-card:hover{border-color:var(--border2);box-shadow:0 8px 40px rgba(0,0,0,.3);transform:translateY(-2px)}
+.hc-header{display:flex;align-items:center;gap:1rem;padding:1.4rem 1.6rem;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.hc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.hc-title{flex:1}
+.hc-title h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.2rem}
+.hc-title small{font-size:.72rem;color:var(--muted);font-weight:500}
+.danger-badge{padding:3px 10px;border-radius:100px;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+.db-critical{background:rgba(232,64,28,.15);color:var(--red2);border:1px solid rgba(232,64,28,.3)}
+.db-high{background:rgba(245,158,11,.12);color:var(--yellow);border:1px solid rgba(245,158,11,.25)}
+.db-medium{background:rgba(14,165,233,.12);color:var(--blue);border:1px solid rgba(14,165,233,.25)}
+.hc-body{padding:1.4rem 1.6rem;animation:expandIn .25s ease}
+@keyframes expandIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.hc-body p{font-size:.88rem;line-height:1.85;color:var(--muted2);margin-bottom:1rem}
+.hc-body p b,.hc-body p strong{color:var(--ink)}
+.hc-body img{width:100%;border-radius:12px;margin:1rem 0;border:1px solid var(--border);display:block}
+
+/* ── HOW IT WORKS STEPS ── */
+.how-steps{display:flex;flex-direction:column;gap:.6rem;margin:1rem 0}
+.how-step{display:flex;align-items:flex-start;gap:.8rem;background:var(--card2);border-radius:10px;padding:.8rem 1rem;font-size:.84rem;color:var(--muted2);line-height:1.6}
+.how-step .step-n{width:22px;height:22px;background:var(--red);border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;color:#fff;flex-shrink:0;margin-top:1px}
+.how-step b{color:var(--ink)}
+
+/* ── PROTECT BOX ── */
+.protect-box{background:var(--greenbg);border:1px solid rgba(0,208,132,.2);border-radius:14px;padding:1.2rem 1.4rem;margin:1.2rem 0}
+.protect-box .pb-hd{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--green);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+.protect-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.protect-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:var(--muted2);line-height:1.6}
+.protect-list li::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0;margin-top:1px}
+.protect-list li b{color:var(--ink)}
+
+/* ── DEMO TERMINAL ── */
+.terminal{background:#020408;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:1.2rem 0}
+.terminal-bar{background:#0d1117;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.td1{background:#ff5f57}.td2{background:#febc2e}.td3{background:#28c840}
+.terminal-label{font-size:.68rem;color:var(--muted);margin-left:auto;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+.terminal-body{padding:1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9;color:#c9d5e0}
+.t-prompt{color:var(--green)}
+.t-cmd{color:#c9d5e0}
+.t-output{color:var(--muted2)}
+.t-warn{color:var(--yellow)}
+.t-red{color:var(--red2)}
+.t-green{color:var(--green)}
+.t-cursor{display:inline-block;width:8px;height:14px;background:var(--green);animation:blink .8s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+/* ── INFO BOXES ── */
+.warn-box{background:var(--yellowbg);border-left:3px solid var(--yellow);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.warn-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.warn-box strong{color:var(--yellow)}
+.info-box{background:var(--bluebg);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.info-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.info-box strong{color:var(--blue)}
+.danger-box{background:var(--redbg);border-left:3px solid var(--red);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.danger-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.danger-box strong{color:var(--red2)}
+
+/* ── SECURITY SCORE ── */
+.score-section{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;margin:3rem 0;text-align:center}
+.score-title{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:800;margin-bottom:.4rem}
+.score-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+.score-ring-wrap{position:relative;display:inline-block;margin-bottom:1.5rem}
+.score-ring{width:120px;height:120px;transform:rotate(-90deg)}
+.score-ring circle{fill:none;stroke-width:8;stroke-linecap:round}
+.sr-bg{stroke:var(--border)}
+.sr-fill{stroke:var(--red2);stroke-dasharray:339;stroke-dashoffset:339;transition:stroke-dashoffset 1.5s cubic-bezier(.4,0,.2,1)}
+.score-num{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Syne',sans-serif;font-size:1.8rem;font-weight:900;color:var(--ink)}
+.score-label{font-size:.72rem;color:var(--muted);display:block;margin-top:-4px}
+.score-checks{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;text-align:left;margin-top:.5rem}
+@media(max-width:500px){.score-checks{grid-template-columns:1fr}}
+.sc-item{display:flex;align-items:center;gap:.6rem;background:var(--card2);border-radius:10px;padding:.7rem .9rem;cursor:pointer;transition:all .2s;border:1px solid transparent}
+.sc-item:hover{border-color:var(--border2)}
+.sc-item.checked{border-color:rgba(0,208,132,.3);background:var(--greenbg)}
+.sc-item.checked .sc-icon{background:var(--green);color:#fff}
+.sc-icon{width:28px;height:28px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.8rem;transition:all .3s;flex-shrink:0}
+.sc-text{font-size:.8rem;color:var(--muted2);flex:1;line-height:1.4}
+.sc-text b{color:var(--ink);display:block;font-size:.82rem}
+
+/* ── TASKS SECTION ── */
+.tasks-section{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:24px;padding:2rem;margin:3rem 0;position:relative;overflow:hidden}
+.tasks-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--yellow),var(--green))}
+.tasks-hd{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
+.tasks-hd h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:900}
+.tasks-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.6rem}
+.task-progress-bar{height:4px;background:var(--border);border-radius:100px;margin-bottom:1.6rem;overflow:hidden}
+.task-progress-fill{height:100%;background:linear-gradient(90deg,var(--red),var(--green));border-radius:100px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
+.task-progress-label{font-size:.72rem;color:var(--muted);text-align:right;margin-top:-.2rem;margin-bottom:1.2rem}
+.task-list{display:flex;flex-direction:column;gap:.8rem}
+.task-item{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.9rem;cursor:pointer;transition:all .25s;user-select:none}
+.task-item:hover{border-color:var(--border2);transform:translateX(3px)}
+.task-item.done{border-color:rgba(0,208,132,.35);background:var(--greenbg)}
+.task-item.done .task-check{background:var(--green);border-color:var(--green)}
+.task-item.done .task-check::after{content:'✓';color:#fff;font-size:.75rem;font-weight:900}
+.task-check{width:24px;height:24px;border-radius:6px;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;margin-top:1px}
+.task-body h4{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.task-body p{font-size:.78rem;color:var(--muted);line-height:1.55}
+.task-xp{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.2);color:var(--yellow);font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:100px;margin-left:auto;flex-shrink:0;align-self:flex-start}
+.task-done-msg{display:none;text-align:center;padding:1.5rem;animation:fadeUp .3s ease}
+.task-done-msg.show{display:block}
+.task-done-msg h4{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:900;color:var(--green);margin-bottom:.4rem}
+.task-done-msg p{font-size:.84rem;color:var(--muted);line-height:1.6}
+
+/* ── PHISHING DEMO ── */
+.phish-demo{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0}
+.phish-demo-bar{background:#0d1117;padding:.5rem .8rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.phish-url{font-family:'JetBrains Mono',monospace;font-size:.72rem;flex:1;padding:4px 10px;background:rgba(255,255,255,.04);border-radius:6px;border:1px solid var(--border);color:var(--muted2);cursor:pointer;transition:all .2s}
+.phish-url.suspicious{color:var(--red2);border-color:rgba(232,64,28,.3);background:var(--redbg);animation:shakeBadge .3s ease}
+@keyframes shakeBadge{0%,100%{transform:translateX(0)}25%{transform:translateX(-4px)}75%{transform:translateX(4px)}}
+.phish-lock{font-size:.75rem;color:var(--green)}
+.phish-body{padding:1.5rem;text-align:center}
+.phish-body h4{font-size:1rem;font-weight:700;margin-bottom:.5rem}
+.phish-body p{font-size:.82rem;color:var(--muted2);margin-bottom:1rem}
+.phish-input{width:100%;padding:9px 14px;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:8px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.85rem;outline:none;margin-bottom:.6rem}
+.phish-submit{background:var(--red);color:#fff;border:none;padding:9px 20px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;width:100%;transition:all .2s}
+.phish-reveal{display:none;background:var(--redbg);border:1px solid rgba(232,64,28,.25);border-radius:10px;padding:1rem;margin-top:1rem;font-size:.83rem;color:var(--muted2);line-height:1.7;animation:fadeUp .3s ease}
+.phish-reveal.show{display:block}
+.phish-reveal strong{color:var(--red2)}
+
+/* ── PASSWORD STRENGTH ── */
+.pwd-checker{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0}
+.pwd-checker h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;margin-bottom:1rem}
+.pwd-input-wrap{position:relative;margin-bottom:.8rem}
+.pwd-input{width:100%;padding:10px 40px 10px 14px;background:rgba(255,255,255,.04);border:1.5px solid var(--border);border-radius:10px;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.88rem;outline:none;transition:border-color .2s}
+.pwd-input:focus{border-color:var(--blue)}
+.pwd-toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);background:none;border:none;color:var(--muted);cursor:pointer;font-size:.9rem;padding:4px}
+.pwd-bar{height:5px;border-radius:100px;background:var(--border);overflow:hidden;margin-bottom:.6rem}
+.pwd-fill{height:100%;border-radius:100px;transition:all .4s;width:0%}
+.pwd-label{font-size:.78rem;font-weight:700;margin-bottom:.5rem}
+.pwd-hints{display:flex;flex-wrap:wrap;gap:.4rem}
+.pwd-hint{font-size:.7rem;padding:2px 8px;border-radius:100px;border:1px solid;transition:all .3s}
+.ph-ok{border-color:rgba(0,208,132,.3);color:var(--green);background:var(--greenbg)}
+.ph-no{border-color:var(--border);color:var(--muted)}
+.crack-time{font-size:.76rem;color:var(--muted);margin-top:.5rem}
+.crack-time b{color:var(--yellow)}
+
+/* ── LIKE + COMMENTS ── */
+.engage-wrap{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem 1.8rem;margin:3rem 0}
+.like-section{text-align:center;padding-bottom:2rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.like-section p{font-size:.88rem;color:var(--muted);margin-bottom:1rem}
+.like-btn{display:inline-flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.04);border:2px solid var(--border2);border-radius:100px;padding:12px 28px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .3s;color:var(--ink)}
+.like-btn:hover{border-color:var(--red);color:var(--red2)}
+.like-btn.liked{background:var(--redbg);border-color:var(--red);color:var(--red2)}
+.like-btn .heart{font-size:1.3rem;transition:transform .3s}
+.like-btn.liked .heart{animation:heartBeat .4s ease}
+@keyframes heartBeat{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+#like-count{font-size:.8rem;color:var(--muted);margin-top:.7rem;display:block}
+.cmt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.cmt-header h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:900}
+.cmt-live-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--greenbg);border:1px solid rgba(0,208,132,.25);border-radius:100px;padding:4px 12px;font-size:.68rem;font-weight:700;color:var(--green)}
+.cmt-live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.comment-form{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.comment-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--blue))}
+.cmt-form-title{font-size:.88rem;font-weight:700;margin-bottom:.8rem;display:flex;align-items:center;gap:.4rem}
+.pi-prompts{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+.pi-prompt-chip{background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:100px;padding:4px 12px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted2)}
+.pi-prompt-chip:hover{border-color:var(--red);color:var(--red2)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem}
+@media(max-width:500px){.cf-row{grid-template-columns:1fr}}
+.cf-input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.86rem;background:rgba(255,255,255,.03);color:var(--ink);outline:none;transition:border-color .2s}
+.cf-input:focus{border-color:var(--blue)}
+.cf-textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.86rem;background:rgba(255,255,255,.03);color:var(--ink);resize:vertical;min-height:80px;transition:border-color .2s;outline:none;margin-bottom:.7rem}
+.cf-textarea:focus{border-color:var(--blue)}
+.cf-bottom{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.cf-submit{background:var(--red);color:#fff;border:none;padding:10px 24px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.cf-submit:hover:not(:disabled){background:#c73516;transform:translateY(-1px)}
+.cf-submit:disabled{opacity:.5;cursor:not-allowed}
+.cf-char{font-size:.7rem;color:var(--muted);margin-left:auto}
+.cf-msg{font-size:.82rem;font-weight:600;padding:.4rem .9rem;border-radius:7px}
+.cf-msg.cw-ok{color:var(--green);background:var(--greenbg);border:1px solid rgba(0,208,132,.2)}
+.cf-msg.cw-err{color:var(--red2);background:var(--redbg);border:1px solid rgba(232,64,28,.2)}
+.comment-list{display:flex;flex-direction:column;gap:.9rem}
+.comment-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem;animation:slideIn .3s cubic-bezier(.34,1.56,.64,1)}
+@keyframes slideIn{from{opacity:0;transform:translateY(10px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+.comment-card:hover{border-color:var(--border2)}
+.comment-header{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.ci-avatar{width:36px;height:36px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
+.comment-meta{flex:1}
+.comment-name{font-weight:700;font-size:.86rem;display:block;color:var(--ink)}
+.comment-date{font-size:.7rem;color:var(--muted)}
+.comment-text{font-size:.86rem;color:var(--muted2);line-height:1.65;padding-left:2.8rem}
+.cmt-empty{text-align:center;padding:2.5rem;color:var(--muted)}
+.cmt-empty-icon{font-size:2.5rem;margin-bottom:.6rem;display:block;animation:floatAnim 3s ease-in-out infinite}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+
+/* ── RELATED ── */
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.rel-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;color:var(--ink);transition:all .2s;display:block}
+.rel-card:hover{border-color:var(--red);transform:translateY(-2px)}
+.rel-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--red2);margin-bottom:.3rem}
+.rel-title{font-weight:700;font-size:.84rem;line-height:1.4;color:var(--muted2)}
+
+/* ── LANG TOGGLE ── */
+#cw-toggle{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;background:rgba(13,17,23,.95);border-radius:100px;padding:4px;box-shadow:0 6px 28px rgba(0,0,0,.4);border:1px solid var(--border2)}
+.lo{padding:8px 16px;border-radius:100px;font-size:.7rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.3);font-family:'Outfit',sans-serif;transition:all .25s}
+.lo.on{background:linear-gradient(135deg,var(--red),#c73010);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:2rem;position:relative;z-index:1}
+footer p{font-size:.78rem;color:var(--muted)}
+  </style>
+</head>
+<body>
+
+<!-- Matrix Rain -->
+<canvas id="matrix-canvas"></canvas>
+
+<nav>
+  <a href="../index.html" class="logo">CI<em>Web</em></a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-en="Home" data-hi="Home">Home</a></li>
+    <li><a href="../blogs.html" data-en="Blogs" data-hi="Blogs">Blogs</a></li>
+  </ul>
+  <a href="../blogs.html" class="back-btn">&#8592; <span data-en="Back" data-hi="Wapas">Back</span></a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">&#128272; <span data-en="Cybersecurity Guide" data-hi="Cybersecurity Guide">Cybersecurity Guide</span></div>
+  <h1 id="h1">How <span class="red">Hackers</span> Hack Accounts<br/>(And How to Stay Safe)</h1>
+  <p class="hero-sub" id="hero-sub">Every 39 seconds, a hacker attacks someone online. Learn exactly how they do it — and how to stop them cold.</p>
+  <div class="hero-meta">
+    <span>&#128197; <b>19 March 2026</b></span>
+    <span>&#9200; <b>15 min read</b></span>
+    <span>&#128100; <b>CIWeb</b></span>
+  </div>
+  <div class="threat-bar">
+    <div class="threat-pill tp-red">&#128308; 8 Attack Methods</div>
+    <div class="threat-pill tp-yellow">&#128994; 5 Live Tasks</div>
+    <div class="threat-pill tp-green">&#128992; Security Score Checker</div>
+  </div>
+</div>
+
+<div class="blog-wrap">
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-hd">Contents</div>
+    <div class="toc-grid" id="toc-grid">
+      <a href="#s1" class="toc-item"><span class="toc-num">1</span> <span data-en="Phishing Attacks" data-hi="Phishing Attacks">Phishing Attacks</span></a>
+      <a href="#s2" class="toc-item"><span class="toc-num">2</span> <span data-en="Brute Force" data-hi="Brute Force">Brute Force</span></a>
+      <a href="#s3" class="toc-item"><span class="toc-num">3</span> <span data-en="Social Engineering" data-hi="Social Engineering">Social Engineering</span></a>
+      <a href="#s4" class="toc-item"><span class="toc-num">4</span> <span data-en="Keyloggers" data-hi="Keyloggers">Keyloggers</span></a>
+      <a href="#s5" class="toc-item"><span class="toc-num">5</span> <span data-en="Man-in-the-Middle" data-hi="Man-in-the-Middle">Man-in-the-Middle</span></a>
+      <a href="#s6" class="toc-item"><span class="toc-num">6</span> <span data-en="Credential Stuffing" data-hi="Credential Stuffing">Credential Stuffing</span></a>
+      <a href="#s7" class="toc-item"><span class="toc-num">7</span> <span data-en="SIM Swapping" data-hi="SIM Swapping">SIM Swapping</span></a>
+      <a href="#s8" class="toc-item"><span class="toc-num">8</span> <span data-en="Malware & RATs" data-hi="Malware & RATs">Malware &amp; RATs</span></a>
+      <a href="#tasks" class="toc-item"><span class="toc-num">&#9889;</span> <span data-en="Live Tasks" data-hi="Live Tasks">Live Tasks</span></a>
+      <a href="#score" class="toc-item"><span class="toc-num">&#128272;</span> <span data-en="Security Score" data-hi="Security Score">Security Score</span></a>
+    </div>
+  </div>
+
+  <div class="warn-box">
+    <p><strong data-en="&#9888; Ethical Notice:" data-hi="&#9888; Ethical Notice:">&#9888; Ethical Notice:</strong> <span data-en="This article is for educational purposes only. Understanding how attacks work helps you defend against them. Never use this knowledge to harm others." data-hi="Yeh article sirf educational purpose ke liye hai. Attacks samajhne se unhe rokne mein help milti hai. Kabhi bhi doosron ko harm karne ke liye use mat karo.">This article is for educational purposes only. Understanding how attacks work helps you defend against them. Never use this knowledge to harm others.</span></p>
+  </div>
+
+  <!-- ═══ METHOD 1: PHISHING ═══ -->
+  <div class="sec-title" id="s1">
+    <span class="snum">1</span>
+    <span id="s1t" data-en="Phishing Attacks" data-hi="Phishing Attacks">Phishing Attacks</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,var(--red),#ff6b4a)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--redbg)">🎣</div>
+      <div class="hc-title">
+        <h3 data-en="Phishing — The #1 Attack" data-hi="Phishing — Sabse Bada Attack">Phishing — The #1 Attack</h3>
+        <small data-en="90% of all data breaches start with phishing" data-hi="90% data breaches phishing se start hote hain">90% of all data breaches start with phishing</small>
+      </div>
+      <span class="danger-badge db-critical" data-en="Critical" data-hi="Critical">Critical</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=800&q=75" alt="Phishing Attack" loading="lazy"/>
+      <p id="p1" data-en="Phishing is when a hacker creates a <b>fake website or email</b> that looks exactly like the real thing — your bank, Google, Instagram. You enter your password and <b>the hacker gets it instantly</b>. It's the simplest yet most effective attack." data-hi="Phishing mein hacker ek <b>fake website ya email</b> banata hai jo bilkul real jaisi dikhti hai — tumhara bank, Google, Instagram. Tum password daalo aur <b>hacker ko instantly mil jaata hai</b>. Yeh sabse simple lekin sabse effective attack hai.">Phishing is when a hacker creates a <b>fake website or email</b> that looks exactly like the real thing — your bank, Google, Instagram. You enter your password and <b>the hacker gets it instantly</b>.</p>
+      <div class="how-steps">
+        <div class="how-step"><span class="step-n">1</span><span data-en="Hacker buys a domain like <b>g00gle-login.com</b> (notice the zeros)" data-hi="Hacker ek domain kharidta hai jaise <b>g00gle-login.com</b> (zeroes notice karo)">Hacker buys a domain like <b>g00gle-login.com</b></span></div>
+        <div class="how-step"><span class="step-n">2</span><span data-en="Sends you an email: <b>'Your account is suspended! Login now'</b>" data-hi="Tumhe email bhejta hai: <b>'Tumhara account suspend ho gaya! Abhi login karo'</b>">Sends email: <b>'Your account is suspended! Login now'</b></span></div>
+        <div class="how-step"><span class="step-n">3</span><span data-en="You click the link — the fake site looks <b>100% identical</b>" data-hi="Tum link click karte ho — fake site <b>100% identical</b> dikhti hai">You click — fake site looks <b>100% identical</b></span></div>
+        <div class="how-step"><span class="step-n">4</span><span data-en="You type your password → <b>Hacker captures it in real time</b>" data-hi="Tum password type karo → <b>Hacker real time mein capture kar leta hai</b>">Type password → <b>Hacker captures it in real time</b></span></div>
+      </div>
+
+      <!-- PHISHING DEMO -->
+      <div class="phish-demo">
+        <div class="phish-demo-bar">
+          <span class="phish-lock">🔒</span>
+          <div class="phish-url" id="phish-url" onclick="revealPhish()">accounts.google.com</div>
+          <span style="font-size:.7rem;color:var(--muted);font-family:'JetBrains Mono',monospace">CLICK THE URL ↑</span>
+        </div>
+        <div class="phish-body">
+          <h4 data-en="Sign in to Google" data-hi="Google mein Sign in karo">Sign in to Google</h4>
+          <p data-en="Enter your email to continue to Google Account" data-hi="Google Account continue karne ke liye email daalo">Enter your email to continue</p>
+          <input class="phish-input" placeholder="Email or phone" readonly/>
+          <button class="phish-submit" onclick="revealPhish()" data-en="Next →" data-hi="Next →">Next →</button>
+        </div>
+        <div class="phish-reveal" id="phish-reveal">
+          <strong data-en="⚠️ You almost got hacked!" data-hi="⚠️ Tum almost hack ho gaye the!">⚠️ You almost got hacked!</strong><br/>
+          <span data-en="The URL was actually <b>accounts.g00gle-login.ru</b> — not Google! The 'o' was replaced with '0'. This is how 3.4 billion phishing emails are sent every day." data-hi="URL actually <b>accounts.g00gle-login.ru</b> tha — Google nahi! 'o' ki jagah '0' tha. Isi tarah roz 3.4 billion phishing emails bheje jaate hain.">The URL was actually <b>accounts.g00gle-login.ru</b> — not Google!</span>
+        </div>
+      </div>
+
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="How to Protect Yourself" data-hi="Khud ko Kaise Bachao">How to Protect Yourself</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Always check the URL bar" data-hi="Hamesha URL bar check karo">Always check the URL bar</b> — <span data-en="look for https:// and the exact domain name" data-hi="https:// aur exact domain name check karo">look for https:// and the exact domain</span></li>
+          <li><b data-en="Never click email links" data-hi="Email links pe kabhi click mat karo">Never click email links</b> — <span data-en="go directly to the website by typing the URL" data-hi="seedha URL type karke website pe jao">type the URL directly instead</span></li>
+          <li><b data-en="Enable 2FA everywhere" data-hi="Har jagah 2FA enable karo">Enable 2FA everywhere</b> — <span data-en="even if password is stolen, hacker can't login" data-hi="password chori ho bhi jaye toh bhi hacker login nahi kar sakta">even if password stolen, hacker can't login</span></li>
+          <li><b data-en="Use a password manager" data-hi="Password manager use karo">Use a password manager</b> — <span data-en="it won't autofill on fake sites" data-hi="yeh fake sites pe autofill nahi karega">it won't autofill on fake sites</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 2: BRUTE FORCE ═══ -->
+  <div class="sec-title" id="s2">
+    <span class="snum">2</span>
+    <span id="s2t" data-en="Brute Force Attack" data-hi="Brute Force Attack">Brute Force Attack</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,var(--yellow),#ff9500)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--yellowbg)">🔨</div>
+      <div class="hc-title">
+        <h3 data-en="Brute Force — Trying Every Password" data-hi="Brute Force — Har Password Try Karna">Brute Force — Trying Every Password</h3>
+        <small data-en="'123456' gets cracked in under 1 second" data-hi="'123456' 1 second se bhi kam mein crack ho jaata hai">'123456' gets cracked in under 1 second</small>
+      </div>
+      <span class="danger-badge db-high" data-en="High" data-hi="High">High</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=75" alt="Brute Force" loading="lazy"/>
+      <p id="p2" data-en="A computer tries <b>billions of password combinations per second</b>. If your password is short or common, it gets cracked in seconds. Modern GPUs can try <b>100 billion passwords per second</b>." data-hi="Computer <b>billions of password combinations per second</b> try karta hai. Agar tumhara password short ya common hai, toh seconds mein crack ho jaata hai. Modern GPUs <b>100 billion passwords per second</b> try kar sakti hain.">A computer tries <b>billions of password combinations per second</b>. Short or common passwords get cracked in seconds.</p>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div>
+          <span class="terminal-label">BRUTE FORCE DEMO</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-prompt">$</span> <span class="t-cmd">hashcat -a 0 -m 0 hash.txt wordlist.txt</span>
+<span class="t-output">Session........: hashcat
+Status.........: <span class="t-green">Running</span>
+Hash.Mode......: 0 (MD5)
+Speed.#1.......: <span class="t-warn">14.2 GH/s</span>
+Progress.......: 1420000000/14344391</span>
+<span class="t-warn">Trying: password → FAIL</span>
+<span class="t-warn">Trying: 123456 → FAIL</span>
+<span class="t-warn">Trying: qwerty → FAIL</span>
+<span class="t-green">CRACKED: abc123 → Found in 0.3 seconds!</span>
+<span class="t-output">Trying: Xk#9@mP$2! → </span><span class="t-cursor"></span>
+        </div>
+      </div>
+
+      <!-- PASSWORD STRENGTH CHECKER -->
+      <div class="pwd-checker">
+        <h4 data-en="🔒 Live Password Strength Checker" data-hi="🔒 Live Password Strength Checker">🔒 Live Password Strength Checker</h4>
+        <div class="pwd-input-wrap">
+          <input class="pwd-input" type="password" id="pwd-input" placeholder="Type any password to test..." oninput="checkPassword(this.value)"/>
+          <button class="pwd-toggle" onclick="togglePwd()" id="pwd-toggle-btn">👁️</button>
+        </div>
+        <div class="pwd-bar"><div class="pwd-fill" id="pwd-fill"></div></div>
+        <div class="pwd-label" id="pwd-label" style="color:var(--muted)">Type a password above</div>
+        <div class="pwd-hints">
+          <span class="pwd-hint ph-no" id="ph-len">8+ chars</span>
+          <span class="pwd-hint ph-no" id="ph-upper">Uppercase</span>
+          <span class="pwd-hint ph-no" id="ph-lower">Lowercase</span>
+          <span class="pwd-hint ph-no" id="ph-num">Numbers</span>
+          <span class="pwd-hint ph-no" id="ph-sym">Symbols</span>
+        </div>
+        <div class="crack-time" id="crack-time"></div>
+      </div>
+
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Use 12+ character passwords" data-hi="12+ character passwords use karo">Use 12+ character passwords</b> — <span data-en="mix uppercase, lowercase, numbers, symbols" data-hi="uppercase, lowercase, numbers, symbols mix karo">mix uppercase, lowercase, numbers, symbols</span></li>
+          <li><b data-en="Never use dictionary words" data-hi="Dictionary words kabhi use mat karo">Never use dictionary words</b> — <span data-en="hackers have lists of millions of common passwords" data-hi="hackers ke paas millions of common passwords ki lists hain">hackers have lists of millions of common passwords</span></li>
+          <li><b data-en="Enable account lockout" data-hi="Account lockout enable karo">Enable account lockout</b> — <span data-en="locks after 5 failed attempts" data-hi="5 failed attempts ke baad lock ho jaata hai">locks after 5 failed attempts</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 3: SOCIAL ENGINEERING ═══ -->
+  <div class="sec-title" id="s3">
+    <span class="snum">3</span>
+    <span id="s3t" data-en="Social Engineering" data-hi="Social Engineering">Social Engineering</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,var(--blue),#6366f1)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--bluebg)">🎭</div>
+      <div class="hc-title">
+        <h3 data-en="Social Engineering — Hacking Humans" data-hi="Social Engineering — Insaan ko Hack Karna">Social Engineering — Hacking Humans</h3>
+        <small data-en="98% of cyber attacks rely on social engineering" data-hi="98% cyber attacks social engineering pe rely karte hain">98% of cyber attacks rely on social engineering</small>
+      </div>
+      <span class="danger-badge db-critical" data-en="Critical" data-hi="Critical">Critical</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://i.ibb.co/wN0hCbZv/alltechbuzz-net-hacker-4523097-1920.jpg" alt="Social Engineering" loading="lazy"/>
+      <p id="p3" data-en="The most dangerous attacks don't exploit computers — <b>they exploit people</b>. A hacker calls pretending to be your bank's IT support, creates urgency, and tricks you into revealing your password. <b>No code needed.</b>" data-hi="Sabse dangerous attacks computers ko exploit nahi karte — <b>woh logon ko exploit karte hain</b>. Hacker tumhare bank ka IT support ban ke call karta hai, urgency create karta hai, aur password reveal karwa leta hai. <b>Koi code nahi chahiye.</b>">The most dangerous attacks don't exploit computers — <b>they exploit people</b>. Hackers use psychology, urgency, and trust to manipulate victims.</p>
+      <div class="info-box">
+        <p><strong data-en="Real Example:" data-hi="Real Example:">Real Example:</strong> <span data-en="'Hello, this is Google Security. We detected suspicious login from Russia. We need to verify your account — please share the OTP we just sent you.'" data-hi="'Hello, main Google Security se bol raha hoon. Russia se suspicious login detect hua hai. Account verify karne ke liye please woh OTP share karo jo abhi bheja hai.'">Hello, this is Google Security. We detected suspicious login from Russia. Please share the OTP we just sent you.</span></p>
+      </div>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="No company ever asks for your OTP or password" data-hi="Koi bhi company kabhi OTP ya password nahi maangti">No company ever asks for your OTP or password</b></li>
+          <li><b data-en="Urgency is a red flag" data-hi="Urgency ek red flag hai">Urgency is a red flag</b> — <span data-en="hackers want you to act before you think" data-hi="hackers chahte hain tum sochne se pehle act karo">hackers want you to act before you think</span></li>
+          <li><b data-en="Hang up, call back officially" data-hi="Hang up karo, officially callback karo">Hang up, call back officially</b> — <span data-en="find the number yourself" data-hi="khud se number dhundho">find the number yourself</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 4: KEYLOGGERS ═══ -->
+  <div class="sec-title" id="s4">
+    <span class="snum">4</span>
+    <span id="s4t" data-en="Keyloggers" data-hi="Keyloggers">Keyloggers</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,#8b5cf6,#d946ef)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:rgba(139,92,246,.1)">⌨️</div>
+      <div class="hc-title">
+        <h3 data-en="Keyloggers — Your Every Keystroke Recorded" data-hi="Keyloggers — Tumhara Har Keystroke Record Hota Hai">Keyloggers — Every Keystroke Recorded</h3>
+        <small data-en="Records everything you type — passwords, messages, cards" data-hi="Sab kuch record karta hai — passwords, messages, cards">Records everything you type</small>
+      </div>
+      <span class="danger-badge db-high" data-en="High" data-hi="High">High</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1601972599720-36938d4ecd31?w=800&q=75" alt="Keylogger" loading="lazy"/>
+      <p id="p4" data-en="A keylogger is <b>malware that silently records every key you press</b>. It runs in the background, invisible, sending everything you type — passwords, credit cards, private messages — to the hacker." data-hi="Keylogger <b>malware hai jo silently tumhara har keystroke record karta hai</b>. Yeh background mein run karta hai, invisible, aur sab kuch hacker ko bhejta hai — passwords, credit cards, private messages.">A keylogger is <b>malware that silently records every key you press</b>. Invisible, running in background, sending your data to hackers.</p>
+      <div class="terminal">
+        <div class="terminal-bar">
+          <div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div>
+          <span class="terminal-label">KEYLOGGER OUTPUT</span>
+        </div>
+        <div class="terminal-body">
+<span class="t-output">[12:34:21] Browser: Chrome — gmail.com
+[12:34:28] Typed: </span><span class="t-red">rahul@gmail.com</span>
+<span class="t-output">[12:34:35] Typed: </span><span class="t-red">MyP@ssw0rd123</span>
+<span class="t-output">[12:34:40] Enter pressed → LOGIN
+[12:35:10] App: WhatsApp Web
+[12:35:15] Typed: </span><span class="t-warn">Hey bhai, mera ATM pin hai 4829</span>
+<span class="t-output">[12:35:50] Browser: hdfc.com
+[12:36:02] Typed: </span><span class="t-red">4111 1111 1111 1111 | CVV: 123</span>
+        </div>
+      </div>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Never install software from unknown sources" data-hi="Unknown sources se software kabhi install mat karo">Never install software from unknown sources</b></li>
+          <li><b data-en="Use a good antivirus" data-hi="Achha antivirus use karo">Use a good antivirus</b> — <span data-en="Windows Defender is good enough" data-hi="Windows Defender kaafi hai">Windows Defender is good enough</span></li>
+          <li><b data-en="Use on-screen keyboard for banking" data-hi="Banking ke liye on-screen keyboard use karo">Use on-screen keyboard for banking</b></li>
+          <li><b data-en="Keep software updated" data-hi="Software updated rakho">Keep software updated</b> — <span data-en="updates patch security holes" data-hi="updates security holes fix karte hain">updates patch security holes</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 5: MITM ═══ -->
+  <div class="sec-title" id="s5">
+    <span class="snum">5</span>
+    <span id="s5t" data-en="Man-in-the-Middle (MITM)" data-hi="Man-in-the-Middle (MITM)">Man-in-the-Middle (MITM)</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,#0ea5e9,#00d084)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--bluebg)">📡</div>
+      <div class="hc-title">
+        <h3 data-en="MITM — Intercepting Your Connection" data-hi="MITM — Tumhara Connection Intercept Karna">MITM — Intercepting Your Connection</h3>
+        <small data-en="Public WiFi is a hacker's paradise" data-hi="Public WiFi hacker ka paradise hai">Public WiFi is a hacker's paradise</small>
+      </div>
+      <span class="danger-badge db-high" data-en="High" data-hi="High">High</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=75" alt="Man in the Middle Attack" loading="lazy"/>
+      <p id="p5" data-en="On public WiFi at a cafe, a hacker creates a <b>fake hotspot with the same name</b>. When you connect, all your traffic goes through them. They can read your messages, steal cookies, and hijack your sessions." data-hi="Cafe ke public WiFi pe, hacker <b>same naam se fake hotspot banata hai</b>. Jab tum connect karte ho, tumhara saara traffic unke through jaata hai. Woh messages padh sakte hain, cookies chura sakte hain, sessions hijack kar sakte hain.">On public WiFi, a hacker creates a <b>fake hotspot with the same name</b>. All your traffic goes through them.</p>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Use a VPN on public WiFi" data-hi="Public WiFi pe VPN use karo">Use a VPN on public WiFi</b> — <span data-en="encrypts all traffic" data-hi="saara traffic encrypt karta hai">encrypts all traffic</span></li>
+          <li><b data-en="Only use HTTPS sites" data-hi="Sirf HTTPS sites use karo">Only use HTTPS sites</b> — <span data-en="the padlock icon means connection is encrypted" data-hi="padlock icon matlab connection encrypted hai">padlock = encrypted</span></li>
+          <li><b data-en="Avoid sensitive tasks on public WiFi" data-hi="Public WiFi pe sensitive kaam avoid karo">Avoid sensitive tasks on public WiFi</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 6: CREDENTIAL STUFFING ═══ -->
+  <div class="sec-title" id="s6">
+    <span class="snum">6</span>
+    <span id="s6t" data-en="Credential Stuffing" data-hi="Credential Stuffing">Credential Stuffing</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,var(--red),#8b5cf6)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--redbg)">🗄️</div>
+      <div class="hc-title">
+        <h3 data-en="Credential Stuffing — Using Leaked Passwords" data-hi="Credential Stuffing — Leaked Passwords Use Karna">Credential Stuffing — Using Leaked Passwords</h3>
+        <small data-en="24 billion stolen credentials are available on dark web" data-hi="Dark web pe 24 billion stolen credentials available hain">24 billion stolen credentials on dark web</small>
+      </div>
+      <span class="danger-badge db-critical" data-en="Critical" data-hi="Critical">Critical</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&q=75" alt="Data Breach" loading="lazy"/>
+      <p id="p6" data-en="When a big company like Facebook or LinkedIn gets hacked, <b>millions of username+password combinations are leaked</b>. Hackers then try these combinations on hundreds of other sites automatically. If you reuse passwords, <b>all your accounts get compromised</b>." data-hi="Jab Facebook ya LinkedIn jaisi badi company hack hoti hai, <b>millions of username+password combinations leak ho jaate hain</b>. Hackers phir inhe automatically saikdon dusri sites pe try karte hain. Agar tum passwords reuse karte ho, <b>tumhare saare accounts compromise ho jaate hain</b>.">When big companies get hacked, <b>millions of credentials leak</b>. Hackers try these on hundreds of sites automatically.</p>
+      <div class="info-box">
+        <p><strong data-en="Check if your email was leaked:" data-hi="Check karo tumhara email leak hua hai ya nahi:">Check if your email was leaked:</strong> <span data-en="Go to haveibeenpwned.com and enter your email — it shows all data breaches your account appeared in." data-hi="haveibeenpwned.com pe jao aur apna email daalo — yeh dikhayega ki tumhara account kaunse data breaches mein tha.">Go to <b>haveibeenpwned.com</b> and check your email now.</span></p>
+      </div>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Use a unique password for EVERY site" data-hi="Har site ke liye unique password use karo">Use a unique password for EVERY site</b></li>
+          <li><b data-en="Use a password manager" data-hi="Password manager use karo">Use a password manager</b> — <span data-en="Bitwarden (free) or 1Password" data-hi="Bitwarden (free) ya 1Password">Bitwarden (free) or 1Password</span></li>
+          <li><b data-en="Enable login alerts" data-hi="Login alerts enable karo">Enable login alerts</b> — <span data-en="know when someone logs in from a new device" data-hi="naye device se login hone pe pata chale">know when someone logs in from new device</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 7: SIM SWAPPING ═══ -->
+  <div class="sec-title" id="s7">
+    <span class="snum">7</span>
+    <span id="s7t" data-en="SIM Swapping" data-hi="SIM Swapping">SIM Swapping</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,var(--yellow),var(--red))">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:var(--yellowbg)">📱</div>
+      <div class="hc-title">
+        <h3 data-en="SIM Swapping — Stealing Your Phone Number" data-hi="SIM Swapping — Tumhara Phone Number Churaana">SIM Swapping — Stealing Your Number</h3>
+        <small data-en="Even celebrities and crypto millionaires have been SIM-swapped" data-hi="Celebrities aur crypto millionaires bhi SIM-swap ho chuke hain">Celebrities and crypto millionaires have been victims</small>
+      </div>
+      <span class="danger-badge db-critical" data-en="Critical" data-hi="Critical">Critical</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=75" alt="SIM Swap" loading="lazy"/>
+      <p id="p7" data-en="A hacker calls your mobile carrier, <b>pretends to be you</b>, and convinces them to transfer your phone number to a new SIM they own. Now all your OTPs, WhatsApp, and 2FA codes go to the hacker. <b>Your bank account can be emptied in minutes.</b>" data-hi="Hacker tumhara mobile carrier call karta hai, <b>tumhara natak karta hai</b>, aur unhe convince karta hai ki tumhara phone number unke naye SIM pe transfer kar den. Ab tumhare saare OTPs, WhatsApp, 2FA codes hacker ko jaate hain. <b>Tumhara bank account minutes mein khali ho sakta hai.</b>">A hacker calls your carrier, pretends to be you, transfers your number to their SIM. All your OTPs now go to them.</p>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Add a SIM PIN / port freeze to your carrier" data-hi="Carrier mein SIM PIN / port freeze add karo">Add a SIM PIN to your carrier account</b></li>
+          <li><b data-en="Use authenticator apps instead of SMS for 2FA" data-hi="2FA ke liye SMS ki jagah authenticator apps use karo">Use authenticator apps instead of SMS</b> — <span data-en="Google Authenticator or Authy" data-hi="Google Authenticator ya Authy">Google Authenticator or Authy</span></li>
+          <li><b data-en="Don't share your phone number publicly" data-hi="Apna phone number publicly share mat karo">Don't share your phone number publicly</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ METHOD 8: MALWARE ═══ -->
+  <div class="sec-title" id="s8">
+    <span class="snum">8</span>
+    <span id="s8t" data-en="Malware & Remote Access Trojans" data-hi="Malware & Remote Access Trojans">Malware &amp; Remote Access Trojans</span>
+  </div>
+  <div class="hack-card" style="--grad:linear-gradient(90deg,#dc2626,#7f1d1d)">
+    <div class="hc-header" onclick="toggleCard(this)">
+      <div class="hc-icon" style="background:rgba(220,38,38,.1)">🦠</div>
+      <div class="hc-title">
+        <h3 data-en="RATs — Complete Remote Control of Your Device" data-hi="RATs — Tumhare Device ka Poora Remote Control">RATs — Complete Remote Device Control</h3>
+        <small data-en="Hacker sees your screen, webcam, files — in real time" data-hi="Hacker tumhara screen, webcam, files — real time mein dekh sakta hai">Hacker sees your screen, webcam, files in real time</small>
+      </div>
+      <span class="danger-badge db-critical" data-en="Critical" data-hi="Critical">Critical</span>
+    </div>
+    <div class="hc-body">
+      <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=75" alt="Malware" loading="lazy"/>
+      <p id="p8" data-en="RATs (Remote Access Trojans) give hackers <b>complete control of your computer</b>. They can see your screen live, turn on your webcam without the light, access all files, install more malware, and use your computer for attacks — all without you knowing." data-hi="RATs (Remote Access Trojans) hackers ko <b>tumhare computer ka poora control</b> dete hain. Woh live screen dekh sakte hain, webcam on kar sakte hain bina light ke, saari files access kar sakte hain, aur tumhe pata bhi nahi chalega.">RATs give hackers <b>complete control of your computer</b> — live screen, webcam, files, everything.</p>
+      <div class="danger-box">
+        <p><strong data-en="Warning Signs of RAT Infection:" data-hi="RAT Infection ke Warning Signs:">Warning Signs of RAT Infection:</strong> <span data-en="CPU/fan running high with no app open • Webcam light flickers randomly • Mouse moves on its own • Files appear/disappear • Slow internet for no reason" data-hi="CPU/fan high running bina kisi app ke • Webcam light randomly flickering • Mouse khud move karta hai • Files appear/disappear • Bina reason slow internet">CPU running hot • Webcam light flickers • Mouse moves itself • Files appear/disappear</span></p>
+      </div>
+      <div class="protect-box">
+        <div class="pb-hd">&#128272; <span data-en="Protection" data-hi="Protection">Protection</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Never pirate software" data-hi="Software kabhi pirate mat karo">Never pirate software</b> — <span data-en="cracked software is the #1 RAT delivery method" data-hi="cracked software #1 RAT delivery method hai">cracked software is the #1 RAT delivery method</span></li>
+          <li><b data-en="Cover your webcam when not in use" data-hi="Webcam use na hone pe cover karo">Cover your webcam</b> — <span data-en="a sticker costs ₹0" data-hi="ek sticker ₹0 ka hai">a sticker costs ₹0</span></li>
+          <li><b data-en="Run Malwarebytes scan monthly" data-hi="Monthly Malwarebytes scan chalao">Run Malwarebytes scan monthly</b></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ SECURITY SCORE ═══ -->
+  <div class="sec-title" id="score">
+    <span class="snum">&#128272;</span>
+    <span id="score-t" data-en="Your Security Score" data-hi="Tumhara Security Score">Your Security Score</span>
+  </div>
+  <div class="score-section">
+    <div class="score-title" data-en="How Secure Are You Right Now?" data-hi="Abhi Tum Kitne Secure Ho?">How Secure Are You Right Now?</div>
+    <div class="score-sub" data-en="Check each item you already do — see your security score update live" data-hi="Jo cheezein tum already karte ho unhe check karo — score live update hoga">Check each item you already do</div>
+    <div class="score-ring-wrap">
+      <svg class="score-ring" viewBox="0 0 120 120">
+        <circle class="sr-bg" cx="60" cy="60" r="54"/>
+        <circle class="sr-fill" id="sr-fill" cx="60" cy="60" r="54"/>
+      </svg>
+      <div class="score-num"><span id="score-pct">0</span><span class="score-label">%</span></div>
+    </div>
+    <div class="score-checks" id="score-checks">
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="15">
+        <div class="sc-icon">🔑</div>
+        <div class="sc-text"><b data-en="Use 2FA" data-hi="2FA use karta hoon">Use 2FA</b><span data-en="on important accounts" data-hi="important accounts pe">on important accounts</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="15">
+        <div class="sc-icon">🔐</div>
+        <div class="sc-text"><b data-en="Unique passwords" data-hi="Unique passwords">Unique passwords</b><span data-en="for every site" data-hi="har site ke liye">for every site</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="10">
+        <div class="sc-icon">💾</div>
+        <div class="sc-text"><b data-en="Password manager" data-hi="Password manager">Password manager</b><span data-en="Bitwarden or similar" data-hi="Bitwarden ya similar">Bitwarden or similar</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="10">
+        <div class="sc-icon">🔄</div>
+        <div class="sc-text"><b data-en="Software updated" data-hi="Software updated">Software updated</b><span data-en="OS and apps" data-hi="OS aur apps">OS and apps</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="15">
+        <div class="sc-icon">🛡️</div>
+        <div class="sc-text"><b data-en="Antivirus active" data-hi="Antivirus active">Antivirus active</b><span data-en="Windows Defender OK" data-hi="Windows Defender OK hai">Windows Defender OK</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="10">
+        <div class="sc-icon">📡</div>
+        <div class="sc-text"><b data-en="VPN on public WiFi" data-hi="Public WiFi pe VPN">VPN on public WiFi</b><span data-en="or avoid public WiFi" data-hi="ya public WiFi avoid karo">or avoid public WiFi</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="10">
+        <div class="sc-icon">🎣</div>
+        <div class="sc-text"><b data-en="Verify URLs carefully" data-hi="URLs carefully verify karo">Verify URLs</b><span data-en="before clicking links" data-hi="links click karne se pehle">before clicking links</span></div>
+      </div>
+      <div class="sc-item" onclick="toggleScore(this)" data-pts="15">
+        <div class="sc-icon">📱</div>
+        <div class="sc-text"><b data-en="Authenticator app" data-hi="Authenticator app">Authenticator app</b><span data-en="not SMS for 2FA" data-hi="SMS nahi 2FA ke liye">not SMS for 2FA</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ LIVE TASKS ═══ -->
+  <div class="sec-title" id="tasks">
+    <span class="snum">⚡</span>
+    <span id="tasks-t" data-en="Live Security Tasks" data-hi="Live Security Tasks">Live Security Tasks</span>
+  </div>
+  <div class="tasks-section">
+    <div class="tasks-hd">
+      <h3 data-en="🎯 Do These Right Now" data-hi="🎯 Abhi Ye Karo">🎯 Do These Right Now</h3>
+    </div>
+    <div class="tasks-sub" data-en="Complete each task to make yourself significantly harder to hack. Check off as you finish!" data-hi="Har task complete karo — hack hona bahut mushkil ho jaayega. Khatam karte jaao!">Complete each task to make yourself significantly harder to hack.</div>
+    <div class="task-progress-bar"><div class="task-progress-fill" id="task-fill"></div></div>
+    <div class="task-progress-label" id="task-label">0 / 5 tasks complete</div>
+    <div class="task-list">
+      <div class="task-item" onclick="toggleTask(this)" id="task1">
+        <div class="task-check"></div>
+        <div class="task-body">
+          <h4 data-en="Check if your email was leaked" data-hi="Check karo tumhara email leak hua hai ya nahi">Check if your email was leaked</h4>
+          <p data-en="Go to haveibeenpwned.com → enter your email → see all breaches. If found, change that password NOW." data-hi="haveibeenpwned.com pe jao → email daalo → sare breaches dekho. Agar mila, woh password ABHI change karo.">Go to haveibeenpwned.com → enter your email → see all breaches.</p>
+        </div>
+        <span class="task-xp">+20 XP</span>
+      </div>
+      <div class="task-item" onclick="toggleTask(this)" id="task2">
+        <div class="task-check"></div>
+        <div class="task-body">
+          <h4 data-en="Enable 2FA on Gmail / Google Account" data-hi="Gmail / Google Account pe 2FA enable karo">Enable 2FA on Gmail / Google Account</h4>
+          <p data-en="myaccount.google.com → Security → 2-Step Verification → Turn On. Takes 2 minutes." data-hi="myaccount.google.com → Security → 2-Step Verification → Turn On. 2 minutes lagte hain.">myaccount.google.com → Security → 2-Step Verification → Turn On.</p>
+        </div>
+        <span class="task-xp">+25 XP</span>
+      </div>
+      <div class="task-item" onclick="toggleTask(this)" id="task3">
+        <div class="task-check"></div>
+        <div class="task-body">
+          <h4 data-en="Install Bitwarden (free password manager)" data-hi="Bitwarden install karo (free password manager)">Install Bitwarden (free password manager)</h4>
+          <p data-en="bitwarden.com → Download → Start storing unique passwords for every site. Forever free." data-hi="bitwarden.com → Download → Har site ke liye unique passwords store karna shuru karo. Hamesha free.">bitwarden.com → Download → Store unique passwords for every site.</p>
+        </div>
+        <span class="task-xp">+20 XP</span>
+      </div>
+      <div class="task-item" onclick="toggleTask(this)" id="task4">
+        <div class="task-check"></div>
+        <div class="task-body">
+          <h4 data-en="Run a malware scan right now" data-hi="Abhi malware scan chalao">Run a malware scan right now</h4>
+          <p data-en="Open Windows Security → Virus & threat protection → Quick scan. Or download Malwarebytes free version." data-hi="Windows Security open karo → Virus & threat protection → Quick scan. Ya Malwarebytes free version download karo.">Windows Security → Virus protection → Quick scan. Or use Malwarebytes.</p>
+        </div>
+        <span class="task-xp">+20 XP</span>
+      </div>
+      <div class="task-item" onclick="toggleTask(this)" id="task5">
+        <div class="task-check"></div>
+        <div class="task-body">
+          <h4 data-en="Review app permissions on your phone" data-hi="Phone pe app permissions review karo">Review app permissions on your phone</h4>
+          <p data-en="Settings → Privacy → Permission Manager. Revoke camera/mic access from apps that don't need it." data-hi="Settings → Privacy → Permission Manager. Jo apps ko zaroorat nahi unse camera/mic access hatao.">Settings → Privacy → Permission Manager → Revoke unnecessary permissions.</p>
+        </div>
+        <span class="task-xp">+15 XP</span>
+      </div>
+    </div>
+    <div class="task-done-msg" id="task-done">
+      <h4 data-en="🎉 Security Hero! All Tasks Complete!" data-hi="🎉 Security Hero! Sare Tasks Complete!">🎉 Security Hero! All Tasks Complete!</h4>
+      <p data-en="You are now significantly harder to hack than 90% of people online. Share this blog — help your friends stay safe too!" data-hi="Ab tum 90% online logon se zyada secure ho. Yeh blog share karo — apne doston ko bhi safe rakhne mein help karo!">You are now significantly harder to hack than 90% of people online.</p>
+    </div>
+  </div>
+
+  <!-- LIKE + COMMENTS -->
+  <div class="engage-wrap">
+    <div class="like-section">
+      <p id="like-q" data-en="Did this blog help you stay safer? ❤️" data-hi="Kya is blog ne tumhe safer rehne mein help ki? ❤️">Did this blog help you stay safer? ❤️</p>
+      <span id="ana-likes" style="display:none">0</span>
+      <button class="like-btn" id="like-btn" onclick="toggleLike()">
+        <span class="heart">🤍</span>
+        <span id="like-label" data-en="Like" data-hi="Like karo">Like</span>
+      </button>
+      <span id="like-count">0 likes</span>
+    </div>
+    <div>
+      <div class="cmt-header">
+        <h3 id="comments-title">💬 Comments (<span id="cmt-count">0</span>)</h3>
+        <span class="cmt-live-badge"><span class="cmt-live-dot"></span> Live</span>
+      </div>
+      <div class="comment-form">
+        <div class="cmt-form-title">✏️ <span data-en="Share your thoughts on cybersecurity" data-hi="Cybersecurity pe apna thought share karo">Share your thoughts on cybersecurity</span></div>
+        <div class="pi-prompts">
+          <span class="pi-prompt-chip" onclick="setPrompt(this)">🔒 I got hacked once</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)">✅ Already using 2FA</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)">😱 This is scary!</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)">🤔 Question about...</span>
+        </div>
+        <div class="cf-row">
+          <input class="cf-input" id="c-name" placeholder="Your name *" data-placeholder-en="Your name *" data-placeholder-hi="Aapka naam *" maxlength="50"/>
+          <input class="cf-input" id="c-email" placeholder="Email (optional)" type="email"/>
+        </div>
+        <textarea class="cf-textarea" id="c-text" placeholder="What do you think? 🔒" data-placeholder-en="What do you think? 🔒" data-placeholder-hi="Kya lagta hai? 🔒" maxlength="500" oninput="updateChar(this)"></textarea>
+        <div class="cf-bottom">
+          <button class="cf-submit" id="cf-btn" onclick="postComment()">💬 <span id="cf-btn-label">Post Comment</span></button>
+          <span class="cf-char" id="cf-char">0/500</span>
+          <span class="cf-msg" id="cf-msg"></span>
+        </div>
+      </div>
+      <div class="comment-list" id="comments-list">
+        <div class="cmt-empty">
+          <span class="cmt-empty-icon">🔒</span>
+          <span id="no-cmt-text" data-en="Be the first to comment! 💬" data-hi="Pehla comment tum karo! 💬">Be the first to comment! 💬</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div class="sec-title" style="font-size:1.2rem;margin-top:2rem">
+    <span class="snum">📚</span>
+    <span data-en="Related Blogs" data-hi="Related Blogs">Related Blogs</span>
+  </div>
+  <div class="related-grid">
+    <a href="learn-firebase.html" class="rel-card">
+      <div class="rel-tag">Firebase</div>
+      <div class="rel-title">🔥 Firebase Database — Complete Guide 2026</div>
+    </a>
+    <a href="10xYourFasterCoding.html" class="rel-card">
+      <div class="rel-tag">AI Tools</div>
+      <div class="rel-title">⚡ AI Coding Tools Making Devs 10x Faster</div>
+    </a>
+    <a href="pi-day.html" class="rel-card">
+      <div class="rel-tag">Math</div>
+      <div class="rel-title">π The Most Mysterious Number in the Universe</div>
+    </a>
+  </div>
+
+</div><!-- blog-wrap -->
+
+<footer>
+  <a href="../index.html" class="logo">CI<em>Web</em></a>
+  <p>© 2026 CIWeb. All rights reserved.</p>
+  <p data-en="Stay safe online 🔒" data-hi="Online safe raho 🔒">Stay safe online 🔒</p>
+</footer>
+
+<div id="cw-toggle">
+  <button class="lo on" id="cw-en" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lo"    id="cw-hi" onclick="setLang('hi')">🇮🇳 HI</button>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+//  MATRIX RAIN
+// ─────────────────────────────────────────────
+(function(){
+  var c=document.getElementById('matrix-canvas');
+  var ctx=c.getContext('2d');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();
+  window.addEventListener('resize',resize);
+  var chars='アイウエオカキクケコ01サシスセソタチツテトナニヌネノ{}[]();<>=!#$@%^&*ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+  var cols=Math.floor(c.width/16);
+  var drops=Array(cols).fill(1);
+  setInterval(function(){
+    ctx.fillStyle='rgba(8,12,16,0.05)';
+    ctx.fillRect(0,0,c.width,c.height);
+    ctx.fillStyle='#00d084';
+    ctx.font='14px JetBrains Mono,monospace';
+    for(var i=0;i<drops.length;i++){
+      var ch=chars[Math.floor(Math.random()*chars.length)];
+      ctx.fillText(ch,i*16,drops[i]*16);
+      if(drops[i]*16>c.height&&Math.random()>.975)drops[i]=0;
+      drops[i]++;
+    }
+  },50);
+})();
+
+// ─────────────────────────────────────────────
+//  FIREBASE CONFIG
+// ─────────────────────────────────────────────
+var DB    = "https://testingdata-2ae22-default-rtdb.firebaseio.com";
+var BID   = "how-hackers-hack";
+var liked = localStorage.getItem("liked_"+BID) === "true";
+
+// ─────────────────────────────────────────────
+//  HELPERS
+// ─────────────────────────────────────────────
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function timeAgo(iso){var d=(Date.now()-new Date(iso))/1000;if(d<60)return"just now";if(d<3600)return Math.floor(d/60)+" min ago";if(d<86400)return Math.floor(d/3600)+" hrs ago";return Math.floor(d/86400)+" days ago";}
+function aColor(n){var c=["#e8401c","#2563eb","#16a34a","#7c3aed","#d97706","#0ea5e9"];return c[(n||"A").charCodeAt(0)%c.length];}
+function getLang(){return localStorage.getItem("ciweb_lang")||"en";}
+
+// ─────────────────────────────────────────────
+//  CARD TOGGLE
+// ─────────────────────────────────────────────
+function toggleCard(header){
+  var body=header.nextElementSibling;
+  if(body.style.display==="none"||!body.style.display){
+    body.style.display="block";
+  } else {
+    body.style.display="none";
+  }
+}
+// Open all cards by default
+document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll(".hc-body").forEach(function(b){b.style.display="block";});
+});
+
+// ─────────────────────────────────────────────
+//  PHISHING DEMO
+// ─────────────────────────────────────────────
+var phishRevealed = false;
+function revealPhish(){
+  if(phishRevealed)return;
+  phishRevealed = true;
+  var url = document.getElementById("phish-url");
+  url.textContent = "accounts.g00gle-login.ru";
+  url.classList.add("suspicious");
+  document.getElementById("phish-reveal").classList.add("show");
+}
+
+// ─────────────────────────────────────────────
+//  PASSWORD CHECKER
+// ─────────────────────────────────────────────
+function checkPassword(val){
+  var len=val.length, upper=/[A-Z]/.test(val), lower=/[a-z]/.test(val), num=/\d/.test(val), sym=/[^A-Za-z0-9]/.test(val);
+  var score=0;
+  if(len>=8)score+=20; if(len>=12)score+=10; if(len>=16)score+=10;
+  if(upper)score+=15; if(lower)score+=15; if(num)score+=15; if(sym)score+=15;
+  score=Math.min(100,score);
+  var fill=document.getElementById("pwd-fill");
+  var label=document.getElementById("pwd-label");
+  var colors=["#e8401c","#ff9500","#f59e0b","#00d084","#00d084"];
+  var labels=["Very Weak 😰","Weak 😕","Fair 🙂","Strong 💪","Very Strong 🛡️"];
+  var idx=Math.floor(score/25);
+  fill.style.width=score+"%";
+  fill.style.background=colors[Math.min(4,idx)];
+  label.textContent=val?labels[Math.min(4,idx)]:"Type a password above";
+  label.style.color=val?colors[Math.min(4,idx)]:"var(--muted)";
+  // Hints
+  setHint("ph-len",len>=8);setHint("ph-upper",upper);setHint("ph-lower",lower);setHint("ph-num",num);setHint("ph-sym",sym);
+  // Crack time
+  var chars = (upper?26:0)+(lower?26:0)+(num?10:0)+(sym?32:0)||26;
+  var combos = Math.pow(chars,len);
+  var bps = 1e11;
+  var secs = combos/bps;
+  var ct=document.getElementById("crack-time");
+  if(!val){ct.textContent="";return;}
+  var timeStr = secs<1?"Instantly":secs<60?Math.round(secs)+" seconds":secs<3600?Math.round(secs/60)+" minutes":secs<86400?Math.round(secs/3600)+" hours":secs<31536000?Math.round(secs/86400)+" days":secs<3153600000?Math.round(secs/31536000)+" years":"centuries";
+  ct.innerHTML="<b>Crack time:</b> "+timeStr+" (at 100B/s)";
+}
+function setHint(id,ok){
+  var el=document.getElementById(id);
+  if(el){el.className="pwd-hint "+(ok?"ph-ok":"ph-no");}
+}
+function togglePwd(){
+  var inp=document.getElementById("pwd-input");
+  var btn=document.getElementById("pwd-toggle-btn");
+  if(inp.type==="password"){inp.type="text";btn.textContent="🙈";}
+  else{inp.type="password";btn.textContent="👁️";}
+}
+
+// ─────────────────────────────────────────────
+//  SECURITY SCORE
+// ─────────────────────────────────────────────
+function toggleScore(el){
+  el.classList.toggle("checked");
+  updateScore();
+}
+function updateScore(){
+  var items=document.querySelectorAll(".sc-item");
+  var total=0,max=0;
+  items.forEach(function(i){
+    var pts=parseInt(i.dataset.pts||10);
+    max+=pts;
+    if(i.classList.contains("checked"))total+=pts;
+  });
+  var pct=Math.round(total/max*100);
+  document.getElementById("score-pct").textContent=pct;
+  var circumference=2*Math.PI*54;
+  var offset=circumference-(circumference*pct/100);
+  var fill=document.getElementById("sr-fill");
+  fill.style.strokeDasharray=circumference;
+  fill.style.strokeDashoffset=offset;
+  fill.style.stroke=pct<40?"#e8401c":pct<70?"#f59e0b":"#00d084";
+}
+
+// ─────────────────────────────────────────────
+//  TASKS
+// ─────────────────────────────────────────────
+function toggleTask(el){
+  el.classList.toggle("done");
+  updateTasks();
+}
+function updateTasks(){
+  var total=document.querySelectorAll(".task-item").length;
+  var done=document.querySelectorAll(".task-item.done").length;
+  var pct=Math.round(done/total*100);
+  document.getElementById("task-fill").style.width=pct+"%";
+  var l=getLang();
+  document.getElementById("task-label").textContent=done+" / "+total+" "+(l==="hi"?"tasks complete":"tasks complete");
+  if(done===total){document.getElementById("task-done").classList.add("show");}
+  else{document.getElementById("task-done").classList.remove("show");}
+}
+
+// ─────────────────────────────────────────────
+//  LIKE
+// ─────────────────────────────────────────────
+function renderLike(count){
+  var btn=document.getElementById("like-btn");
+  var lbl=document.getElementById("like-label");
+  var hrt=btn?btn.querySelector(".heart"):null;
+  var cnt=document.getElementById("like-count");
+  if(!btn)return;
+  if(liked){btn.classList.add("liked");if(hrt)hrt.textContent="❤️";if(lbl)lbl.textContent="Liked!";}
+  else{btn.classList.remove("liked");if(hrt)hrt.textContent="🤍";if(lbl)lbl.textContent=getLang()==="hi"?"Like karo":"Like";}
+  if(cnt&&count!==undefined)cnt.textContent=count+" likes";
+}
+function loadLikeCount(){
+  fetch(DB+"/likes/"+BID+".json").then(function(r){return r.json();}).then(function(d){renderLike((d&&d.count!==undefined)?d.count:0);}).catch(function(){renderLike(0);});
+}
+function toggleLike(){
+  liked=!liked;localStorage.setItem("liked_"+BID,liked);
+  renderLike();
+  fetch(DB+"/likes/"+BID+".json").then(function(r){return r.json();}).then(function(d){
+    var cur=(d&&d.count!==undefined)?d.count:0;
+    var n=Math.max(0,cur+(liked?1:-1));
+    return fetch(DB+"/likes/"+BID+".json",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({count:n})});
+  }).then(function(){loadLikeCount();}).catch(function(){});
+}
+
+// ─────────────────────────────────────────────
+//  COMMENTS
+// ─────────────────────────────────────────────
+function loadComments(){
+  fetch(DB+"/comments/"+BID+".json").then(function(r){return r.json();}).then(function(data){
+    var list=document.getElementById("comments-list");
+    var cnt=document.getElementById("cmt-count");
+    var noEl=document.getElementById("no-cmt-text");
+    if(!data){if(cnt)cnt.textContent="0";if(noEl)noEl.parentElement.style.display="block";list.innerHTML='<div class="cmt-empty"><span class="cmt-empty-icon">🔒</span><span id="no-cmt-text" data-en="Be the first to comment! 💬" data-hi="Pehla comment tum karo! 💬">Be the first to comment! 💬</span></div>';return;}
+    var cs=Object.values(data).reverse();
+    if(cnt)cnt.textContent=cs.length;
+    list.innerHTML=cs.map(function(cm){
+      return'<div class="comment-card"><div class="comment-header"><div class="ci-avatar" style="background:'+aColor(cm.name)+'">'+esc(cm.name).charAt(0).toUpperCase()+'</div><div class="comment-meta"><span class="comment-name">'+esc(cm.name)+'</span><span class="comment-date">'+timeAgo(cm.timestamp)+'</span></div></div><div class="comment-text">'+esc(cm.comment||cm.text||"")+'</div></div>';
+    }).join("");
+  }).catch(function(){});
+}
+function updateChar(el){var c=document.getElementById("cf-char");if(c)c.textContent=el.value.length+"/500";}
+function setPrompt(chip){var ta=document.getElementById("c-text");if(ta){ta.value=chip.textContent.trim();updateChar(ta);ta.focus();}}
+function postComment(){
+  var name=document.getElementById("c-name").value.trim();
+  var text=document.getElementById("c-text").value.trim();
+  var btn=document.getElementById("cf-btn");
+  var msgEl=document.getElementById("cf-msg");
+  var l=getLang();
+  msgEl.textContent="";msgEl.className="cf-msg";
+  if(!name){msgEl.textContent=l==="hi"?"⚠️ Naam daalo!":"⚠️ Name required!";msgEl.className="cf-msg cw-err";return;}
+  if(!text||text.length<3){msgEl.textContent=l==="hi"?"⚠️ Comment likho!":"⚠️ Comment required!";msgEl.className="cf-msg cw-err";return;}
+  btn.disabled=true;
+  document.getElementById("cf-btn-label").textContent=l==="hi"?"Post ho raha hai...":"Posting...";
+  fetch(DB+"/comments/"+BID+".json",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({blogId:BID,name:name,comment:text,timestamp:new Date().toISOString()})})
+  .then(function(r){if(!r.ok)throw new Error(r.status);
+    document.getElementById("c-name").value="";document.getElementById("c-email").value="";document.getElementById("c-text").value="";
+    msgEl.textContent=l==="hi"?"✅ Comment post ho gaya!":"✅ Comment posted!";msgEl.className="cf-msg cw-ok";
+    setTimeout(function(){msgEl.textContent="";},3000);loadComments();
+  }).catch(function(e){msgEl.textContent=l==="hi"?"❌ Error! Dobara try karo.":"❌ Error! Try again.";msgEl.className="cf-msg cw-err";})
+  .finally(function(){btn.disabled=false;document.getElementById("cf-btn-label").textContent=l==="hi"?"Comment Post Karo":"Post Comment";});
+}
+
+// ─────────────────────────────────────────────
+//  TOC SCROLL
+// ─────────────────────────────────────────────
+document.querySelectorAll(".toc-item[href^='#']").forEach(function(a){
+  a.addEventListener("click",function(e){
+    e.preventDefault();
+    var t=document.getElementById(this.getAttribute("href").slice(1));
+    if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-76,behavior:"smooth"});
+  });
+});
+
+// ─────────────────────────────────────────────
+//  LANGUAGE
+// ─────────────────────────────────────────────
+var T = {
+  en:{
+    h1:"How <span class='red'>Hackers</span> Hack Accounts<br/>(And How to Stay Safe)",
+    "hero-sub":"Every 39 seconds, a hacker attacks someone online. Learn exactly how they do it — and how to stop them cold.",
+    s1t:"Phishing Attacks", s2t:"Brute Force Attack", s3t:"Social Engineering",
+    s4t:"Keyloggers", s5t:"Man-in-the-Middle (MITM)", s6t:"Credential Stuffing",
+    s7t:"SIM Swapping", s8t:"Malware & Remote Access Trojans",
+    "score-t":"Your Security Score", "tasks-t":"Live Security Tasks",
+    "like-q":"Did this blog help you stay safer? ❤️"
+  },
+  hi:{
+    h1:"Hackers <span class='red'>Accounts</span> Kaise Hack Karte Hain<br/>(Aur Safe Kaise Rahein)",
+    "hero-sub":"Har 39 seconds mein ek hacker kisi ko online attack karta hai. Jaano exactly kaise — aur unhe kaise rokein.",
+    s1t:"Phishing Attacks", s2t:"Brute Force Attack", s3t:"Social Engineering",
+    s4t:"Keyloggers", s5t:"Man-in-the-Middle (MITM)", s6t:"Credential Stuffing",
+    s7t:"SIM Swapping", s8t:"Malware & Remote Access Trojans",
+    "score-t":"Tumhara Security Score", "tasks-t":"Live Security Tasks",
+    "like-q":"Kya is blog ne tumhe safer rehne mein help ki? ❤️"
+  }
+};
+
+function setLang(l){
+  localStorage.setItem("ciweb_lang",l);
+  // T object translations
+  var t=T[l];
+  if(t){Object.keys(t).forEach(function(k){var el=document.getElementById(k);if(el)el.innerHTML=t[k];});}
+  // data-en/data-hi elements
+  document.querySelectorAll("[data-en][data-hi]").forEach(function(el){el.innerHTML=l==="en"?el.dataset.en:el.dataset.hi;});
+  // placeholders
+  document.querySelectorAll("[data-placeholder-en]").forEach(function(el){el.placeholder=l==="en"?el.dataset.placeholderEn:el.dataset.placeholderHi;});
+  // toggle buttons
+  document.getElementById("cw-en").classList.toggle("on",l==="en");
+  document.getElementById("cw-hi").classList.toggle("on",l==="hi");
+  document.documentElement.lang=l;
+  // task label
+  updateTasks();
+}
+
+// ─────────────────────────────────────────────
+//  INIT
+// ─────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded",function(){
+  var l=localStorage.getItem("ciweb_lang")||"en";
+  setLang(l);
+  renderLike();loadLikeCount();loadComments();
+  updateScore();updateTasks();
+});
+</script>
+</body>
+</html>
