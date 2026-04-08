@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>What is an API? Complete Guide 2026 | CIWeb</title>
+  <meta name="description" content="Learn everything about APIs — REST, GraphQL, WebSockets, Authentication, Rate Limiting — with live demos and animations."/>
+  <meta name="keywords" content="
+api,
+application programming interface,
+what is api,
+api kya hai,
+api meaning,
+api full form,
+api explanation,
+api tutorial,
+api for beginners,
+api kaise kaam karta hai,
+how api works,
+api example,
+api real life example,
+api use cases,
+why api important,
+api benefits,
+api disadvantages,
+types of api,
+rest api,
+restful api,
+soap api,
+graphql api,
+web api,
+public api,
+private api,
+partner api,
+open api,
+api integration,
+api testing,
+api development,
+api design,
+api architecture,
+api security,
+api authentication,
+api authorization,
+api key,
+api endpoint,
+api request,
+api response,
+api json,
+api xml,
+api data exchange,
+frontend backend api,
+api in web development,
+api in mobile apps,
+api usage,
+api connection,
+api server,
+api client,
+api calls,
+api fetch,
+api axios,
+api javascript,
+api python,
+api node js,
+api express js,
+api tutorial javascript,
+api tutorial python,
+api coding example,
+api project ideas,
+api beginner project,
+build api from scratch,
+create api step by step,
+api documentation,
+api tools,
+postman api,
+postman tutorial,
+api testing tools,
+api debugging,
+api error handling,
+http methods api,
+get post put delete api,
+api endpoints example,
+api request methods,
+api headers,
+api body request,
+api response status codes,
+api 200 404 500,
+api performance,
+api optimization,
+api caching,
+api rate limit,
+api security best practices,
+api encryption,
+api https,
+api ssl tls,
+api authentication methods,
+jwt authentication api,
+oauth api,
+api tokens,
+api integration tutorial,
+third party api,
+google api,
+payment api,
+weather api,
+maps api,
+firebase api,
+api in real projects,
+api development hindi,
+api kya hota hai hindi,
+api tutorial hindi,
+learn api step by step,
+api for developers,
+api guide 2026,
+modern api development,
+backend development api,
+full stack api,
+api best practices
+">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#080c10;--card:#0d1117;--card2:#111820;
+  --border:#1e2832;--border2:#243040;
+  --ink:#e8f0f8;--muted:#5a7090;--muted2:#7a90a8;
+  --red:#e8401c;--red2:#ff5533;--redbg:rgba(232,64,28,.08);
+  --green:#00d084;--greenbg:rgba(0,208,132,.08);
+  --blue:#0ea5e9;--bluebg:rgba(14,165,233,.08);
+  --yellow:#f59e0b;--yellowbg:rgba(245,158,11,.08);
+  --purple:#8b5cf6;--purplebg:rgba(139,92,246,.08);
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
+#particle-canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;opacity:.06;pointer-events:none}
+nav{position:sticky;top:0;z-index:100;background:rgba(8,12,16,.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:900;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
+.logo em{color:var(--green);font-style:normal}
+.nav-links{display:flex;gap:1.2rem;list-style:none;align-items:center}
+.nav-links a{color:var(--muted2);text-decoration:none;font-size:.83rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--ink)}
+.back-btn{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted2);text-decoration:none;font-size:.8rem;font-weight:500;border:1px solid var(--border2);border-radius:100px;padding:5px 14px;transition:all .2s}
+.back-btn:hover{border-color:var(--green);color:var(--green)}
+@media(max-width:640px){.nav-links{display:none}}
+.hero{position:relative;z-index:1;text-align:center;padding:5rem 5% 3rem;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 800px 500px at 50% 0%,rgba(0,208,132,.1),transparent 70%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,208,132,.1);border:1px solid rgba(0,208,132,.3);border-radius:100px;padding:5px 16px;font-size:.68rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--green);margin-bottom:1.5rem;animation:fadeDown .5s ease}
+@keyframes fadeDown{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+.hero h1{font-family:'Syne',sans-serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;line-height:1.05;margin-bottom:1rem;position:relative;z-index:1;animation:fadeUp .6s .1s ease both}
+.hero h1 .green{color:var(--green)}
+.hero-sub{color:var(--muted2);font-size:.95rem;line-height:1.8;max-width:560px;margin:0 auto 2rem;animation:fadeUp .6s .2s ease both;position:relative;z-index:1}
+.hero-meta{display:flex;justify-content:center;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.5rem;animation:fadeUp .6s .3s ease both;position:relative;z-index:1}
+.hero-meta span{font-size:.76rem;color:var(--muted);display:flex;align-items:center;gap:.3rem}
+.threat-bar{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin-bottom:.5rem;position:relative;z-index:1;animation:fadeUp .6s .4s ease both}
+.threat-pill{background:var(--card);border:1px solid var(--border2);border-radius:100px;padding:5px 14px;font-size:.72rem;font-weight:600;display:flex;align-items:center;gap:.4rem}
+.tp-green{border-color:rgba(0,208,132,.4);color:var(--green)}
+.tp-blue{border-color:rgba(14,165,233,.4);color:var(--blue)}
+.tp-purple{border-color:rgba(139,92,246,.4);color:var(--purple)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.api-flow{position:relative;z-index:1;margin:2rem auto 0;max-width:700px;animation:fadeUp .6s .5s ease both}
+.flow-container{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem;overflow:hidden}
+.flow-row{display:flex;align-items:center;justify-content:space-between;gap:.5rem;flex-wrap:wrap}
+.flow-box{background:var(--card2);border:1.5px solid var(--border2);border-radius:12px;padding:.8rem 1.2rem;text-align:center;min-width:100px;flex:1;position:relative;overflow:hidden}
+.flow-box::after{content:'';position:absolute;top:0;left:-100%;width:100%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.05),transparent);animation:shimmer 2s infinite}
+@keyframes shimmer{to{left:100%}}
+.flow-box.client{border-color:rgba(14,165,233,.4)}
+.flow-box.server{border-color:rgba(0,208,132,.4)}
+.flow-box.db{border-color:rgba(139,92,246,.4)}
+.fb-icon{font-size:1.5rem;margin-bottom:.3rem;display:block}
+.fb-label{font-size:.75rem;font-weight:700;color:var(--muted2)}
+.fb-sub{font-size:.65rem;color:var(--muted);margin-top:.2rem}
+.flow-arrow{display:flex;flex-direction:column;align-items:center;gap:.2rem;flex-shrink:0}
+.arrow-line{height:2px;width:40px;background:linear-gradient(90deg,var(--border2),var(--green));position:relative;overflow:hidden}
+.arrow-line::after{content:'';position:absolute;top:-1px;left:-20px;width:20px;height:4px;background:var(--green);border-radius:2px;animation:slideArrow 1.5s linear infinite}
+@keyframes slideArrow{to{left:100%}}
+.arrow-label{font-size:.58rem;color:var(--muted);font-family:'JetBrains Mono',monospace;white-space:nowrap}
+.arrow-head{color:var(--green);font-size:.8rem;margin-top:-.3rem}
+.flow-resp{display:flex;flex-direction:column;align-items:center;gap:.2rem;flex-shrink:0}
+.resp-line{height:2px;width:40px;background:linear-gradient(90deg,var(--blue),var(--border2));position:relative;overflow:hidden}
+.resp-line::after{content:'';position:absolute;top:-1px;right:-20px;width:20px;height:4px;background:var(--blue);border-radius:2px;animation:slideArrowBack 1.5s linear infinite}
+@keyframes slideArrowBack{to{right:100%}}
+.blog-wrap{max-width:900px;margin:0 auto;padding:0 5% 60px;position:relative;z-index:1}
+.toc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:2rem 0 3rem}
+.toc-hd{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.toc-hd::before{content:'';width:20px;height:1.5px;background:var(--green)}
+.toc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem .8rem}
+@media(max-width:500px){.toc-grid{grid-template-columns:1fr}}
+.toc-item{display:flex;align-items:center;gap:.5rem;font-size:.83rem;color:var(--muted2);text-decoration:none;padding:.3rem .5rem;border-radius:8px;transition:all .2s}
+.toc-item:hover{background:var(--card2);color:var(--ink)}
+.toc-num{width:20px;height:20px;background:var(--green);color:#000;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;flex-shrink:0}
+.sec-title{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:900;margin:4rem 0 1.5rem;padding-bottom:.6rem;border-bottom:1px solid var(--border);scroll-margin-top:72px;display:flex;align-items:center;gap:.7rem}
+.sec-title .snum{width:32px;height:32px;background:var(--green);color:#000;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:900;flex-shrink:0}
+.concept-card{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:1.5rem 0;transition:all .3s;position:relative}
+.concept-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--grad,var(--green))}
+.concept-card:hover{border-color:var(--border2);box-shadow:0 8px 40px rgba(0,0,0,.3);transform:translateY(-2px)}
+.cc-header{display:flex;align-items:center;gap:1rem;padding:1.4rem 1.6rem;border-bottom:1px solid var(--border);cursor:pointer;user-select:none}
+.cc-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;flex-shrink:0}
+.cc-title{flex:1}
+.cc-title h3{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:.2rem}
+.cc-title small{font-size:.72rem;color:var(--muted);font-weight:500}
+.level-badge{padding:3px 10px;border-radius:100px;font-size:.62rem;font-weight:800;text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+.lb-beginner{background:var(--greenbg);color:var(--green);border:1px solid rgba(0,208,132,.3)}
+.lb-intermediate{background:var(--bluebg);color:var(--blue);border:1px solid rgba(14,165,233,.3)}
+.lb-advanced{background:var(--purplebg);color:var(--purple);border:1px solid rgba(139,92,246,.3)}
+.cc-body{padding:1.4rem 1.6rem;animation:expandIn .25s ease}
+@keyframes expandIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+.cc-body p{font-size:.88rem;line-height:1.85;color:var(--muted2);margin-bottom:1rem}
+.cc-body p b,.cc-body p strong{color:var(--ink)}
+.analogy{background:linear-gradient(135deg,rgba(0,208,132,.06),rgba(14,165,233,.06));border:1px solid rgba(0,208,132,.2);border-radius:14px;padding:1.3rem 1.5rem;margin:1.2rem 0;position:relative;overflow:hidden}
+.analogy::before{content:'💡';position:absolute;right:1rem;top:.8rem;font-size:1.5rem;opacity:.4}
+.analogy-hd{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--green);margin-bottom:.6rem}
+.analogy p{font-size:.88rem;line-height:1.75;color:var(--muted2)}
+.analogy p b{color:var(--ink)}
+.terminal{background:#020408;border:1px solid var(--border);border-radius:14px;overflow:hidden;margin:1.2rem 0}
+.terminal-bar{background:#0d1117;padding:.6rem 1rem;display:flex;align-items:center;gap:.5rem;border-bottom:1px solid var(--border)}
+.t-dot{width:10px;height:10px;border-radius:50%}
+.td1{background:#ff5f57}.td2{background:#febc2e}.td3{background:#28c840}
+.terminal-label{font-size:.68rem;color:var(--muted);margin-left:auto;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+.terminal-body{padding:1.2rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;line-height:1.9;color:#c9d5e0;overflow-x:auto}
+.t-prompt{color:var(--green)}.t-cmd{color:#c9d5e0}.t-output{color:var(--muted2)}.t-warn{color:var(--yellow)}.t-green{color:var(--green)}.t-blue{color:var(--blue)}.t-purple{color:var(--purple)}.t-red{color:var(--red2)}.t-comment{color:#3a5070}
+.t-cursor{display:inline-block;width:8px;height:14px;background:var(--green);animation:blink .8s infinite;vertical-align:middle}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+.warn-box{background:var(--yellowbg);border-left:3px solid var(--yellow);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.warn-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.warn-box strong{color:var(--yellow)}
+.info-box{background:var(--bluebg);border-left:3px solid var(--blue);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.info-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.info-box strong{color:var(--blue)}
+.good-box{background:var(--greenbg);border-left:3px solid var(--green);border-radius:0 10px 10px 0;padding:1rem 1.2rem;margin:1.2rem 0}
+.good-box p{font-size:.86rem;line-height:1.75;color:var(--muted2)}
+.good-box strong{color:var(--green)}
+.how-steps{display:flex;flex-direction:column;gap:.6rem;margin:1rem 0}
+.how-step{display:flex;align-items:flex-start;gap:.8rem;background:var(--card2);border-radius:10px;padding:.8rem 1rem;font-size:.84rem;color:var(--muted2);line-height:1.6}
+.how-step .step-n{width:22px;height:22px;background:var(--green);color:#000;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:.65rem;font-weight:800;flex-shrink:0;margin-top:1px}
+.how-step b{color:var(--ink)}
+.protect-box{background:var(--greenbg);border:1px solid rgba(0,208,132,.2);border-radius:14px;padding:1.2rem 1.4rem;margin:1.2rem 0}
+.protect-box .pb-hd{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--green);margin-bottom:.7rem;display:flex;align-items:center;gap:.4rem}
+.protect-list{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.protect-list li{display:flex;align-items:flex-start;gap:.6rem;font-size:.85rem;color:var(--muted2);line-height:1.6}
+.protect-list li::before{content:'→';color:var(--green);font-weight:900;flex-shrink:0;margin-top:1px}
+.protect-list li b{color:var(--ink)}
+.method-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:.8rem;margin:1.2rem 0}
+.method-card{border-radius:12px;padding:1rem;text-align:center;border:1px solid;transition:all .3s;cursor:default}
+.method-card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.mc-GET{background:rgba(0,208,132,.08);border-color:rgba(0,208,132,.3);color:var(--green)}
+.mc-POST{background:rgba(14,165,233,.08);border-color:rgba(14,165,233,.3);color:var(--blue)}
+.mc-PUT{background:rgba(245,158,11,.08);border-color:rgba(245,158,11,.3);color:var(--yellow)}
+.mc-PATCH{background:rgba(139,92,246,.08);border-color:rgba(139,92,246,.3);color:var(--purple)}
+.mc-DELETE{background:rgba(232,64,28,.08);border-color:rgba(232,64,28,.3);color:var(--red2)}
+.method-name{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;display:block;margin-bottom:.3rem}
+.method-desc{font-size:.72rem;color:var(--muted2);line-height:1.4}
+.method-action{font-size:.68rem;font-weight:700;margin-top:.4rem;opacity:.8}
+.status-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:.6rem;margin:1.2rem 0}
+.status-item{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:.8rem 1rem;display:flex;align-items:center;gap:.7rem;transition:all .2s}
+.status-item:hover{border-color:var(--border2)}
+.status-code{font-family:'JetBrains Mono',monospace;font-size:1rem;font-weight:700;flex-shrink:0;min-width:36px}
+.s2xx{color:var(--green)}.s3xx{color:var(--blue)}.s4xx{color:var(--yellow)}.s5xx{color:var(--red2)}
+.status-name{font-size:.75rem;color:var(--muted2);line-height:1.35}
+.status-name b{color:var(--ink);display:block;font-size:.78rem}
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.2rem 0}
+@media(max-width:560px){.compare-grid{grid-template-columns:1fr}}
+.compare-col{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:1.2rem;transition:all .2s}
+.compare-col:hover{border-color:var(--border2)}
+.compare-col-hd{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.compare-items{display:flex;flex-direction:column;gap:.5rem}
+.ci-item{display:flex;align-items:flex-start;gap:.5rem;font-size:.8rem;color:var(--muted2);line-height:1.55}
+.ci-plus::before{content:'✓';color:var(--green);font-weight:900;flex-shrink:0}
+.ci-minus::before{content:'✗';color:var(--red2);font-weight:900;flex-shrink:0}
+.auth-flow{background:var(--card2);border:1px solid var(--border);border-radius:14px;padding:1.4rem;margin:1.2rem 0}
+.auth-steps{display:flex;flex-direction:column;gap:0}
+.auth-step{display:flex;gap:1rem;align-items:flex-start;position:relative;padding-bottom:1.2rem}
+.auth-step:last-child{padding-bottom:0}
+.auth-step::before{content:'';position:absolute;left:16px;top:32px;bottom:0;width:2px;background:var(--border);display:none}
+.auth-step:not(:last-child)::before{display:block}
+.auth-icon{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;z-index:1;border:2px solid var(--border)}
+.auth-content{flex:1}
+.auth-content h5{font-size:.85rem;font-weight:700;color:var(--ink);margin-bottom:.25rem}
+.auth-content p{font-size:.78rem;color:var(--muted2);line-height:1.55}
+.auth-token{font-family:'JetBrains Mono',monospace;font-size:.68rem;background:#020408;border:1px solid var(--border);border-radius:6px;padding:.4rem .7rem;margin-top:.4rem;color:var(--green);display:inline-block;word-break:break-all;max-width:100%}
+.api-tester{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:1.5rem 0}
+.at-header{background:linear-gradient(135deg,rgba(0,208,132,.08),rgba(14,165,233,.08));padding:1.2rem 1.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;flex-wrap:wrap}
+.at-header h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800}
+.live-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--greenbg);border:1px solid rgba(0,208,132,.25);border-radius:100px;padding:3px 10px;font-size:.65rem;font-weight:700;color:var(--green)}
+.live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:livePulse 1.5s infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(.7)}}
+.at-body{padding:1.4rem 1.6rem}
+.at-url-row{display:flex;gap:.7rem;margin-bottom:1rem;flex-wrap:wrap}
+.at-method-select{padding:9px 14px;background:rgba(0,208,132,.1);border:1.5px solid rgba(0,208,132,.3);border-radius:10px;color:var(--green);font-family:'JetBrains Mono',monospace;font-size:.82rem;font-weight:700;outline:none;cursor:pointer}
+.at-url-input{flex:1;padding:9px 14px;background:rgba(255,255,255,.03);border:1.5px solid var(--border);border-radius:10px;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.78rem;outline:none;transition:border-color .2s;min-width:180px}
+.at-url-input:focus{border-color:var(--blue)}
+.at-send-btn{background:var(--green);color:#000;border:none;padding:9px 20px;border-radius:10px;font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .2s;white-space:nowrap}
+.at-send-btn:hover{background:#00b870;transform:translateY(-1px)}
+.at-send-btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.at-presets{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1rem}
+.at-preset{background:var(--card2);border:1px solid var(--border2);border-radius:100px;padding:4px 12px;font-size:.7rem;font-weight:600;cursor:pointer;color:var(--muted2);transition:all .2s;font-family:'JetBrains Mono',monospace}
+.at-preset:hover{border-color:var(--green);color:var(--green)}
+.at-response{background:#020408;border:1px solid var(--border);border-radius:12px;overflow:hidden}
+.at-resp-header{background:#0d1117;padding:.6rem 1rem;display:flex;align-items:center;gap:.6rem;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.at-status-badge{padding:2px 10px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:700}
+.sb-ok{background:var(--greenbg);color:var(--green);border:1px solid rgba(0,208,132,.3)}
+.sb-err{background:var(--redbg);color:var(--red2);border:1px solid rgba(232,64,28,.3)}
+.sb-waiting{background:var(--yellowbg);color:var(--yellow);border:1px solid rgba(245,158,11,.3)}
+.at-time{font-size:.68rem;color:var(--muted);font-family:'JetBrains Mono',monospace;margin-left:auto}
+.at-resp-body{padding:1rem;font-family:'JetBrains Mono',monospace;font-size:.76rem;line-height:1.7;color:#c9d5e0;max-height:280px;overflow-y:auto;white-space:pre-wrap;word-break:break-all}
+.json-key{color:#79c0ff}.json-str{color:#a5d6ff}.json-num{color:#f47067}.json-bool{color:var(--purple)}
+.ws-demo{background:var(--card);border:1px solid var(--border);border-radius:16px;overflow:hidden;margin:1.5rem 0}
+.ws-header{padding:1rem 1.4rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+.ws-header h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800}
+.ws-status{display:flex;align-items:center;gap:.4rem;font-size:.72rem;color:var(--green)}
+.ws-dot{width:8px;height:8px;border-radius:50%;background:var(--green);animation:livePulse 1s infinite}
+.ws-feed{padding:1rem;height:200px;overflow-y:auto;display:flex;flex-direction:column;gap:.4rem}
+.ws-msg{display:flex;align-items:flex-start;gap:.6rem;font-family:'JetBrains Mono',monospace;font-size:.73rem;animation:slideIn .2s ease}
+@keyframes slideIn{from{opacity:0;transform:translateX(-6px)}to{opacity:1;transform:translateX(0)}}
+.ws-time{color:var(--muted);flex-shrink:0;min-width:60px}
+.ws-dir{font-size:.65rem;padding:1px 6px;border-radius:4px;flex-shrink:0}
+.ws-dir.send{background:rgba(14,165,233,.15);color:var(--blue)}
+.ws-dir.recv{background:rgba(0,208,132,.15);color:var(--green)}
+.ws-text{color:var(--muted2);flex:1;word-break:break-all}
+.ws-controls{padding:1rem 1.4rem;border-top:1px solid var(--border);display:flex;gap:.7rem}
+.ws-input{flex:1;padding:8px 12px;background:rgba(255,255,255,.03);border:1.5px solid var(--border);border-radius:8px;color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.78rem;outline:none}
+.ws-input:focus{border-color:var(--green)}
+.ws-send-btn{background:var(--green);color:#000;border:none;padding:8px 18px;border-radius:8px;font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer}
+.rate-demo{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.5rem;margin:1.5rem 0}
+.rate-demo h4{font-family:'Syne',sans-serif;font-size:.95rem;font-weight:800;margin-bottom:1rem}
+.rate-meters{display:flex;flex-direction:column;gap:.8rem}
+.rate-meter{display:flex;flex-direction:column;gap:.4rem}
+.rm-header{display:flex;justify-content:space-between;align-items:center}
+.rm-label{font-size:.78rem;font-weight:600;color:var(--muted2)}
+.rm-count{font-family:'JetBrains Mono',monospace;font-size:.78rem;color:var(--ink)}
+.rm-bar{height:8px;background:var(--border);border-radius:100px;overflow:hidden}
+.rm-fill{height:100%;border-radius:100px;transition:width .4s,background .4s}
+.rm-ok{background:var(--green)}.rm-warn{background:var(--yellow)}.rm-bad{background:var(--red2)}
+.rate-btn{background:var(--card2);border:1px solid var(--border2);border-radius:10px;padding:9px 20px;color:var(--ink);font-family:'Outfit',sans-serif;font-size:.84rem;font-weight:600;cursor:pointer;transition:all .2s;margin-top:.8rem}
+.rate-btn:hover{border-color:var(--green);color:var(--green)}
+.quiz-section{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:24px;padding:2rem;margin:3rem 0;position:relative;overflow:hidden}
+.quiz-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--blue),var(--purple))}
+.quiz-hd{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:900;margin-bottom:.3rem}
+.quiz-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.5rem}
+.quiz-question{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.2rem;margin-bottom:1rem}
+.q-text{font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.9rem;line-height:1.5}
+.q-options{display:flex;flex-direction:column;gap:.5rem}
+.q-option{background:rgba(255,255,255,.03);border:1.5px solid var(--border);border-radius:9px;padding:.7rem 1rem;font-size:.84rem;cursor:pointer;transition:all .25s;color:var(--muted2);text-align:left;width:100%;font-family:'Outfit',sans-serif}
+.q-option:hover:not(:disabled){border-color:var(--blue);color:var(--ink);background:var(--bluebg)}
+.q-option.correct{border-color:var(--green)!important;background:var(--greenbg)!important;color:var(--green)!important}
+.q-option.wrong{border-color:var(--red2)!important;background:var(--redbg)!important;color:var(--red2)!important}
+.q-feedback{font-size:.8rem;margin-top:.5rem;padding:.5rem .8rem;border-radius:7px;display:none}
+.q-feedback.show{display:block}
+.q-feedback.fb-ok{background:var(--greenbg);color:var(--green)}
+.q-feedback.fb-no{background:var(--redbg);color:var(--red2)}
+.quiz-score-box{text-align:center;padding:1.5rem;display:none}
+.quiz-score-box.show{display:block}
+.qsb-num{font-family:'Syne',sans-serif;font-size:3rem;font-weight:900;color:var(--green)}
+.qsb-label{font-size:.88rem;color:var(--muted);margin-bottom:.8rem}
+.qsb-msg{font-size:.85rem;color:var(--muted2);margin-bottom:1rem}
+.quiz-next-btn{background:var(--green);color:#000;border:none;padding:10px 24px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;margin-top:.5rem}
+.tasks-section{background:linear-gradient(135deg,var(--card),var(--card2));border:1px solid var(--border);border-radius:24px;padding:2rem;margin:3rem 0;position:relative;overflow:hidden}
+.tasks-section::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--blue),var(--purple))}
+.tasks-hd{display:flex;align-items:center;gap:.8rem;margin-bottom:.4rem}
+.tasks-hd h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:900}
+.tasks-sub{font-size:.82rem;color:var(--muted);margin-bottom:1.6rem}
+.task-progress-bar{height:4px;background:var(--border);border-radius:100px;margin-bottom:1.6rem;overflow:hidden}
+.task-progress-fill{height:100%;background:linear-gradient(90deg,var(--green),var(--blue));border-radius:100px;transition:width .5s cubic-bezier(.4,0,.2,1);width:0%}
+.task-progress-label{font-size:.72rem;color:var(--muted);text-align:right;margin-top:-.2rem;margin-bottom:1.2rem}
+.task-list{display:flex;flex-direction:column;gap:.8rem}
+.task-item{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.9rem;cursor:pointer;transition:all .25s;user-select:none}
+.task-item:hover{border-color:var(--border2);transform:translateX(3px)}
+.task-item.done{border-color:rgba(0,208,132,.35);background:var(--greenbg)}
+.task-item.done .task-check{background:var(--green);border-color:var(--green)}
+.task-item.done .task-check::after{content:'✓';color:#000;font-size:.75rem;font-weight:900}
+.task-check{width:24px;height:24px;border-radius:6px;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .25s;margin-top:1px}
+.task-body h4{font-size:.88rem;font-weight:700;color:var(--ink);margin-bottom:.2rem}
+.task-body p{font-size:.78rem;color:var(--muted);line-height:1.55}
+.task-xp{background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.2);color:var(--yellow);font-size:.62rem;font-weight:800;padding:2px 8px;border-radius:100px;margin-left:auto;flex-shrink:0;align-self:flex-start}
+.task-done-msg{display:none;text-align:center;padding:1.5rem;animation:fadeUp .3s ease}
+.task-done-msg.show{display:block}
+.task-done-msg h4{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:900;color:var(--green);margin-bottom:.4rem}
+.task-done-msg p{font-size:.84rem;color:var(--muted);line-height:1.6}
+.cheat-sheet{background:var(--card);border:1px solid var(--border);border-radius:20px;overflow:hidden;margin:1.5rem 0}
+.cs-header{background:linear-gradient(135deg,rgba(0,208,132,.08),rgba(14,165,233,.08));padding:1.2rem 1.6rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:.8rem;flex-wrap:wrap}
+.cs-header h4{font-family:'Syne',sans-serif;font-size:1rem;font-weight:800}
+.cs-copy-btn{background:var(--card2);border:1px solid var(--border2);border-radius:8px;padding:5px 14px;font-size:.72rem;font-weight:600;cursor:pointer;color:var(--muted2);transition:all .2s;font-family:'Outfit',sans-serif}
+.cs-copy-btn:hover{border-color:var(--green);color:var(--green)}
+.cs-body{font-family:'JetBrains Mono',monospace;font-size:.76rem;line-height:1.8;color:#c9d5e0;padding:1.2rem 1.6rem;overflow-x:auto}
+.engage-wrap{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2rem 1.8rem;margin:3rem 0}
+.like-section{text-align:center;padding-bottom:2rem;border-bottom:1px solid var(--border);margin-bottom:2rem}
+.like-section p{font-size:.88rem;color:var(--muted);margin-bottom:1rem}
+.like-btn{display:inline-flex;align-items:center;gap:.8rem;background:rgba(255,255,255,.04);border:2px solid var(--border2);border-radius:100px;padding:12px 28px;font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;transition:all .3s;color:var(--ink)}
+.like-btn:hover{border-color:var(--green);color:var(--green)}
+.like-btn.liked{background:var(--greenbg);border-color:var(--green);color:var(--green)}
+.like-btn .heart{font-size:1.3rem;transition:transform .3s}
+.like-btn.liked .heart{animation:heartBeat .4s ease}
+@keyframes heartBeat{0%{transform:scale(1)}30%{transform:scale(1.5)}60%{transform:scale(.9)}100%{transform:scale(1)}}
+#like-count{font-size:.8rem;color:var(--muted);margin-top:.7rem;display:block}
+.cmt-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem;flex-wrap:wrap;gap:.5rem}
+.cmt-header h3{font-family:'Syne',sans-serif;font-size:1.2rem;font-weight:900}
+.cmt-live-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--greenbg);border:1px solid rgba(0,208,132,.25);border-radius:100px;padding:4px 12px;font-size:.68rem;font-weight:700;color:var(--green)}
+.cmt-live-dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:livePulse 1.5s infinite}
+.comment-form{background:rgba(255,255,255,.02);border:1px solid var(--border);border-radius:16px;padding:1.4rem;margin-bottom:1.5rem;position:relative;overflow:hidden}
+.comment-form::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),var(--blue))}
+.cmt-form-title{font-size:.88rem;font-weight:700;margin-bottom:.8rem}
+.pi-prompts{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+.pi-prompt-chip{background:rgba(255,255,255,.04);border:1px solid var(--border2);border-radius:100px;padding:4px 12px;font-size:.72rem;font-weight:500;cursor:pointer;transition:all .2s;color:var(--muted2)}
+.pi-prompt-chip:hover{border-color:var(--green);color:var(--green)}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:.7rem}
+@media(max-width:500px){.cf-row{grid-template-columns:1fr}}
+.cf-input{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.86rem;background:rgba(255,255,255,.03);color:var(--ink);outline:none;transition:border-color .2s}
+.cf-input:focus{border-color:var(--blue)}
+.cf-textarea{width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:10px;font-family:'Outfit',sans-serif;font-size:.86rem;background:rgba(255,255,255,.03);color:var(--ink);resize:vertical;min-height:80px;transition:border-color .2s;outline:none;margin-bottom:.7rem}
+.cf-textarea:focus{border-color:var(--blue)}
+.cf-bottom{display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.cf-submit{background:var(--green);color:#000;border:none;padding:10px 24px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.86rem;font-weight:700;cursor:pointer;transition:all .2s}
+.cf-submit:hover:not(:disabled){background:#00b870;transform:translateY(-1px)}
+.cf-submit:disabled{opacity:.5;cursor:not-allowed}
+.cf-char{font-size:.7rem;color:var(--muted);margin-left:auto}
+.cf-msg{font-size:.82rem;font-weight:600;padding:.4rem .9rem;border-radius:7px}
+.cf-msg.cw-ok{color:var(--green);background:var(--greenbg);border:1px solid rgba(0,208,132,.2)}
+.cf-msg.cw-err{color:var(--red2);background:var(--redbg);border:1px solid rgba(232,64,28,.2)}
+.comment-list{display:flex;flex-direction:column;gap:.9rem}
+.comment-card{background:rgba(255,255,255,.03);border:1px solid var(--border);border-radius:14px;padding:1.1rem 1.3rem}
+.comment-card:hover{border-color:var(--border2)}
+.comment-header{display:flex;align-items:center;gap:.7rem;margin-bottom:.5rem}
+.ci-avatar{width:36px;height:36px;border-radius:50%;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0}
+.comment-meta{flex:1}
+.comment-name{font-weight:700;font-size:.86rem;display:block;color:var(--ink)}
+.comment-date{font-size:.7rem;color:var(--muted)}
+.comment-text{font-size:.86rem;color:var(--muted2);line-height:1.65;padding-left:2.8rem}
+.cmt-empty{text-align:center;padding:2.5rem;color:var(--muted)}
+.cmt-empty-icon{font-size:2.5rem;margin-bottom:.6rem;display:block;animation:floatAnim 3s ease-in-out infinite}
+@keyframes floatAnim{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+.related-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin:1.5rem 0}
+@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+.rel-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:1.1rem;text-decoration:none;color:var(--ink);transition:all .2s;display:block}
+.rel-card:hover{border-color:var(--green);transform:translateY(-2px)}
+.rel-tag{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.4px;color:var(--green);margin-bottom:.3rem}
+.rel-title{font-weight:700;font-size:.84rem;line-height:1.4;color:var(--muted2)}
+#cw-toggle{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;background:rgba(13,17,23,.95);border-radius:100px;padding:4px;box-shadow:0 6px 28px rgba(0,0,0,.4);border:1px solid var(--border2)}
+.lo{padding:8px 16px;border-radius:100px;font-size:.7rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.3);font-family:'Outfit',sans-serif;transition:all .25s}
+.lo.on{background:linear-gradient(135deg,var(--green),#00a060);color:#000}
+footer{border-top:1px solid var(--border);padding:1.5rem 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.8rem;margin-top:2rem;position:relative;z-index:1}
+footer p{font-size:.78rem;color:var(--muted)}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .6s ease,transform .6s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+  </style>
+</head>
+<body>
+<canvas id="particle-canvas"></canvas>
+
+<nav>
+  <a href="../index.html" class="logo">CI<em>Web</em></a>
+  <ul class="nav-links">
+    <li><a href="../index.html" data-en="Home" data-hi="Home">Home</a></li>
+    <li><a href="../blogs.html" data-en="Blogs" data-hi="Blogs">Blogs</a></li>
+  </ul>
+  <a href="../blogs.html" class="back-btn">&#8592; <span data-en="Back" data-hi="Wapas">Back</span></a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge">🔌 <span data-en="Developer Guide" data-hi="Developer Guide">Developer Guide</span></div>
+  <h1 id="h1">What is an <span class="green">API</span>?<br/><span data-en="The Complete Guide 2026" data-hi="Poora Guide 2026">The Complete Guide 2026</span></h1>
+  <p class="hero-sub" id="hero-sub" data-en="APIs power every app you use — Swiggy, Instagram, Paytm. Learn how they work, how to build them, and how to use them like a pro." data-hi="Jo bhi apps tum use karte ho — Swiggy, Instagram, Paytm — sab mein APIs hain. Seekho kaise kaam karti hain, kaise banate hain, aur pro ki tarah use karo.">APIs power every app you use — Swiggy, Instagram, Paytm. Learn how they work, how to build them, and how to use them like a pro.</p>
+  <div class="hero-meta">
+    <span>📅 <b data-en="March 2026" data-hi="March 2026">March 2026</b></span>
+    <span>⏱ <b data-en="20 min read" data-hi="20 min padhna">20 min read</b></span>
+    <span>👤 <b>CIWeb</b></span>
+  </div>
+  <div class="threat-bar">
+    <div class="threat-pill tp-green">🟢 <span data-en="10 Core Concepts" data-hi="10 Main Concepts">10 Core Concepts</span></div>
+    <div class="threat-pill tp-blue">🔵 <span data-en="Live API Tester" data-hi="Live API Tester">Live API Tester</span></div>
+    <div class="threat-pill tp-purple">🟣 <span data-en="API Quiz" data-hi="API Quiz">API Quiz</span></div>
+  </div>
+  <div class="api-flow">
+    <div class="flow-container">
+      <div style="font-size:.7rem;text-align:left;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-bottom:1rem" data-en="How an API Request Flows ↓" data-hi="API Request Kaise Flow Karta Hai ↓">How an API Request Flows ↓</div>
+      <div class="flow-row">
+        <div class="flow-box client"><span class="fb-icon">📱</span><div class="fb-label" data-en="Client" data-hi="Client">Client</div><div class="fb-sub" data-en="Your App" data-hi="Tumhara App">Your App</div></div>
+        <div class="flow-arrow"><div class="arrow-line"></div><div class="arrow-label" data-en="HTTP Request" data-hi="HTTP Request">HTTP Request</div><div class="arrow-head">▶</div></div>
+        <div class="flow-box" style="border-color:rgba(0,208,132,.4)"><span class="fb-icon">🔌</span><div class="fb-label">API</div><div class="fb-sub" data-en="Gateway" data-hi="Gateway">Gateway</div></div>
+        <div class="flow-arrow"><div class="arrow-line"></div><div class="arrow-label" data-en="Query" data-hi="Query">Query</div><div class="arrow-head">▶</div></div>
+        <div class="flow-box server"><span class="fb-icon">🖥️</span><div class="fb-label" data-en="Server" data-hi="Server">Server</div><div class="fb-sub" data-en="Logic" data-hi="Logic">Logic</div></div>
+        <div class="flow-resp"><div class="resp-line"></div><div class="arrow-label" data-en="Data" data-hi="Data">Data</div><div style="color:var(--blue);font-size:.8rem">◀</div></div>
+        <div class="flow-box db"><span class="fb-icon">🗄️</span><div class="fb-label" data-en="Database" data-hi="Database">Database</div><div class="fb-sub" data-en="Store" data-hi="Store">Store</div></div>
+      </div>
+      <div style="text-align:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);margin-top:1rem">GET /api/v1/users → 200 OK → <span style="color:var(--green)">{data: [...]}</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="blog-wrap">
+  <div class="toc reveal">
+    <div class="toc-hd" data-en="Contents" data-hi="Contents">Contents</div>
+    <div class="toc-grid">
+      <a href="#s1" class="toc-item"><span class="toc-num">1</span> <span data-en="What is an API?" data-hi="API Kya Hai?">What is an API?</span></a>
+      <a href="#s2" class="toc-item"><span class="toc-num">2</span> <span data-en="How APIs Work" data-hi="APIs Kaise Kaam Karti Hain">How APIs Work</span></a>
+      <a href="#s3" class="toc-item"><span class="toc-num">3</span> <span data-en="REST APIs" data-hi="REST APIs">REST APIs</span></a>
+      <a href="#s4" class="toc-item"><span class="toc-num">4</span> <span data-en="HTTP Methods" data-hi="HTTP Methods">HTTP Methods</span></a>
+      <a href="#s5" class="toc-item"><span class="toc-num">5</span> <span data-en="Status Codes" data-hi="Status Codes">Status Codes</span></a>
+      <a href="#s6" class="toc-item"><span class="toc-num">6</span> <span data-en="GraphQL" data-hi="GraphQL">GraphQL</span></a>
+      <a href="#s7" class="toc-item"><span class="toc-num">7</span> <span data-en="WebSockets" data-hi="WebSockets">WebSockets</span></a>
+      <a href="#s8" class="toc-item"><span class="toc-num">8</span> <span data-en="Authentication" data-hi="Authentication">Authentication</span></a>
+      <a href="#s9" class="toc-item"><span class="toc-num">9</span> <span data-en="Rate Limiting" data-hi="Rate Limiting">Rate Limiting</span></a>
+      <a href="#s10" class="toc-item"><span class="toc-num">10</span> <span data-en="Live API Tester" data-hi="Live API Tester">Live API Tester</span></a>
+      <a href="#quiz" class="toc-item"><span class="toc-num">🧠</span> <span data-en="API Quiz" data-hi="API Quiz">API Quiz</span></a>
+      <a href="#tasks" class="toc-item"><span class="toc-num">⚡</span> <span data-en="Practice Tasks" data-hi="Practice Tasks">Practice Tasks</span></a>
+    </div>
+  </div>
+
+  <!-- S1 -->
+  <div class="sec-title reveal" id="s1"><span class="snum">1</span><span data-en="What is an API?" data-hi="API Kya Hai?">What is an API?</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--green),#00b870)">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--greenbg)">🔌</div>
+      <div class="cc-title">
+        <h3 data-en="API — Application Programming Interface" data-hi="API — Application Programming Interface">API — Application Programming Interface</h3>
+        <small data-en="The bridge between every app and service you use" data-hi="Har app aur service ke beech ka bridge">The bridge between every app and service you use</small>
+      </div>
+      <span class="level-badge lb-beginner" data-en="Beginner" data-hi="Beginner">Beginner</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="An API is a <b>set of rules that lets two applications talk to each other</b>. You don't need to know how the other app works internally — you just call the API and get back data. Think of it as a <b>waiter in a restaurant</b>: you don't go to the kitchen yourself, you give your order to the waiter (API), and the kitchen (server) prepares it and sends it back." data-hi="API ek <b>rule set hai jo do applications ko ek doosre se baat karne deta hai</b>. Doosri app andar se kaise kaam karti hai — yeh jaanna zaroori nahi. Bas API call karo aur data wapas pao. Ise ek <b>restaurant ke waiter ki tarah socho</b>: tum khud kitchen nahi jaate, waiter (API) ko order dete ho, aur kitchen (server) taiyaar karke bhejti hai.">An API is a <b>set of rules that lets two applications talk to each other</b>. You don't need to know how the other app works internally — you just call the API and get back data.</p>
+      <div class="analogy">
+        <div class="analogy-hd">🍽️ <span data-en="The Restaurant Analogy" data-hi="Restaurant Wala Example">The Restaurant Analogy</span></div>
+        <p data-en="<b>You</b> = Your App &nbsp;|&nbsp; <b>Waiter</b> = API &nbsp;|&nbsp; <b>Kitchen</b> = Server &nbsp;|&nbsp; <b>Menu</b> = API Docs<br/>You order → Waiter (API) takes it to kitchen (server) → Kitchen processes → Waiter returns with food (response). You never see the kitchen!" data-hi="<b>Tum</b> = Tumhara App &nbsp;|&nbsp; <b>Waiter</b> = API &nbsp;|&nbsp; <b>Kitchen</b> = Server &nbsp;|&nbsp; <b>Menu</b> = API Docs<br/>Tum order karo → Waiter (API) kitchen (server) pe le jaata hai → Kitchen process karta hai → Waiter khaana wapas laata hai (response). Tumne kabhi kitchen nahi dekhi!"><b>You</b> = Your App &nbsp;|&nbsp; <b>Waiter</b> = API &nbsp;|&nbsp; <b>Kitchen</b> = Server &nbsp;|&nbsp; <b>Menu</b> = API Docs</p>
+      </div>
+      <p data-en="<b>Real world examples:</b> When you open Swiggy, it calls a restaurant API to get the menu. When you pay via UPI, it calls a payment API. When you log in with Google, it calls Google's OAuth API. When you check weather, it calls a weather API. <b>Everything is APIs.</b>" data-hi="<b>Real world examples:</b> Swiggy open karo toh restaurant API call hoti hai menu ke liye. UPI se pay karo toh payment API call hoti hai. Google se login karo toh OAuth API call hoti hai. Weather check karo toh weather API call hoti hai. <b>Sab kuch APIs hain.</b>"><b>Real world examples:</b> Swiggy → restaurant menu API. UPI → payment gateway API. Google Login → OAuth API. Weather app → weather service API. <b>Everything is APIs.</b></p>
+      <div class="protect-box">
+        <div class="pb-hd">🌍 <span data-en="APIs You Use Every Day" data-hi="Roz Use Hone Waali APIs">APIs You Use Every Day</span></div>
+        <ul class="protect-list">
+          <li><b>Swiggy / Zomato</b> — <span data-en="Restaurant data, GPS tracking, payment — all separate APIs" data-hi="Restaurant data, GPS tracking, payment — sab alag-alag APIs hain">Restaurant data, GPS tracking, payment — all separate APIs</span></li>
+          <li><b>Instagram</b> — <span data-en="Post upload, like, comment, follow — all API calls" data-hi="Post upload, like, comment, follow — sab API calls hain">Post upload, like, comment, follow — all API calls</span></li>
+          <li><b>Google Maps</b> — <span data-en="Embed maps in any app with just 3 lines of code" data-hi="Sirf 3 lines of code mein kisi bhi app mein maps embed karo">Embed maps in any app with just 3 lines of code</span></li>
+          <li><b>ChatGPT / Gemini</b> — <span data-en="Add AI to your apps via simple API calls" data-hi="Simple API calls ke through apne apps mein AI add karo">Add AI to your apps via simple API calls</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="sec-title reveal" id="s2"><span class="snum">2</span><span data-en="How APIs Work — Step by Step" data-hi="APIs Kaise Kaam Karti Hain — Step by Step">How APIs Work — Step by Step</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--blue),#6366f1)">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--bluebg)">⚙️</div>
+      <div class="cc-title">
+        <h3 data-en="The Complete Request → Response Cycle" data-hi="Poora Request → Response Cycle">The Complete Request → Response Cycle</h3>
+        <small data-en="What happens in milliseconds when you click anything" data-hi="Jab tum kuch bhi click karte ho toh milliseconds mein kya hota hai">What happens in milliseconds when you click anything</small>
+      </div>
+      <span class="level-badge lb-beginner" data-en="Beginner" data-hi="Beginner">Beginner</span>
+    </div>
+    <div class="cc-body">
+      <div class="how-steps">
+        <div class="how-step"><span class="step-n">1</span><span data-en="<b>Client makes a request:</b> Your app sends an HTTP request to an API endpoint URL (like https://api.example.com/users)" data-hi="<b>Client request karta hai:</b> Tumhara app ek HTTP request bhejta hai API endpoint URL pe (jaise https://api.example.com/users)"><b>Client makes a request:</b> Your app sends an HTTP request to an API endpoint URL</span></div>
+        <div class="how-step"><span class="step-n">2</span><span data-en="<b>Request travels over internet:</b> Contains the HTTP method (GET/POST), headers (auth tokens), and optionally a body (data to send)" data-hi="<b>Request internet pe travel karti hai:</b> Ismein HTTP method (GET/POST), headers (auth tokens), aur optional body (bhejne ka data) hota hai"><b>Request travels:</b> Contains HTTP method, headers (auth tokens), and optionally request body</span></div>
+        <div class="how-step"><span class="step-n">3</span><span data-en="<b>Server processes the request:</b> Checks authentication, validates data, runs business logic, queries the database" data-hi="<b>Server request process karta hai:</b> Authentication check karta hai, data validate karta hai, business logic run karta hai, database query karta hai"><b>Server processes:</b> Checks auth, validates data, runs business logic, queries database</span></div>
+        <div class="how-step"><span class="step-n">4</span><span data-en="<b>Server sends response:</b> Returns data as JSON with an HTTP status code (200 OK, 404 Not Found, 500 Error)" data-hi="<b>Server response bhejta hai:</b> JSON mein data return karta hai HTTP status code ke saath (200 OK, 404 Not Found, 500 Error)"><b>Server responds:</b> Returns JSON data with HTTP status code (200 OK, 404 Not Found, 500 Error)</span></div>
+        <div class="how-step"><span class="step-n">5</span><span data-en="<b>Client uses the data:</b> Your app reads the JSON response and displays it — the user sees the result!" data-hi="<b>Client data use karta hai:</b> Tumhara app JSON response padhta hai aur display karta hai — user result dekhta hai!"><b>Client displays:</b> Your app reads the JSON and renders it for the user</span></div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div><span class="terminal-label">COMPLETE API CALL EXAMPLE</span></div>
+        <div class="terminal-body">
+<span class="t-comment">// 1. Make a GET request to fetch user data</span>
+<span class="t-prompt">$</span> <span class="t-cmd">curl -X GET "https://api.example.com/users/42" \
+     -H "Authorization: Bearer eyJhbGci..." \
+     -H "Content-Type: application/json"</span>
+
+<span class="t-comment">// 2. Server responds with JSON</span>
+<span class="t-green">{
+  "status": 200,
+  "data": {
+    "id": 42,
+    "name": "Rahul Kumar",
+    "email": "rahul@example.com",
+    "city": "Mumbai"
+  }
+}</span>
+<span class="t-comment">// Response time: 142ms ✓</span>
+        </div>
+      </div>
+      <div class="info-box"><p><strong data-en="JSON — The Universal Language of APIs:" data-hi="JSON — APIs ki Universal Language:">JSON — The Universal Language of APIs:</strong> <span data-en="Almost all modern APIs communicate using JSON. It's just text organized as key:value pairs — humans can read it, machines love it." data-hi="Almost sabhi modern APIs JSON use karti hain. Yeh sirf text hai key:value pairs mein organized — humans padh sakte hain, machines process karti hain.">Almost all modern APIs communicate using JSON — text organized as key:value pairs.</span></p></div>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="sec-title reveal" id="s3"><span class="snum">3</span><span data-en="REST APIs — The Most Popular Standard" data-hi="REST APIs — Sabse Popular Standard">REST APIs — The Most Popular Standard</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--green),var(--blue))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--greenbg)">🌐</div>
+      <div class="cc-title">
+        <h3 data-en="REST — Representational State Transfer" data-hi="REST — Representational State Transfer">REST — Representational State Transfer</h3>
+        <small data-en="~80% of all public APIs are REST APIs" data-hi="~80% public APIs REST APIs hain">~80% of all public APIs are REST APIs</small>
+      </div>
+      <span class="level-badge lb-intermediate" data-en="Intermediate" data-hi="Intermediate">Intermediate</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="REST is a <b>set of architectural principles</b> for designing APIs. REST APIs use standard HTTP methods and clean URLs to perform operations on resources. A 'resource' can be anything: a user, a product, an order." data-hi="REST ek <b>architectural principles ka set</b> hai APIs design karne ke liye. REST APIs standard HTTP methods aur clean URLs use karti hain resources pe operations karne ke liye. 'Resource' kuch bhi ho sakta hai: user, product, order.">REST is a <b>set of architectural principles</b> for designing APIs. REST APIs use standard HTTP methods and clean URLs to operate on resources.</p>
+      <div class="analogy">
+        <div class="analogy-hd">📁 <span data-en="REST Resources = Files in a Folder" data-hi="REST Resources = Folder mein Files">REST Resources = Files in a Folder</span></div>
+        <p data-en="Think of your API like a <b>filing system</b>. /users is a folder. /users/42 is one specific file. You can GET (read), POST (create), PUT (update), DELETE a file — the URL tells you WHAT, the method tells you WHAT TO DO." data-hi="API ko ek <b>filing system ki tarah socho</b>. /users ek folder hai. /users/42 uske andar ek specific file hai. Tum GET (padhna), POST (banana), PUT (update), DELETE kar sakte ho — URL batata hai KYA, method batata hai KYA KARNA HAI.">Think of your API like a <b>filing system</b>. /users is a folder. /users/42 is one file. GET=read, POST=create, PUT=update, DELETE=remove.</p>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div><span class="terminal-label">REST ENDPOINTS — USERS RESOURCE</span></div>
+        <div class="terminal-body">
+<span class="t-green">GET</span>    <span class="t-blue">/api/users</span>           <span class="t-comment">→ Get all users</span>
+<span class="t-green">GET</span>    <span class="t-blue">/api/users/42</span>        <span class="t-comment">→ Get user with ID 42</span>
+<span class="t-blue">POST</span>   <span class="t-blue">/api/users</span>           <span class="t-comment">→ Create a new user</span>
+<span class="t-warn">PUT</span>    <span class="t-blue">/api/users/42</span>        <span class="t-comment">→ Replace user 42 entirely</span>
+<span class="t-warn">PATCH</span>  <span class="t-blue">/api/users/42</span>        <span class="t-comment">→ Update part of user 42</span>
+<span class="t-red">DELETE</span> <span class="t-blue">/api/users/42</span>        <span class="t-comment">→ Delete user 42</span>
+
+<span class="t-comment">// Nested resources:</span>
+<span class="t-green">GET</span>    <span class="t-blue">/api/users/42/orders</span>    <span class="t-comment">→ All orders by user 42</span>
+<span class="t-green">GET</span>    <span class="t-blue">/api/users/42/orders/7</span>  <span class="t-comment">→ Order 7 by user 42</span>
+        </div>
+      </div>
+      <p data-en="<b>REST's 6 Principles:</b> (1) <b>Stateless</b> — each request has everything needed, no session on server. (2) <b>Client-Server</b> — frontend and backend are independent. (3) <b>Uniform Interface</b> — consistent URLs and methods. (4) <b>Cacheable</b> — responses can be cached. (5) <b>Layered System</b> — can have proxies between client and server. (6) <b>Code on Demand</b> (optional)." data-hi="<b>REST ke 6 Principles:</b> (1) <b>Stateless</b> — har request mein sab kuch hota hai, server pe session memory nahi. (2) <b>Client-Server</b> — frontend aur backend independent hain. (3) <b>Uniform Interface</b> — consistent URLs aur methods. (4) <b>Cacheable</b> — speed ke liye cache ho sakte hain. (5) <b>Layered System</b> — beech mein proxies ho sakte hain. (6) <b>Code on Demand</b> (optional)."><b>REST's 6 Principles:</b> Stateless · Client-Server · Uniform Interface · Cacheable · Layered System · Code on Demand.</p>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="sec-title reveal" id="s4"><span class="snum">4</span><span data-en="HTTP Methods — The Verbs of APIs" data-hi="HTTP Methods — APIs ke Verbs">HTTP Methods — The Verbs of APIs</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--yellow),var(--green))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--yellowbg)">📋</div>
+      <div class="cc-title">
+        <h3 data-en="GET, POST, PUT, PATCH, DELETE" data-hi="GET, POST, PUT, PATCH, DELETE">GET, POST, PUT, PATCH, DELETE</h3>
+        <small data-en="The 5 methods that power every API interaction" data-hi="5 methods jo har API interaction power karte hain">The 5 methods that power every API interaction</small>
+      </div>
+      <span class="level-badge lb-beginner" data-en="Beginner" data-hi="Beginner">Beginner</span>
+    </div>
+    <div class="cc-body">
+      <div class="method-grid">
+        <div class="method-card mc-GET"><span class="method-name">GET</span><div class="method-desc" data-en="Retrieve data from server" data-hi="Server se data lao">Retrieve data from server</div><div class="method-action" data-en="📖 Read-only" data-hi="📖 Sirf padhna">📖 Read-only</div></div>
+        <div class="method-card mc-POST"><span class="method-name">POST</span><div class="method-desc" data-en="Send new data to server" data-hi="Server pe naya data bhejo">Send new data to server</div><div class="method-action" data-en="✏️ Create new" data-hi="✏️ Naya banao">✏️ Create new</div></div>
+        <div class="method-card mc-PUT"><span class="method-name">PUT</span><div class="method-desc" data-en="Replace entire resource" data-hi="Puri resource replace karo">Replace entire resource</div><div class="method-action" data-en="🔄 Full update" data-hi="🔄 Poora update">🔄 Full update</div></div>
+        <div class="method-card mc-PATCH"><span class="method-name">PATCH</span><div class="method-desc" data-en="Update part of a resource" data-hi="Resource ka ek hissa update karo">Update part of a resource</div><div class="method-action" data-en="✂️ Partial update" data-hi="✂️ Thoda update">✂️ Partial update</div></div>
+        <div class="method-card mc-DELETE"><span class="method-name">DELETE</span><div class="method-desc" data-en="Remove a resource" data-hi="Resource hatao">Remove a resource</div><div class="method-action" data-en="🗑️ Remove" data-hi="🗑️ Delete karo">🗑️ Remove</div></div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div><span class="terminal-label">METHODS IN JAVASCRIPT</span></div>
+        <div class="terminal-body">
+<span class="t-comment">// GET — Fetch data</span>
+<span class="t-blue">const</span> res = <span class="t-blue">await</span> fetch(<span class="t-green">'/api/users'</span>);
+<span class="t-blue">const</span> data = <span class="t-blue">await</span> res.<span class="t-warn">json</span>();
+
+<span class="t-comment">// POST — Create new user</span>
+<span class="t-blue">await</span> fetch(<span class="t-green">'/api/users'</span>, {
+  method: <span class="t-green">'POST'</span>,
+  headers: { <span class="t-green">'Content-Type'</span>: <span class="t-green">'application/json'</span> },
+  body: JSON.<span class="t-warn">stringify</span>({ name: <span class="t-green">'Rahul'</span>, email: <span class="t-green">'r@g.com'</span> })
+});
+
+<span class="t-comment">// PATCH — Update only name</span>
+<span class="t-blue">await</span> fetch(<span class="t-green">'/api/users/42'</span>, {
+  method: <span class="t-green">'PATCH'</span>,
+  body: JSON.<span class="t-warn">stringify</span>({ name: <span class="t-green">'Rahul Kumar'</span> })
+});
+
+<span class="t-comment">// DELETE</span>
+<span class="t-blue">await</span> fetch(<span class="t-green">'/api/users/42'</span>, { method: <span class="t-green">'DELETE'</span> });
+        </div>
+      </div>
+      <div class="warn-box"><p><strong data-en="⚠️ PUT vs PATCH — Don't Confuse Them:" data-hi="⚠️ PUT vs PATCH — Confuse Mat Hona:">⚠️ PUT vs PATCH:</strong> <span data-en="PUT replaces the ENTIRE resource — if you only send name, all other fields get deleted! PATCH only updates the fields you send. Always prefer PATCH for partial updates." data-hi="PUT PURI resource replace karta hai — agar sirf name bhejo, toh baaki sab fields delete ho jaate hain! PATCH sirf woh fields update karta hai jo tum bhejte ho. Partial updates ke liye hamesha PATCH use karo.">PUT replaces the ENTIRE resource. PATCH only updates fields you send. Always prefer PATCH for partial updates!</span></p></div>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="sec-title reveal" id="s5"><span class="snum">5</span><span data-en="HTTP Status Codes" data-hi="HTTP Status Codes">HTTP Status Codes</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--blue),var(--green))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--bluebg)">🚦</div>
+      <div class="cc-title">
+        <h3 data-en="200? 404? 500? What Do They Mean?" data-hi="200? 404? 500? Matlab Kya Hai?">200? 404? 500? What Do They Mean?</h3>
+        <small data-en="Every API response has a status code telling you what happened" data-hi="Har API response mein status code hota hai jo batata hai kya hua">Every API response has a status code</small>
+      </div>
+      <span class="level-badge lb-beginner" data-en="Beginner" data-hi="Beginner">Beginner</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="Status codes are <b>3-digit numbers</b> grouped by first digit: 2xx=success, 3xx=redirect, 4xx=client error, 5xx=server error." data-hi="Status codes <b>3-digit numbers</b> hain pehle digit ke hisaab se grouped: 2xx=success, 3xx=redirect, 4xx=client ki galti, 5xx=server ki galti.">Status codes are <b>3-digit numbers</b> grouped by first digit: 2xx=success, 3xx=redirect, 4xx=client error, 5xx=server error.</p>
+      <div class="status-grid">
+        <div class="status-item"><span class="status-code s2xx">200</span><div class="status-name"><b>OK</b><span data-en="Request succeeded" data-hi="Request successful rahi">Request succeeded</span></div></div>
+        <div class="status-item"><span class="status-code s2xx">201</span><div class="status-name"><b>Created</b><span data-en="New resource created" data-hi="Naya resource ban gaya">New resource created</span></div></div>
+        <div class="status-item"><span class="status-code s2xx">204</span><div class="status-name"><b>No Content</b><span data-en="Success, nothing returned" data-hi="Success, kuch return nahi">Success, nothing returned</span></div></div>
+        <div class="status-item"><span class="status-code s3xx">301</span><div class="status-name"><b>Moved Permanently</b><span data-en="URL changed forever" data-hi="URL permanently badal gayi">URL changed forever</span></div></div>
+        <div class="status-item"><span class="status-code s3xx">304</span><div class="status-name"><b>Not Modified</b><span data-en="Use cached version" data-hi="Cached version use karo">Use cached version</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">400</span><div class="status-name"><b>Bad Request</b><span data-en="Invalid data sent" data-hi="Galat data bheja">Invalid data sent</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">401</span><div class="status-name"><b>Unauthorized</b><span data-en="Login required" data-hi="Login zaroori hai">Login required</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">403</span><div class="status-name"><b>Forbidden</b><span data-en="No permission" data-hi="Permission nahi hai">No permission</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">404</span><div class="status-name"><b>Not Found</b><span data-en="Resource doesn't exist" data-hi="Resource exist nahi karta">Resource doesn't exist</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">422</span><div class="status-name"><b>Unprocessable</b><span data-en="Validation failed" data-hi="Validation fail ho gayi">Validation failed</span></div></div>
+        <div class="status-item"><span class="status-code s4xx">429</span><div class="status-name"><b>Too Many Requests</b><span data-en="Rate limited!" data-hi="Rate limit ho gaye!">Rate limited!</span></div></div>
+        <div class="status-item"><span class="status-code s5xx">500</span><div class="status-name"><b>Server Error</b><span data-en="Something crashed" data-hi="Kuch crash ho gaya">Something crashed</span></div></div>
+        <div class="status-item"><span class="status-code s5xx">502</span><div class="status-name"><b>Bad Gateway</b><span data-en="Upstream failed" data-hi="Upstream fail ho gaya">Upstream failed</span></div></div>
+        <div class="status-item"><span class="status-code s5xx">503</span><div class="status-name"><b>Service Unavailable</b><span data-en="Server is down" data-hi="Server down hai">Server is down</span></div></div>
+      </div>
+      <div class="good-box"><p><strong>💡 <span data-en="Quick Rule:" data-hi="Quick Rule:">Quick Rule:</span></strong> <span data-en="2xx = You're good. 4xx = You made a mistake (fix your request). 5xx = The server made a mistake (not your fault, try again later)." data-hi="2xx = Sab theek hai. 4xx = Tumne galti ki (apna request fix karo). 5xx = Server ne galti ki (tumhari galti nahi, baad mein try karo).">2xx = Success. 4xx = Your mistake. 5xx = Server's mistake.</span></p></div>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="sec-title reveal" id="s6"><span class="snum">6</span><span data-en="GraphQL — The Flexible Alternative" data-hi="GraphQL — Flexible Alternative">GraphQL — The Flexible Alternative</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,#e535ab,#8b5cf6)">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:rgba(229,53,171,.1)">📊</div>
+      <div class="cc-title">
+        <h3 data-en="GraphQL — Ask for Exactly What You Need" data-hi="GraphQL — Exactly Wahi Maango Jo Chahiye">GraphQL — Ask for Exactly What You Need</h3>
+        <small data-en="Used by Facebook, GitHub, Shopify, Twitter" data-hi="Facebook, GitHub, Shopify, Twitter use karte hain">Used by Facebook, GitHub, Shopify, Twitter</small>
+      </div>
+      <span class="level-badge lb-advanced" data-en="Advanced" data-hi="Advanced">Advanced</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="GraphQL is a <b>query language for APIs</b> created by Facebook. Instead of multiple REST endpoints, you have <b>one single endpoint</b> and you tell it exactly what data you want. No over-fetching or under-fetching." data-hi="GraphQL ek <b>query language for APIs</b> hai jo Facebook ne banaya. Multiple REST endpoints ki jagah ek <b>single endpoint</b> hota hai aur tum exactly batate ho kaunsa data chahiye. Na zyada, na kam.">GraphQL is a <b>query language for APIs</b> created by Facebook. One single endpoint — ask for exactly the data you need.</p>
+      <div class="compare-grid">
+        <div class="compare-col">
+          <div class="compare-col-hd">🌐 <span style="color:var(--blue)" data-en="REST API" data-hi="REST API">REST API</span></div>
+          <div class="compare-items">
+            <div class="ci-item ci-plus" data-en="Simple to understand & implement" data-hi="Samajhna aur implement karna simple hai">Simple to understand &amp; implement</div>
+            <div class="ci-item ci-plus" data-en="Widely supported everywhere" data-hi="Har jagah supported hai">Widely supported everywhere</div>
+            <div class="ci-item ci-plus" data-en="Great HTTP caching built-in" data-hi="HTTP caching built-in hai">Great HTTP caching built-in</div>
+            <div class="ci-item ci-minus" data-en="Over-fetching extra unwanted fields" data-hi="Extra unwanted fields mil jaate hain">Over-fetching extra unwanted fields</div>
+            <div class="ci-item ci-minus" data-en="Multiple requests for related data" data-hi="Related data ke liye multiple requests">Multiple requests for related data</div>
+            <div class="ci-item ci-minus" data-en="Versioning can get messy" data-hi="Versioning messy ho sakti hai">Versioning can get messy</div>
+          </div>
+        </div>
+        <div class="compare-col">
+          <div class="compare-col-hd">📊 <span style="color:#e535ab">GraphQL</span></div>
+          <div class="compare-items">
+            <div class="ci-item ci-plus" data-en="Get exactly the fields you need" data-hi="Exactly wahi fields milti hain jo chahiye">Get exactly the fields you need</div>
+            <div class="ci-item ci-plus" data-en="Single request for nested data" data-hi="Nested data ke liye single request">Single request for nested data</div>
+            <div class="ci-item ci-plus" data-en="Strongly typed schema" data-hi="Strongly typed schema hota hai">Strongly typed schema</div>
+            <div class="ci-item ci-minus" data-en="Steeper learning curve" data-hi="Seekhna thoda mushkil hai">Steeper learning curve</div>
+            <div class="ci-item ci-minus" data-en="Complex caching" data-hi="Caching complex hai">Complex caching</div>
+            <div class="ci-item ci-minus" data-en="Overkill for simple apps" data-hi="Simple apps ke liye overkill hai">Overkill for simple apps</div>
+          </div>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div><span class="terminal-label">REST vs GRAPHQL — SAME DATA</span></div>
+        <div class="terminal-body">
+<span class="t-comment">// REST: Need 3 separate requests!</span>
+<span class="t-green">GET</span> /api/users/42
+<span class="t-green">GET</span> /api/users/42/posts
+<span class="t-green">GET</span> /api/users/42/followers
+
+<span class="t-comment">// GraphQL: ONE request, exactly what you need</span>
+<span class="t-blue">query</span> {
+  user(id: <span class="t-warn">42</span>) {
+    name
+    email
+    posts { title }
+    followers { count }
+  }
+}
+<span class="t-comment">→ Returns exactly name, email, post titles, follower count</span>
+<span class="t-comment">→ No extra fields, no extra requests ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S7 -->
+  <div class="sec-title reveal" id="s7"><span class="snum">7</span><span data-en="WebSockets — Real-Time APIs" data-hi="WebSockets — Real-Time APIs">WebSockets — Real-Time APIs</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--green),var(--yellow))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--greenbg)">⚡</div>
+      <div class="cc-title">
+        <h3 data-en="WebSockets — Persistent Two-Way Connection" data-hi="WebSockets — Permanent Do-Taraf Connection">WebSockets — Persistent Two-Way Connection</h3>
+        <small data-en="Used in chat apps, live scores, trading platforms, games" data-hi="Chat apps, live scores, trading platforms, games mein use hota hai">Used in chat apps, live scores, trading, games</small>
+      </div>
+      <span class="level-badge lb-intermediate" data-en="Intermediate" data-hi="Intermediate">Intermediate</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="Normal HTTP APIs are like <b>letters</b>: you send, wait for reply, connection closes. WebSockets are like a <b>phone call</b>: connection stays open, both sides can send messages anytime. Perfect for <b>real-time apps</b>." data-hi="Normal HTTP APIs <b>letters ki tarah</b> hain: bhejo, reply ka wait karo, connection band. WebSockets <b>phone call ki tarah</b> hain: connection open rehta hai, dono kabhi bhi messages bhej sakte hain. <b>Real-time apps</b> ke liye perfect.">Normal HTTP = letters (send, wait, close). WebSockets = phone call (connection stays open, both sides talk anytime).</p>
+      <div class="ws-demo">
+        <div class="ws-header"><h4 data-en="🔴 Live WebSocket Simulation" data-hi="🔴 Live WebSocket Simulation">🔴 Live WebSocket Simulation</h4><div class="ws-status"><span class="ws-dot"></span> <span data-en="Connected" data-hi="Connected">Connected</span></div></div>
+        <div class="ws-feed" id="ws-feed"></div>
+        <div class="ws-controls">
+          <input class="ws-input" id="ws-input" value='{"type":"message","text":"Hello!"}' placeholder='{"type":"message","text":"Hello!"}' />
+          <button class="ws-send-btn" onclick="sendWsMsg()" data-en="Send ▶" data-hi="Bhejo ▶">Send ▶</button>
+        </div>
+      </div>
+      <div class="terminal">
+        <div class="terminal-bar"><div class="t-dot td1"></div><div class="t-dot td2"></div><div class="t-dot td3"></div><span class="terminal-label">WEBSOCKET CODE</span></div>
+        <div class="terminal-body">
+<span class="t-comment">// Open a WebSocket connection</span>
+<span class="t-blue">const</span> ws = <span class="t-blue">new</span> WebSocket(<span class="t-green">'wss://api.example.com/chat'</span>);
+
+<span class="t-comment">// Connection opened</span>
+ws.onopen = () => {
+  ws.<span class="t-warn">send</span>(JSON.<span class="t-warn">stringify</span>({ type: <span class="t-green">'join'</span>, room: <span class="t-green">'general'</span> }));
+};
+
+<span class="t-comment">// Receive messages in REAL TIME!</span>
+ws.onmessage = (event) => {
+  <span class="t-blue">const</span> msg = JSON.<span class="t-warn">parse</span>(event.data);
+  console.<span class="t-warn">log</span>(<span class="t-green">'New message:'</span>, msg);
+};
+
+<span class="t-comment">// Send a message</span>
+ws.<span class="t-warn">send</span>(JSON.<span class="t-warn">stringify</span>({ text: <span class="t-green">'Hey!'</span>, user: <span class="t-green">'Rahul'</span> }));
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="sec-title reveal" id="s8"><span class="snum">8</span><span data-en="API Authentication" data-hi="API Authentication">API Authentication</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--yellow),var(--red))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--yellowbg)">🔑</div>
+      <div class="cc-title">
+        <h3 data-en="API Keys, JWT Tokens, OAuth — Explained" data-hi="API Keys, JWT Tokens, OAuth — Samjhao">API Keys, JWT Tokens, OAuth — Explained</h3>
+        <small data-en="How APIs verify you have permission to access their data" data-hi="APIs kaise verify karte hain ki tumhe unka data access karne ki permission hai">How APIs verify you have permission</small>
+      </div>
+      <span class="level-badge lb-intermediate" data-en="Intermediate" data-hi="Intermediate">Intermediate</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="Most APIs require you to <b>prove who you are</b> before returning data. There are 3 main authentication methods:" data-hi="Zyaadatar APIs require karte hain ki tum <b>prove karo tum kaun ho</b> data return karne se pehle. 3 main authentication methods hain:">Most APIs require you to <b>prove who you are</b> before returning data. 3 main methods:</p>
+      <div class="auth-flow" style="margin-bottom:1rem">
+        <div style="font-size:.82rem;font-weight:700;color:var(--yellow);margin-bottom:.8rem" data-en="🗝️ Method 1: API Key (Simplest)" data-hi="🗝️ Method 1: API Key (Sabse Simple)">🗝️ Method 1: API Key (Simplest)</div>
+        <div class="auth-steps">
+          <div class="auth-step"><div class="auth-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)">📝</div><div class="auth-content"><h5 data-en="Register on the developer portal" data-hi="Developer portal pe register karo">Register on the developer portal</h5><p data-en="Sign up on the API's website (OpenWeatherMap, Google Maps, etc.)" data-hi="API ki website pe sign up karo (OpenWeatherMap, Google Maps, etc.)">Sign up on the API's website</p></div></div>
+          <div class="auth-step"><div class="auth-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)">🔑</div><div class="auth-content"><h5 data-en="Receive your secret API key" data-hi="Secret API key milti hai">Receive your secret API key</h5><div class="auth-token">sk-live-a7f3k9m2p8x1q4w6e0r5t...</div></div></div>
+          <div class="auth-step"><div class="auth-icon" style="background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.3)">📤</div><div class="auth-content"><h5 data-en="Include the key in every request" data-hi="Har request mein key include karo">Include key in every request</h5><div class="auth-token">GET /weather?city=Mumbai&amp;apikey=sk-live-a7f3k9...</div></div></div>
+        </div>
+      </div>
+      <div class="auth-flow" style="margin-bottom:1rem">
+        <div style="font-size:.82rem;font-weight:700;color:var(--blue);margin-bottom:.8rem" data-en="🪙 Method 2: JWT Token (Most Common for User Auth)" data-hi="🪙 Method 2: JWT Token (User Auth ke liye Sabse Common)">🪙 Method 2: JWT Token (Most Common)</div>
+        <div class="auth-steps">
+          <div class="auth-step"><div class="auth-icon" style="background:var(--bluebg);border-color:rgba(14,165,233,.3)">👤</div><div class="auth-content"><h5 data-en="User logs in with email + password" data-hi="User email + password se login karta hai">User logs in with email + password</h5><p data-en="POST /api/login with credentials" data-hi="POST /api/login credentials ke saath">POST /api/login with credentials</p></div></div>
+          <div class="auth-step"><div class="auth-icon" style="background:var(--bluebg);border-color:rgba(14,165,233,.3)">🏷️</div><div class="auth-content"><h5 data-en="Server returns a JWT Token" data-hi="Server JWT Token return karta hai">Server returns a JWT Token</h5><div class="auth-token">eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQyfQ.xK9mF...</div></div></div>
+          <div class="auth-step"><div class="auth-icon" style="background:var(--bluebg);border-color:rgba(14,165,233,.3)">📬</div><div class="auth-content"><h5 data-en="Include token in all future requests" data-hi="Aage ke saare requests mein token include karo">Include token in all future requests</h5><div class="auth-token">Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...</div></div></div>
+        </div>
+      </div>
+      <div class="info-box"><p><strong>🔐 <span data-en="What's inside a JWT?" data-hi="JWT ke andar kya hota hai?">What's inside a JWT?</span></strong> <span data-en="JWT has 3 parts separated by dots: Header (algorithm) . Payload (user data, expiry) . Signature (tamper-proof). Decode any JWT at jwt.io!" data-hi="JWT mein 3 parts hain dots se separated: Header (algorithm) . Payload (user data, expiry) . Signature (tamper-proof). Koi bhi JWT jwt.io pe decode karo!">JWT = Header . Payload . Signature. Decode at jwt.io to see the data.</span></p></div>
+      <div class="protect-box">
+        <div class="pb-hd">⚠️ <span data-en="Auth Best Practices" data-hi="Auth Best Practices">Auth Best Practices</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Never expose API keys in frontend code" data-hi="Frontend code mein API keys kabhi expose mat karo">Never expose API keys in frontend code</b> — <span data-en="anyone can steal them from browser DevTools" data-hi="koi bhi browser DevTools se chura sakta hai">anyone can steal from DevTools</span></li>
+          <li><b data-en="Use environment variables (.env files)" data-hi="Environment variables (.env files) use karo">Use environment variables (.env)</b> — <span data-en="and always add .env to .gitignore!" data-hi="aur .env ko hamesha .gitignore mein add karo!">always add .env to .gitignore!</span></li>
+          <li><b data-en="Set token expiry" data-hi="Token expiry set karo">Set token expiry</b> — <span data-en="JWTs should expire in 15 minutes to 24 hours" data-hi="JWTs 15 minutes se 24 hours mein expire hone chahiye">JWTs should expire in 15 min to 24 hours</span></li>
+          <li><b data-en="Always use HTTPS" data-hi="Hamesha HTTPS use karo">Always use HTTPS</b> — <span data-en="HTTP transmits tokens in plain text" data-hi="HTTP tokens plain text mein transmit karta hai">HTTP transmits tokens in plain text</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- S9 -->
+  <div class="sec-title reveal" id="s9"><span class="snum">9</span><span data-en="Rate Limiting" data-hi="Rate Limiting">Rate Limiting</span></div>
+  <div class="concept-card reveal" style="--grad:linear-gradient(90deg,var(--red),var(--yellow))">
+    <div class="cc-header" onclick="toggleCard(this)">
+      <div class="cc-icon" style="background:var(--redbg)">🚦</div>
+      <div class="cc-title">
+        <h3 data-en="Why APIs Limit How Many Calls You Can Make" data-hi="APIs Kyun Limit Karti Hain Kitne Calls Kar Sakte Ho">Why APIs Limit Your Calls</h3>
+        <small data-en="429 Too Many Requests — you've been rate limited" data-hi="429 Too Many Requests — tumhe rate limit ho gaya">429 Too Many Requests — you've been rate limited</small>
+      </div>
+      <span class="level-badge lb-intermediate" data-en="Intermediate" data-hi="Intermediate">Intermediate</span>
+    </div>
+    <div class="cc-body">
+      <p data-en="Rate limiting controls <b>how many requests per time period</b> you can make. Twitter: 900 reads per 15 minutes. OpenAI free tier: 3 requests/minute. Exceed the limit → <b>429 Too Many Requests</b> → wait for reset." data-hi="Rate limiting control karta hai ki tum <b>ek time period mein kitne requests</b> kar sakte ho. Twitter: 900 reads per 15 minutes. OpenAI free tier: 3 requests/minute. Limit exceed karo → <b>429 Too Many Requests</b> → reset ka wait karo.">Rate limiting controls <b>how many requests per time period</b> you can make. Exceed it → 429 error → wait for reset.</p>
+      <div class="rate-demo">
+        <h4 data-en="🧪 Simulate API Rate Limiting" data-hi="🧪 API Rate Limiting Simulate Karo">🧪 Simulate API Rate Limiting</h4>
+        <div class="rate-meters">
+          <div class="rate-meter">
+            <div class="rm-header"><span class="rm-label" data-en="Free Tier (60 req/min)" data-hi="Free Tier (60 req/min)">Free Tier (60 req/min)</span><span class="rm-count" id="rm1-count">0 / 60</span></div>
+            <div class="rm-bar"><div class="rm-fill rm-ok" id="rm1-fill" style="width:0%"></div></div>
+          </div>
+          <div class="rate-meter">
+            <div class="rm-header"><span class="rm-label" data-en="Pro Tier (1000 req/min)" data-hi="Pro Tier (1000 req/min)">Pro Tier (1000 req/min)</span><span class="rm-count" id="rm2-count">0 / 1000</span></div>
+            <div class="rm-bar"><div class="rm-fill rm-ok" id="rm2-fill" style="width:0%"></div></div>
+          </div>
+        </div>
+        <button class="rate-btn" onclick="makeApiCall()" id="rate-call-btn" data-en="📡 Make API Call (+1)" data-hi="📡 API Call Karo (+1)">📡 Make API Call (+1)</button>
+        <div id="rate-msg" style="font-size:.8rem;margin-top:.6rem;color:var(--muted)" data-en="Click the button to simulate API calls" data-hi="API calls simulate karne ke liye button click karo">Click the button to simulate API calls</div>
+      </div>
+      <div class="protect-box">
+        <div class="pb-hd">⚡ <span data-en="Handle Rate Limits Like a Pro" data-hi="Rate Limits Ko Pro Ki Tarah Handle Karo">Handle Rate Limits Like a Pro</span></div>
+        <ul class="protect-list">
+          <li><b data-en="Exponential backoff" data-hi="Exponential backoff">Exponential backoff</b> — <span data-en="wait 1s, then 2s, then 4s before retrying" data-hi="retry se pehle 1s, phir 2s, phir 4s wait karo">wait 1s, 2s, 4s before retrying</span></li>
+          <li><b data-en="Cache responses locally" data-hi="Responses locally cache karo">Cache responses locally</b> — <span data-en="don't re-fetch data that hasn't changed" data-hi="woh data dobara fetch mat karo jo change nahi hua">don't re-fetch unchanged data</span></li>
+          <li><b data-en="Read X-RateLimit headers" data-hi="X-RateLimit headers padhna">Read X-RateLimit headers</b> — <span data-en="APIs tell you remaining quota in response headers" data-hi="APIs response headers mein remaining quota batati hain">APIs tell you remaining quota in headers</span></li>
+          <li><b data-en="Batch requests when possible" data-hi="Jab ho sake requests batch karo">Batch requests</b> — <span data-en="1 call for 100 items vs 100 separate calls" data-hi="100 alag calls ki jagah ek call mein 100 items">1 call for 100 items vs 100 calls</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- S10 LIVE TESTER -->
+  <div class="sec-title reveal" id="s10"><span class="snum">10</span><span data-en="Live API Tester" data-hi="Live API Tester">Live API Tester</span></div>
+  <div class="api-tester reveal">
+    <div class="at-header">
+      <h4 data-en="🔴 Live Public API Playground" data-hi="🔴 Live Public API Playground">🔴 Live Public API Playground</h4>
+      <div class="live-badge"><span class="live-dot"></span> <span data-en="Real Requests" data-hi="Real Requests">Real Requests</span></div>
+    </div>
+    <div class="at-body">
+      <div class="at-presets">
+        <span class="at-preset" onclick="setPreset('GET','https://jsonplaceholder.typicode.com/users/1')">👤 <span data-en="Get User" data-hi="User Lo">Get User</span></span>
+        <span class="at-preset" onclick="setPreset('GET','https://jsonplaceholder.typicode.com/posts?_limit=3')">📝 <span data-en="List Posts" data-hi="Posts List">List Posts</span></span>
+        <span class="at-preset" onclick="setPreset('GET','https://jsonplaceholder.typicode.com/todos/5')">✅ <span data-en="Get Todo" data-hi="Todo Lo">Get Todo</span></span>
+        <span class="at-preset" onclick="setPreset('GET','https://jsonplaceholder.typicode.com/comments?postId=1&_limit=2')">💬 <span data-en="Comments" data-hi="Comments">Comments</span></span>
+        <span class="at-preset" onclick="setPreset('GET','https://api.coindesk.com/v1/bpi/currentprice.json')">₿ <span data-en="Bitcoin Price" data-hi="Bitcoin Price">Bitcoin Price</span></span>
+      </div>
+      <div class="at-url-row">
+        <select class="at-method-select" id="at-method"><option>GET</option><option>POST</option></select>
+        <input class="at-url-input" id="at-url" value="https://jsonplaceholder.typicode.com/users/1" placeholder="Enter API URL..."/>
+        <button class="at-send-btn" id="at-send" onclick="sendApiRequest()" data-en="Send ▶" data-hi="Bhejo ▶">Send ▶</button>
+      </div>
+      <div class="at-response">
+        <div class="at-resp-header">
+          <div class="at-status-badge sb-waiting" id="at-status" data-en="⏳ Ready" data-hi="⏳ Ready">⏳ Ready</div>
+          <span id="at-size" style="font-size:.68rem;color:var(--muted);font-family:'JetBrains Mono',monospace"></span>
+          <span class="at-time" id="at-time"></span>
+        </div>
+        <div class="at-resp-body" id="at-resp-body"><span style="color:var(--muted)" data-en="// Click Send or pick a preset to make a real API call" data-hi="// Send karo ya preset choose karo real API call karne ke liye">// Click Send or pick a preset to make a real API call</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CHEAT SHEET -->
+  <div class="cheat-sheet reveal">
+    <div class="cs-header">
+      <h4 data-en="📋 API Developer Cheat Sheet" data-hi="📋 API Developer Cheat Sheet">📋 API Developer Cheat Sheet</h4>
+      <button class="cs-copy-btn" onclick="copyCheatSheet()" data-en="📋 Copy All" data-hi="📋 Copy Karo">📋 Copy All</button>
+    </div>
+    <div class="cs-body" id="cheat-sheet-code">
+<span class="t-comment">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+<span class="t-comment"> CIWeb API Cheat Sheet 2026        </span>
+<span class="t-comment">━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</span>
+
+<span class="t-comment">// HTTP Methods</span>
+<span class="t-green">GET</span>    → Read data (no body)
+<span class="t-blue">POST</span>   → Create new resource
+<span class="t-warn">PUT</span>    → Replace full resource
+<span class="t-warn">PATCH</span>  → Update partial resource
+<span class="t-red">DELETE</span> → Remove resource
+
+<span class="t-comment">// Key Status Codes</span>
+200 OK • 201 Created • 204 No Content
+400 Bad Request • 401 Unauthorized
+403 Forbidden • 404 Not Found
+429 Too Many Requests • 500 Server Error
+
+<span class="t-comment">// fetch() Template</span>
+<span class="t-blue">const</span> res = <span class="t-blue">await</span> fetch(url, {
+  method: <span class="t-green">'POST'</span>,
+  headers: {
+    <span class="t-green">'Content-Type'</span>: <span class="t-green">'application/json'</span>,
+    <span class="t-green">'Authorization'</span>: <span class="t-green">`Bearer ${token}`</span>
+  },
+  body: JSON.<span class="t-warn">stringify</span>(data)
+});
+<span class="t-blue">if</span> (!res.ok) <span class="t-blue">throw new</span> Error(res.status);
+<span class="t-blue">const</span> json = <span class="t-blue">await</span> res.<span class="t-warn">json</span>();
+
+<span class="t-comment">// Rate limit retry with backoff</span>
+<span class="t-blue">async function</span> <span class="t-warn">fetchWithRetry</span>(url, retries=3) {
+  <span class="t-blue">for</span>(<span class="t-blue">let</span> i=0; i&lt;retries; i++) {
+    <span class="t-blue">const</span> r = <span class="t-blue">await</span> fetch(url);
+    <span class="t-blue">if</span>(r.status !== 429) <span class="t-blue">return</span> r;
+    <span class="t-blue">await</span> <span class="t-blue">new</span> Promise(r => setTimeout(r, 2**i * 1000));
+  }
+}
+    </div>
+  </div>
+
+  <!-- QUIZ -->
+  <div class="sec-title reveal" id="quiz"><span class="snum">🧠</span><span data-en="API Knowledge Quiz" data-hi="API Knowledge Quiz">API Knowledge Quiz</span></div>
+  <div class="quiz-section reveal">
+    <div class="quiz-hd" data-en="🎯 Test Your API Knowledge" data-hi="🎯 Apni API Knowledge Test Karo">🎯 Test Your API Knowledge</div>
+    <div class="quiz-sub" data-en="5 questions — see how much you've learned!" data-hi="5 questions — dekho kitna seekha!">5 questions — see how much you've learned!</div>
+    <div id="quiz-container">
+      <div class="quiz-question" id="q1">
+        <div class="q-text" data-en="1. What HTTP method should you use to <b>create a new user</b> in a REST API?" data-hi="1. REST API mein <b>naya user create</b> karne ke liye kaun sa HTTP method use karoge?">1. What HTTP method should you use to <b>create a new user</b> in a REST API?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="answerQ(1,this,'wrong')" data-en="GET /api/users" data-hi="GET /api/users">GET /api/users</button>
+          <button class="q-option" onclick="answerQ(1,this,'correct')" data-en="POST /api/users" data-hi="POST /api/users">POST /api/users</button>
+          <button class="q-option" onclick="answerQ(1,this,'wrong')" data-en="PUT /api/users" data-hi="PUT /api/users">PUT /api/users</button>
+          <button class="q-option" onclick="answerQ(1,this,'wrong')" data-en="DELETE /api/users" data-hi="DELETE /api/users">DELETE /api/users</button>
+        </div>
+        <div class="q-feedback" id="fb1"></div>
+      </div>
+      <div class="quiz-question" id="q2">
+        <div class="q-text" data-en="2. You get a <b>401 Unauthorized</b> response. What should you do?" data-hi="2. Tumhe <b>401 Unauthorized</b> response mila. Ab kya karoge?">2. You get a <b>401 Unauthorized</b> response. What should you do?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="answerQ(2,this,'wrong')" data-en="Wait — the server is busy" data-hi="Wait karo — server busy hai">Wait — the server is busy</button>
+          <button class="q-option" onclick="answerQ(2,this,'wrong')" data-en="The URL is wrong" data-hi="URL galat hai">The URL is wrong</button>
+          <button class="q-option" onclick="answerQ(2,this,'correct')" data-en="Add or fix your authentication token" data-hi="Authentication token add ya fix karo">Add or fix your authentication token</button>
+          <button class="q-option" onclick="answerQ(2,this,'wrong')" data-en="The resource doesn't exist" data-hi="Resource exist nahi karta">The resource doesn't exist</button>
+        </div>
+        <div class="q-feedback" id="fb2"></div>
+      </div>
+      <div class="quiz-question" id="q3">
+        <div class="q-text" data-en="3. What makes <b>WebSockets</b> different from regular REST APIs?" data-hi="3. <b>WebSockets</b> ko regular REST APIs se alag kya banata hai?">3. What makes <b>WebSockets</b> different from regular REST APIs?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="answerQ(3,this,'wrong')" data-en="WebSockets use GraphQL internally" data-hi="WebSockets internally GraphQL use karte hain">WebSockets use GraphQL internally</button>
+          <button class="q-option" onclick="answerQ(3,this,'correct')" data-en="WebSockets keep a persistent connection — both sides can send data anytime" data-hi="WebSockets permanent connection rakhte hain — dono sides kabhi bhi data bhej sakte hain">WebSockets keep a persistent connection — both sides can send data anytime</button>
+          <button class="q-option" onclick="answerQ(3,this,'wrong')" data-en="WebSockets are faster because they use POST" data-hi="WebSockets POST use karte hain isliye faster hain">WebSockets are faster because they use POST</button>
+          <button class="q-option" onclick="answerQ(3,this,'wrong')" data-en="WebSockets don't need a server" data-hi="WebSockets ko server nahi chahiye">WebSockets don't need a server</button>
+        </div>
+        <div class="q-feedback" id="fb3"></div>
+      </div>
+      <div class="quiz-question" id="q4">
+        <div class="q-text" data-en="4. What is the main advantage of <b>GraphQL over REST</b>?" data-hi="4. <b>GraphQL ka REST ke over</b> main advantage kya hai?">4. What is the main advantage of <b>GraphQL over REST</b>?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="answerQ(4,this,'wrong')" data-en="GraphQL is always faster than REST" data-hi="GraphQL hamesha REST se fast hota hai">GraphQL is always faster than REST</button>
+          <button class="q-option" onclick="answerQ(4,this,'wrong')" data-en="GraphQL uses HTTP/3 by default" data-hi="GraphQL default mein HTTP/3 use karta hai">GraphQL uses HTTP/3 by default</button>
+          <button class="q-option" onclick="answerQ(4,this,'correct')" data-en="You get exactly the data you need — no over-fetching or under-fetching" data-hi="Exactly wahi data milta hai jo chahiye — na zyada, na kam">You get exactly the data you need — no over-fetching or under-fetching</button>
+          <button class="q-option" onclick="answerQ(4,this,'wrong')" data-en="GraphQL doesn't require authentication" data-hi="GraphQL ko authentication nahi chahiye">GraphQL doesn't require authentication</button>
+        </div>
+        <div class="q-feedback" id="fb4"></div>
+      </div>
+      <div class="quiz-question" id="q5">
+        <div class="q-text" data-en="5. You receive a <b>429 Too Many Requests</b> error. What's the correct response?" data-hi="5. Tumhe <b>429 Too Many Requests</b> error mila. Sahi response kya hai?">5. You receive a <b>429 Too Many Requests</b> error. What's the correct response?</div>
+        <div class="q-options">
+          <button class="q-option" onclick="answerQ(5,this,'wrong')" data-en="Refresh your API key immediately" data-hi="API key turant refresh karo">Refresh your API key immediately</button>
+          <button class="q-option" onclick="answerQ(5,this,'correct')" data-en="Implement exponential backoff — wait before retrying" data-hi="Exponential backoff implement karo — retry se pehle wait karo">Implement exponential backoff — wait before retrying</button>
+          <button class="q-option" onclick="answerQ(5,this,'wrong')" data-en="Switch from GET to POST" data-hi="GET se POST pe switch karo">Switch from GET to POST</button>
+          <button class="q-option" onclick="answerQ(5,this,'wrong')" data-en="The API endpoint doesn't exist" data-hi="API endpoint exist nahi karta">The API endpoint doesn't exist</button>
+        </div>
+        <div class="q-feedback" id="fb5"></div>
+      </div>
+    </div>
+    <div class="quiz-score-box" id="quiz-score">
+      <div class="qsb-num" id="quiz-score-num">0/5</div>
+      <div class="qsb-label" data-en="Questions Correct" data-hi="Sahi Jawab">Questions Correct</div>
+      <div class="qsb-msg" id="quiz-score-msg"></div>
+      <button class="quiz-next-btn" onclick="resetQuiz()" data-en="🔄 Try Again" data-hi="🔄 Dobara Try Karo">🔄 Try Again</button>
+    </div>
+  </div>
+
+  <!-- TASKS -->
+  <div class="sec-title reveal" id="tasks"><span class="snum">⚡</span><span data-en="Practice Tasks" data-hi="Practice Tasks">Practice Tasks</span></div>
+  <div class="tasks-section reveal">
+    <div class="tasks-hd"><h3 data-en="🎯 Do These to Master APIs" data-hi="🎯 APIs Master Karne Ke Liye Ye Karo">🎯 Do These to Master APIs</h3></div>
+    <div class="tasks-sub" data-en="Each task builds real, practical API skills. Check off as you complete them!" data-hi="Har task real, practical API skills build karta hai. Complete karte jaao aur tick karte jaao!">Each task builds real, practical API skills.</div>
+    <div class="task-progress-bar"><div class="task-progress-fill" id="task-fill"></div></div>
+    <div class="task-progress-label" id="task-label">0 / 6 tasks complete</div>
+    <div class="task-list">
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Call your first public API" data-hi="Apna pehla public API call karo">Call your first public API</h4><p data-en="Open browser console (F12) → type the fetch() call above → see real API data in seconds!" data-hi="Browser console open karo (F12) → upar wala fetch() call type karo → seconds mein real API data dekho!">Open browser console (F12) → type the fetch() call → see real API data!</p></div><span class="task-xp">+15 XP</span></div>
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Install & explore Postman" data-hi="Postman install karo aur explore karo">Install &amp; explore Postman</h4><p data-en="Download Postman (free) → make GET and POST requests → explore the beautiful response panel." data-hi="Postman download karo (free) → GET aur POST requests karo → response panel explore karo.">Download Postman → make GET and POST requests → explore the response panel.</p></div><span class="task-xp">+20 XP</span></div>
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Build a weather app using a free API" data-hi="Free API use karke weather app banao">Build a weather app using a free API</h4><p data-en="openweathermap.org → free API key → fetch city weather → display it on a webpage. Classic first project!" data-hi="openweathermap.org → free API key → apne city ka weather fetch karo → webpage pe display karo. Classic first project!">openweathermap.org → free API key → fetch city weather → display on webpage.</p></div><span class="task-xp">+30 XP</span></div>
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Decode a JWT token" data-hi="JWT token decode karo">Decode a JWT token</h4><p data-en="Go to jwt.io → paste any JWT token → see what's inside the payload — it's just JSON!" data-hi="jwt.io pe jao → koi bhi JWT token paste karo → payload ke andar kya hai dekho — sirf JSON hai!">Go to jwt.io → paste any JWT → see the decoded payload. It's just JSON!</p></div><span class="task-xp">+15 XP</span></div>
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Create a simple Express.js REST API" data-hi="Simple Express.js REST API banao">Create a simple Express.js REST API</h4><p data-en="npm init → npm install express → write a GET /users route → test with Postman. Ship your first API!" data-hi="npm init → npm install express → GET /users route likho → Postman se test karo. Apna pehla API ship karo!">npm init → install express → write a GET route → test in Postman. Ship your first API!</p></div><span class="task-xp">+35 XP</span></div>
+      <div class="task-item" onclick="toggleTask(this)"><div class="task-check"></div><div class="task-body"><h4 data-en="Add JWT authentication to your API" data-hi="Apne API mein JWT authentication add karo">Add JWT authentication to your API</h4><p data-en="npm install jsonwebtoken → generate JWT on login → verify it on protected routes using middleware." data-hi="npm install jsonwebtoken → login pe JWT generate karo → middleware se protected routes pe verify karo.">npm install jsonwebtoken → generate JWT on login → verify on protected routes.</p></div><span class="task-xp">+40 XP</span></div>
+    </div>
+    <div class="task-done-msg" id="task-done">
+      <h4 data-en="🚀 API Master! All Tasks Complete!" data-hi="🚀 API Master! Sare Tasks Complete!">🚀 API Master! All Tasks Complete!</h4>
+      <p data-en="You now have the skills to build and consume real-world APIs!" data-hi="Ab tumhare paas real-world APIs build aur consume karne ki skills hain!">You now have the skills to build and consume real-world APIs!</p>
+    </div>
+  </div>
+
+  <!-- ENGAGE -->
+  <div class="engage-wrap reveal">
+    <div class="like-section">
+      <p id="like-q" data-en="Did this API guide help you? 🔌" data-hi="Kya is API guide ne tumhari help ki? 🔌">Did this API guide help you? 🔌</p>
+      <button class="like-btn" id="like-btn" onclick="toggleLike()"><span class="heart">🤍</span><span id="like-label" data-en="Like" data-hi="Like karo">Like</span></button>
+      <span id="like-count">0 likes</span>
+    </div>
+    <div>
+      <div class="cmt-header">
+        <h3>💬 <span data-en="Comments" data-hi="Comments">Comments</span> (<span id="cmt-count">0</span>)</h3>
+        <span class="cmt-live-badge"><span class="cmt-live-dot"></span> <span data-en="Live" data-hi="Live">Live</span></span>
+      </div>
+      <div class="comment-form">
+        <div class="cmt-form-title">✏️ <span data-en="Share your API experience" data-hi="Apna API experience share karo">Share your API experience</span></div>
+        <div class="pi-prompts">
+          <span class="pi-prompt-chip" onclick="setPrompt(this)" data-en="🔌 I built my first API" data-hi="🔌 Maine apna pehla API banaya">🔌 I built my first API</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)" data-en="😍 APIs make sense now!" data-hi="😍 APIs samajh aa gaye!">😍 APIs make sense now!</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)" data-en="🤔 Question about JWT" data-hi="🤔 JWT ke baare mein question">🤔 Question about JWT</span>
+          <span class="pi-prompt-chip" onclick="setPrompt(this)" data-en="🚀 Using APIs in my project" data-hi="🚀 Apne project mein APIs use kar raha hoon">🚀 Using APIs in my project</span>
+        </div>
+        <div class="cf-row">
+          <input class="cf-input" id="c-name" placeholder="Your name *" data-placeholder-en="Your name *" data-placeholder-hi="Aapka naam *" maxlength="50"/>
+          <input class="cf-input" id="c-email" placeholder="Email (optional)" data-placeholder-en="Email (optional)" data-placeholder-hi="Email (optional)" type="email"/>
+        </div>
+        <textarea class="cf-textarea" id="c-text" placeholder="What do you think? 🔌" data-placeholder-en="What do you think? 🔌" data-placeholder-hi="Kya lagta hai? 🔌" maxlength="500" oninput="updateChar(this)"></textarea>
+        <div class="cf-bottom">
+          <button class="cf-submit" id="cf-btn" onclick="postComment()">💬 <span id="cf-btn-label" data-en="Post Comment" data-hi="Comment Daalo">Post Comment</span></button>
+          <span class="cf-char" id="cf-char">0/500</span>
+          <span class="cf-msg" id="cf-msg"></span>
+        </div>
+      </div>
+      <div class="comment-list" id="comments-list">
+        <div class="cmt-empty"><span class="cmt-empty-icon">🔌</span><span data-en="Be the first to comment! 💬" data-hi="Pehla comment tum karo! 💬">Be the first to comment! 💬</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RELATED -->
+  <div class="sec-title" style="font-size:1.2rem;margin-top:2rem"><span class="snum">📚</span><span data-en="Related Blogs" data-hi="Related Blogs">Related Blogs</span></div>
+  <div class="related-grid">
+    <a href="how-hackers-hack.html" class="rel-card"><div class="rel-tag">Cybersecurity</div><div class="rel-title" data-en="🔒 How Hackers Hack Accounts — And How to Stay Safe" data-hi="🔒 Hackers Accounts Kaise Hack Karte Hain — Safe Kaise Rahein">🔒 How Hackers Hack Accounts — And How to Stay Safe</div></a>
+    <a href="learn-firebase.html" class="rel-card"><div class="rel-tag">Firebase</div><div class="rel-title" data-en="🔥 Firebase Database — Complete Guide 2026" data-hi="🔥 Firebase Database — Poora Guide 2026">🔥 Firebase Database — Complete Guide 2026</div></a>
+    <a href="10xYourFasterCoding.html" class="rel-card"><div class="rel-tag">AI Tools</div><div class="rel-title" data-en="⚡ AI Coding Tools Making Devs 10x Faster" data-hi="⚡ AI Coding Tools Jo Devs Ko 10x Fast Banate Hain">⚡ AI Coding Tools Making Devs 10x Faster</div></a>
+  </div>
+</div>
+
+<footer>
+  <a href="../index.html" class="logo">CI<em>Web</em></a>
+  <p>© 2026 CIWeb. <span data-en="All rights reserved." data-hi="Sare rights reserved.">All rights reserved.</span></p>
+  <p data-en="Build cool stuff with APIs 🔌" data-hi="APIs se kuch cool banao 🔌">Build cool stuff with APIs 🔌</p>
+</footer>
+
+<div id="cw-toggle">
+  <button class="lo on" id="cw-en" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lo" id="cw-hi" onclick="setLang('hi')">🇮🇳 HI</button>
+</div>
+
+<script>
+// PARTICLE NETWORK
+(function(){
+  var c=document.getElementById('particle-canvas'),ctx=c.getContext('2d');
+  function resize(){c.width=window.innerWidth;c.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  var pts=[];for(var i=0;i<80;i++)pts.push({x:Math.random()*c.width,y:Math.random()*c.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+1});
+  function draw(){ctx.clearRect(0,0,c.width,c.height);pts.forEach(function(p){p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=c.width;if(p.x>c.width)p.x=0;if(p.y<0)p.y=c.height;if(p.y>c.height)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle='#00d084';ctx.fill();});pts.forEach(function(p1,i){pts.forEach(function(p2,j){if(j<=i)return;var d=Math.hypot(p1.x-p2.x,p1.y-p2.y);if(d<100){ctx.beginPath();ctx.moveTo(p1.x,p1.y);ctx.lineTo(p2.x,p2.y);ctx.strokeStyle='rgba(0,208,132,'+(1-d/100)*.4+')';ctx.lineWidth=.5;ctx.stroke();}});});requestAnimationFrame(draw);}
+  draw();
+})();
+
+// FIREBASE
+var DB="https://testingdata-2ae22-default-rtdb.firebaseio.com",BID="what-is-api",liked=localStorage.getItem("liked_"+BID)==="true";
+
+// SCROLL REVEAL
+var obs=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('visible');});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){obs.observe(el);});
+
+// HELPERS
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function timeAgo(iso){var d=(Date.now()-new Date(iso))/1000;if(d<60)return"just now";if(d<3600)return Math.floor(d/60)+" min ago";if(d<86400)return Math.floor(d/3600)+" hrs ago";return Math.floor(d/86400)+" days ago";}
+function aColor(n){var c=["#00d084","#0ea5e9","#8b5cf6","#f59e0b","#e8401c"];return c[(n||"A").charCodeAt(0)%c.length];}
+function getLang(){return localStorage.getItem("ciweb_lang")||"en";}
+
+// LANGUAGE — applies data-en / data-hi to EVERY element
+function setLang(l){
+  localStorage.setItem("ciweb_lang",l);
+  // Translate all [data-en][data-hi] elements
+  document.querySelectorAll("[data-en][data-hi]").forEach(function(el){
+    el.innerHTML = l==="en" ? el.dataset.en : el.dataset.hi;
+  });
+  // Translate placeholders
+  document.querySelectorAll("[data-placeholder-en]").forEach(function(el){
+    el.placeholder = l==="en" ? el.dataset.placeholderEn : el.dataset.placeholderHi;
+  });
+  // Toggle buttons
+  document.getElementById("cw-en").classList.toggle("on",l==="en");
+  document.getElementById("cw-hi").classList.toggle("on",l==="hi");
+  document.documentElement.lang=l;
+  updateTasks();
+}
+
+// CARD TOGGLE
+function toggleCard(h){var b=h.nextElementSibling;b.style.display=(b.style.display==="none"||!b.style.display)?"block":"none";}
+document.addEventListener("DOMContentLoaded",function(){document.querySelectorAll(".cc-body").forEach(function(b){b.style.display="block";});});
+
+// TOC SCROLL
+document.querySelectorAll(".toc-item[href^='#']").forEach(function(a){a.addEventListener("click",function(e){e.preventDefault();var t=document.getElementById(this.getAttribute("href").slice(1));if(t)window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-76,behavior:"smooth"});});});
+
+// LIVE API TESTER
+function setPreset(m,u){document.getElementById("at-method").value=m;document.getElementById("at-url").value=u;}
+function syntaxHighlight(json){if(typeof json!=='string')json=JSON.stringify(json,null,2);return json.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/("(\\u[a-zA-Z0-9]{4}|\\[^u]|[^\\"])*"(\s*:)?|\b(true|false|null)\b|-?\d+(?:\.\d*)?(?:[eE][+\-]?\d+)?)/g,function(m){var cls='json-num';if(/^"/.test(m)){cls=/:$/.test(m)?'json-key':'json-str';}else if(/true|false/.test(m)){cls='json-bool';}return'<span class="'+cls+'">'+m+'</span>';});}
+async function sendApiRequest(){
+  var url=document.getElementById("at-url").value.trim(),method=document.getElementById("at-method").value,btn=document.getElementById("at-send"),statusEl=document.getElementById("at-status"),bodyEl=document.getElementById("at-resp-body"),timeEl=document.getElementById("at-time"),sizeEl=document.getElementById("at-size");
+  if(!url)return;
+  var l=getLang();
+  btn.disabled=true;statusEl.className="at-status-badge sb-waiting";statusEl.textContent=l==="hi"?"⏳ Bhej raha hoon...":"⏳ Sending...";bodyEl.textContent=l==="hi"?"Fetch ho raha hai...":"Fetching...";timeEl.textContent="";sizeEl.textContent="";
+  var t0=Date.now();
+  try{var res=await fetch(url,{method:method});var elapsed=Date.now()-t0;var text=await res.text();timeEl.textContent=elapsed+"ms";var parsed;try{parsed=JSON.parse(text);}catch(e){parsed=text;}bodyEl.innerHTML=typeof parsed==="string"?esc(parsed):syntaxHighlight(parsed);sizeEl.textContent=Math.round(text.length/1024*100)/100+"kb";if(res.ok){statusEl.className="at-status-badge sb-ok";statusEl.textContent="✅ "+res.status+" "+res.statusText;}else{statusEl.className="at-status-badge sb-err";statusEl.textContent="❌ "+res.status+" "+res.statusText;}}
+  catch(e){statusEl.className="at-status-badge sb-err";statusEl.textContent="❌ "+(l==="hi"?"Network Error":"Network Error");bodyEl.textContent=e.message+"\n\n"+(l==="hi"?"Note: Kuch APIs browser fetch block karte hain CORS ki wajah se. JSONPlaceholder presets try karo — woh CORS support karte hain.":"Note: Some APIs block browser fetch due to CORS. Try the JSONPlaceholder presets — they support CORS.");}
+  btn.disabled=false;
+}
+
+// CHEAT SHEET COPY
+function copyCheatSheet(){var text=document.getElementById("cheat-sheet-code").innerText;navigator.clipboard.writeText(text).then(function(){var btn=document.querySelector(".cs-copy-btn");btn.textContent=getLang()==="hi"?"✅ Copy Ho Gaya!":"✅ Copied!";setTimeout(function(){btn.textContent=getLang()==="hi"?"📋 Copy Karo":"📋 Copy All";},2000);});}
+
+// WEBSOCKET SIMULATION
+var wsMsgs=[{dir:"recv",text:'{"type":"connected","room":"api-demo","users":42}'},{dir:"recv",text:'{"type":"message","from":"Alice","text":"Hey! Just deployed my first API 🚀"}'},{dir:"recv",text:'{"type":"message","from":"Bob","text":"Nice! What endpoint did you build?"}'}];
+var wsFeed=document.getElementById("ws-feed");
+function addWsMsg(dir,text){var now=new Date(),t=now.getHours().toString().padStart(2,"0")+":"+now.getMinutes().toString().padStart(2,"0")+":"+now.getSeconds().toString().padStart(2,"0");var el=document.createElement("div");el.className="ws-msg";el.innerHTML='<span class="ws-time">'+t+'</span><span class="ws-dir '+dir+'">'+(dir==="send"?"⬆ SEND":"⬇ RECV")+'</span><span class="ws-text">'+esc(text)+'</span>';wsFeed.appendChild(el);wsFeed.scrollTop=wsFeed.scrollHeight;}
+wsMsgs.forEach(function(m){addWsMsg(m.dir,m.text);});
+function sendWsMsg(){var inp=document.getElementById("ws-input"),val=inp.value.trim();if(!val)return;addWsMsg("send",val);setTimeout(function(){var replies=['{"type":"ack","status":"received"}','{"type":"echo","data":'+val+'}','{"type":"message","from":"Server","text":"Got it! Broadcasting to 42 connected clients..."}'];addWsMsg("recv",replies[Math.floor(Math.random()*replies.length)]);},300+Math.random()*500);}
+
+// RATE LIMIT DEMO
+var rm1=0,rm2=0;
+function makeApiCall(){
+  var l=getLang();
+  rm1=Math.min(60,rm1+1);rm2=Math.min(1000,rm2+1);
+  var p1=rm1/60*100,p2=rm2/1000*100,f1=document.getElementById("rm1-fill"),f2=document.getElementById("rm2-fill");
+  document.getElementById("rm1-count").textContent=rm1+" / 60";document.getElementById("rm2-count").textContent=rm2+" / 1000";
+  f1.style.width=p1+"%";f2.style.width=p2+"%";f1.className="rm-fill "+(p1<60?"rm-ok":p1<85?"rm-warn":"rm-bad");f2.className="rm-fill "+(p2<60?"rm-ok":p2<85?"rm-warn":"rm-bad");
+  var msg=document.getElementById("rate-msg");
+  if(rm1>=60){msg.innerHTML='<span style="color:var(--red2)">❌ '+(l==="hi"?"429 Too Many Requests! Free tier khatam. Backoff implement karo aur 60 seconds wait karo.":"429 Too Many Requests! Free tier exhausted. Implement backoff and wait 60 seconds.")+'</span>';document.getElementById("rate-call-btn").disabled=true;setTimeout(function(){rm1=0;document.getElementById("rate-call-btn").disabled=false;msg.textContent=l==="hi"?"✅ Rate limit reset! Free tier mein dobara 60 requests hain.":"✅ Rate limit reset! Free tier has 60 requests again.";},4000);}
+  else if(rm1>45){msg.innerHTML='<span style="color:var(--yellow)">⚠️ '+(l==="hi"?"Warning: is minute mein sirf "+(60-rm1)+" requests baaki hain. Slow down!":"Warning: "+(60-rm1)+" requests remaining. Slow down!")+'</span>';}
+  else{msg.textContent=l==="hi"?"📡 API call ho gayi! Is minute window mein request #"+rm1+" of 60.":"📡 API call made! Request #"+rm1+" of 60 in this minute window.";}
+}
+
+// QUIZ
+var quizAnswered=[false,false,false,false,false],quizCorrect=0;
+function answerQ(qNum,btn,result){
+  if(quizAnswered[qNum-1])return;quizAnswered[qNum-1]=true;
+  var l=getLang();
+  var q=document.getElementById("q"+qNum);q.querySelectorAll(".q-option").forEach(function(b){b.disabled=true;});
+  var fb=document.getElementById("fb"+qNum);
+  if(result==="correct"){btn.classList.add("correct");quizCorrect++;fb.textContent=l==="hi"?"✅ Bilkul sahi! Shabash!":"✅ Correct! Well done!";fb.className="q-feedback fb-ok show";}
+  else{btn.classList.add("wrong");fb.textContent=l==="hi"?"❌ Sahi nahi — upar correct answer highlighted hai.":"❌ Not quite — the correct answer is highlighted.";fb.className="q-feedback fb-no show";q.querySelectorAll(".q-option").forEach(function(b){if(b.getAttribute("onclick")&&b.getAttribute("onclick").includes("correct"))b.classList.add("correct");});}
+  if(quizAnswered.every(Boolean))setTimeout(showQuizScore,600);
+}
+function showQuizScore(){
+  var l=getLang();
+  document.getElementById("quiz-score").classList.add("show");document.getElementById("quiz-score-num").textContent=quizCorrect+"/5";
+  var msgs=l==="hi"
+    ?["📖 Aur seekhte raho — sections dobara padho aur try karo!","🙂 Achha start! Jo miss kiye unhe review karo.","👍 Nice! Basics acche se samajh aaye hain.","💪 Bahut badhiya! APIs solidly jaante ho.","🏆 Perfect score! Tum API expert ho!"]
+    :["📖 Keep learning — re-read sections and try again!","🙂 Good start! Review the ones you missed.","👍 Nice! You understand the basics well.","💪 Great job! You know APIs solidly.","🏆 Perfect score! You're an API expert!"];
+  document.getElementById("quiz-score-msg").textContent=msgs[quizCorrect];
+}
+function resetQuiz(){
+  quizAnswered=[false,false,false,false,false];quizCorrect=0;
+  for(var i=1;i<=5;i++){var q=document.getElementById("q"+i);q.querySelectorAll(".q-option").forEach(function(b){b.disabled=false;b.className="q-option";});var fb=document.getElementById("fb"+i);fb.className="q-feedback";fb.textContent="";}
+  document.getElementById("quiz-score").classList.remove("show");
+}
+
+// TASKS
+function toggleTask(el){el.classList.toggle("done");updateTasks();}
+function updateTasks(){
+  var l=getLang();
+  var total=document.querySelectorAll(".task-item").length,done=document.querySelectorAll(".task-item.done").length,pct=Math.round(done/total*100);
+  document.getElementById("task-fill").style.width=pct+"%";
+  document.getElementById("task-label").textContent=done+" / "+total+(l==="hi"?" tasks complete":" tasks complete");
+  if(done===total)document.getElementById("task-done").classList.add("show");else document.getElementById("task-done").classList.remove("show");
+}
+
+// LIKE
+function renderLike(count){
+  var l=getLang();
+  var btn=document.getElementById("like-btn"),lbl=document.getElementById("like-label"),hrt=btn?btn.querySelector(".heart"):null,cnt=document.getElementById("like-count");
+  if(!btn)return;
+  if(liked){btn.classList.add("liked");if(hrt)hrt.textContent="💚";if(lbl)lbl.textContent=l==="hi"?"Like ho gaya!":"Liked!";}
+  else{btn.classList.remove("liked");if(hrt)hrt.textContent="🤍";if(lbl)lbl.textContent=l==="hi"?"Like karo":"Like";}
+  if(cnt&&count!==undefined)cnt.textContent=count+(l==="hi"?" likes":" likes");
+}
+function loadLikeCount(){fetch(DB+"/likes/"+BID+".json").then(function(r){return r.json();}).then(function(d){renderLike((d&&d.count!==undefined)?d.count:0);}).catch(function(){renderLike(0);});}
+function toggleLike(){liked=!liked;localStorage.setItem("liked_"+BID,liked);renderLike();fetch(DB+"/likes/"+BID+".json").then(function(r){return r.json();}).then(function(d){var cur=(d&&d.count!==undefined)?d.count:0;var n=Math.max(0,cur+(liked?1:-1));return fetch(DB+"/likes/"+BID+".json",{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({count:n})});}).then(function(){loadLikeCount();}).catch(function(){});}
+
+// COMMENTS
+function loadComments(){
+  var l=getLang();
+  fetch(DB+"/comments/"+BID+".json").then(function(r){return r.json();}).then(function(data){
+    var list=document.getElementById("comments-list"),cnt=document.getElementById("cmt-count");
+    if(!data){if(cnt)cnt.textContent="0";list.innerHTML='<div class="cmt-empty"><span class="cmt-empty-icon">🔌</span><span>'+(l==="hi"?"Pehla comment tum karo! 💬":"Be the first to comment! 💬")+'</span></div>';return;}
+    var cs=Object.values(data).reverse();if(cnt)cnt.textContent=cs.length;
+    list.innerHTML=cs.map(function(cm){return'<div class="comment-card"><div class="comment-header"><div class="ci-avatar" style="background:'+aColor(cm.name)+'">'+esc(cm.name).charAt(0).toUpperCase()+'</div><div class="comment-meta"><span class="comment-name">'+esc(cm.name)+'</span><span class="comment-date">'+timeAgo(cm.timestamp)+'</span></div></div><div class="comment-text">'+esc(cm.comment||cm.text||"")+'</div></div>';}).join("");
+  }).catch(function(){});
+}
+function updateChar(el){var c=document.getElementById("cf-char");if(c)c.textContent=el.value.length+"/500";}
+function setPrompt(chip){var ta=document.getElementById("c-text");if(ta){ta.value=chip.dataset[getLang()==="hi"?"hi":"en"]||chip.textContent.trim();updateChar(ta);ta.focus();}}
+function postComment(){
+  var l=getLang();
+  var name=document.getElementById("c-name").value.trim(),text=document.getElementById("c-text").value.trim(),btn=document.getElementById("cf-btn"),msgEl=document.getElementById("cf-msg");
+  msgEl.textContent="";msgEl.className="cf-msg";
+  if(!name){msgEl.textContent=l==="hi"?"⚠️ Naam daalo!":"⚠️ Name required!";msgEl.className="cf-msg cw-err";return;}
+  if(!text||text.length<3){msgEl.textContent=l==="hi"?"⚠️ Comment likho!":"⚠️ Comment required!";msgEl.className="cf-msg cw-err";return;}
+  btn.disabled=true;document.getElementById("cf-btn-label").textContent=l==="hi"?"Post ho raha hai...":"Posting...";
+  fetch(DB+"/comments/"+BID+".json",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({blogId:BID,name:name,comment:text,timestamp:new Date().toISOString()})})
+  .then(function(r){if(!r.ok)throw new Error(r.status);document.getElementById("c-name").value="";document.getElementById("c-email").value="";document.getElementById("c-text").value="";msgEl.textContent=l==="hi"?"✅ Comment post ho gaya!":"✅ Comment posted!";msgEl.className="cf-msg cw-ok";setTimeout(function(){msgEl.textContent="";},3000);loadComments();})
+  .catch(function(){msgEl.textContent=l==="hi"?"❌ Error! Dobara try karo.":"❌ Error! Try again.";msgEl.className="cf-msg cw-err";})
+  .finally(function(){btn.disabled=false;document.getElementById("cf-btn-label").textContent=l==="hi"?"Comment Daalo":"Post Comment";});
+}
+
+// INIT
+document.addEventListener("DOMContentLoaded",function(){
+  setLang(localStorage.getItem("ciweb_lang")||"en");
+  renderLike();loadLikeCount();loadComments();updateTasks();
+});
+</script>
+</body>
+</html>
