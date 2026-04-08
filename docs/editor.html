@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coding Infinite | Mobile-Friendly Editor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #050505; color: #e5e5e5; overflow-x: hidden; }
+        /* Editor height adjusted for single screen */
+        .monaco-container { height: 40vh; border-radius: 12px 12px 0 0; overflow: hidden; border: 1px solid #262626; border-bottom: none; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .xray-decoration { background: rgba(168, 85, 247, 0.2); border-bottom: 2px dashed #a855f7; }
+        /* Preview Frame below the editor */
+        #preview-frame { background: white; border-radius: 0 0 12px 12px; height: 35vh; width: 100%; border: 1px solid #262626; }
+        .glow-pulse { box-shadow: 0 0 20px rgba(168, 85, 247, 0.3); transition: all 0.3s ease; }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    </style>
+</head>
+<body class="p-2 md:p-6">
+
+    <header class="flex justify-between items-center mb-4 max-w-4xl mx-auto">
+        <div>
+            <h1 class="text-xl font-bold bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">CI Editor</h1>
+            <p class="text-[10px] text-gray-500 tracking-tighter uppercase">Live X-Ray Mood</p>
+        </div>
+        <div class="flex gap-2">
+            <button id="xray-btn" class="glass text-[10px] px-3 py-1.5 rounded-full hover:bg-purple-600 transition">X-RAY</button>
+            <button class="bg-white text-black text-[10px] px-3 py-1.5 rounded-full font-bold">COMMUNITY</button>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto space-y-0">
+        
+        <div class="flex items-center justify-between bg-[#1e1e1e] p-2 rounded-t-xl border-x border-t border-[#262626]">
+            <span class="text-[10px] font-mono text-gray-400 ml-2">index.html — Mistake Friendly</span>
+            <div class="flex gap-1.5 mr-2">
+                <div class="w-2.5 h-2.5 rounded-full bg-red-500/50"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-yellow-500/50"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-green-500/50"></div>
+            </div>
+        </div>
+
+        <div id="editor-container" class="monaco-container"></div>
+
+        <iframe id="preview-frame" class="glow-pulse"></iframe>
+
+        <div class="mt-4 glass p-3 rounded-xl flex items-center gap-3">
+            <div class="bg-purple-500/20 p-2 rounded-lg">🚀</div>
+            <div>
+                <h3 class="text-xs font-bold text-purple-400">Progress Jo Feel Ho:</h3>
+                <p class="text-[11px] text-gray-400">Heading ka color badalkar "Gold" karke dekho!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="max-w-4xl mx-auto mt-12 mb-10">
+        <div class="glass p-6 rounded-2xl border-dashed border-gray-700 border-2">
+            <h2 class="text-lg font-semibold mb-3 text-white italic underline decoration-purple-500">Yeh kyu banaya? (Why this exists?)</h2>
+            <p class="text-xs text-gray-400 leading-relaxed">
+                Coding boring nahi honi chahiye. Humne ise isliye banaya taaki aap <span class="text-purple-400">"Chill Vibes"</span> ke saath build kar sakein. 
+                <strong>X-Ray mode</strong> se aap code ke piche ki science dekh sakte hain, aur <strong>Mistake Friendly</strong> editor aapko darne nahi deta. 
+                Muzaffarnagar ke har curious coder ke liye ek tohfa!
+            </p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs/loader.min.js"></script>
+    <script>
+        require.config({ paths: { 'vs': 'https://cdnjs.cloudflare.com/ajax/libs/monaco-editor/0.36.1/min/vs' }});
+
+        let editor;
+        let decorations = [];
+
+        require(['vs/editor/editor.main'], function() {
+            const codeTemplate = `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { background: #fff; color: #333; font-family: 'Inter', sans-serif; display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    h1 { color: #a855f7; border-bottom: 2px solid #eee; }
+  </style>
+</head>
+<body>
+  <h1>Coding Infinite ✨</h1>
+  <p>Upar code likho, niche magic dekho!</p>
+</body>
+</html>`;
+
+            editor = monaco.editor.create(document.getElementById('editor-container'), {
+                value: codeTemplate,
+                language: 'html',
+                theme: 'vs-dark',
+                automaticLayout: true,
+                fontSize: 13,
+                fontFamily: 'JetBrains Mono',
+                minimap: { enabled: false },
+                scrollBeyondLastLine: false,
+                lineNumbers: 'on',
+                roundedSelection: true
+            });
+
+            const preview = document.getElementById('preview-frame');
+            
+            // Live Preview Sync
+            editor.onDidChangeModelContent(() => {
+                preview.srcdoc = editor.getValue();
+                // Visual feedback pulse
+                preview.classList.add('glow-pulse');
+                setTimeout(() => preview.classList.remove('glow-pulse'), 400);
+            });
+
+            preview.srcdoc = codeTemplate;
+
+            // X-Ray Logic
+            document.getElementById('xray-btn').addEventListener('click', () => {
+                if (decorations.length > 0) {
+                    decorations = editor.deltaDecorations(decorations, []);
+                    return;
+                }
+                // Highlight H1 tag
+                decorations = editor.deltaDecorations([], [
+                    { 
+                        range: new monaco.Range(11, 3, 11, 28), 
+                        options: { 
+                            inlineClassName: 'xray-decoration',
+                            hoverMessage: { value: 'X-RAY: Yeh content aapke user ko dikhta hai!' }
+                        }
+                    }
+                ]);
+            });
+        });
+    </script>
+</body>
+</html>
