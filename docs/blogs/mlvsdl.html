@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ML vs DL — CIWeb Blog</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ml:#00e5ff;--dl:#ff4081;--bg:#060a10;--surface:#0d1421;--surface2:#111c2e;--text:#e8edf5;--muted:#6b7a95;--accent:#f5c842;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'DM Sans',sans-serif;overflow-x:hidden;}
+@media(pointer:fine){body{cursor:none;}#cursor,#cursor-ring{display:block;}}
+@media(pointer:coarse){#cursor,#cursor-ring{display:none;}}
+#cursor{position:fixed;width:12px;height:12px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transition:transform .15s ease;mix-blend-mode:difference;}
+#cursor-ring{position:fixed;width:36px;height:36px;border:1.5px solid rgba(245,200,66,.5);border-radius:50%;pointer-events:none;z-index:9998;transition:all .25s ease;}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");pointer-events:none;z-index:1000;opacity:.4;}
+
+/* HINGLISH TOGGLE */
+#lang-toggle{position:fixed;bottom:24px;right:24px;z-index:600;background:linear-gradient(135deg,#1a2540,#0d1421);border:1px solid rgba(245,200,66,.3);border-radius:50px;padding:10px 18px;display:flex;align-items:center;gap:10px;cursor:pointer;box-shadow:0 8px 32px rgba(0,0,0,.4);transition:all .3s ease;animation:pulseGlow 3s ease-in-out infinite;}
+#lang-toggle:hover{border-color:var(--accent);box-shadow:0 12px 40px rgba(0,0,0,.5),0 0 20px rgba(245,200,66,.2);transform:translateY(-2px);}
+@keyframes pulseGlow{0%,100%{box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 0 0 rgba(245,200,66,.3);}50%{box-shadow:0 8px 32px rgba(0,0,0,.4),0 0 14px 3px rgba(245,200,66,.15);}}
+.toggle-flag{font-size:1.2rem;line-height:1;}
+.toggle-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:1.5px;color:var(--accent);text-transform:uppercase;white-space:nowrap;}
+.toggle-sw{width:36px;height:20px;background:rgba(255,255,255,.08);border-radius:10px;position:relative;transition:background .3s;flex-shrink:0;}
+.toggle-sw::after{content:'';position:absolute;width:14px;height:14px;background:var(--muted);border-radius:50%;top:3px;left:3px;transition:all .3s ease;}
+.lang-hi .toggle-sw{background:rgba(245,200,66,.3);}
+.lang-hi .toggle-sw::after{left:19px;background:var(--accent);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.5rem;backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);background:rgba(6,10,16,.85);gap:1rem;}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-logo-box{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--ml),var(--dl));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1rem;color:#fff;flex-shrink:0;}
+.nav-brand-text{display:flex;flex-direction:column;}
+.nav-logo-name{font-family:'Bebas Neue',sans-serif;font-size:1.3rem;letter-spacing:3px;color:var(--accent);line-height:1;}
+.nav-domain{font-family:'Space Mono',monospace;font-size:.52rem;color:var(--muted);letter-spacing:1px;}
+.nav-links{display:flex;gap:1.5rem;list-style:none;}
+.nav-links a{font-family:'Space Mono',monospace;font-size:.63rem;color:var(--muted);text-decoration:none;letter-spacing:2px;text-transform:uppercase;transition:color .3s;}
+.nav-links a:hover{color:var(--accent);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.mobile-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(6,10,16,.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.05);z-index:499;padding:1.5rem 1.5rem;flex-direction:column;gap:1rem;}
+.mobile-menu.open{display:flex;}
+.mobile-menu a{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--muted);text-decoration:none;letter-spacing:2px;text-transform:uppercase;padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.04);}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:7rem 1.5rem 5rem;text-align:center;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.04) 1px,transparent 1px);background-size:60px 60px;animation:gridMove 20s linear infinite;}
+@keyframes gridMove{to{transform:translateY(60px);}}
+.hero-orb{position:absolute;border-radius:50%;filter:blur(120px);animation:orbFloat 8s ease-in-out infinite alternate;}
+.orb-ml{width:min(500px,80vw);height:min(500px,80vw);background:radial-gradient(circle,rgba(0,229,255,.18),transparent 70%);top:-20%;left:-10%;}
+.orb-dl{width:min(400px,60vw);height:min(400px,60vw);background:radial-gradient(circle,rgba(255,64,129,.18),transparent 70%);bottom:-10%;right:-5%;animation-delay:-4s;}
+@keyframes orbFloat{from{transform:translate(0,0) scale(1);}to{transform:translate(30px,20px) scale(1.05);}}
+.hero-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:4px;color:var(--accent);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards;}
+.hero-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(3.5rem,14vw,10rem);line-height:.9;letter-spacing:-2px;margin-bottom:2rem;opacity:0;animation:fadeUp .8s .4s forwards;}
+.hero-title .ml{color:var(--ml);}
+.hero-title .dl{color:var(--dl);}
+.hero-title .vs{color:var(--muted);font-size:55%;vertical-align:middle;margin:0 .3em;}
+.hero-sub{max-width:560px;font-size:clamp(.88rem,2.5vw,1.05rem);color:var(--muted);line-height:1.8;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .6s forwards;}
+.hero-badges{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;opacity:0;animation:fadeUp .8s .8s forwards;}
+.hero-badge{padding:.4rem 1rem;border-radius:50px;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;}
+.badge-ml{background:rgba(0,229,255,.1);color:var(--ml);border:1px solid rgba(0,229,255,.25);}
+.badge-dl{background:rgba(255,64,129,.1);color:var(--dl);border:1px solid rgba(255,64,129,.25);}
+.badge-ci{background:rgba(245,200,66,.1);color:var(--accent);border:1px solid rgba(245,200,66,.25);}
+.scroll-hint{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;opacity:0;animation:fadeUp .8s 1s forwards,bounce 2s 1.8s ease-in-out infinite;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:translateY(0);}50%{transform:translateY(8px);}}
+
+/* SECTIONS */
+section{position:relative;}
+.section-inner{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;}
+.section-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--accent);margin-bottom:1rem;}
+.section-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,6vw,4.5rem);line-height:1;margin-bottom:2.5rem;}
+
+/* TWIN CARDS */
+.twin-intro{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-bottom:4rem;}
+.twin-card{padding:clamp(1.5rem,4vw,3rem);position:relative;overflow:hidden;transition:transform .4s ease;}
+.twin-card:hover{transform:scale(1.01);z-index:2;}
+.twin-card.ml-card{background:linear-gradient(135deg,rgba(0,229,255,.07),rgba(0,229,255,.02));border:1px solid rgba(0,229,255,.15);}
+.twin-card.dl-card{background:linear-gradient(135deg,rgba(255,64,129,.07),rgba(255,64,129,.02));border:1px solid rgba(255,64,129,.15);}
+.twin-card-tag{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:1rem;}
+.ml-card .twin-card-tag{color:var(--ml);}
+.dl-card .twin-card-tag{color:var(--dl);}
+.twin-card h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.8rem,4vw,2.5rem);margin-bottom:1.2rem;}
+.ml-card h3{color:var(--ml);}
+.dl-card h3{color:var(--dl);}
+.twin-card p{color:var(--muted);line-height:1.9;font-size:clamp(.83rem,2vw,.95rem);}
+.twin-icon{font-size:clamp(2.5rem,6vw,4rem);margin-bottom:1.2rem;display:block;}
+
+/* CANVAS */
+.brain-section{background:var(--surface);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);}
+#nn-canvas{width:100%;height:clamp(240px,40vw,400px);display:block;border-radius:12px;margin-top:2rem;cursor:crosshair;}
+.canvas-hint{text-align:center;font-family:'Space Mono',monospace;font-size:.58rem;letter-spacing:2px;color:var(--muted);margin-top:1rem;}
+
+/* TABLE */
+.table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:2rem 0 3rem;border-radius:12px;border:1px solid rgba(255,255,255,.05);}
+.compare-table{width:100%;border-collapse:collapse;font-size:clamp(.76rem,2vw,.9rem);min-width:520px;}
+.compare-table thead th{padding:1rem 1.2rem;text-align:left;font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.02);white-space:nowrap;}
+.th-feature{color:var(--muted);}.th-ml{color:var(--ml);}.th-dl{color:var(--dl);}
+.compare-table tbody tr{border-bottom:1px solid rgba(255,255,255,.04);transition:background .3s;}
+.compare-table tbody tr:hover{background:rgba(255,255,255,.03);}
+.compare-table td{padding:1rem 1.2rem;vertical-align:top;line-height:1.7;}
+.td-feature{font-family:'Space Mono',monospace;font-size:.68rem;color:var(--accent);white-space:nowrap;}
+.td-ml{color:#7ee8f8;}.td-dl{color:#ff8fab;}
+
+/* SLIDER */
+.slider-section{background:var(--surface);border-top:1px solid rgba(255,255,255,.04);border-bottom:1px solid rgba(255,255,255,.04);}
+.data-slider-wrap{background:var(--surface2);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:clamp(1.5rem,4vw,2.5rem);margin-top:2rem;}
+.slider-label{display:flex;justify-content:space-between;margin-bottom:1rem;font-family:'Space Mono',monospace;font-size:clamp(.52rem,1.5vw,.65rem);letter-spacing:1px;color:var(--muted);gap:1rem;flex-wrap:wrap;}
+.data-range{-webkit-appearance:none;width:100%;height:4px;border-radius:2px;background:linear-gradient(90deg,var(--ml),var(--dl));outline:none;cursor:pointer;margin-bottom:2rem;}
+.data-range::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;box-shadow:0 0 12px rgba(245,200,66,.5);}
+.data-range::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:var(--accent);cursor:pointer;border:none;}
+.data-result{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.data-result-card{padding:1.5rem;border-radius:10px;text-align:center;transition:all .4s;}
+.dr-ml{background:rgba(0,229,255,.07);border:1px solid rgba(0,229,255,.15);}
+.dr-dl{background:rgba(255,64,129,.07);border:1px solid rgba(255,64,129,.15);}
+.dr-label{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:2px;text-transform:uppercase;margin-bottom:.8rem;}
+.dr-ml .dr-label{color:var(--ml);}.dr-dl .dr-label{color:var(--dl);}
+.dr-bar-wrap{height:80px;display:flex;align-items:flex-end;justify-content:center;margin-bottom:.8rem;}
+.dr-bar{width:40px;border-radius:4px 4px 0 0;transition:height .6s cubic-bezier(.34,1.56,.64,1);}
+.dr-ml .dr-bar{background:linear-gradient(to top,var(--ml),rgba(0,229,255,.3));}
+.dr-dl .dr-bar{background:linear-gradient(to top,var(--dl),rgba(255,64,129,.3));}
+.dr-text{font-size:clamp(.73rem,2vw,.85rem);color:var(--muted);line-height:1.6;}
+
+/* USE CASES */
+.usecases-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem;margin-top:2.5rem;}
+.uc-card{padding:clamp(1.2rem,3vw,2rem);border-radius:12px;border:1px solid;transition:transform .3s,box-shadow .3s;position:relative;overflow:hidden;}
+.uc-card::before{content:'';position:absolute;top:-50%;left:-50%;width:200%;height:200%;opacity:0;transition:opacity .4s;border-radius:50%;}
+.uc-card:hover::before{opacity:1;}
+.uc-card:hover{transform:translateY(-5px);}
+.uc-card.ml-uc{border-color:rgba(0,229,255,.2);background:rgba(0,229,255,.03);}
+.uc-card.ml-uc::before{background:radial-gradient(circle,rgba(0,229,255,.06),transparent 60%);}
+.uc-card.ml-uc:hover{box-shadow:0 16px 36px rgba(0,229,255,.08);}
+.uc-card.dl-uc{border-color:rgba(255,64,129,.2);background:rgba(255,64,129,.03);}
+.uc-card.dl-uc::before{background:radial-gradient(circle,rgba(255,64,129,.06),transparent 60%);}
+.uc-card.dl-uc:hover{box-shadow:0 16px 36px rgba(255,64,129,.08);}
+.uc-emoji{font-size:clamp(1.5rem,4vw,2rem);margin-bottom:.8rem;display:block;}
+.uc-type{font-family:'Space Mono',monospace;font-size:.56rem;letter-spacing:3px;text-transform:uppercase;margin-bottom:.5rem;}
+.ml-uc .uc-type{color:var(--ml);}.dl-uc .uc-type{color:var(--dl);}
+.uc-card h4{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.1rem,3vw,1.4rem);margin-bottom:.5rem;}
+.uc-card p{font-size:clamp(.76rem,2vw,.85rem);color:var(--muted);line-height:1.7;}
+
+/* QUIZ */
+.quiz-section{background:var(--bg);}
+.quiz-box{background:var(--surface2);border:1px solid rgba(255,255,255,.07);border-radius:16px;padding:clamp(1.5rem,5vw,3rem);max-width:700px;margin:0 auto;}
+.quiz-progress{display:flex;gap:5px;margin-bottom:2rem;}
+.quiz-dot{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.08);transition:background .4s;}
+.quiz-dot.active{background:var(--accent);}.quiz-dot.done{background:rgba(245,200,66,.4);}
+.quiz-q{font-family:'Bebas Neue',sans-serif;font-size:clamp(1.2rem,4vw,1.8rem);line-height:1.2;margin-bottom:1.5rem;min-height:56px;}
+.quiz-options{display:flex;flex-direction:column;gap:.75rem;}
+.quiz-option{padding:.9rem 1.2rem;border:1px solid rgba(255,255,255,.1);border-radius:10px;background:transparent;color:var(--text);font-family:'DM Sans',sans-serif;font-size:clamp(.83rem,2.5vw,.95rem);cursor:pointer;text-align:left;transition:all .25s;}
+.quiz-option:hover{border-color:var(--accent);background:rgba(245,200,66,.06);transform:translateX(5px);}
+.quiz-option.correct{border-color:#00e676;background:rgba(0,230,118,.1);color:#00e676;}
+.quiz-option.wrong{border-color:var(--dl);background:rgba(255,64,129,.1);color:var(--dl);}
+.quiz-feedback{margin-top:1.2rem;padding:1rem 1.2rem;border-radius:8px;font-size:clamp(.78rem,2vw,.9rem);line-height:1.6;display:none;}
+.quiz-feedback.show{display:block;}
+.quiz-feedback.correct-fb{background:rgba(0,230,118,.08);color:#69f0ae;border:1px solid rgba(0,230,118,.2);}
+.quiz-feedback.wrong-fb{background:rgba(255,64,129,.08);color:#ff8fab;border:1px solid rgba(255,64,129,.2);}
+.quiz-next{margin-top:1.2rem;padding:.85rem 2rem;background:var(--accent);color:#000;border:none;border-radius:8px;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;display:none;transition:transform .2s,box-shadow .2s;}
+.quiz-next.show{display:inline-block;}
+.quiz-next:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(245,200,66,.3);}
+.quiz-score{text-align:center;display:none;}
+.quiz-score h3{font-family:'Bebas Neue',sans-serif;font-size:clamp(2rem,8vw,3rem);color:var(--accent);margin-bottom:.5rem;}
+.quiz-score p{color:var(--muted);margin-bottom:2rem;font-size:clamp(.85rem,2vw,1rem);}
+.quiz-restart{padding:.85rem 2rem;background:transparent;color:var(--accent);border:1px solid var(--accent);border-radius:8px;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .3s;}
+.quiz-restart:hover{background:var(--accent);color:#000;}
+
+/* TIMELINE */
+.timeline{margin-top:3rem;position:relative;}
+.timeline::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,var(--ml),var(--dl));transform:translateX(-50%);}
+.tl-item{display:grid;grid-template-columns:1fr 60px 1fr;gap:0;margin-bottom:2.5rem;align-items:center;}
+.tl-content{padding:clamp(1rem,3vw,1.5rem);border-radius:10px;transition:transform .3s;}
+.tl-content:hover{transform:scale(1.02);}
+.tl-left{background:rgba(0,229,255,.05);border:1px solid rgba(0,229,255,.15);text-align:right;}
+.tl-right{background:rgba(255,64,129,.05);border:1px solid rgba(255,64,129,.15);}
+.tl-dot{width:14px;height:14px;border-radius:50%;margin:0 auto;border:2px solid;position:relative;}
+.tl-dot::after{content:'';position:absolute;inset:3px;border-radius:50%;}
+.tl-dot.ml{border-color:var(--ml);}.tl-dot.ml::after{background:var(--ml);}
+.tl-dot.dl{border-color:var(--dl);}.tl-dot.dl::after{background:var(--dl);}
+.tl-year{font-family:'Space Mono',monospace;font-size:.6rem;color:var(--accent);letter-spacing:1px;margin-bottom:.4rem;}
+.tl-content h4{font-family:'Bebas Neue',sans-serif;font-size:clamp(1rem,3vw,1.2rem);margin-bottom:.4rem;}
+.tl-content p{font-size:clamp(.73rem,2vw,.82rem);color:var(--muted);line-height:1.6;}
+
+/* FOOTER */
+footer{padding:clamp(2.5rem,6vw,4rem) 1.5rem;text-align:center;border-top:1px solid rgba(255,255,255,.05);background:var(--surface);}
+.footer-brand{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:1rem;text-decoration:none;}
+.footer-logo-box{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--ml),var(--dl));display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1.2rem;color:#fff;}
+.footer-logo-name{font-family:'Bebas Neue',sans-serif;font-size:1.8rem;letter-spacing:4px;color:var(--accent);}
+.footer-domain{font-family:'Space Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:2px;margin-bottom:1.2rem;}
+.footer-vs{font-family:'Bebas Neue',sans-serif;font-size:1.1rem;margin:1rem 0;}
+.footer-vs .ml{color:var(--ml);}.footer-vs .dl{color:var(--dl);}
+.footer-tagline{color:var(--muted);font-size:clamp(.72rem,2vw,.8rem);font-family:'Space Mono',monospace;letter-spacing:1px;}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(35px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:.9rem 1.2rem;}
+  .nav-links{display:none;}
+  .hamburger{display:flex;}
+  .twin-intro{grid-template-columns:1fr;}
+  .data-result{grid-template-columns:1fr;}
+  .timeline::before{left:18px;}
+  .tl-item{grid-template-columns:36px 1fr;}
+  .tl-left{display:none;}
+  .tl-dot{margin:0;}
+  .tl-right{grid-column:2;}
+  #lang-toggle{bottom:16px;right:16px;padding:8px 14px;}
+  .toggle-label{font-size:.54rem;}
+}
+@media(max-width:480px){
+  .hero{padding:6rem 1rem 4rem;}
+  .hero-badge{font-size:.52rem;padding:.32rem .75rem;}
+  .section-inner{padding:3.5rem 1rem;}
+  .twin-card{padding:1.5rem;}
+  .quiz-box{padding:1.5rem;}
+  .data-slider-wrap{padding:1.5rem;}
+  .usecases-grid{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- HINGLISH TOGGLE -->
+<div id="lang-toggle" onclick="toggleLang()" title="Switch Language">
+  <span class="toggle-flag">🇮🇳</span>
+  <span class="toggle-label" id="toggleLabel">Hinglish</span>
+  <div class="toggle-sw" id="toggleSw"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://ciweb.in" target="_blank">
+    <div class="nav-logo-box">CI</div>
+    <div class="nav-brand-text">
+      <span class="nav-logo-name">CIWeb</span>
+      <span class="nav-domain">ciweb.in</span>
+    </div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#intro" data-en="INTRO" data-hi="परिचय">INTRO</a></li>
+    <li><a href="#compare" data-en="COMPARE" data-hi="तुलना">COMPARE</a></li>
+    <li><a href="#quiz" data-en="QUIZ" data-hi="क्विज़">QUIZ</a></li>
+    <li><a href="#usecases" data-en="USES" data-hi="उपयोग">USES</a></li>
+    <li><a href="#timeline" data-en="HISTORY" data-hi="इतिहास">HISTORY</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#intro" onclick="closeMenu()" data-en="INTRO" data-hi="परिचय">INTRO</a>
+  <a href="#compare" onclick="closeMenu()" data-en="COMPARE" data-hi="तुलना">COMPARE</a>
+  <a href="#quiz" onclick="closeMenu()" data-en="QUIZ" data-hi="क्विज़">QUIZ</a>
+  <a href="#usecases" onclick="closeMenu()" data-en="USES" data-hi="उपयोग">USES</a>
+  <a href="#timeline" onclick="closeMenu()" data-en="HISTORY" data-hi="इतिहास">HISTORY</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-orb orb-ml"></div>
+  <div class="hero-orb orb-dl"></div>
+  <p class="hero-tag" data-en="// The Intelligence Spectrum — by CIWeb" data-hi="// Intelligence ki Duniya — CIWeb ke saath">// The Intelligence Spectrum — by CIWeb</p>
+  <h1 class="hero-title">
+    <span class="ml">ML</span><span class="vs">VS</span><span class="dl">DL</span>
+  </h1>
+  <p class="hero-sub" data-en="Two paradigms. One goal. An interactive journey through Machine Learning and Deep Learning — what they are, how they differ, and where they shine." data-hi="Do alag approaches. Ek hi goal. ML aur DL ka yeh interactive safar — kya hain dono, kaise alag hain, aur kahan kaam aate hain.">Two paradigms. One goal. An interactive journey through Machine Learning and Deep Learning — what they are, how they differ, and where they shine.</p>
+  <div class="hero-badges">
+    <span class="hero-badge badge-ml" data-en="Machine Learning" data-hi="मशीन लर्निंग">Machine Learning</span>
+    <span class="hero-badge badge-dl" data-en="Deep Learning" data-hi="डीप लर्निंग">Deep Learning</span>
+    <span class="hero-badge badge-ci" data-en="By CIWeb.in" data-hi="CIWeb.in द्वारा">By CIWeb.in</span>
+  </div>
+  <p class="scroll-hint" data-en="↓  Scroll to explore  ↓" data-hi="↓  Neeche Scroll Karo  ↓">↓ &nbsp; Scroll to explore &nbsp; ↓</p>
+</section>
+
+<!-- INTRO -->
+<section id="intro">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 01 — THE PLAYERS" data-hi="// 01 — Dono Khiladi">// 01 — THE PLAYERS</p>
+    <h2 class="section-title reveal" data-en="Meet the Contenders" data-hi="Dono ko Samjho">Meet the<br>Contenders</h2>
+    <div class="twin-intro">
+      <div class="twin-card ml-card reveal">
+        <span class="twin-icon">🧮</span>
+        <p class="twin-card-tag" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</p>
+        <h3 data-en="The Rule Learner" data-hi="The Rule Learner">The Rule Learner</h3>
+        <p data-en="Machine Learning is a branch of AI where systems learn patterns from data and improve over time — without being explicitly programmed for every scenario. It uses structured data, handcrafted features, and classical algorithms like Decision Trees, SVMs, and Random Forests to make predictions." data-hi="Machine Learning ek branch hai AI ki jahan systems data se patterns seekhte hain — bina har scenario ke liye program kiye. Yeh structured data, handcrafted features, aur classical algorithms jaise Decision Trees, SVMs, aur Random Forests use karta hai predictions banane ke liye.">Machine Learning is a branch of AI where systems learn patterns from data and improve over time — without being explicitly programmed for every scenario. It uses structured data, handcrafted features, and classical algorithms like Decision Trees, SVMs, and Random Forests to make predictions.</p>
+        <br>
+        <p data-en="Think of it as teaching a student using textbooks and clear formulas. The student needs guidance on which features to focus on." data-hi="Socho jaise ek student ko textbooks aur clear formulas se padhaya ja raha hai. Use batana padta hai ki kaunse features pe dhyan dena hai.">Think of it as teaching a student using textbooks and clear formulas. The student needs guidance on which features to focus on.</p>
+      </div>
+      <div class="twin-card dl-card reveal">
+        <span class="twin-icon">🧠</span>
+        <p class="twin-card-tag" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</p>
+        <h3 data-en="The Pattern Seeker" data-hi="The Pattern Seeker">The Pattern Seeker</h3>
+        <p data-en="Deep Learning is a specialized subset of ML that uses artificial neural networks with multiple layers — mimicking the human brain. It automatically discovers features from raw data: images, audio, text. No manual feature engineering needed." data-hi="Deep Learning ek specialized subset hai ML ka. Yeh artificial neural networks use karta hai — bilkul human brain ki tarah. Yeh khud hi apne features raw data se — images, audio, text — discover kar leta hai. Kuch manually karna nahi padta.">Deep Learning is a specialized subset of ML that uses artificial neural networks with multiple layers — mimicking the human brain. It automatically discovers features from raw data: images, audio, text. No manual feature engineering needed.</p>
+        <br>
+        <p data-en="Think of it as a student who learns by immersion — watching thousands of movies to understand language, not memorizing grammar rules." data-hi="Socho jaise ek student jo sirf immersion se seekhta hai — hazaron movies dekhkar language samajh leta hai, grammar rules yaad kiye bina.">Think of it as a student who learns by immersion — watching thousands of movies to understand language, not memorizing grammar rules.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEURAL NET -->
+<section class="brain-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 02 — VISUALIZED" data-hi="// 02 — Dekho Ise">// 02 — VISUALIZED</p>
+    <h2 class="section-title reveal" data-en="Neural Network Explorer" data-hi="Neural Network Explorer">Neural Network<br>Explorer</h2>
+    <p class="reveal" style="color:var(--muted);font-size:clamp(.85rem,2.5vw,.95rem);max-width:600px;line-height:1.8;margin-bottom:1rem;" data-en="A Deep Learning model is made of layers of neurons. Click or tap the canvas to watch signals propagate!" data-hi="Deep Learning model kai layers ke neurons se bana hota hai. Canvas pe click ya tap karo aur signals ko propagate hote dekho!">A Deep Learning model is made of layers of neurons. Click or tap the canvas to watch signals propagate!</p>
+    <canvas id="nn-canvas"></canvas>
+    <p class="canvas-hint" data-en="CLICK / TAP ANYWHERE TO FIRE A SIGNAL" data-hi="KAHIN BHI CLICK / TAP KARO SIGNAL FIRE KARNE KE LIYE">CLICK / TAP ANYWHERE TO FIRE A SIGNAL</p>
+  </div>
+</section>
+
+<!-- COMPARE -->
+<section id="compare">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 03 — HEAD TO HEAD" data-hi="// 03 — Aamne Saamne">// 03 — HEAD TO HEAD</p>
+    <h2 class="section-title reveal" data-en="The Comparison Matrix" data-hi="Tulna ki Table">The Comparison<br>Matrix</h2>
+    <div class="table-wrap reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th class="th-feature" data-en="Feature" data-hi="Feature">Feature</th>
+            <th class="th-ml" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</th>
+            <th class="th-dl" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="td-feature" data-en="Data Needs" data-hi="Data Zaroori">Data Needs</td>
+            <td class="td-ml" data-en="Works well with small to medium datasets. Hundreds to thousands of samples can suffice." data-hi="Chhote se medium datasets pe achha kaam karta hai. Sau se hazaar samples bhi kaafi hote hain.">Works well with small to medium datasets. Hundreds to thousands of samples can suffice.</td>
+            <td class="td-dl" data-en="Thrives on massive datasets. Millions of examples are often needed for best results." data-hi="Bahut bade datasets pe best kaam karta hai. Lakhon examples chahiye hote hain.">Thrives on massive datasets. Millions of examples are often needed for best results.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Feature Eng." data-hi="Feature Eng.">Feature Eng.</td>
+            <td class="td-ml" data-en="Requires manual feature selection. Domain expertise is essential." data-hi="Manually features choose karne padte hain. Domain expertise zaroori hai.">Requires manual feature selection. Domain expertise is essential.</td>
+            <td class="td-dl" data-en="Automatically learns features from raw data. No manual extraction needed." data-hi="Raw data se automatically features seekh leta hai. Kuch manually karna nahi padta.">Automatically learns features from raw data. No manual extraction needed.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Hardware" data-hi="Hardware">Hardware</td>
+            <td class="td-ml" data-en="Runs fine on standard CPUs. Accessible and affordable." data-hi="Normal CPU pe chalata hai. Sasta aur accessible hai.">Runs fine on standard CPUs. Accessible and affordable.</td>
+            <td class="td-dl" data-en="Demands powerful GPUs / TPUs. Computationally intensive." data-hi="Powerful GPUs / TPUs chahiye. Bahut zyada computation use karta hai.">Demands powerful GPUs / TPUs. Computationally intensive.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Explainability" data-hi="Samajhna Kitna Aasaan">Explainability</td>
+            <td class="td-ml" data-en="More explainable. Decision paths can be understood and audited." data-hi="Zyada explainable hai. Decision path samajh mein aata hai.">More explainable. Decision paths can be understood and audited.</td>
+            <td class="td-dl" data-en='"Black box." Hard to explain why a decision was made.' data-hi='"Black box" hota hai. Kyun decision liya — yeh batana mushkil hai.'>"Black box." Hard to explain why a decision was made.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Training Time" data-hi="Training Time">Training Time</td>
+            <td class="td-ml" data-en="Fast training. Minutes to hours on typical datasets." data-hi="Fast training. Minutes se kuch ghante lagte hain.">Fast training. Minutes to hours on typical datasets.</td>
+            <td class="td-dl" data-en="Can take days or weeks for large models." data-hi="Bade models ke liye din ya hafte lag sakte hain.">Can take days or weeks for large models.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Complex Tasks" data-hi="Complex Tasks">Complex Tasks</td>
+            <td class="td-ml" data-en="Great for structured data and well-defined problems." data-hi="Structured data aur well-defined problems ke liye best hai.">Great for structured data and well-defined problems.</td>
+            <td class="td-dl" data-en="State-of-the-art on images, speech, and language." data-hi="Images, speech aur language pe sabse best hai.">State-of-the-art on images, speech, and language.</td>
+          </tr>
+          <tr>
+            <td class="td-feature" data-en="Adaptability" data-hi="Adaptability">Adaptability</td>
+            <td class="td-ml" data-en="Task-specific. Requires retraining for new domains." data-hi="Mostly ek kaam ke liye. Naye domain ke liye retrain karna padta hai.">Task-specific. Requires retraining for new domains.</td>
+            <td class="td-dl" data-en="Pretrained models (GPT, BERT) can be fine-tuned for many tasks." data-hi="Pretrained models (GPT, BERT) ko bahut saare tasks ke liye fine-tune kiya ja sakta hai.">Pretrained models (GPT, BERT) can be fine-tuned for many tasks.</td>
+          </tr>
+          <tr>
+            <td class="td-feature">Examples</td>
+            <td class="td-ml">Linear Regression, Random Forest, SVM, KNN, Naive Bayes</td>
+            <td class="td-dl">CNNs, RNNs, Transformers, GANs, LSTMs</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SLIDER -->
+<section class="slider-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 04 — INTERACTIVE" data-hi="// 04 — Khud Azmaao">// 04 — INTERACTIVE</p>
+    <h2 class="section-title reveal" data-en="How Much Data Do You Have?" data-hi="Tumhare Paas Kitna Data Hai?">How Much Data<br>Do You Have?</h2>
+    <p class="reveal" style="color:var(--muted);font-size:clamp(.85rem,2.5vw,.95rem);max-width:600px;line-height:1.8;" data-en="Drag the slider to see which approach suits your data volume best." data-hi="Slider drag karo aur dekho kaunsa approach tumhare liye best hai.">Drag the slider to see which approach suits your data volume best.</p>
+    <div class="data-slider-wrap reveal">
+      <div class="slider-label">
+        <span data-en="Small Dataset (100 samples)" data-hi="Chhota Dataset (100 samples)">Small Dataset (100 samples)</span>
+        <span data-en="Huge Dataset (10M+ samples)" data-hi="Bahut Bada Dataset (10M+ samples)">Huge Dataset (10M+ samples)</span>
+      </div>
+      <input type="range" class="data-range" id="dataSlider" min="0" max="100" value="30">
+      <div class="data-result">
+        <div class="data-result-card dr-ml">
+          <p class="dr-label" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</p>
+          <div class="dr-bar-wrap"><div class="dr-bar" id="mlBar" style="height:70px"></div></div>
+          <p class="dr-text" id="mlText"></p>
+        </div>
+        <div class="data-result-card dr-dl">
+          <p class="dr-label" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</p>
+          <div class="dr-bar-wrap"><div class="dr-bar" id="dlBar" style="height:10px"></div></div>
+          <p class="dr-text" id="dlText"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section id="usecases">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 05 — REAL WORLD" data-hi="// 05 — Asli Duniya Mein">// 05 — REAL WORLD</p>
+    <h2 class="section-title reveal" data-en="Where They Actually Work" data-hi="Kahan Kaam Aate Hain Ye Dono">Where They<br>Actually Work</h2>
+    <div class="usecases-grid">
+      <div class="uc-card ml-uc reveal">
+        <span class="uc-emoji">📊</span>
+        <p class="uc-type" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</p>
+        <h4 data-en="Stock Market Prediction" data-hi="Stock Market Prediction">Stock Market Prediction</h4>
+        <p data-en="Regression models analyze historical price patterns and financial indicators to forecast market movements." data-hi="Regression models historical price patterns aur financial indicators analyze karke market movements forecast karte hain.">Regression models analyze historical price patterns and financial indicators to forecast market movements.</p>
+      </div>
+      <div class="uc-card dl-uc reveal">
+        <span class="uc-emoji">🖼️</span>
+        <p class="uc-type" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</p>
+        <h4 data-en="Image Recognition" data-hi="Image Recognition">Image Recognition</h4>
+        <p data-en="Convolutional Neural Networks identify objects, faces, and scenes in photos with superhuman accuracy." data-hi="CNNs photos mein objects, faces aur scenes ko superhuman accuracy ke saath pehchante hain.">Convolutional Neural Networks identify objects, faces, and scenes in photos with superhuman accuracy.</p>
+      </div>
+      <div class="uc-card ml-uc reveal">
+        <span class="uc-emoji">📧</span>
+        <p class="uc-type" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</p>
+        <h4 data-en="Spam Detection" data-hi="Spam Detection">Spam Detection</h4>
+        <p data-en="Naive Bayes classifiers and SVMs analyze email features to filter out unwanted messages reliably." data-hi="Naive Bayes aur SVMs email features analyze karke unwanted messages filter karte hain.">Naive Bayes classifiers and SVMs analyze email features to filter out unwanted messages reliably.</p>
+      </div>
+      <div class="uc-card dl-uc reveal">
+        <span class="uc-emoji">💬</span>
+        <p class="uc-type" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</p>
+        <h4 data-en="Language Models" data-hi="Language Models">Language Models</h4>
+        <p data-en="Transformer architectures generate human-like text, powering chatbots and translation systems." data-hi="Transformer architectures human-jaisa text generate karte hain — chatbots aur translation mein kaam aata hai.">Transformer architectures generate human-like text, powering chatbots and translation systems.</p>
+      </div>
+      <div class="uc-card ml-uc reveal">
+        <span class="uc-emoji">🏥</span>
+        <p class="uc-type" data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</p>
+        <h4 data-en="Medical Diagnosis" data-hi="Medical Diagnosis">Medical Diagnosis</h4>
+        <p data-en="Decision trees and ensemble methods analyze patient data to assist doctors in identifying conditions." data-hi="Decision trees aur ensemble methods patient data analyze karke doctors ko conditions identify karne mein help karte hain.">Decision trees and ensemble methods analyze patient data to assist doctors in identifying conditions.</p>
+      </div>
+      <div class="uc-card dl-uc reveal">
+        <span class="uc-emoji">🎵</span>
+        <p class="uc-type" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</p>
+        <h4 data-en="Audio Synthesis" data-hi="Audio Synthesis">Audio Synthesis</h4>
+        <p data-en="Recurrent networks and diffusion models generate music, clone voices, and transcribe speech in real time." data-hi="RNNs aur diffusion models music generate karte hain, voices clone karte hain, aur speech real-time mein transcribe karte hain.">Recurrent networks and diffusion models generate music, clone voices, and transcribe speech in real time.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="quiz-section">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 06 — TEST YOURSELF" data-hi="// 06 — Khud ko Parkho">// 06 — TEST YOURSELF</p>
+    <h2 class="section-title reveal" data-en="Quick-Fire Knowledge Check" data-hi="Quick Quiz — Kitna Jaante Ho?">Quick-Fire<br>Knowledge Check</h2>
+    <div class="quiz-box reveal">
+      <div class="quiz-progress" id="quizProgress"></div>
+      <div id="quizMain">
+        <p class="quiz-q" id="quizQ"></p>
+        <div class="quiz-options" id="quizOptions"></div>
+        <div class="quiz-feedback" id="quizFeedback"></div>
+        <button class="quiz-next" id="quizNext" onclick="nextQuestion()">Next →</button>
+      </div>
+      <div class="quiz-score" id="quizScore">
+        <h3 id="scoreText"></h3>
+        <p id="scoreMsg"></p>
+        <button class="quiz-restart" onclick="restartQuiz()">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <p class="section-label reveal" data-en="// 07 — HISTORY" data-hi="// 07 — Itihaas">// 07 — HISTORY</p>
+    <h2 class="section-title reveal" data-en="A Brief History of Both" data-hi="Dono ka Chhota sa Safar">A Brief<br>History of Both</h2>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-content tl-left">
+          <p class="tl-year">1950s</p>
+          <h4 data-en="Perceptron Born" data-hi="Perceptron Aaya">Perceptron Born</h4>
+          <p data-en="Frank Rosenblatt creates the first neural network model — the conceptual seed of Deep Learning." data-hi="Frank Rosenblatt ne pehla neural network model banaya — Deep Learning ka conceptual beej.">Frank Rosenblatt creates the first neural network model — the conceptual seed of Deep Learning.</p>
+        </div>
+        <div><div class="tl-dot dl"></div></div>
+        <div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div></div>
+        <div><div class="tl-dot ml"></div></div>
+        <div class="tl-content tl-right">
+          <p class="tl-year">1980s</p>
+          <h4 data-en="ML Foundations" data-hi="ML ki Neev">ML Foundations</h4>
+          <p data-en="Decision Trees, Bayesian methods, and backpropagation emerge as formal ML tools." data-hi="Decision Trees, Bayesian methods, aur backpropagation formal ML tools ban gaye.">Decision Trees, Bayesian methods, and backpropagation emerge as formal ML tools.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-content tl-left">
+          <p class="tl-year">1990s</p>
+          <h4 data-en="SVMs &amp; Boosting" data-hi="SVMs &amp; Boosting">SVMs &amp; Boosting</h4>
+          <p data-en="Support Vector Machines and ensemble methods become the gold standard for classification." data-hi="SVMs aur ensemble methods classification ke liye gold standard ban gaye.">Support Vector Machines and ensemble methods become the gold standard for classification.</p>
+        </div>
+        <div><div class="tl-dot ml"></div></div>
+        <div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div></div>
+        <div><div class="tl-dot dl"></div></div>
+        <div class="tl-content tl-right">
+          <p class="tl-year">2006</p>
+          <h4 data-en="DL Revival" data-hi="DL ki Wapsi">DL Revival</h4>
+          <p data-en="Geoffrey Hinton introduces deep belief networks, reigniting interest in neural architectures." data-hi="Geoffrey Hinton ne deep belief networks introduce kiye — neural architectures mein interest wapas aaya.">Geoffrey Hinton introduces deep belief networks, reigniting interest in neural architectures.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-content tl-left">
+          <p class="tl-year">2012</p>
+          <h4 data-en="AlexNet Moment" data-hi="AlexNet ka Moment">AlexNet Moment</h4>
+          <p data-en="Deep Learning dominates ImageNet. GPUs make training massive CNNs practical." data-hi="DL ne ImageNet dominate kiya. GPUs ki wajah se massive CNNs train karna practical ho gaya.">Deep Learning dominates ImageNet. GPUs make training massive CNNs practical.</p>
+        </div>
+        <div><div class="tl-dot dl"></div></div>
+        <div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div></div>
+        <div><div class="tl-dot ml"></div></div>
+        <div class="tl-content tl-right">
+          <p class="tl-year">2016</p>
+          <h4 data-en="XGBoost Era" data-hi="XGBoost ka Daur">XGBoost Era</h4>
+          <p data-en="Gradient Boosting dominates structured data competitions. ML proves its staying power." data-hi="Gradient Boosting ne structured data competitions dominate kiye. ML ne apni staying power prove ki.">Gradient Boosting dominates structured data competitions. ML proves its staying power.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-content tl-left">
+          <p class="tl-year">2017</p>
+          <h4 data-en="Transformer Revolution" data-hi="Transformer Revolution">Transformer Revolution</h4>
+          <p data-en='"Attention Is All You Need" — the architecture behind GPT, BERT, and modern AI is born.' data-hi='"Attention Is All You Need" — GPT, BERT aur modern AI ka architecture aaya.'>"Attention Is All You Need" — the architecture behind GPT, BERT, and modern AI is born.</p>
+        </div>
+        <div><div class="tl-dot dl"></div></div>
+        <div></div>
+      </div>
+      <div class="tl-item reveal">
+        <div></div>
+        <div><div class="tl-dot dl"></div></div>
+        <div class="tl-content tl-right">
+          <p class="tl-year">2020s</p>
+          <h4 data-en="Foundation Models" data-hi="Foundation Models">Foundation Models</h4>
+          <p data-en="Large Language Models reshape every field. ML and DL continue evolving rapidly together." data-hi="LLMs ne har field badal di. ML aur DL dono saath-saath tezi se evolve ho rahe hain.">Large Language Models reshape every field. ML and DL continue evolving rapidly together.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="footer-brand" href="https://ciweb.in" target="_blank">
+    <div class="footer-logo-box">CI</div>
+    <div class="footer-logo-name">CIWeb</div>
+  </a>
+  <p class="footer-domain">ciweb.in</p>
+  <p class="footer-vs"><span class="ml">ML</span> &nbsp;∞&nbsp; <span class="dl">DL</span></p>
+  <p class="footer-tagline" data-en="Original educational content — Coding Infinite Web" data-hi="Original educational content — Coding Infinite Web">Original educational content — Coding Infinite Web</p>
+</footer>
+
+<script>
+/* ===== CURSOR ===== */
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function ac(){if(cur){cur.style.left=mx-6+'px';cur.style.top=my-6+'px';}rx+=(mx-rx)*.12;ry+=(my-ry)*.12;if(ring){ring.style.left=rx-18+'px';ring.style.top=ry-18+'px';}requestAnimationFrame(ac);})();
+document.querySelectorAll('button,a,input').forEach(el=>{el.addEventListener('mouseenter',()=>cur&&(cur.style.transform='scale(2)'));el.addEventListener('mouseleave',()=>cur&&(cur.style.transform='scale(1)'));});
+
+/* ===== MOBILE MENU ===== */
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open');}
+
+/* ===== SCROLL REVEAL ===== */
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*70);});
+},{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+/* ===== LANGUAGE TOGGLE ===== */
+let isHi=false;
+function toggleLang(){
+  isHi=!isHi;
+  const tg=document.getElementById('lang-toggle');
+  document.getElementById('toggleLabel').textContent=isHi?'English':'Hinglish';
+  isHi?tg.classList.add('lang-hi'):tg.classList.remove('lang-hi');
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.textContent=isHi?el.getAttribute('data-hi'):el.getAttribute('data-en');
+  });
+  updateSliderText(+document.getElementById('dataSlider').value);
+  if(qi<questions.length)loadQuestion();
+  // quiz buttons
+  const nxt=document.getElementById('quizNext');
+  if(nxt.classList.contains('show'))nxt.textContent=isHi?'Aage →':'Next →';
+  document.querySelector('.quiz-restart').textContent=isHi?'Dobara Karo':'Try Again';
+}
+
+/* ===== CANVAS ===== */
+const canvas=document.getElementById('nn-canvas'),ctx=canvas.getContext('2d');
+let W,H,nodes=[],signals=[];
+const layers=[{count:3,x:.1,color:'#00e5ff'},{count:5,x:.28,color:'#4dd9ff'},{count:6,x:.5,color:'#b388ff'},{count:5,x:.72,color:'#ff80ab'},{count:2,x:.9,color:'#ff4081'}];
+function buildNodes(){nodes=[];layers.forEach(l=>{const sp=H/(l.count+1);for(let i=0;i<l.count;i++)nodes.push({x:l.x*W,y:sp*(i+1),color:l.color,r:Math.min(7,W*.008),pulse:0});});}
+function resize(){W=canvas.offsetWidth;H=canvas.offsetHeight;canvas.width=W;canvas.height=H;buildNodes();}
+function getLN(li){let s=layers.slice(0,li).reduce((a,l)=>a+l.count,0);return nodes.slice(s,s+layers[li].count);}
+function drawNet(){
+  ctx.clearRect(0,0,W,H);
+  for(let li=0;li<layers.length-1;li++){const f=getLN(li),t=getLN(li+1);f.forEach(fn=>t.forEach(tn=>{ctx.beginPath();ctx.moveTo(fn.x,fn.y);ctx.lineTo(tn.x,tn.y);ctx.strokeStyle='rgba(255,255,255,.04)';ctx.lineWidth=.8;ctx.stroke();}));}
+  signals.forEach(s=>{ctx.beginPath();ctx.arc(s.x,s.y,4,0,Math.PI*2);ctx.fillStyle=`rgba(245,200,66,${s.alpha})`;ctx.shadowBlur=12;ctx.shadowColor='#f5c842';ctx.fill();ctx.shadowBlur=0;});
+  nodes.forEach(n=>{ctx.beginPath();ctx.arc(n.x,n.y,n.r+n.pulse,0,Math.PI*2);ctx.fillStyle=n.color;ctx.shadowBlur=12+n.pulse*3;ctx.shadowColor=n.color;ctx.globalAlpha=.85;ctx.fill();ctx.globalAlpha=1;ctx.shadowBlur=0;if(n.pulse>0)n.pulse*=.85;});
+}
+function fireSignal(){
+  const sl=getLN(0),sn=sl[Math.floor(Math.random()*sl.length)];sn.pulse=6;let li=0,cn=sn;
+  function step(){if(li>=layers.length-1)return;const next=getLN(li+1),t=next[Math.floor(Math.random()*next.length)];const dx=t.x-cn.x,dy=t.y-cn.y,dist=Math.hypot(dx,dy);let p=0;const sig={x:cn.x,y:cn.y,alpha:1};signals.push(sig);
+    (function anim(){p+=3/dist;if(p>=1){t.pulse=8;signals.splice(signals.indexOf(sig),1);li++;cn=t;setTimeout(step,80);return;}sig.x=cn.x+dx*p;sig.y=cn.y+dy*p;sig.alpha=1-p*.3;requestAnimationFrame(anim);})();}step();
+}
+canvas.addEventListener('click',fireSignal);
+canvas.addEventListener('touchstart',e=>{e.preventDefault();fireSignal();},{passive:false});
+(function loop(){drawNet();requestAnimationFrame(loop);})();
+resize();window.addEventListener('resize',resize);
+setTimeout(fireSignal,800);setInterval(fireSignal,2200);
+
+/* ===== SLIDER ===== */
+const smsgs={ml:{en:["Excellent! ML algorithms like SVM & Random Forest thrive with small datasets.","Good balance. ML is efficient and interpretable at this scale.","ML still competitive, but DL begins catching up.","DL pulls ahead, but ML stays fast and interpretable.","DL dominates at scale, but ML is still great for speed."],hi:["Zabardast! Chhote data pe ML algorithms jaise SVM & RF best kaam karte hain.","Achha balance hai. ML efficient aur interpretable hai is scale pe.","ML competitive hai, lekin DL catch up karne lagta hai.","DL aage nikalta hai, lekin ML fast aur interpretable rehta hai.","Bade data pe DL dominate karta hai, lekin ML speed ke liye best hai."]},dl:{en:["DL needs more data. Risk of overfitting with so little.","DL may underperform classical ML without more data.","DL becoming viable. Starting to leverage data patterns.","DL shows strong results. Neural networks outperform classical ML.","Deep Learning at its best! Massive data unlocks full potential."],hi:["DL ko zyada data chahiye. Itne kam pe overfitting ka darr hai.","Bina zyada data ke DL classical ML se peechhe reh sakta hai.","DL viable ho raha hai. Data se patterns seekhna shuru.","DL strong results de raha hai. Neural networks aage nikal rahe hain.","Deep Learning apne peak pe! Massive data full potential unlock karta hai."]}};
+function updateSliderText(v){const idx=Math.min(4,Math.floor(v/21)),lg=isHi?'hi':'en';document.getElementById('mlBar').style.height=Math.round(Math.max(10,80-v*.6))+'px';document.getElementById('dlBar').style.height=Math.round(Math.max(10,v*.75))+'px';document.getElementById('mlText').textContent=smsgs.ml[lg][idx];document.getElementById('dlText').textContent=smsgs.dl[lg][idx];}
+document.getElementById('dataSlider').addEventListener('input',e=>updateSliderText(+e.target.value));
+updateSliderText(30);
+
+/* ===== QUIZ ===== */
+const questions=[
+  {en:{q:"Which approach automatically extracts features from raw images?",opts:["Linear Regression","Decision Tree","Convolutional Neural Network","Random Forest"],fb:"Correct! CNNs automatically learn visual features — edges, textures, shapes — without manual engineering."},hi:{q:"Kaunsa approach raw images se automatically features extract karta hai?",opts:["Linear Regression","Decision Tree","Convolutional Neural Network","Random Forest"],fb:"Bilkul sahi! CNNs automatically visual features seekh lete hain bina kisi manual kaam ke."},ans:2},
+  {en:{q:"You have 500 labeled patient records. Which is likely better?",opts:["A large Transformer model","Machine Learning (e.g., SVM)","A 50-layer ResNet","GPT-4"],fb:"Right! With small structured datasets, classical ML is more accurate, faster, and easier to interpret."},hi:{q:"Tumhare paas 500 labeled patient records hain. Kaunsa better hai?",opts:["Ek bada Transformer model","Machine Learning (jaise SVM)","50-layer ResNet","GPT-4"],fb:"Sahi! Chhote structured datasets pe classical ML zyada accurate aur fast hota hai."},ans:1},
+  {en:{q:"Deep Learning is a subset of which field?",opts:["Database Management","Machine Learning","Cloud Computing","Computer Networking"],fb:"Yes! DL ⊂ ML ⊂ AI. All DL is ML, but not all ML is DL."},hi:{q:"Deep Learning kis field ka subset hai?",opts:["Database Management","Machine Learning","Cloud Computing","Computer Networking"],fb:"Haan! DL ⊂ ML ⊂ AI. Saari DL, ML hai — lekin saari ML, DL nahi."},ans:1},
+  {en:{q:"Which algorithm is typically used in spam email filtering?",opts:["Convolutional Neural Network","Generative Adversarial Network","Naive Bayes Classifier","Long Short-Term Memory"],fb:"Correct! Naive Bayes is a classic ML algorithm widely used for text classification."},hi:{q:"Spam email filtering mein konsa algorithm use hota hai?",opts:["Convolutional Neural Network","Generative Adversarial Network","Naive Bayes Classifier","Long Short-Term Memory"],fb:"Sahi! Naive Bayes ek classic ML algorithm hai jo spam detection mein widely use hota hai."},ans:2},
+  {en:{q:"Transformers (behind ChatGPT) belong to which category?",opts:["Traditional Machine Learning","Deep Learning","Rule-Based Systems","Expert Systems"],fb:"Exactly! Transformers are Deep Learning models using self-attention mechanisms."},hi:{q:"Transformers (ChatGPT ke peeche) kaunsi category mein aate hain?",opts:["Traditional Machine Learning","Deep Learning","Rule-Based Systems","Expert Systems"],fb:"Bilkul! Transformers Deep Learning models hain jo self-attention use karte hain."},ans:1},
+  {en:{q:"Which typically requires GPU hardware for training?",opts:["Decision Tree","Linear Regression","Deep Neural Networks","K-Nearest Neighbors"],fb:"Correct! Deep Neural Networks have billions of parameters requiring GPU acceleration."},hi:{q:"Kaunsi cheez training ke liye GPU hardware maangti hai?",opts:["Decision Tree","Linear Regression","Deep Neural Networks","K-Nearest Neighbors"],fb:"Sahi! Deep Neural Networks mein billions of parameters hote hain — GPU zaroori hai."},ans:2}
+];
+let qi=0,score=0;
+function buildProgress(){const p=document.getElementById('quizProgress');p.innerHTML='';questions.forEach((_,i)=>{const d=document.createElement('div');d.className='quiz-dot'+(i<qi?' done':i===qi?' active':'');p.appendChild(d);});}
+function loadQuestion(){if(qi>=questions.length)return;const lg=isHi?'hi':'en',q=questions[qi][lg];document.getElementById('quizQ').textContent=q.q;const opts=document.getElementById('quizOptions');opts.innerHTML='';q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='quiz-option';b.textContent=o;b.onclick=()=>answer(i,b,q.fb);opts.appendChild(b);});document.getElementById('quizFeedback').className='quiz-feedback';document.getElementById('quizFeedback').textContent='';const nxt=document.getElementById('quizNext');nxt.className='quiz-next';nxt.textContent=isHi?'Aage →':'Next →';buildProgress();}
+function answer(i,btn,fb){const q=questions[qi];document.querySelectorAll('.quiz-option').forEach(b=>b.onclick=null);const fe=document.getElementById('quizFeedback');if(i===q.ans){btn.classList.add('correct');fe.textContent='✓ '+fb;fe.className='quiz-feedback correct-fb show';score++;}else{btn.classList.add('wrong');document.querySelectorAll('.quiz-option')[q.ans].classList.add('correct');fe.textContent='✗ '+(isHi?'Sahi jawab: ':'Correct: ')+questions[qi][isHi?'hi':'en'].opts[q.ans]+' — '+fb;fe.className='quiz-feedback wrong-fb show';}document.getElementById('quizNext').className='quiz-next show';}
+function nextQuestion(){qi++;if(qi>=questions.length){document.getElementById('quizMain').style.display='none';const sc=document.getElementById('quizScore');sc.style.display='block';document.getElementById('scoreText').textContent=score+' / '+questions.length;const em=['Keep studying! 📚','Not bad! Keep going 💪','Good job! You know your stuff 🎯','Excellent! AI Expert! 🧠'],hm=['Aur padhna padega! 📚','Bura nahi! Chalta raho 💪','Shabash! Sab pata hai 🎯','Kamaal! AI Expert ho tum 🧠'];const mi=score<=2?0:score<=4?1:score===5?2:3;document.getElementById('scoreMsg').textContent=isHi?hm[mi]:em[mi];document.querySelector('.quiz-restart').textContent=isHi?'Dobara Karo':'Try Again';}else loadQuestion();}
+function restartQuiz(){qi=0;score=0;document.getElementById('quizMain').style.display='block';document.getElementById('quizScore').style.display='none';loadQuestion();}
+loadQuestion();
+</script>
+</body>
+</html>
