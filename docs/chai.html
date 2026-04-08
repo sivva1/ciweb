@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Me a Chai ☕ — Support CIWeb</title>
+  <meta name="description" content="Support CIWeb — Ek chai pilaao aur help karo free tech content banate rehne mein!"/>
+  <meta name="author" content="CIWeb — Coding Infinite"/>
+  <meta property="og:title" content="Buy Me a Chai ☕ — CIWeb"/>
+  <meta property="og:description" content="Support free tech content. Ek chai pilaao!"/>
+  <meta property="og:url" content="https://ciweb.in/chai.html"/>
+  <meta property="og:type" content="website"/>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMMH6KDM6V"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KMMH6KDM6V');</script>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+
+  <style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#fdf8f0;--ink:#1a1814;--muted:#7a7570;--accent:#e8401c;
+  --card:#fff;--border:#ede8e0;
+  --chai:#c47a1e;--chai-light:#fff8ec;--chai-border:#f0d09a;
+  --green:#16a34a;--green-bg:#f0fff4;
+  --razorpay:#072654;--razorpay2:#3395ff;
+}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(253,248,240,.95);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
+.logo em{color:var(--accent);font-style:normal}
+.back-link{display:inline-flex;align-items:center;gap:.4rem;color:var(--muted);text-decoration:none;font-size:.82rem;font-weight:500;border:1px solid var(--border);border-radius:100px;padding:5px 14px;transition:all .2s}
+.back-link:hover{border-color:var(--accent);color:var(--accent)}
+
+/* STEAM */
+.steam-wrap{position:relative;width:60px;height:40px;margin:0 auto 0}
+.steam{position:absolute;bottom:0;border-radius:50%;animation:steamUp 2.5s ease-in-out infinite;opacity:0}
+.s1{left:10px;width:8px;height:8px;background:rgba(196,122,30,.3);animation-delay:0s}
+.s2{left:25px;width:10px;height:10px;background:rgba(196,122,30,.25);animation-delay:.4s}
+.s3{left:42px;width:7px;height:7px;background:rgba(196,122,30,.2);animation-delay:.8s}
+@keyframes steamUp{0%{opacity:0;transform:translateY(0) scale(1)}30%{opacity:.8}100%{opacity:0;transform:translateY(-40px) scale(2)}}
+
+/* HERO */
+.hero{text-align:center;padding:3.5rem 5% 2rem;max-width:700px;margin:0 auto}
+.chai-emoji{font-size:5rem;display:block;margin-bottom:.5rem;animation:chaiWobble 3s ease-in-out infinite}
+@keyframes chaiWobble{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1.1;margin-bottom:.8rem}
+.hero h1 em{color:var(--chai);font-style:italic}
+.hero p{font-size:.95rem;color:var(--muted);line-height:1.8;max-width:480px;margin:0 auto 2rem}
+
+/* MAIN WRAP */
+.support-wrap{max-width:560px;margin:0 auto;padding:0 5% 5rem}
+
+/* CREATOR CARD */
+.creator-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:1.8rem;margin-bottom:1.5rem;display:flex;align-items:center;gap:1.2rem}
+.creator-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--chai),var(--accent));display:flex;align-items:center;justify-content:center;font-size:1.8rem;flex-shrink:0;border:3px solid var(--chai-border)}
+.creator-info h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;margin-bottom:.2rem}
+.creator-info p{font-size:.8rem;color:var(--muted);line-height:1.5}
+.creator-stats{display:flex;gap:1rem;margin-top:.6rem;flex-wrap:wrap}
+.cs-item{font-size:.72rem;font-weight:600;color:var(--chai);display:flex;align-items:center;gap:.3rem}
+
+/* AMOUNT PICKER */
+.amount-section{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:1.8rem;margin-bottom:1.2rem;position:relative;overflow:hidden}
+.amount-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--chai),var(--accent))}
+.section-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:1rem;display:flex;align-items:center;gap:.5rem}
+.section-label::before{content:'';width:20px;height:1.5px;background:var(--chai)}
+.chai-amounts{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1rem}
+.chai-btn{background:var(--bg);border:2px solid var(--border);border-radius:14px;padding:.8rem .4rem;text-align:center;cursor:pointer;transition:all .25s;font-family:'Outfit',sans-serif}
+.chai-btn:hover{border-color:var(--chai);background:var(--chai-light)}
+.chai-btn.active{border-color:var(--chai);background:var(--chai-light);box-shadow:0 4px 16px rgba(196,122,30,.2)}
+.chai-btn .cb-icon{font-size:1.4rem;display:block;margin-bottom:.2rem}
+.chai-btn .cb-cups{font-size:.68rem;font-weight:700;color:var(--muted);display:block}
+.chai-btn .cb-amt{font-size:.95rem;font-weight:800;color:var(--chai)}
+.custom-amt-wrap{position:relative}
+.rupee-sym{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:1.1rem;font-weight:700;color:var(--chai);pointer-events:none}
+.custom-amt{width:100%;padding:12px 14px 12px 34px;border:2px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:1rem;font-weight:700;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s}
+.custom-amt:focus{border-color:var(--chai)}
+
+/* MESSAGE */
+.name-section{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:1.6rem;margin-bottom:1.2rem}
+.support-input{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink);background:var(--bg);outline:none;transition:border-color .2s;margin-bottom:.8rem}
+.support-input:focus{border-color:var(--chai)}
+.support-textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:12px;font-family:'Outfit',sans-serif;font-size:.9rem;color:var(--ink);background:var(--bg);outline:none;resize:none;height:80px;transition:border-color .2s}
+.support-textarea:focus{border-color:var(--chai)}
+
+/* ── RAZORPAY SECTION ── */
+.razorpay-section{background:var(--card);border:2px solid #e0e8ff;border-radius:24px;padding:1.8rem;margin-bottom:1.2rem;position:relative;overflow:hidden}
+.razorpay-section::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--razorpay),var(--razorpay2))}
+
+.rzp-header{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem}
+.rzp-logo{background:var(--razorpay);border-radius:10px;padding:6px 12px;display:flex;align-items:center;gap:.4rem}
+.rzp-logo-text{color:#fff;font-weight:900;font-size:.85rem;letter-spacing:-.5px}
+.rzp-logo-sub{color:rgba(255,255,255,.6);font-size:.65rem}
+.rzp-badge{background:#e8f0ff;border:1px solid #bfcfff;border-radius:100px;padding:3px 10px;font-size:.68rem;font-weight:700;color:var(--razorpay2)}
+
+/* RAZORPAY MAIN BUTTON */
+.rzp-main-btn{
+  width:100%;
+  background:linear-gradient(135deg,var(--razorpay),#1a3a7a);
+  color:#fff;border:none;border-radius:16px;
+  padding:18px 24px;
+  font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800;
+  cursor:pointer;transition:all .25s;
+  display:flex;align-items:center;justify-content:center;gap:.8rem;
+  letter-spacing:.3px;
+  box-shadow:0 4px 20px rgba(7,38,84,.3);
+  text-decoration:none;
+  margin-bottom:.8rem;
+}
+.rzp-main-btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(7,38,84,.4)}
+.rzp-main-btn:active{transform:translateY(0)}
+.rzp-btn-icon{font-size:1.4rem}
+.rzp-btn-text{display:flex;flex-direction:column;align-items:flex-start}
+.rzp-btn-label{font-size:1rem;font-weight:800;line-height:1.2}
+.rzp-btn-sub{font-size:.7rem;font-weight:400;opacity:.8}
+.rzp-amt-badge{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.3);padding:4px 14px;border-radius:100px;font-size:.9rem;font-weight:800;margin-left:auto;white-space:nowrap}
+
+/* Razorpay trust */
+.rzp-trust{display:flex;align-items:center;justify-content:center;gap:.6rem;font-size:.72rem;color:var(--muted);margin-top:.5rem;flex-wrap:wrap}
+.rzp-trust span{display:flex;align-items:center;gap:.3rem}
+
+/* SUCCESS */
+.success-state{display:none;text-align:center;padding:2rem;animation:successPop .5s cubic-bezier(.34,1.56,.64,1)}
+.success-state.show{display:block}
+@keyframes successPop{from{opacity:0;transform:scale(.8)}to{opacity:1;transform:scale(1)}}
+.success-icon{font-size:4rem;display:block;margin-bottom:1rem}
+.success-state h3{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;margin-bottom:.5rem}
+.success-state p{font-size:.9rem;color:var(--muted);line-height:1.7;margin-bottom:1.2rem}
+.confirm-btns{display:flex;flex-direction:column;gap:.7rem}
+.btn-confirm{background:var(--green);color:#fff;border:none;padding:13px 24px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;cursor:pointer;width:100%}
+.btn-cancel{background:transparent;color:var(--muted);border:1px solid var(--border);padding:10px 20px;border-radius:100px;font-family:'Outfit',sans-serif;font-size:.82rem;cursor:pointer;width:100%}
+
+/* SUPPORTERS */
+.supporters-section{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:1.8rem;margin-bottom:1.2rem}
+.supporters-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:900;margin-bottom:1.2rem;display:flex;align-items:center;gap:.5rem}
+.supporter-list{display:flex;flex-direction:column;gap:.6rem}
+.supporter-item{display:flex;align-items:center;gap:.8rem;background:var(--bg);border-radius:10px;padding:.7rem .9rem}
+.sup-avatar{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:#fff;flex-shrink:0}
+.sup-info{flex:1}
+.sup-name{font-weight:700;font-size:.84rem}
+.sup-msg{font-size:.75rem;color:var(--muted)}
+.sup-amt{font-size:.78rem;font-weight:700;color:var(--chai)}
+.sup-time{font-size:.68rem;color:var(--muted)}
+.no-supporters{text-align:center;padding:1.5rem;color:var(--muted);font-size:.85rem}
+
+/* SHARE */
+.share-section{background:linear-gradient(135deg,var(--chai-light),var(--bg));border:1px solid var(--chai-border);border-radius:24px;padding:1.6rem;margin-bottom:1.2rem;text-align:center}
+.share-section h4{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.3rem}
+.share-section p{font-size:.8rem;color:var(--muted);margin-bottom:1rem}
+.share-btns{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap}
+.share-btn{display:inline-flex;align-items:center;gap:.4rem;padding:8px 16px;border-radius:100px;font-size:.78rem;font-weight:700;text-decoration:none;border:1.5px solid var(--border);color:var(--ink);transition:all .2s;cursor:pointer;font-family:'Outfit',sans-serif;background:var(--card)}
+.share-btn:hover{border-color:var(--accent);color:var(--accent)}
+
+/* LANG */
+#cw-toggle{position:fixed;bottom:22px;right:22px;z-index:9999;display:flex;background:rgba(20,18,15,.92);border-radius:100px;padding:4px;box-shadow:0 6px 28px rgba(0,0,0,.28)}
+.lo{padding:8px 16px;border-radius:100px;font-size:.7rem;font-weight:700;cursor:pointer;border:none;background:transparent;color:rgba(255,255,255,.35);font-family:'Outfit',sans-serif;transition:all .25s}
+.lo.on{background:linear-gradient(135deg,var(--accent),#c73010);color:#fff}
+
+footer{border-top:1px solid var(--border);padding:1.5rem 5%;text-align:center;max-width:700px;margin:0 auto}
+footer p{font-size:.78rem;color:var(--muted);line-height:1.6}
+
+@media(max-width:480px){
+  .chai-amounts{grid-template-columns:repeat(2,1fr)}
+  
+  .creator-card{flex-direction:column;text-align:center}
+  .creator-stats{justify-content:center}
+}
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">CI<em>Web</em></a>
+  <a href="index.html" class="back-link">&#8592; <span data-en="Back" data-hi="Wapas">Back</span></a>
+</nav>
+
+<div class="hero">
+  <div class="steam-wrap">
+    <div class="steam s1"></div>
+    <div class="steam s2"></div>
+    <div class="steam s3"></div>
+  </div>
+  <span class="chai-emoji">🫖</span>
+  <h1>Buy Me a <em>Chai</em> ☕</h1>
+  <p data-en="I create free tech blogs and tutorials for everyone. If my content helped you, buy me a chai — it keeps me going! 🙏" data-hi="Main sabke liye free tech blogs aur tutorials banata hoon. Agar content ne help ki, ek chai pilaao — isse main chalta rehta hoon! 🙏">I create free tech blogs and tutorials for everyone. If my content helped you, buy me a chai — it keeps me going! 🙏</p>
+</div>
+
+<div class="support-wrap">
+
+  <!-- CREATOR CARD -->
+  <div class="creator-card">
+    <div class="creator-avatar">👨‍💻</div>
+    <div class="creator-info">
+      <h3>Coding Infinite — CIWeb</h3>
+      <p data-en="Making tech simple in Hindi & English. Every chai = 1 more blog! ☕" data-hi="Tech ko Hindi & English mein simple bana raha hoon. Ek chai = 1 aur blog! ☕">Making tech simple in Hindi & English. Every chai = 1 more blog! ☕</p>
+      <div class="creator-stats">
+        <span class="cs-item">📝 9+ <span data-en="Blogs" data-hi="Blogs">Blogs</span></span>
+        <span class="cs-item">🆓 <span data-en="Always Free" data-hi="Hamesha Free">Always Free</span></span>
+        <span class="cs-item">💛 <span data-en="Chai-powered" data-hi="Chai-powered">Chai-powered</span></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMOUNT PICKER -->
+  <div class="amount-section">
+    <div class="section-label" data-en="Choose your support" data-hi="Support choose karo">Choose your support</div>
+    <div class="chai-amounts">
+      <div class="chai-btn active" onclick="selectAmount(this,21)">
+        <span class="cb-icon">🫖</span>
+        <span class="cb-cups" data-en="1 Chai" data-hi="1 Chai">1 Chai</span>
+        <span class="cb-amt">₹21</span>
+      </div>
+      <div class="chai-btn" onclick="selectAmount(this,51)">
+        <span class="cb-icon">🫖🫖</span>
+        <span class="cb-cups" data-en="3 Chais" data-hi="3 Chai">3 Chais</span>
+        <span class="cb-amt">₹51</span>
+      </div>
+      <div class="chai-btn" onclick="selectAmount(this,101)">
+        <span class="cb-icon">🫖☕</span>
+        <span class="cb-cups" data-en="Special" data-hi="Special">Special</span>
+        <span class="cb-amt">₹101</span>
+      </div>
+      <div class="chai-btn" onclick="selectAmount(this,251)">
+        <span class="cb-icon">🎉</span>
+        <span class="cb-cups" data-en="Champion" data-hi="Champion">Champion</span>
+        <span class="cb-amt">₹251</span>
+      </div>
+    </div>
+    <div class="custom-amt-wrap">
+      <span class="rupee-sym">₹</span>
+      <input type="number" class="custom-amt" id="custom-amt" placeholder="Custom amount..." min="1" max="10000" oninput="onCustomAmt(this.value)"/>
+    </div>
+  </div>
+
+  <!-- NAME + MESSAGE -->
+  <div class="name-section">
+    <div class="section-label" data-en="Your message (optional)" data-hi="Tumhara message (optional)">Your message (optional)</div>
+    <input class="support-input" id="sup-name"
+      placeholder="Your name (shown on wall of fame)"
+      data-placeholder-en="Your name (shown on wall of fame)"
+      data-placeholder-hi="Tumhara naam (wall of fame pe dikhega)"
+      maxlength="50"/>
+    <textarea class="support-textarea" id="sup-msg"
+      placeholder="Say something kind... 💛"
+      data-placeholder-en="Say something kind... 💛"
+      data-placeholder-hi="Kuch achha likho... 💛"
+      maxlength="200"></textarea>
+  </div>
+
+  <!-- ══ RAZORPAY SECTION ══ -->
+  <div class="razorpay-section">
+
+    <div class="rzp-header">
+      <div class="rzp-logo">
+        <span class="rzp-logo-text">Razorpay</span>
+      </div>
+      <div>
+        <div style="font-size:.82rem;font-weight:700;color:var(--ink)">Pay Securely Online</div>
+        <div style="font-size:.68rem;color:var(--muted)">Cards, UPI, Netbanking, Wallets</div>
+      </div>
+      <span class="rzp-badge">✓ Secure</span>
+    </div>
+
+    <!-- MAIN RAZORPAY BUTTON -->
+    <a class="rzp-main-btn" id="rzp-btn" href="https://razorpay.me/@ciweb" target="_blank" rel="noopener noreferrer" onclick="saveBeforePay()">
+      <span class="rzp-btn-icon">☕</span>
+      <span class="rzp-btn-text">
+        <span class="rzp-btn-label" data-en="Pay via Razorpay" data-hi="Razorpay se Pay Karo">Pay via Razorpay</span>
+        <span class="rzp-btn-sub" data-en="Cards · UPI · Netbanking · Wallets" data-hi="Cards · UPI · Netbanking · Wallets">Cards · UPI · Netbanking · Wallets</span>
+      </span>
+      <span class="rzp-amt-badge" id="rzp-amt-badge">₹21</span>
+    </a>
+
+    <div class="rzp-trust">
+      <span>🔒 256-bit SSL</span>
+      <span>⚡ Instant payment</span>
+      <span>🇮🇳 Indian payment gateway</span>
+    </div>
+
+    <!-- CONFIRM AFTER PAYMENT -->
+    <div class="success-state" id="success-state">
+      <span class="success-icon">🎉</span>
+      <h3 id="success-h3">Payment Done?</h3>
+      <p id="success-p">Please confirm below — your name will appear on the Wall of Fame!</p>
+      <div class="confirm-btns">
+        <button class="btn-confirm" onclick="confirmPayment()">
+          ✅ <span id="confirm-btn-text">Yes! Payment done — Add me to Wall of Fame</span>
+        </button>
+        <button class="btn-cancel" onclick="hideSuccess()">
+          <span id="cancel-btn-text">Payment didn't go through — Go back</span>
+        </button>
+      </div>
+    </div>
+
+
+  </div>
+
+  <!-- WALL OF FAME -->
+  <div class="supporters-section" id="supporters-section" style="display:none">
+    <div class="supporters-title">🏆 Wall of Fame</div>
+    <div class="supporter-list" id="supporter-list">
+      <div class="no-supporters">
+        <span>🫖</span>
+        <p data-en="Be the first! Your name will appear here." data-hi="Pehle bano! Tumhara naam yahan aayega.">Be the first! Your name will appear here.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SHARE -->
+  <div class="share-section">
+    <h4 data-en="Help spread the word ☕" data-hi="Share karke help karo ☕">Help spread the word ☕</h4>
+    <p data-en="Share with friends who love free tech content" data-hi="Un dosto ke saath share karo jo free tech content pasand karte hain">Share with friends who love free tech content</p>
+    <div class="share-btns">
+      <a class="share-btn" href="https://wa.me/?text=Support%20CIWeb%20%E2%80%94%20Buy%20a%20Chai!%20%F0%9F%AB%96%20https://ciweb.in/chai.html" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+      <a class="share-btn" href="https://twitter.com/intent/tweet?text=Support%20CIWeb%20%E2%80%94%20Free%20tech%20in%20Hindi!%20Buy%20a%20chai%20%F0%9F%AB%96&url=https://ciweb.in/chai.html" target="_blank" rel="noopener noreferrer">🐦 Twitter</a>
+      <button class="share-btn" onclick="copyPageLink()">📋 <span id="copy-link-text">Copy Link</span></button>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p data-en="🫖 Every chai = 1 more free blog for everyone. Thank you! 🙏" data-hi="🫖 Har chai = 1 aur free blog sabke liye. Shukriya! 🙏">🫖 Every chai = 1 more free blog for everyone. Thank you! 🙏</p>
+  <p style="margin-top:.4rem">© 2026 CIWeb — Coding Infinite</p>
+</footer>
+
+<div id="cw-toggle">
+  <button class="lo on" id="cw-en" onclick="setLang('en')">🇬🇧 EN</button>
+  <button class="lo" id="cw-hi" onclick="setLang('hi')">🇮🇳 HI</button>
+</div>
+
+<script data-cfasync="false">
+var DB       = 'https://testingdata-2ae22-default-rtdb.firebaseio.com';
+var RZP_LINK = 'https://razorpay.me/@ciweb';
+var currentAmt = 21;
+var _pendingEntry = null;
+
+/* ── Amount ── */
+function selectAmount(btn, amt) {
+  document.querySelectorAll('.chai-btn').forEach(function(b){ b.classList.remove('active'); });
+  btn.classList.add('active');
+  document.getElementById('custom-amt').value = '';
+  currentAmt = amt;
+  updateBadge();
+}
+function onCustomAmt(val) {
+  document.querySelectorAll('.chai-btn').forEach(function(b){ b.classList.remove('active'); });
+  currentAmt = parseInt(val) || 0;
+  updateBadge();
+}
+function updateBadge() {
+  var el = document.getElementById('rzp-amt-badge');
+  if (el) el.textContent = '₹' + (currentAmt || 21);
+}
+
+/* ── Save before Razorpay ── */
+function saveBeforePay() {
+  var name = document.getElementById('sup-name').value.trim();
+  var msg  = document.getElementById('sup-msg').value.trim();
+  if (name) {
+    _pendingEntry = { name: name, msg: msg, amount: currentAmt || 21, timestamp: new Date().toISOString() };
+  }
+  /* Show confirm dialog after 3s (time for razorpay to open) */
+  setTimeout(function(){
+    var ss = document.getElementById('success-state');
+    ss.classList.add('show');
+    ss.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 3000);
+}
+
+/* ── Confirm Payment ── */
+function confirmPayment() {
+  if (_pendingEntry) {
+    fetch(DB + '/chai_supporters.json', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(_pendingEntry)
+    }).then(function(){
+      _pendingEntry = null;
+      showWall();
+      loadSupporters();
+    }).catch(function(){ showWall(); });
+  } else {
+    showWall();
+    loadSupporters();
+  }
+  var h3 = document.getElementById('success-h3');
+  var p  = document.getElementById('success-p');
+  var cb = document.querySelector('.confirm-btns');
+  if (h3) h3.innerHTML = getLang() === 'hi' ? 'Shukriya! ❤️🎉' : 'Thank You! ❤️🎉';
+  if (p)  p.innerHTML  = getLang() === 'hi'
+    ? 'Tumhara naam Wall of Fame pe aa gaya! Yeh chai bahut kaam aayegi. 🫖'
+    : 'You\'re on the Wall of Fame! This chai fuels great content. 🫖';
+  if (cb) cb.style.display = 'none';
+  launchConfetti();
+}
+function hideSuccess() {
+  document.getElementById('success-state').classList.remove('show');
+}
+function showWall() {
+  var s = document.getElementById('supporters-section');
+  if (s) { s.style.display = 'block'; setTimeout(function(){ s.scrollIntoView({ behavior: 'smooth' }); }, 200); }
+}
+
+;
+  try {
+    navigator.clipboard.writeText(UPI_ID).then(function(){
+      var btn = document.getElementById('upi-copy-btn');
+      btn.classList.add('copied');
+      btn.innerHTML = '<span>✓</span><span>' + UPI_ID + ' Copied!</span>';
+      setTimeout(function(){ btn.classList.remove('copied'); btn.innerHTML = '<span>📋</span><span id="upi-display">' + UPI_ID + '</span>'; }, 2500);
+    }).catch(fallback);
+  } catch(e) { fallback(); }
+}
+
+;
+  /* Show confirm after 2.5s */
+  setTimeout(function(){
+    var ss = document.getElementById('success-state');
+    ss.classList.add('show');
+    ss.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }, 2500);
+  window.location.href = links[app] || links.upi;
+}
+
+/* ── Load Supporters ── */
+function loadSupporters() {
+  fetch(DB + '/chai_supporters.json')
+    .then(function(r){ return r.json(); })
+    .then(function(data){
+      var list = document.getElementById('supporter-list');
+      if (!data) { list.innerHTML = '<div class="no-supporters"><span>🫖</span><p>Be the first!</p></div>'; return; }
+      var supporters = Object.values(data).filter(function(s){ return s && s.name; }).reverse().slice(0,20);
+      if (!supporters.length) { list.innerHTML = '<div class="no-supporters"><span>🫖</span><p>Be the first!</p></div>'; return; }
+      var colors = ['#e8401c','#2563eb','#16a34a','#7c3aed','#d97706','#0ea5e9'];
+      list.innerHTML = supporters.map(function(s){
+        var col = colors[s.name.charCodeAt(0) % colors.length];
+        return '<div class="supporter-item">' +
+          '<div class="sup-avatar" style="background:'+col+'">' + esc(s.name).charAt(0).toUpperCase() + '</div>' +
+          '<div class="sup-info"><div class="sup-name">'+esc(s.name)+'</div>' +
+          (s.msg ? '<div class="sup-msg">"'+esc(s.msg)+'"</div>' : '') + '</div>' +
+          '<div style="text-align:right;flex-shrink:0"><div class="sup-amt">₹'+s.amount+' 🫖</div>' +
+          '<div class="sup-time">'+timeAgo(s.timestamp)+'</div></div></div>';
+      }).join('');
+    }).catch(function(){});
+}
+
+/* ── Confetti ── */
+function launchConfetti() {
+  var colors = ['#c47a1e','#e8401c','#f59e0b','#16a34a','#2563eb'];
+  if (!document.getElementById('cf-style')) {
+    var s = document.createElement('style'); s.id = 'cf-style';
+    s.textContent = '@keyframes cfFall{from{transform:translateY(0) rotate(0);opacity:1}to{transform:translateY(100vh) rotate(720deg);opacity:0}}';
+    document.head.appendChild(s);
+  }
+  for (var i = 0; i < 70; i++) {
+    (function(i){
+      setTimeout(function(){
+        var el = document.createElement('div');
+        var sz = 6 + Math.random()*6;
+        el.style.cssText = 'position:fixed;top:-10px;left:'+Math.random()*100+'vw;width:'+sz+'px;height:'+sz+'px;background:'+colors[Math.floor(Math.random()*colors.length)]+';border-radius:2px;z-index:9999;pointer-events:none;animation:cfFall '+(1.2+Math.random())+'s ease forwards';
+        document.body.appendChild(el);
+        setTimeout(function(){ el.remove(); }, 2500);
+      }, i * 28);
+    })(i);
+  }
+}
+
+/* ── Share ── */
+function copyPageLink() {
+  var url = 'https://ciweb.in/chai.html';
+  try {
+    navigator.clipboard.writeText(url).then(function(){
+      var el = document.getElementById('copy-link-text');
+      if (el) { el.textContent = 'Copied!'; setTimeout(function(){ el.textContent = 'Copy Link'; }, 2000); }
+    });
+  } catch(e) {}
+}
+
+/* ── Lang ── */
+function getLang(){ return localStorage.getItem('ciweb_lang') || 'en'; }
+function setLang(l) {
+  localStorage.setItem('ciweb_lang', l);
+  document.querySelectorAll('[data-en][data-hi]').forEach(function(el){
+    el.innerHTML = l === 'en' ? el.dataset.en : el.dataset.hi;
+  });
+  document.querySelectorAll('[data-placeholder-en]').forEach(function(el){
+    el.placeholder = l === 'en' ? el.dataset.placeholderEn : el.dataset.placeholderHi;
+  });
+  document.getElementById('cw-en').classList.toggle('on', l === 'en');
+  document.getElementById('cw-hi').classList.toggle('on', l === 'hi');
+  document.documentElement.lang = l;
+}
+
+/* ── Helpers ── */
+function timeAgo(iso){ var d=(Date.now()-new Date(iso))/1000; if(d<60)return'just now'; if(d<3600)return Math.floor(d/60)+' min ago'; if(d<86400)return Math.floor(d/3600)+' hrs ago'; return Math.floor(d/86400)+' days ago'; }
+function esc(s){ return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ── Init ── */
+document.addEventListener('DOMContentLoaded', function(){
+  var l = getLang();
+  setLang(l);
+  updateBadge();
+  loadSupporters();
+});
+</script>
+
+</body>
+</html>
