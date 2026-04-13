@@ -647,13 +647,40 @@ function toast(msg,type){var t=document.createElement('div');t.className='toast'
 document.addEventListener('DOMContentLoaded',function(){
   initTheme();initTabs();initEditor();initQuiz();loadPosts();updateProg();updateWho();showModal(function(){});
   var ov=document.getElementById('ai-overlay');if(ov)ov.addEventListener('click',function(e){if(e.target===ov)AI.toggle();});
-  fetch(FB+'/admin_grants.json').then(function(r){return r.json();}).then(function(grants){
-    if(!grants)return;var u=(getUser()||'').toLowerCase();
-    for(var k in grants){var g=grants[k];if(!g||g.status!=='pending'||(g.username||'').toLowerCase()!==u)continue;
-    S.set('cw_boost',String(Math.min(parseInt(S.get('cw_boost')||'0')+(g.amount||50),500)));
-    fetch(FB+'/admin_grants/'+k+'/status.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:'"applied"'}).catch(function(){});
-    toast('Admin granted +'+(g.amount||50)+' AI messages!','g');}
-  }).catch(function(){});
+  (function checkGrants(){
+    var u=(getUser()||'').toLowerCase();if(!u)return;
+    var appliedKey='cw_applied_grants_'+u;
+    var applied={};try{applied=JSON.parse(S.get(appliedKey)||'{}')||{};}catch(e){}
+    fetch(FB+'/admin_grants.json').then(function(r){return r.json();})
+    .then(function(grants){
+      if(!grants)return;
+      var gotNew=false;
+      for(var k in grants){
+        var g=grants[k];
+        if(!g||(g.username||'').toLowerCase()!==u)continue;
+        if(applied[k])continue; /* already applied locally */
+        /* Apply the grant */
+        var cur=parseInt(S.get('cw_boost')||'0');
+        var add=parseInt(g.amount||'50');
+        S.set('cw_boost',String(Math.min(cur+add,500)));
+        applied[k]=1;
+        gotNew=true;
+        /* Tell Firebase we applied it (best effort, may fail due to rules) */
+        fetch(FB+'/admin_grants/'+k+'/status.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:'"applied"'}).catch(function(){});
+        /* Also write to user-writable path */
+        fetch(FB+'/applied_grants/'+u.replace(/[^a-z0-9]/g,'_')+'/'+k+'.json',{method:'PUT',headers:{'Content-Type':'application/json'},body:JSON.stringify({ts:Date.now(),amount:add})}).catch(function(){});
+        toast('Admin granted +'+add+' AI messages! Total: '+Rate.left(),'g');
+      }
+      if(gotNew){
+        try{S.set(appliedKey,JSON.stringify(applied));}catch(e){}
+        /* Refresh AI counter if panel is open */
+        var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';
+        /* Refresh Chai if loaded */
+        var cb=document.getElementById('chai-body');if(cb)cb.dataset.loaded='';
+      }
+      try{S.set(appliedKey,JSON.stringify(applied));}catch(e){}
+    }).catch(function(){});
+  })();
   var fab=document.getElementById('mob-fab');
   if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}
 });
