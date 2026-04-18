@@ -7,19 +7,12 @@
   <meta name="keywords" content="coding tutorial hindi, programming tutorial, learn coding online, web development hindi, HTML CSS JavaScript tutorial"/>
   <meta name="author" content="CIWeb — Coding Infinite"/>
   <meta name="google-adsense-account" content="ca-pub-1601519075440950"/>
-  <meta name="msvalidate.01" content="4F06AA7D4DBEAA2A03580725CF21BC45" />
-  
-<link rel="icon" href="https://i.ibb.co/DH8H9mWK/Black-Beige-Modern-Typography-Monogram-Logo-20260319-163622-0000.png" type="image/png">
+  <meta name="msvalidate.01" content="4F06AA7D4DBEAA2A03580725CF21BC45"/>
+  <link rel="icon" href="https://i.ibb.co/DH8H9mWK/Black-Beige-Modern-Typography-Monogram-Logo-20260319-163622-0000.png" type="image/png"/>
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KMMH6KDM6V"></script>
-  <script>
-    window.dataLayer=window.dataLayer||[];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js',new Date()); gtag('config','G-KMMH6KDM6V');
-  </script>
-
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-KMMH6KDM6V');</script>
   <title>CIWeb — Seekho Tech, Apni Bhasha Mein</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Outfit:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet"/>
-
   <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
@@ -31,7 +24,12 @@ html{scroll-behavior:smooth}
 body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;overflow-x:hidden}
 
 /* ── NAV ── */
-nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:62px}
+nav{
+  position:sticky;top:0;z-index:200;
+  background:rgba(245,243,238,.96);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);
+  border-bottom:1px solid var(--border);
+  padding:0 5%;display:flex;align-items:center;justify-content:space-between;height:62px;
+}
 .logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:var(--ink);text-decoration:none;letter-spacing:-.5px}
 .logo em{color:var(--accent);font-style:normal}
 .nav-links{display:flex;gap:1.2rem;list-style:none;align-items:center}
@@ -39,7 +37,40 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .nav-links a:hover,.nav-links a.active{color:var(--ink)}
 .nav-cta{background:var(--ink)!important;color:var(--bg)!important;padding:7px 18px;border-radius:100px;font-weight:600!important;transition:background .2s!important}
 .nav-cta:hover{background:var(--accent)!important;color:#fff!important}
-@media(max-width:768px){.nav-links{display:none}}
+
+/* Hamburger */
+.ham{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;z-index:300}
+.ham span{display:block;width:22px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile drawer */
+.mob-drawer{
+  display:none;position:fixed;top:62px;left:0;right:0;bottom:0;
+  background:rgba(245,243,238,.98);backdrop-filter:blur(20px);
+  z-index:190;flex-direction:column;padding:2rem 5%;
+  border-top:1px solid var(--border);
+  animation:slideDown .22s ease;overflow-y:auto;
+}
+.mob-drawer.open{display:flex}
+@keyframes slideDown{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.mob-drawer a{
+  color:var(--ink);text-decoration:none;font-size:1.1rem;font-weight:600;
+  padding:.85rem 0;border-bottom:1px solid var(--border);transition:color .15s;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mob-drawer a:hover{color:var(--accent)}
+.mob-drawer a:last-child{border-bottom:none}
+.mob-cta{
+  margin-top:1.5rem;background:var(--accent);color:#fff!important;
+  padding:14px 24px;border-radius:12px;text-align:center;
+  font-weight:700!important;font-size:1rem!important;
+  border-bottom:none!important;justify-content:center!important;
+}
+.mob-cta:hover{background:#c73516!important}
+
+@media(max-width:768px){.nav-links{display:none}.ham{display:flex}}
 
 /* ── HERO ── */
 .hero{
@@ -51,7 +82,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
   padding:72px 5% 56px;display:flex;flex-direction:column;justify-content:center;
   border-right:1px solid var(--border);animation:fadeUp .5s ease both;
 }
-/* Eyebrow — single line, no letter-spacing breaking */
 .hero-eyebrow{
   display:inline-flex;align-items:center;gap:.7rem;
   font-size:.68rem;font-weight:700;letter-spacing:1.8px;
@@ -59,7 +89,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
   white-space:nowrap;
 }
 .hero-eyebrow::before{content:'';display:block;width:28px;height:1.5px;background:var(--accent);flex-shrink:0}
-/* H1 — Outfit font, not italic Playfair */
 .hero h1{
   font-family:'Outfit',sans-serif;
   font-size:clamp(2.6rem,5vw,4.2rem);
@@ -79,7 +108,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .btn-outline{border:2px solid var(--border);color:var(--ink);padding:11px 24px;border-radius:12px;font-weight:600;font-size:.88rem;text-decoration:none;transition:all .2s}
 .btn-outline:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
 
-/* HERO RIGHT */
 .hero-right{
   background:var(--dark);color:#fff;
   display:flex;flex-direction:column;justify-content:flex-end;
@@ -88,8 +116,7 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 }
 .hero-bg-pattern{
   position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 400px 350px at 80% 10%,rgba(232,64,28,.18),transparent),
+  background:radial-gradient(ellipse 400px 350px at 80% 10%,rgba(232,64,28,.18),transparent),
     radial-gradient(ellipse 350px 300px at 10% 90%,rgba(37,99,235,.1),transparent);
   pointer-events:none;
 }
@@ -109,18 +136,142 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .featured-read:hover{background:#c73516}
 .hero-divider{height:1px;background:rgba(255,255,255,.07);margin:1rem 0;position:relative}
 
-/* ── STATS BAR ── *//* ── STATS BAR ── */
+/* ── STATS ── */
 .stats-bar{border-bottom:1px solid var(--border);max-width:1300px;margin:0 auto;display:flex}
 .stat-item{flex:1;text-align:center;padding:1.8rem 1rem;border-right:1px solid var(--border)}
 .stat-item:last-child{border-right:none}
 .stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--ink)}
 .stat-label{font-size:.78rem;color:var(--muted);margin-top:3px}
 
-/* ── SECTION COMMON ── */
+/* ── SECTION ── */
 .section{max-width:1300px;margin:0 auto;padding:60px 5%}
 .sec-hd{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:2.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border)}
 .sec-hd h2{font-family:'Playfair Display',serif;font-size:1.9rem;font-weight:900;letter-spacing:-1px}
 .sec-hd a,.sec-hd span{font-size:.84rem;color:var(--accent);text-decoration:none;font-weight:600}
+
+/* ── COURSES SECTION ── */
+.courses-section{
+  background:linear-gradient(135deg,#0f0f18 0%,#16161f 60%,#0f1520 100%);
+  padding:70px 5%;border-top:1px solid rgba(255,255,255,.06);
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+.courses-inner{max-width:1300px;margin:0 auto}
+.courses-section .sec-hd{border-bottom-color:rgba(255,255,255,.08)}
+.courses-section .sec-hd h2{color:#fff}
+.courses-section .sec-hd a{color:#f87171}
+
+/* Course card grid */
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.5rem}
+
+/* Main course card */
+.course-card{
+  background:rgba(255,255,255,.04);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:20px;overflow:hidden;
+  transition:all .25s;display:flex;flex-direction:column;
+  position:relative;
+}
+.course-card:hover{
+  border-color:rgba(232,64,28,.55);
+  transform:translateY(-4px);
+  box-shadow:0 20px 56px rgba(232,64,28,.15);
+}
+
+/* FEATURED course card */
+.course-card.featured{
+  border-color:rgba(232,64,28,.4);
+  background:linear-gradient(135deg,rgba(232,64,28,.08),rgba(255,255,255,.04));
+  grid-column:1/-1;
+  flex-direction:row;
+  min-height:260px;
+}
+@media(max-width:700px){.course-card.featured{flex-direction:column}}
+
+.course-card.featured:hover{
+  border-color:rgba(232,64,28,.7);
+  box-shadow:0 24px 64px rgba(232,64,28,.22);
+}
+
+/* Live badge */
+.course-badge-live{
+  position:absolute;top:14px;left:14px;
+  background:#e8401c;color:#fff;
+  font-size:.6rem;font-weight:800;text-transform:uppercase;
+  letter-spacing:1px;padding:4px 10px;border-radius:99px;
+  display:flex;align-items:center;gap:.35rem;z-index:2;
+}
+.live-dot{width:6px;height:6px;background:#fff;border-radius:50%;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* Course visual */
+.course-visual{
+  position:relative;height:200px;overflow:hidden;
+  background:linear-gradient(135deg,#1e1e2e,#0d0c0a);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.course-card.featured .course-visual{width:320px;height:auto;min-height:260px}
+@media(max-width:700px){.course-card.featured .course-visual{width:100%;min-height:180px}}
+
+/* HTML code animation inside visual */
+.course-code-preview{
+  font-family:'JetBrains Mono',monospace;font-size:.62rem;
+  color:rgba(255,255,255,.6);line-height:1.9;padding:1.2rem;
+  animation:scrollUp 12s linear infinite;
+  width:100%;
+}
+@keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.ctag{color:#89b4fa}.cattr{color:#a6e3a1}.cval{color:#fab387}.ccm{color:#6c7086;font-style:italic}
+
+.course-visual-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,transparent 40%,rgba(15,15,24,.85));
+}
+
+/* Course body */
+.course-body{padding:1.4rem 1.6rem;flex:1;display:flex;flex-direction:column}
+.course-tag{
+  display:inline-flex;align-items:center;gap:.35rem;
+  background:rgba(232,64,28,.15);color:#f87171;
+  font-size:.65rem;font-weight:700;padding:3px 10px;border-radius:100px;
+  text-transform:uppercase;letter-spacing:.4px;margin-bottom:.7rem;width:fit-content;
+}
+.course-title{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:#fff;margin-bottom:.4rem;line-height:1.3}
+.course-card.featured .course-title{font-size:1.5rem}
+.course-desc{font-size:.8rem;color:rgba(255,255,255,.48);line-height:1.7;margin-bottom:1.2rem;flex:1}
+.course-card.featured .course-desc{font-size:.86rem;max-width:420px}
+
+/* Course meta row */
+.course-meta{display:flex;gap:1.2rem;flex-wrap:wrap;margin-bottom:1.1rem}
+.cmeta-item{display:flex;align-items:center;gap:.3rem;font-size:.72rem;color:rgba(255,255,255,.35)}
+.cmeta-item strong{color:rgba(255,255,255,.65);font-weight:600}
+
+/* Course progress bar */
+.course-prog-wrap{margin-bottom:1.1rem}
+.course-prog-bar{height:4px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:.35rem}
+.course-prog-fill{height:100%;background:linear-gradient(90deg,#e8401c,#fbbf24);border-radius:99px;transition:width .8s ease}
+.course-prog-lbl{display:flex;justify-content:space-between;font-size:.65rem;color:rgba(255,255,255,.35)}
+
+/* CTA */
+.course-cta{
+  display:inline-flex;align-items:center;gap:.5rem;
+  background:#e8401c;color:#fff;
+  padding:10px 22px;border-radius:10px;
+  font-family:'Outfit',sans-serif;font-size:.82rem;font-weight:700;
+  text-decoration:none;transition:all .2s;width:fit-content;
+}
+.course-cta:hover{background:#c73516;transform:translateX(2px)}
+.course-card.featured .course-cta{padding:12px 28px;font-size:.88rem}
+
+/* Coming soon card */
+.course-coming{
+  background:rgba(255,255,255,.02);border:1px dashed rgba(255,255,255,.1);
+  border-radius:20px;padding:2.2rem 1.8rem;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;min-height:220px;
+}
+.coming-icon{font-size:2.2rem;margin-bottom:.8rem;opacity:.4}
+.coming-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:rgba(255,255,255,.35);margin-bottom:.35rem}
+.coming-sub{font-size:.75rem;color:rgba(255,255,255,.2)}
 
 /* ── BLOG CARDS ── */
 .blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.4rem}
@@ -134,13 +285,12 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .card-footer{display:flex;align-items:center;justify-content:space-between;font-size:.76rem;color:var(--muted);border-top:1px solid var(--border);padding-top:.8rem;margin-top:auto}
 .read-arrow{color:var(--accent);font-weight:600}
 
-/* ── PROJECTS SECTION ── */
+/* ── PROJECTS ── */
 .projects-section{background:var(--dark);padding:70px 5%}
 .projects-inner{max-width:1300px;margin:0 auto}
 .projects-section .sec-hd{border-bottom-color:rgba(255,255,255,.08)}
 .projects-section .sec-hd h2{color:#fff}
 .proj-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.5rem}
-
 .proj-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:20px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column}
 .proj-card:hover{border-color:rgba(232,64,28,.5);transform:translateY(-3px);box-shadow:0 16px 48px rgba(232,64,28,.12)}
 .proj-thumb{position:relative;height:200px;overflow:hidden;background:var(--dark3)}
@@ -151,7 +301,6 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .proj-card:hover .proj-thumb-overlay{opacity:1}
 .proj-demo-btn{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%) translateY(10px);background:var(--accent);color:#fff;padding:8px 20px;border-radius:100px;font-size:.75rem;font-weight:700;text-decoration:none;white-space:nowrap;opacity:0;transition:all .3s;cursor:pointer;border:none;font-family:'Outfit',sans-serif}
 .proj-card:hover .proj-demo-btn{opacity:1;transform:translateX(-50%) translateY(0)}
-
 .proj-body{padding:1.4rem;flex:1;display:flex;flex-direction:column}
 .proj-tag{background:rgba(232,64,28,.15);color:#f87171;font-size:.66rem;font-weight:700;padding:3px 10px;border-radius:100px;text-transform:uppercase;letter-spacing:.3px;margin-bottom:.7rem;display:inline-block}
 .proj-title{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.4rem;line-height:1.3}
@@ -159,26 +308,22 @@ nav{position:sticky;top:0;z-index:200;background:rgba(245,243,238,.95);backdrop-
 .proj-actions{display:flex;gap:.6rem;flex-wrap:wrap}
 .proj-btn{display:inline-flex;align-items:center;gap:.4rem;padding:7px 14px;border-radius:100px;font-size:.75rem;font-weight:700;text-decoration:none;border:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.6);transition:all .2s;font-family:'Outfit',sans-serif;background:transparent;cursor:pointer;white-space:nowrap}
 .proj-btn:hover{border-color:var(--accent);color:var(--accent)}
-.proj-btn.github{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.7)}
-.proj-btn.github:hover{border-color:#fff;color:#fff}
 .proj-date{font-size:.68rem;color:rgba(255,255,255,.25);margin-top:.9rem}
 
-/* ── DEMO MODAL ── */
+/* ── MODAL ── */
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);z-index:9000;display:none;align-items:center;justify-content:center;padding:1rem}
 .modal-bg.open{display:flex}
 .demo-modal{background:var(--dark2);border:1px solid rgba(255,255,255,.1);border-radius:20px;width:100%;max-width:900px;max-height:92vh;overflow:hidden;display:flex;flex-direction:column;animation:modalPop .25s cubic-bezier(.34,1.56,.64,1)}
 @keyframes modalPop{from{opacity:0;transform:scale(.9)}to{opacity:1;transform:scale(1)}}
 .demo-modal-hd{display:flex;align-items:center;gap:1rem;padding:1rem 1.4rem;background:rgba(255,255,255,.03);border-bottom:1px solid rgba(255,255,255,.06)}
 .demo-modal-hd h4{font-family:'Playfair Display',serif;color:#fff;font-size:.95rem;font-weight:700;flex:1}
-.demo-modal-hd a{color:rgba(255,255,255,.5);font-size:.75rem;text-decoration:none;display:flex;align-items:center;gap:.3rem;transition:color .2s}
-.demo-modal-hd a:hover{color:var(--accent)}
 .demo-modal-close{background:none;border:none;color:rgba(255,255,255,.4);font-size:1.3rem;cursor:pointer;padding:2px 8px;border-radius:6px;transition:all .2s;line-height:1}
 .demo-modal-close:hover{background:rgba(255,255,255,.08);color:#fff}
 .demo-iframe-wrap{flex:1;overflow:hidden;min-height:500px;background:#fff}
 .demo-iframe-wrap iframe{width:100%;height:100%;min-height:500px;border:none;display:block}
 .demo-no-url{display:flex;flex-direction:column;align-items:center;justify-content:center;height:400px;color:rgba(255,255,255,.3);text-align:center;gap:.8rem;font-size:.9rem}
 
-/* ── BRIEF STRIP ── */
+/* ── BRIEF ── */
 .brief-strip{border-top:1px solid var(--border);background:var(--card)}
 .brief-inner{max-width:1300px;margin:0 auto;padding:48px 5%;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .brief-item{display:flex;flex-direction:column;gap:.5rem}
@@ -204,7 +349,7 @@ footer p{font-size:.8rem;color:var(--muted)}
   .hero-left{border-right:none;border-bottom:1px solid var(--border);padding:50px 5% 40px}
   .hero-right{min-height:320px;padding:2rem}
   .proj-grid{grid-template-columns:1fr 1fr}
-  .demo-modal{max-width:100%;margin:.5rem}
+  .course-grid{grid-template-columns:1fr}
 }
 @media(max-width:600px){
   .stats-bar{flex-wrap:wrap}
@@ -212,6 +357,7 @@ footer p{font-size:.8rem;color:var(--muted)}
   .brief-inner{grid-template-columns:1fr}
   .blog-grid,.proj-grid{grid-template-columns:1fr}
   .hero h1{letter-spacing:-2px}
+  .course-card.featured .course-visual{width:100%;min-height:180px}
 }
   </style>
 </head>
@@ -223,36 +369,45 @@ footer p{font-size:.8rem;color:var(--muted)}
   <ul class="nav-links">
     <li><a href="index.html" class="active" data-en="Home" data-hi="Home">Home</a></li>
     <li><a href="blogs.html" data-en="Blogs" data-hi="Blogs">Blogs</a></li>
+    <li><a href="#courses-section" data-en="Courses" data-hi="Courses">Courses</a></li>
     <li><a href="about.html" data-en="About" data-hi="About">About</a></li>
     <li><a href="contact.html" data-en="Contact" data-hi="Contact">Contact</a></li>
     <li><a href="blogs.html" class="nav-cta" data-en="Read Blogs" data-hi="Blogs Padho">Blogs Padho</a></li>
   </ul>
+  <!-- Hamburger -->
+  <button class="ham" id="ham-btn" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
+
+<!-- MOBILE DRAWER -->
+<div class="mob-drawer" id="mob-drawer">
+  <a href="index.html" onclick="closeMenu()">&#127968; Home</a>
+  <a href="blogs.html" onclick="closeMenu()">&#128214; Blogs</a>
+  <a href="#courses-section" onclick="closeMenu()">&#127979; Courses</a>
+  <a href="about.html" onclick="closeMenu()">&#128075; About</a>
+  <a href="contact.html" onclick="closeMenu()">&#128140; Contact</a>
+  <a href="blogs.html" class="mob-cta" onclick="closeMenu()">&#128214; Blogs Padho</a>
+</div>
 
 <!-- HERO -->
 <div style="max-width:1300px;margin:0 auto;border-bottom:1px solid var(--border)">
 <div class="hero">
-
-  <!-- LEFT -->
   <div class="hero-left">
     <div class="hero-eyebrow" data-en="✦ Tech Knowledge Hub" data-hi="✦ Tech Knowledge Hub">✦ Tech Knowledge Hub</div>
     <h1>
       <span data-en="Learn Tech," data-hi="Seekho Tech,">Seekho Tech,</span>
       <span class="accent-line" data-en="Your Language." data-hi="Apni Bhasha Mein.">Apni Bhasha Mein.</span>
     </h1>
-    <p class="hero-sub" data-en="AI, coding, and digital trends — all explained simply. New blogs every week, just for you." data-hi="AI, coding, aur digital trends — sab kuch simple Hindi mein. Har hafte naye blogs, sirf tumhare liye.">
-      AI, coding, aur digital trends — sab kuch simple Hindi mein. Har hafte naye blogs, sirf tumhare liye.
-    </p>
+    <p class="hero-sub" data-en="AI, coding, and digital trends — all explained simply." data-hi="AI, coding, aur digital trends — sab kuch simple Hindi mein. Har hafte naye blogs.">AI, coding, aur digital trends — sab kuch simple Hindi mein. Har hafte naye blogs, sirf tumhare liye.</p>
     <div class="hero-btns">
-      <a href="blogs.html" class="btn-primary" data-en="Read Blogs" data-hi="Blogs Padho"><span aria-hidden="true">&#128214;</span> <span data-en="Read Blogs" data-hi="Blogs Padho">Blogs Padho</span></a>
-      <a href="about.html" class="btn-outline" data-en="About Us" data-hi="Hamare Baare Mein">Hamare Baare Mein</a>
+      <a href="courses/learnhtml/lesson01.html" class="btn-primary">&#127979; Start Free Course</a>
+      <a href="blogs.html" class="btn-outline" data-en="Read Blogs" data-hi="Blogs Padho">Blogs Padho</a>
     </div>
   </div>
-
-  <!-- RIGHT — FEATURED -->
   <div class="hero-right">
     <div class="hero-bg-pattern"></div>
-    <div class="hero-code-bg">const π = 3.14159265358979...;<br/>// AI tools making devs 10x faster<br/>fetch('/blogs.json').then(r=>r.json())<br/>.then(blogs => render(blogs));<br/>// Learn. Build. Share.<br/>function cwSetLang(l) {<br/>  localStorage.setItem('lang', l);<br/>}<br/>// Coding Infinite — CIWeb</div>
+    <div class="hero-code-bg">&lt;!DOCTYPE html&gt;<br/>&lt;html lang="en"&gt;<br/>&lt;head&gt;<br/>  &lt;meta charset="UTF-8"/&gt;<br/>  &lt;title&gt;My Page&lt;/title&gt;<br/>&lt;/head&gt;<br/>&lt;body&gt;<br/>  &lt;h1&gt;Hello World!&lt;/h1&gt;<br/>  &lt;p&gt;I am learning HTML&lt;/p&gt;<br/>&lt;/body&gt;<br/>&lt;/html&gt;<br/><br/>&lt;!-- Learn HTML Free at CIWeb --&gt;<br/>const xp = lessons.reduce((t,l) => t+l.xp, 0);<br/>// 350+ XP earned!</div>
     <div class="featured-label" data-en="✦ Latest Post" data-hi="✦ Latest Post">✦ Latest Post</div>
     <span class="featured-tag-pill" id="featured-tag">Loading...</span>
     <div class="featured-title" id="featured-title">Load ho raha hai...</div>
@@ -263,16 +418,110 @@ footer p{font-size:.8rem;color:var(--muted)}
       <a class="featured-read" id="featured-link" href="#" data-en="Read Now →" data-hi="Padho →">Padho →</a>
     </div>
   </div>
-
 </div>
 </div>
 
 <!-- STATS -->
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num" id="blog-count">9+</div><div class="stat-label" data-en="Blog Posts" data-hi="Blog Posts">Blog Posts</div></div>
-  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label" data-en="Always Free" data-hi="Hamesha Free">Hamesha Free</div></div>
+  <div class="stat-item"><div class="stat-num">22</div><div class="stat-label" data-en="HTML Lessons" data-hi="HTML Lessons">HTML Lessons</div></div>
   <div class="stat-item"><div class="stat-num">2</div><div class="stat-label" data-en="Languages" data-hi="Bhashayein">Bhashayein</div></div>
-  <div class="stat-item"><div class="stat-num">Weekly</div><div class="stat-label" data-en="New Content" data-hi="Naya Content">Naya Content</div></div>
+  <div class="stat-item"><div class="stat-num">Free</div><div class="stat-label" data-en="Always Free" data-hi="Hamesha Free">Hamesha Free</div></div>
+</div>
+
+<!-- ═══ COURSES SECTION ═══ -->
+<div class="courses-section" id="courses-section">
+  <div class="courses-inner">
+    <div class="sec-hd">
+      <h2>&#127979; Free Courses</h2>
+      <span>Learn by doing — live editor + AI tutor</span>
+    </div>
+
+    <div class="course-grid">
+
+      <!-- FEATURED: HTML Course -->
+      <div class="course-card featured">
+        <span class="course-badge-live"><span class="live-dot"></span> LIVE NOW</span>
+
+        <!-- Visual with animated code -->
+        <div class="course-visual">
+          <div class="course-code-preview">
+<span class="ctag">&lt;!DOCTYPE html&gt;</span>
+<span class="ctag">&lt;html</span> <span class="cattr">lang</span>=<span class="cval">"en"</span><span class="ctag">&gt;</span>
+<span class="ctag">&lt;head&gt;</span>
+  <span class="ctag">&lt;meta</span> <span class="cattr">charset</span>=<span class="cval">"UTF-8"</span><span class="ctag">/&gt;</span>
+  <span class="ctag">&lt;title&gt;</span>My Page<span class="ctag">&lt;/title&gt;</span>
+<span class="ctag">&lt;/head&gt;</span>
+<span class="ctag">&lt;body&gt;</span>
+  <span class="ctag">&lt;header&gt;</span>
+    <span class="ctag">&lt;h1&gt;</span>Hello World!<span class="ctag">&lt;/h1&gt;</span>
+  <span class="ctag">&lt;/header&gt;</span>
+  <span class="ctag">&lt;main&gt;</span>
+    <span class="ctag">&lt;p&gt;</span>Learning HTML<span class="ctag">&lt;/p&gt;</span>
+    <span class="ctag">&lt;img</span>
+      <span class="cattr">src</span>=<span class="cval">"hero.webp"</span>
+      <span class="cattr">alt</span>=<span class="cval">"My image"</span>
+      <span class="cattr">loading</span>=<span class="cval">"lazy"</span>
+    <span class="ctag">/&gt;</span>
+  <span class="ctag">&lt;/main&gt;</span>
+<span class="ctag">&lt;/body&gt;</span>
+<span class="ctag">&lt;/html&gt;</span>
+
+<span class="ccm">&lt;!-- Lesson 1 of 22 --&gt;</span>
+<span class="ctag">&lt;form</span> <span class="cattr">method</span>=<span class="cval">"POST"</span><span class="ctag">&gt;</span>
+  <span class="ctag">&lt;label</span> <span class="cattr">for</span>=<span class="cval">"name"</span><span class="ctag">&gt;</span>Name<span class="ctag">&lt;/label&gt;</span>
+  <span class="ctag">&lt;input</span> <span class="cattr">type</span>=<span class="cval">"text"</span>
+         <span class="cattr">id</span>=<span class="cval">"name"</span> <span class="cattr">required</span><span class="ctag">/&gt;</span>
+<span class="ctag">&lt;/form&gt;</span>
+          </div>
+          <div class="course-visual-overlay"></div>
+        </div>
+
+        <div class="course-body">
+          <div class="course-tag">&#128293; HTML5 &bull; Beginner</div>
+          <div class="course-title">Learn HTML — Complete Free Course</div>
+          <div class="course-desc">Master HTML5 from scratch with 22 interactive lessons, a live code editor, Shiv AI tutor, quizzes, challenges, and a real certificate. No experience needed — build real web pages today.</div>
+
+          <div class="course-meta">
+            <div class="cmeta-item">&#128218; <strong>22</strong>&nbsp;Lessons</div>
+            <div class="cmeta-item">&#11088; <strong>350+</strong>&nbsp;XP</div>
+            <div class="cmeta-item">&#8987; <strong>~6 hrs</strong>&nbsp;total</div>
+            <div class="cmeta-item">&#127809; <strong>Free</strong>&nbsp;forever</div>
+          </div>
+
+          <!-- Progress bar from localStorage -->
+          <div class="course-prog-wrap">
+            <div class="course-prog-lbl">
+              <span>Your Progress</span>
+              <span id="html-prog-lbl">0 / 22</span>
+            </div>
+            <div class="course-prog-bar">
+              <div class="course-prog-fill" id="html-prog-fill" style="width:0%"></div>
+            </div>
+          </div>
+
+          <a href="courses/learnhtml/lesson01.html" class="course-cta" id="html-cta">
+            &#128640; Start Learning Free
+          </a>
+        </div>
+      </div>
+
+      <!-- Coming soon: CSS -->
+      <div class="course-coming">
+        <div class="coming-icon">&#127912;</div>
+        <div class="coming-title">CSS Styling</div>
+        <div class="coming-sub">Coming soon — make your HTML beautiful</div>
+      </div>
+
+      <!-- Coming soon: JS -->
+      <div class="course-coming">
+        <div class="coming-icon">&#9889;</div>
+        <div class="coming-title">JavaScript</div>
+        <div class="coming-sub">Coming soon — add interactivity to your pages</div>
+      </div>
+
+    </div>
+  </div>
 </div>
 
 <!-- LATEST BLOGS -->
@@ -286,23 +535,18 @@ footer p{font-size:.8rem;color:var(--muted)}
   </div>
 </div>
 
-<!-- ════════════════════════════
-     PROJECTS SECTION
-     ════════════════════════════ -->
+<!-- PROJECTS -->
 <div class="projects-section">
   <div class="projects-inner">
     <div class="sec-hd">
       <h2 data-en="&#128187; My Code Projects" data-hi="&#128187; Mere Code Projects">&#128187; Mere Code Projects</h2>
-      <a href="projects.html" style="font-size:.84rem;color:#f87171;text-decoration:none;font-weight:600" data-en="See all projects →" data-hi="Saare projects →">Saare projects →</a>
+      <a href="projects.html" style="font-size:.84rem;color:#f87171;text-decoration:none;font-weight:600" data-en="See all →" data-hi="Saare →">Saare &rarr;</a>
     </div>
-    <!-- Project Search -->
     <div style="margin-bottom:1.5rem;display:flex;gap:.8rem;align-items:center;flex-wrap:wrap">
       <div style="position:relative;flex:1;min-width:220px;max-width:360px">
         <input id="proj-search" type="text" placeholder="Search projects..."
           style="width:100%;padding:10px 16px 10px 40px;border:1.5px solid rgba(255,255,255,.12);border-radius:10px;background:rgba(255,255,255,.06);color:#fff;font-family:'Outfit',sans-serif;font-size:.85rem;outline:none"
-          oninput="filterProjects()"
-          data-placeholder-en="Search projects..."
-          data-placeholder-hi="Projects search karo..."/>
+          oninput="filterProjects()"/>
         <span style="position:absolute;left:13px;top:50%;transform:translateY(-50%);color:rgba(255,255,255,.3);font-size:.9rem">&#128269;</span>
       </div>
       <div id="proj-tags" style="display:flex;gap:.5rem;flex-wrap:wrap"></div>
@@ -318,13 +562,12 @@ footer p{font-size:.8rem;color:var(--muted)}
   <div class="demo-modal">
     <div class="demo-modal-hd">
       <h4 id="demo-modal-title">Live Demo</h4>
-      <a id="demo-gh-link" href="#" target="_blank" rel="noopener">&#128279; GitHub</a>
       <button class="demo-modal-close" onclick="closeDemo()">&#10005;</button>
     </div>
     <div class="demo-iframe-wrap" id="demo-iframe-wrap">
       <div class="demo-no-url" id="demo-no-url">
         <span style="font-size:3rem">&#128187;</span>
-        <span id="demo-no-url-text">Demo URL set nahi hai. GitHub pe source code dekho!</span>
+        <span>Demo URL set nahi hai. GitHub pe source code dekho!</span>
       </div>
     </div>
   </div>
@@ -335,29 +578,29 @@ footer p{font-size:.8rem;color:var(--muted)}
   <div class="brief-inner">
     <div class="brief-item">
       <div class="brief-icon">&#128075;</div>
-      <h4 data-en="About CIWeb" data-hi="About CIWeb">About CIWeb</h4>
-      <p data-en="A Hindi tech blog — AI, coding and digital knowledge made simple." data-hi="Hindi tech blog — AI, coding aur digital knowledge ko simple banate hain.">Hindi tech blog — AI, coding aur digital knowledge ko simple banate hain.</p>
-      <a href="about.html" data-en="About us →" data-hi="Hamare baare mein →">Hamare baare mein &rarr;</a>
+      <h4>About CIWeb</h4>
+      <p>Hindi tech blog — AI, coding aur digital knowledge ko simple banate hain.</p>
+      <a href="about.html">Hamare baare mein &rarr;</a>
     </div>
     <div class="brief-item">
       <div class="brief-icon">&#128140;</div>
-      <h4 data-en="Contact Us" data-hi="Contact Us">Contact Us</h4>
-      <p data-en="Questions, suggestions or collaboration? Always available." data-hi="Koi sawaal, suggestion ya collaboration? Hum hamesha available hain.">Koi sawaal, suggestion ya collaboration? Hum hamesha available hain.</p>
-      <a href="contact.html" data-en="Message us →" data-hi="Message karo →">Message karo &rarr;</a>
+      <h4>Contact Us</h4>
+      <p>Koi sawaal, suggestion ya collaboration? Hum hamesha available hain.</p>
+      <a href="contact.html">Message karo &rarr;</a>
     </div>
     <div class="brief-item">
-      <div class="brief-icon">&#128196;</div>
-      <h4 data-en="Terms & Conditions" data-hi="Terms & Conditions">Terms &amp; Conditions</h4>
-      <p data-en="Simple and clear terms before using CIWeb." data-hi="CIWeb use karne se pehle hamare terms — bilkul simple aur clear.">CIWeb use karne se pehle hamare terms — bilkul simple aur clear.</p>
-      <a href="terms.html" data-en="Read terms →" data-hi="Terms padho →">Terms padho &rarr;</a>
+      <div class="brief-icon">&#127979;</div>
+      <h4>Free HTML Course</h4>
+      <p>22 lessons, live editor, Shiv AI tutor aur certificate — bilkul free.</p>
+      <a href="courses/learnhtml/lesson01.html">Start karo &rarr;</a>
     </div>
   </div>
 </div>
 
 <footer>
   <a href="index.html" class="logo">CI<em>Web</em></a>
-  <p data-en="&copy; 2026 CIWeb. All rights reserved." data-hi="&copy; 2026 CIWeb. Sare adhikar surakshit.">&copy; 2026 CIWeb. Sare adhikar surakshit.</p>
-  <p data-en="Made with &#10084; for Tech Lovers" data-hi="Tech Lovers ke liye &#10084; se banaya">Tech Lovers ke liye &#10084; se banaya</p>
+  <p>&copy; 2026 CIWeb. Sare adhikar surakshit.</p>
+  <p>Tech Lovers ke liye &#10084; se banaya</p>
 </footer>
 
 <!-- LANG TOGGLE -->
@@ -369,129 +612,107 @@ footer p{font-size:.8rem;color:var(--muted)}
 
 <script src="ciweb.js"></script>
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    cwInitIndex();
-    cwInitProjects();
-  });
+// ── MOBILE MENU ──────────────────────────────────────────────────
+function toggleMenu(){
+  var d=document.getElementById('mob-drawer');
+  var h=document.getElementById('ham-btn');
+  var open=d.classList.contains('open');
+  if(open){d.classList.remove('open');h.classList.remove('open');document.body.style.overflow='';}
+  else{d.classList.add('open');h.classList.add('open');document.body.style.overflow='hidden';}
+}
+function closeMenu(){
+  document.getElementById('mob-drawer').classList.remove('open');
+  document.getElementById('ham-btn').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeMenu();});
 
-  // ── PROJECTS ────────────────────────────────────
-  function cwInitProjects() {
-    fetch('projects.json?v=' + Date.now())
-      .then(function(r) { return r.json(); })
-      .then(function(p) { _allProjects = p; buildProjTags(p); renderProjects(p); })
-      .catch(function() {
-        document.getElementById('proj-grid').innerHTML =
-          '<p style="color:rgba(255,255,255,.3);grid-column:1/-1;text-align:center;padding:2rem">Koi project nahi mila.</p>';
-      });
-  }
-
-  function renderProjects(projects) {
-    var grid = document.getElementById('proj-grid');
-    var lang = localStorage.getItem('ciweb_lang') || 'hi';
-    if (!projects.length) {
-      grid.innerHTML = '<p style="color:rgba(255,255,255,.3);grid-column:1/-1;text-align:center;padding:2rem">Koi project nahi mila.</p>';
-      return;
+// ── COURSE PROGRESS ─────────────────────────────────────────────
+(function(){
+  var TOTAL=22;
+  try{
+    var done=JSON.parse(localStorage.getItem('cw_done')||'[]');
+    var pct=Math.round(done.length/TOTAL*100);
+    var fill=document.getElementById('html-prog-fill');
+    var lbl=document.getElementById('html-prog-lbl');
+    var cta=document.getElementById('html-cta');
+    if(fill)fill.style.width=pct+'%';
+    if(lbl)lbl.textContent=done.length+' / '+TOTAL;
+    if(cta&&done.length>0){
+      if(done.length>=TOTAL){
+        cta.textContent='&#127942; Get Your Certificate';
+        cta.href='certificate.html';
+      } else {
+        var next=1;
+        for(var i=1;i<=TOTAL;i++){if(done.indexOf(i)===-1){next=i;break;}}
+        cta.textContent='&#9654; Continue — Lesson '+next;
+        cta.href='courses/learnhtml/lesson'+('0'+next).slice(-2)+'.html';
+      }
     }
-    grid.innerHTML = projects.map(function(p) {
-      var title = lang === 'en' ? p.title_en : p.title_hi;
-      var desc  = lang === 'en' ? p.desc_en  : p.desc_hi;
-      var imgHtml = p.image
-        ? '<img src="' + p.image + '" alt="' + title + '" loading="lazy"/>'
-        : '<div class="proj-thumb-placeholder">&#128187;</div>';
-      var demoTxt  = lang === 'hi' ? '&#128064; Live Demo' : '&#128064; Live Demo';
-      var srcTxt   = 'GitHub';
-      var hasdemo  = p.demo_iframe && p.demo_iframe.trim() !== '';
-      return '<div class="proj-card">' +
-        '<div class="proj-thumb">' +
-          imgHtml +
-          '<div class="proj-thumb-overlay"></div>' +
-          '<button class="proj-demo-btn" onclick="openDemo(\'' + p.id + '\')">' + demoTxt + '</button>' +
-        '</div>' +
-        '<div class="proj-body">' +
-          '<span class="proj-tag">' + (p.tag || 'Code') + '</span>' +
-          '<div class="proj-title">' + title + '</div>' +
-          '<div class="proj-desc">' + desc + '</div>' +
-          '<div class="proj-actions">' +
-            (hasdemo ? '<button class="proj-btn" onclick="openDemo(\'' + p.id + '\')">' + demoTxt + '</button>' : '') +
-            (p.github ? '<a class="proj-btn github" href="' + p.github + '" target="_blank" rel="noopener">&#128279; ' + srcTxt + '</a>' : '') +
-          '</div>' +
-          '<div class="proj-date">&#128197; ' + (p.date || '') + '</div>' +
-        '</div>' +
-      '</div>';
-    }).join('');
-  }
+  }catch(e){}
+})();
 
-  window.addEventListener('langChanged', function() {
-    fetch('projects.json?v=' + Date.now())
-      .then(function(r) { return r.json(); })
-      .then(function(p) { renderProjects(p); });
+// ── PROJECTS ────────────────────────────────────────────────────
+var _allProjects=[];
+function cwInitProjects(){
+  fetch('projects.json?v='+Date.now())
+    .then(function(r){return r.json();})
+    .then(function(p){_allProjects=p;buildProjTags(p);renderProjects(p);})
+    .catch(function(){document.getElementById('proj-grid').innerHTML='<p style="color:rgba(255,255,255,.3);grid-column:1/-1;text-align:center;padding:2rem">Koi project nahi mila.</p>';});
+}
+function buildProjTags(projects){
+  var tags=[...new Set(projects.map(function(p){return p.tag;}).filter(Boolean))];
+  var cont=document.getElementById('proj-tags');
+  if(!cont)return;
+  cont.innerHTML='<button onclick="renderProjects(_allProjects)" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.6);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:Outfit,sans-serif">All</button>'+
+    tags.map(function(t){return '<button onclick="renderProjects(_allProjects.filter(function(p){return p.tag===\''+t+'\'}))" style="background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);padding:6px 14px;border-radius:100px;font-size:.72rem;font-weight:600;cursor:pointer;font-family:Outfit,sans-serif">'+t+'</button>';}).join('');
+}
+function renderProjects(projects){
+  var grid=document.getElementById('proj-grid');
+  if(!projects.length){grid.innerHTML='<p style="color:rgba(255,255,255,.3);grid-column:1/-1;text-align:center;padding:2rem">Koi project nahi mila.</p>';return;}
+  var lang=localStorage.getItem('ciweb_lang')||'hi';
+  grid.innerHTML=projects.map(function(p){
+    var title=lang==='en'?p.title_en:p.title_hi;
+    var desc=lang==='en'?p.desc_en:p.desc_hi;
+    var imgHtml=p.image?'<img src="'+p.image+'" alt="'+title+'" loading="lazy"/>':'<div class="proj-thumb-placeholder">&#128187;</div>';
+    return '<div class="proj-card"><div class="proj-thumb">'+imgHtml+'<div class="proj-thumb-overlay"></div><button class="proj-demo-btn" onclick="openDemo(\''+p.id+'\')">&#128064; Live Demo</button></div><div class="proj-body"><span class="proj-tag">'+(p.tag||'Code')+'</span><div class="proj-title">'+title+'</div><div class="proj-desc">'+desc+'</div><div class="proj-actions">'+(p.demo_iframe?'<button class="proj-btn" onclick="openDemo(\''+p.id+'\')">&#128064; Demo</button>':'')+(p.github?'<a class="proj-btn" href="'+p.github+'" target="_blank" rel="noopener">&#128279; GitHub</a>':'')+'</div><div class="proj-date">&#128197; '+(p.date||'')+'</div></div></div>';
+  }).join('');
+}
+function filterProjects(){
+  var q=(document.getElementById('proj-search').value||'').toLowerCase();
+  var lang=localStorage.getItem('ciweb_lang')||'hi';
+  var filtered=_allProjects.filter(function(p){
+    var t=(lang==='en'?p.title_en:p.title_hi)||'';
+    return t.toLowerCase().includes(q)||(p.tag||'').toLowerCase().includes(q);
   });
+  renderProjects(filtered);
+}
+window.addEventListener('langChanged',function(){if(_allProjects.length)renderProjects(_allProjects);});
 
-  // ── DEMO MODAL ──────────────────────────────────
-  var _projCache = [];
+// DEMO MODAL
+function openDemo(id){
+  var p=_allProjects.find(function(x){return x.id===id;});
+  if(!p)return;
+  var lang=localStorage.getItem('ciweb_lang')||'hi';
+  document.getElementById('demo-modal-title').textContent=lang==='en'?p.title_en:p.title_hi;
+  var wrap=document.getElementById('demo-iframe-wrap');
+  var noUrl=document.getElementById('demo-no-url');
+  if(p.demo_iframe&&p.demo_iframe.trim()){
+    noUrl.style.display='none';
+    var ex=wrap.querySelector('iframe');if(ex)ex.remove();
+    var fr=document.createElement('iframe');fr.src=p.demo_iframe;fr.title=p.title_en;wrap.appendChild(fr);
+  }else{if(wrap.querySelector('iframe'))wrap.querySelector('iframe').remove();noUrl.style.display='flex';}
+  document.getElementById('demoModal').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeDemo(){document.getElementById('demoModal').classList.remove('open');document.body.style.overflow='';var w=document.getElementById('demo-iframe-wrap');var f=w.querySelector('iframe');if(f)f.remove();}
+function closeDemoOuter(e){if(e.target===document.getElementById('demoModal'))closeDemo();}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){closeDemo();closeMenu();}});
 
-  function openDemo(id) {
-    fetch('projects.json?v=' + Date.now())
-      .then(function(r) { return r.json(); })
-      .then(function(projects) {
-        _projCache = projects;
-        var p = projects.find(function(x) { return x.id === id; });
-        if (!p) return;
-        var lang = localStorage.getItem('ciweb_lang') || 'hi';
-        var title = lang === 'en' ? p.title_en : p.title_hi;
-
-        document.getElementById('demo-modal-title').textContent = title;
-
-        var ghLink = document.getElementById('demo-gh-link');
-        if (p.github) { ghLink.href = p.github; ghLink.style.display = 'flex'; }
-        else { ghLink.style.display = 'none'; }
-
-        var wrap = document.getElementById('demo-iframe-wrap');
-        var noUrl = document.getElementById('demo-no-url');
-
-        if (p.demo_iframe && p.demo_iframe.trim() !== '') {
-          // Show iframe with the demo URL
-          noUrl.style.display = 'none';
-          var existing = wrap.querySelector('iframe');
-          if (existing) existing.remove();
-          var iframe = document.createElement('iframe');
-          iframe.src = p.demo_iframe;
-          iframe.title = title;
-          iframe.allow = 'fullscreen';
-          wrap.appendChild(iframe);
-        } else {
-          // No demo URL — show message with GitHub link
-          if (wrap.querySelector('iframe')) wrap.querySelector('iframe').remove();
-          noUrl.style.display = 'flex';
-          var noTxt = document.getElementById('demo-no-url-text');
-          if (noTxt) noTxt.textContent = lang === 'hi'
-            ? 'Demo URL abhi available nahi hai. GitHub pe source code dekho!'
-            : 'No demo URL set yet. Check the source code on GitHub!';
-        }
-
-        document.getElementById('demoModal').classList.add('open');
-        document.body.style.overflow = 'hidden';
-      });
-  }
-
-  function closeDemo() {
-    document.getElementById('demoModal').classList.remove('open');
-    document.body.style.overflow = '';
-    // Remove iframe to stop loading
-    var wrap = document.getElementById('demo-iframe-wrap');
-    var iframe = wrap.querySelector('iframe');
-    if (iframe) iframe.remove();
-  }
-
-  function closeDemoOuter(e) {
-    if (e.target === document.getElementById('demoModal')) closeDemo();
-  }
-
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeDemo();
-  });
-</script>
-
+document.addEventListener('DOMContentLoaded',function(){
+  cwInitIndex&&cwInitIndex();
+  cwInitProjects();
+});
 </script>
 </body>
 </html>
