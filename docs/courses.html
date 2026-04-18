@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<meta name="description" content="Free HTML course with 22 lessons, live editor, AI tutor, and certificate. Learn web development for free."/>
+<meta name="author" content="CIWeb — Coding Infinite"/>
+<meta name="google-adsense-account" content="ca-pub-1601519075440950"/>
+<link rel="icon" href="https://i.ibb.co/DH8H9mWK/Black-Beige-Modern-Typography-Monogram-Logo-20260319-163622-0000.png" type="image/png"/>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KMMH6KDM6V"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag("js",new Date());gtag("config","G-KMMH6KDM6V");</script>
+<title>Free Courses | CIWeb</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap"/>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f5f3ee;--ink:#1a1814;--muted:#7a7570;--accent:#e8401c;
+  --card:#fff;--border:#e2ddd6;--tag-bg:#fff0ec;
+  --dark:#0f0f18;--dark2:#16161f;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ── NAV ── */
+.nav{
+  position:sticky;top:0;z-index:200;height:62px;
+  background:rgba(245,243,238,.96);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;padding:0 clamp(1rem,5%,5rem);
+  gap:1rem;
+}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;letter-spacing:-.5px;color:var(--ink)}
+.nav-logo em{color:var(--accent);font-style:normal}
+.nav-links{display:flex;gap:1.2rem;list-style:none;align-items:center;margin-left:auto}
+.nav-links a{font-size:.85rem;font-weight:500;color:var(--muted);transition:color .18s;padding:4px 0;position:relative}
+.nav-links a::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1.5px;background:var(--accent);transform:scaleX(0);transition:transform .2s;transform-origin:left}
+.nav-links a:hover,.nav-links a.on{color:var(--ink)}
+.nav-links a.on::after,.nav-links a:hover::after{transform:scaleX(1)}
+.nav-cta{
+  background:var(--ink)!important;color:var(--bg)!important;
+  padding:7px 18px;border-radius:100px;
+  font-weight:700!important;transition:background .18s!important;
+  font-size:.82rem!important;white-space:nowrap;
+}
+.nav-cta::after{display:none!important}
+.nav-cta:hover{background:var(--accent)!important;color:#fff!important}
+
+/* Hamburger */
+.ham{
+  display:none;margin-left:auto;
+  flex-direction:column;gap:5px;background:none;border:none;
+  cursor:pointer;padding:6px;border-radius:6px;
+}
+.ham span{display:block;width:21px;height:2px;background:var(--ink);border-radius:2px;transition:all .25s}
+.ham.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.ham.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.ham.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+
+/* Mobile drawer */
+.mob-menu{
+  display:none;position:fixed;inset:62px 0 0;
+  background:rgba(245,243,238,.99);backdrop-filter:blur(24px);
+  z-index:190;flex-direction:column;padding:1.5rem clamp(1rem,5%,5rem);
+  overflow-y:auto;animation:slideDown .2s ease;
+}
+.mob-menu.open{display:flex}
+@keyframes slideDown{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.mob-menu a{
+  font-size:1.05rem;font-weight:600;color:var(--ink);
+  padding:.88rem 0;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+  transition:color .15s;
+}
+.mob-menu a:hover{color:var(--accent)}
+.mob-menu a.mob-cta{
+  margin-top:1.2rem;background:var(--accent);color:#fff;
+  padding:13px 20px;border-radius:12px;justify-content:center;
+  border-bottom:none;font-size:.95rem;
+}
+.mob-menu a.mob-cta:hover{background:#c73516}
+
+@media(max-width:768px){.nav-links{display:none}.ham{display:flex}}
+
+/* ── FOOTER ── */
+.footer{
+  border-top:1px solid var(--border);
+  padding:3rem clamp(1rem,5%,5rem) 2rem;
+  background:var(--ink);color:rgba(255,255,255,.55);
+}
+.footer-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2.5rem}
+.foot-brand .nav-logo{color:#fff;font-size:1.4rem;margin-bottom:.8rem}
+.foot-brand p{font-size:.82rem;line-height:1.7;max-width:220px;margin-bottom:1rem}
+.foot-social{display:flex;gap:.7rem;flex-wrap:wrap}
+.foot-soc-btn{
+  background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);
+  color:rgba(255,255,255,.6);font-size:.74rem;font-weight:600;
+  padding:6px 14px;border-radius:100px;transition:all .15s;
+}
+.foot-soc-btn:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.foot-col h5{font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:rgba(255,255,255,.3);margin-bottom:1rem}
+.foot-col a{display:block;font-size:.83rem;color:rgba(255,255,255,.5);margin-bottom:.55rem;transition:color .15s}
+.foot-col a:hover{color:#fff}
+.foot-bottom{
+  max-width:1200px;margin:2rem auto 0;padding-top:1.5rem;
+  border-top:1px solid rgba(255,255,255,.08);
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:.8rem;font-size:.78rem;
+}
+
+/* ── LANG TOGGLE ── */
+#lang-toggle{
+  position:fixed;bottom:24px;right:24px;z-index:9999;
+  display:flex;align-items:center;
+  background:rgba(15,15,24,.94);backdrop-filter:blur(16px);
+  border-radius:100px;padding:4px;
+  box-shadow:0 8px 28px rgba(0,0,0,.3),0 0 0 1px rgba(255,255,255,.07);
+}
+.lang-btn{
+  padding:7px 16px;border-radius:100px;font-size:.7rem;font-weight:700;
+  cursor:pointer;border:none;background:transparent;
+  color:rgba(255,255,255,.3);font-family:'Outfit',sans-serif;letter-spacing:.5px;
+  transition:all .22s;
+}
+.lang-btn.on{background:linear-gradient(135deg,#e8401c,#c73516);color:#fff;box-shadow:0 3px 10px rgba(232,64,28,.35)}
+
+/* ── UTILITIES ── */
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(1rem,5%,5rem)}
+.section{padding:clamp(3rem,6vw,5rem) 0}
+.sec-head{margin-bottom:2.5rem}
+.sec-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin-bottom:.6rem}
+.sec-tag::before{content:'';width:24px;height:1.5px;background:var(--accent)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;letter-spacing:-.5px;line-height:1.1;margin-bottom:.5rem}
+.sec-sub{font-size:.95rem;color:var(--muted);max-width:520px;line-height:1.7}
+
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:11px 24px;border-radius:12px;font-weight:700;font-size:.86rem;transition:all .18s;cursor:pointer;border:none;font-family:'Outfit',sans-serif}
+.btn-red{background:var(--accent);color:#fff}.btn-red:hover{background:#c73516;transform:translateY(-1px);box-shadow:0 6px 20px rgba(232,64,28,.3)}
+.btn-dark{background:var(--ink);color:#fff}.btn-dark:hover{background:#2d2a26}
+.btn-out{border:2px solid var(--border);color:var(--ink)}.btn-out:hover{border-color:var(--ink);background:var(--ink);color:var(--bg)}
+
+@media(max-width:640px){
+  .footer-inner{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+@media(max-width:400px){.footer-inner{grid-template-columns:1fr}}
+</style><style>
+.courses-hero{
+  background:linear-gradient(155deg,#0c0c15,#14141e,#101520);
+  padding:5rem 0;border-bottom:1px solid rgba(255,255,255,.05);
+}
+.courses-hero .sec-tag{color:#f87171}.courses-hero .sec-tag::before{background:#f87171}
+.courses-hero .sec-title{color:#fff}
+.courses-hero .sec-sub{color:rgba(255,255,255,.45)}
+
+/* Main card */
+.html-card{
+  background:linear-gradient(135deg,rgba(232,64,28,.1),rgba(255,255,255,.04));
+  border:1.5px solid rgba(232,64,28,.45);border-radius:20px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1.2fr;margin-top:2.5rem;
+  transition:all .25s;
+}
+.html-card:hover{border-color:rgba(232,64,28,.7);box-shadow:0 28px 64px rgba(232,64,28,.18)}
+.html-vis{
+  background:linear-gradient(135deg,#1e1e2e,#0a0a12);
+  display:flex;align-items:center;overflow:hidden;min-height:320px;
+  position:relative;
+}
+.html-code{font-family:'JetBrains Mono',monospace;font-size:.65rem;color:rgba(255,255,255,.72);line-height:1.9;padding:2rem 1.5rem;animation:scrollUp 18s linear infinite}
+@keyframes scrollUp{0%{transform:translateY(0)}100%{transform:translateY(-50%)}}
+.ctag{color:#89b4fa}.cattr{color:#a6e3a1}.cval{color:#fab387}.ccm{color:#555f7c;font-style:italic}
+.html-vis-fade{position:absolute;bottom:0;left:0;right:0;height:80px;background:linear-gradient(to top,rgba(10,10,18,.95),transparent)}
+.html-body{padding:2.5rem;display:flex;flex-direction:column}
+.hb-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(232,64,28,.2);color:#f87171;font-size:.65rem;font-weight:700;padding:4px 12px;border-radius:100px;text-transform:uppercase;margin-bottom:1rem;width:fit-content}
+.ldot{width:5px;height:5px;background:#4ade80;border-radius:50%;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.hb-title{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:700;color:#fff;line-height:1.2;margin-bottom:.6rem}
+.hb-desc{font-size:.85rem;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:1.5rem;flex:1}
+.hb-features{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1.5rem}
+.hb-feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:.75rem;font-size:.78rem;color:rgba(255,255,255,.55)}
+.hb-feat strong{display:block;color:rgba(255,255,255,.8);font-size:.85rem;margin-bottom:.15rem}
+.hb-prog{margin-bottom:1.5rem}
+.hb-prog-bar{height:5px;background:rgba(255,255,255,.08);border-radius:99px;overflow:hidden;margin-top:.4rem}
+.hb-prog-fill{height:100%;background:linear-gradient(90deg,#e8401c,#f5a623);border-radius:99px;transition:width .8s}
+.hb-prog-lbl{display:flex;justify-content:space-between;font-size:.68rem;color:rgba(255,255,255,.3)}
+.hb-cta{display:inline-flex;align-items:center;gap:.5rem;background:#e8401c;color:#fff;padding:13px 26px;border-radius:12px;font-family:'Outfit',sans-serif;font-size:.9rem;font-weight:700;transition:all .2s;width:fit-content}
+.hb-cta:hover{background:#c73516;transform:translateX(3px)}
+
+/* Lessons grid */
+.lessons-sec{padding:5rem 0}
+.lessons-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;margin-top:2rem}
+.lesson-chip{
+  background:var(--card);border:1px solid var(--border);border-radius:12px;
+  padding:.85rem 1rem;display:flex;align-items:center;gap:.7rem;
+  transition:all .18s;cursor:pointer;text-decoration:none;
+}
+.lesson-chip:hover{border-color:var(--accent);background:var(--tag-bg);transform:translateY(-1px)}
+.lesson-chip.done{border-color:rgba(34,197,94,.35);background:rgba(34,197,94,.05)}
+.lc-num{
+  width:28px;height:28px;border-radius:6px;flex-shrink:0;
+  background:var(--tag-bg);color:var(--accent);
+  font-size:.7rem;font-weight:700;font-family:'JetBrains Mono',monospace;
+  display:flex;align-items:center;justify-content:center;
+}
+.lesson-chip.done .lc-num{background:rgba(34,197,94,.15);color:#22c55e}
+.lc-text{font-size:.78rem;font-weight:600;color:var(--ink)}
+.lesson-chip.done .lc-text{color:#22c55e}
+.lc-check{margin-left:auto;font-size:.7rem;color:#22c55e;flex-shrink:0}
+
+/* Coming */
+.coming-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.2rem;margin-top:2rem}
+.coming-big{
+  background:var(--card);border:1.5px dashed var(--border);border-radius:16px;
+  padding:2.2rem;display:flex;flex-direction:column;align-items:center;
+  text-align:center;transition:border-color .18s;
+}
+.coming-big:hover{border-color:var(--accent)}
+.cb-icon{font-size:2.5rem;margin-bottom:.8rem}
+.cb-title{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);margin-bottom:.35rem}
+.cb-sub{font-size:.82rem;color:var(--muted)}
+
+@media(max-width:860px){.html-card{grid-template-columns:1fr}.html-vis{min-height:200px}}
+</style></head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">CI<em>Web</em></a>
+  <ul class="nav-links">
+    <li><a href="index.html" >Home</a></li>
+    <li><a href="blogs.html" >Blogs</a></li>
+    <li><a href="courses.html" class='on'>Courses</a></li>
+    <li><a href="about.html" >About</a></li>
+    <li><a href="contact.html" >Contact</a></li>
+    <li><a href="courses/learnhtml/lesson01.html" class="nav-cta">Start Free Course</a></li>
+  </ul>
+  <button class="ham" id="ham" onclick="toggleMob()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="index.html" onclick="closeMob()">&#127968; Home</a>
+  <a href="blogs.html" onclick="closeMob()">&#128214; Blogs</a>
+  <a href="courses.html" onclick="closeMob()">&#127979; Courses</a>
+  <a href="about.html" onclick="closeMob()">&#128075; About</a>
+  <a href="contact.html" onclick="closeMob()">&#128140; Contact</a>
+  <a href="courses/learnhtml/lesson01.html" class="mob-cta" onclick="closeMob()">&#127979; Start Free Course</a>
+</div>
+
+<!-- HERO -->
+<div class="courses-hero">
+  <div class="container">
+    <div class="sec-tag">&#127979; Courses</div>
+    <h1 class="sec-title">Learn by Building Real Things</h1>
+    <p class="sec-sub">Interactive lessons, live code editor, Shiv AI tutor, quizzes, and verifiable certificates. All free.</p>
+
+    <!-- HTML COURSE CARD -->
+    <div class="html-card">
+      <div class="html-vis">
+        <div class="html-code"><span class="ctag">&lt;!DOCTYPE html&gt;</span>
+<span class="ctag">&lt;html</span> <span class="cattr">lang</span>=<span class="cval">"en"</span><span class="ctag">&gt;</span>
+<span class="ctag">&lt;head&gt;</span>
+  <span class="ctag">&lt;meta</span> <span class="cattr">charset</span>=<span class="cval">"UTF-8"</span><span class="ctag">/&gt;</span>
+  <span class="ctag">&lt;title&gt;</span><span class="cval">My Website</span><span class="ctag">&lt;/title&gt;</span>
+<span class="ctag">&lt;/head&gt;</span>
+<span class="ctag">&lt;body&gt;</span>
+  <span class="ctag">&lt;header&gt;</span>
+    <span class="ctag">&lt;nav&gt;</span>
+      <span class="ctag">&lt;a</span> <span class="cattr">href</span>=<span class="cval">"/"</span><span class="ctag">&gt;</span><span class="cval">Home</span><span class="ctag">&lt;/a&gt;</span>
+    <span class="ctag">&lt;/nav&gt;</span>
+  <span class="ctag">&lt;/header&gt;</span>
+  <span class="ctag">&lt;main&gt;</span>
+    <span class="ctag">&lt;h1&gt;</span><span class="cval">Hello World!</span><span class="ctag">&lt;/h1&gt;</span>
+    <span class="ctag">&lt;img</span> <span class="cattr">src</span>=<span class="cval">"img.webp"</span>
+         <span class="cattr">alt</span>=<span class="cval">"photo"</span>
+         <span class="cattr">loading</span>=<span class="cval">"lazy"</span><span class="ctag">/&gt;</span>
+  <span class="ctag">&lt;/main&gt;</span>
+  <span class="ctag">&lt;footer&gt;</span>
+    <span class="ctag">&lt;p&gt;</span><span class="cval">&amp;copy; 2026</span><span class="ctag">&lt;/p&gt;</span>
+  <span class="ctag">&lt;/footer&gt;</span>
+<span class="ctag">&lt;/body&gt;&lt;/html&gt;</span>
+<span class="ccm">&lt;!-- 22 lessons total --&gt;</span></div>
+        <div class="html-vis-fade"></div>
+      </div>
+      <div class="html-body">
+        <span class="hb-badge"><span class="ldot"></span> Live Now &bull; HTML5 &bull; Beginner</span>
+        <div class="hb-title">Learn HTML — Complete Free Course</div>
+        <div class="hb-desc">22 interactive lessons covering everything from basic document structure to semantic HTML, SEO, accessibility, forms, canvas, SVG, and real-world best practices. Build real web pages from day one.</div>
+        <div class="hb-features">
+          <div class="hb-feat"><strong>&#128218; 22 Lessons</strong>Structured curriculum</div>
+          <div class="hb-feat"><strong>&#129302; Shiv AI</strong>Live code review</div>
+          <div class="hb-feat"><strong>&#128196; Certificate</strong>Verifiable PDF</div>
+          <div class="hb-feat"><strong>&#127809; Free</strong>No signup needed</div>
+        </div>
+        <div class="hb-prog">
+          <div class="hb-prog-lbl"><span>Your Progress</span><span id="prog-lbl">0 / 22</span></div>
+          <div class="hb-prog-bar"><div class="hb-prog-fill" id="prog-fill" style="width:0%"></div></div>
+        </div>
+        <a href="courses/learnhtml/lesson01.html" class="hb-cta" id="hb-cta">&#128640; Start Learning Free &#8594;</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ALL LESSONS -->
+<section class="lessons-sec">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">&#128218; Curriculum</div>
+      <h2 class="sec-title">22 Lessons</h2>
+      <p class="sec-sub">Tap any lesson to jump straight to it.</p>
+    </div>
+    <div class="lessons-grid" id="lessons-grid"></div>
+  </div>
+</section>
+
+<!-- COMING SOON -->
+<section class="section" style="background:var(--card);border-top:1px solid var(--border)">
+  <div class="container">
+    <div class="sec-head">
+      <div class="sec-tag">&#8987; Coming Soon</div>
+      <h2 class="sec-title">More Courses</h2>
+    </div>
+    <div class="coming-grid">
+      <div class="coming-big"><div class="cb-icon">&#127912;</div><div class="cb-title">CSS Styling</div><div class="cb-sub">Box model, Flexbox, Grid, animations, responsive design</div></div>
+      <div class="coming-big"><div class="cb-icon">&#9889;</div><div class="cb-title">JavaScript</div><div class="cb-sub">Variables, DOM, events, fetch API, modern ES6+</div></div>
+      <div class="coming-big"><div class="cb-icon">&#128208;</div><div class="cb-title">React Basics</div><div class="cb-sub">Components, state, props, hooks, real projects</div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="foot-brand">
+      <div class="nav-logo">CI<em style="color:#e8401c;font-style:normal">Web</em></div>
+      <p>Hindi tech blog — AI, coding aur digital knowledge ko simple banate hain.</p>
+      <div class="foot-social">
+        <a class="foot-soc-btn" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener">YouTube</a>
+        <a class="foot-soc-btn" href="mailto:codinginfinite2021@gmail.com">Email</a>
+      </div>
+    </div>
+    <div class="foot-col">
+      <h5>Learn</h5>
+      <a href="courses.html">All Courses</a>
+      <a href="courses/learnhtml/lesson01.html">HTML Course</a>
+      <a href="certificate.html">Certificate</a>
+      <a href="blogs.html">Blog Posts</a>
+    </div>
+    <div class="foot-col">
+      <h5>Company</h5>
+      <a href="about.html">About Us</a>
+      <a href="contact.html">Contact</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <div class="foot-col">
+      <h5>Connect</h5>
+      <a href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener">YouTube</a>
+      <a href="mailto:codinginfinite2021@gmail.com">Gmail</a>
+      <a href="https://ciweb.in">ciweb.in</a>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <p>&copy; 2026 CIWeb — Coding Infinite. All rights reserved.</p>
+    <p>Made with &#10084;&#65039; for Tech Lovers</p>
+  </div>
+</footer>
+<script>
+function toggleMob(){var m=document.getElementById("mob"),h=document.getElementById("ham");m.classList.toggle("open");h.classList.toggle("open");document.body.style.overflow=m.classList.contains("open")?"hidden":"";}
+function closeMob(){document.getElementById("mob").classList.remove("open");document.getElementById("ham").classList.remove("open");document.body.style.overflow="";}
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeMob();});
+// Lang toggle
+(function(){
+  var l=localStorage.getItem("ciweb_lang")||"hi";
+  function set(lang){localStorage.setItem("ciweb_lang",lang);document.querySelectorAll(".lang-btn").forEach(function(b){b.classList.toggle("on",b.dataset.lang===lang);});}
+  document.addEventListener("DOMContentLoaded",function(){set(l);});
+  window.cwSetLang=set;
+})();
+</script>
+<div id="lang-toggle">
+  <button class="lang-btn" data-lang="hi" onclick="cwSetLang('hi')">&#127470;&#127475; Hinglish</button>
+  <div style="width:1px;height:14px;background:rgba(255,255,255,.1)"></div>
+  <button class="lang-btn" data-lang="en" onclick="cwSetLang('en')">&#127468;&#127463; English</button>
+</div>
+<script>
+var LESSONS=[
+  [1,"What is HTML?"],[2,"HTML Document Structure"],[3,"Headings h1-h6"],
+  [4,"Paragraphs & Text"],[5,"Links & Anchors"],[6,"Images & Media"],
+  [7,"Lists ul ol dl"],[8,"Tables"],[9,"Forms & Inputs"],[10,"Semantic Layout"],
+  [11,"div and span"],[12,"Block vs Inline"],[13,"Meta Tags & SEO"],
+  [14,"HTML Entities"],[15,"Audio and Video"],[16,"iframes & Embeds"],
+  [17,"Data Attributes"],[18,"Accessibility ARIA"],[19,"Form Validation"],
+  [20,"Canvas and SVG"],[21,"HTML Best Practices"],[22,"Final Project"]
+];
+(function(){
+  try{
+    var done=JSON.parse(localStorage.getItem("cw_done")||"[]");
+    var pct=Math.round(done.length/22*100);
+    document.getElementById("prog-fill").style.width=pct+"%";
+    document.getElementById("prog-lbl").textContent=done.length+" / 22";
+    var cta=document.getElementById("hb-cta");
+    if(done.length>=22){cta.textContent="&#127942; Get Certificate";cta.href="certificate.html";}
+    else if(done.length>0){
+      var nx=1;for(var i=1;i<=22;i++){if(done.indexOf(i)===-1){nx=i;break;}}
+      cta.textContent="&#9654; Continue — Lesson "+nx+" &#8594;";
+      cta.href="courses/learnhtml/lesson"+("0"+nx).slice(-2)+".html";
+    }
+    var grid=document.getElementById("lessons-grid");
+    grid.innerHTML=LESSONS.map(function(l){
+      var n=l[0],t=l[1],dn=done.indexOf(n)>-1;
+      var num=("0"+n).slice(-2);
+      return "<a class='lesson-chip"+(dn?" done":"")+"' href='courses/learnhtml/lesson"+num+".html'><div class='lc-num'>"+n+"</div><span class='lc-text'>"+t+"</span>"+(dn?"<span class='lc-check'>&#10003;</span>":"")+"</a>";
+    }).join("");
+  }catch(e){}
+})();
+</script>
+</body></html>
