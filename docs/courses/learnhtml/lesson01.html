@@ -600,19 +600,26 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
   var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
 function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
@@ -722,7 +729,18 @@ var AI=(function(){
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
       var code=window._ed?window._ed.doc.getValue():'';
-      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
       fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
@@ -731,7 +749,18 @@ var AI=(function(){
     deepSend:function(instruction,code){
       if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
       userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
-      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
+      var tagAudit=(function(c){
+  /* Count open vs close tags to tell AI the truth */
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','tr','td','th','form','main','header','footer','nav','section','article','aside'];
+  var issues=[];
+  tags.forEach(function(t){
+    var o=(c.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(c.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)issues.push(t+'('+o+' open, '+cl+' closed)');
+  });
+  return issues.length?'VERIFIED unclosed tags: '+issues.join(', ')+'. All other tags are properly closed.':'ALL TAGS ARE PROPERLY BALANCED AND CLOSED. Do NOT report any missing closing tags.';
+})(code);
+var systemCtx='You are Shiv AI, an expert HTML reviewer. CRITICAL RULE: '+tagAudit+' Never invent errors. Only report what is mathematically proven wrong. If the code has no errors, say "Your HTML code looks correct! No errors found." and give tips to improve it. Do not guess. Do not assume. Only report REAL issues that exist in the actual code provided.';
       fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
