@@ -257,7 +257,20 @@ html.light .toggle-lbl{left:6px;right:auto}
 #mob-fab:hover{background:var(--red)}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
-@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}</style>
+@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
+
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -286,9 +299,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <div class="sb-more">...up to Lesson 22</div></aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">LINKS</span><span class="badge b-time">10 min</span><span class="badge b-xp">20 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">LINKS</span><span class="badge b-time">9 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">Links & Anchors</h1>
-      <p class="lesson-sub">Master Links &amp; Anchors with real examples, a live editor, and Shiv AI code review.</p>
+      <p class="lesson-sub">Learn Links &amp; Anchors with live examples, interactive editor, and Shiv AI tutor.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -300,76 +313,163 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="chai">Chai</button>
     </div>
     <div class="panel on" id="p-learn">
-      <div class="content" id="content-en"><h2>Links and Anchors</h2>
-<p>The <code>&lt;a&gt;</code> tag creates hyperlinks - the reason the web is called a web. Without links websites are isolated islands. Links connect everything and power Google's entire ranking algorithm.</p>
-<div class="card"><div class="card-head"><span class="chip">&lt;a&gt; Tag</span><span class="chip-sm">All Attributes</span></div>
-<div class="row"><span class="rk">href</span><span class="rv">Destination URL. Required. Can be absolute URL, relative path, or anchor #id</span></div>
-<div class="row"><span class="rk">target="_blank"</span><span class="rv">Opens in new tab. Always pair with rel="noopener noreferrer" for security</span></div>
-<div class="row"><span class="rk">rel="noopener"</span><span class="rv">Prevents new tab from accessing your page via window.opener. Security essential</span></div>
-<div class="row"><span class="rk">href="#id"</span><span class="rv">Jumps to element with matching id on same page. Used for table of contents</span></div>
-<div class="row"><span class="rk">href="mailto:"</span><span class="rv">Opens email client with pre-filled address when clicked</span></div>
-<div class="row"><span class="rk">href="tel:"</span><span class="rv">On mobile devices, tapping this calls the number directly</span></div>
+      <div class="content" id="content-en">
+<h2>Links and Anchors — &lt;a&gt; Tag</h2>
+<p>Links are the foundation of the web. The <code>&lt;a&gt;</code> tag (anchor) creates hyperlinks between pages. Without links, the web would be billions of disconnected islands — no navigation, no sharing, no search engines.</p>
+
+<h2>Basic Links</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Types of Links You Use Every Day</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- External link: to another website --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"https://ciweb.in"</span>
+   <span class="t-attr">target</span><span class="t-txt">=</span><span class="t-val">"_blank"</span>
+   <span class="t-attr">rel</span><span class="t-txt">=</span><span class="t-val">"noopener noreferrer"</span><span class="t-tag">&gt;</span>
+  <span class="t-txt">Visit CIWeb</span>
+<span class="t-tag">&lt;/a&gt;</span>
+
+<span class="t-cm">&lt;!-- Internal link: to another page on your site --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"about.html"</span><span class="t-tag">&gt;</span><span class="t-txt">About Us</span><span class="t-tag">&lt;/a&gt;</span>
+
+<span class="t-cm">&lt;!-- Email link: opens email app --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"mailto:hi@ciweb.in"</span><span class="t-tag">&gt;</span><span class="t-txt">Email Us</span><span class="t-tag">&lt;/a&gt;</span>
+
+<span class="t-cm">&lt;!-- Phone link: tappable on mobile --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"tel:+911234567890"</span><span class="t-tag">&gt;</span><span class="t-txt">Call Us</span><span class="t-tag">&lt;/a&gt;</span>
+
+<span class="t-cm">&lt;!-- Anchor link: scroll to section on same page --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"#courses"</span><span class="t-tag">&gt;</span><span class="t-txt">See Courses</span><span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;section</span> <span class="t-attr">id</span><span class="t-txt">=</span><span class="t-val">"courses"</span><span class="t-tag">&gt;</span><span class="t-txt">...courses content...</span><span class="t-tag">&lt;/section&gt;</span></pre>
+  <div class="ex-out">
+    <div class="result-browser">
+      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
+      <div class="rb-body" style="display:flex;flex-direction:column;gap:6px;font-size:14px">
+        <a href="https://ciweb.in" style="color:#0000EE">Visit CIWeb</a>
+        <a href="#" style="color:#0000EE">About Us</a>
+        <a href="#" style="color:#0000EE">Email Us</a>
+        <a href="#" style="color:#0000EE">Call Us</a>
+        <a href="#" style="color:#0000EE">See Courses</a>
+      </div>
+    </div>
+  </div>
+  <div class="ex-note">By default links appear blue and underlined. CSS can change this completely. The href attribute is what makes the link go somewhere.</div>
 </div>
-<div class="card"><div class="card-head"><span class="chip">Three Link Types</span></div>
-<div class="row"><span class="rk">External</span><span class="rv"><code>&lt;a href="https://google.com"&gt;</code> - full URL with https://</span></div>
-<div class="row"><span class="rk">Internal</span><span class="rv"><code>&lt;a href="about.html"&gt;</code> - relative path to another page on your site</span></div>
-<div class="row"><span class="rk">Anchor</span><span class="rv"><code>&lt;a href="#section2"&gt;</code> - jumps to element with id="section2" on same page</span></div>
+
+<h2>Navigation Menu with Links</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Real Navigation Bar in HTML</div>
+  <pre class="ex-code"><span class="t-tag">&lt;nav</span> <span class="t-attr">aria-label</span><span class="t-txt">=</span><span class="t-val">"Main navigation"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"index.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Home</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"blogs.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Blogs</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"courses.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Courses</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"contact.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Contact</span><span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;/nav&gt;</span></pre>
+  <div class="ex-out">
+    <div style="background:#1a1814;padding:10px 16px;display:flex;gap:16px;border-radius:6px;flex-wrap:wrap">
+      <a href="#" style="color:#f5f3ee;text-decoration:none;font-size:.85rem;font-family:sans-serif">Home</a>
+      <a href="#" style="color:#f5f3ee;text-decoration:none;font-size:.85rem;font-family:sans-serif">Blogs</a>
+      <a href="#" style="color:#e8401c;text-decoration:none;font-size:.85rem;font-weight:700;font-family:sans-serif">Courses</a>
+      <a href="#" style="color:#f5f3ee;text-decoration:none;font-size:.85rem;font-family:sans-serif">Contact</a>
+    </div>
+  </div>
+  <div class="ex-note">This is the actual navigation HTML from CIWeb.in — styled with CSS. The HTML structure is just 4 anchor tags inside a nav element.</div>
 </div>
-<div class="box box-warn"><div class="box-lbl">Security Warning</div><p>Never use target="_blank" without rel="noopener noreferrer". Without it the new tab can access and modify your page using window.opener. This is a real attack used in the wild.</p></div>
-<div class="box box-seo"><div class="box-lbl">SEO: Link Text Matters</div><p>Never write "click here". Google reads anchor text to understand the linked page topic. Write "Read our HTML guide" instead of "click here".</p></div>
-<div class="why"><div class="why-lbl">Links Made Google Possible</div><p>Google's PageRank algorithm - which made Google a trillion dollar company - is entirely based on analyzing which pages link to which other pages. Tim Berners-Lee calls hyperlinks his greatest contribution to humanity.</p></div></div>
+
+<h2>Image as a Link</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Clickable Image (Logo)</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- Put any element inside a link to make it clickable --&gt;</span>
+<span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"index.html"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;img</span>
+    <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"logo.png"</span>
+    <span class="t-attr">alt</span><span class="t-txt">=</span><span class="t-val">"CIWeb Logo — go to homepage"</span>
+    <span class="t-attr">width</span><span class="t-txt">=</span><span class="t-val">"120"</span>
+    <span class="t-attr">height</span><span class="t-txt">=</span><span class="t-val">"40"</span>
+  <span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/a&gt;</span></pre>
+  <div class="ex-note">Wrapping any element in &lt;a&gt; makes it clickable. Clicking the logo navigates to index.html. The alt text should describe the destination, not just the image.</div>
+</div>
+
+<div class="card"><div class="card-head"><span class="chip">Link Attributes</span><span class="chip-sm">Reference</span></div>
+<div class="row"><span class="rk">href</span><span class="rv">Required. The destination URL, file path, email, phone, or #id</span></div>
+<div class="row"><span class="rk">target="_blank"</span><span class="rv">Opens link in a new tab. Always use with rel="noopener noreferrer" for security</span></div>
+<div class="row"><span class="rk">rel="noopener noreferrer"</span><span class="rv">Prevents the new page from accessing your page. Required with target="_blank"</span></div>
+<div class="row"><span class="rk">download</span><span class="rv">Forces file download instead of navigation. download="resume.pdf"</span></div>
+</div>
+
+<div class="box box-warn"><div class="box-lbl">Never Write "Click Here"</div><p>Link text like "click here" or "read more" has zero SEO value. Google uses anchor text to understand the destination page. Always write descriptive link text: "Download the CIWeb HTML PDF guide" is infinitely better than "click here".</p></div>
+<div class="why"><div class="why-lbl">Why a Is Called Anchor</div><p>In the early web (1991), links were used to "anchor" to positions within long documents. href stands for "hypertext reference". The name anchor stuck even as links evolved to navigate between pages and websites.</p></div>
+      </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
-        <div class="nav-row"><a class="nav-a" href="lesson04.html">Prev</a><a class="nav-a next" href="lesson06.html">Next Lesson</a></div>
-        <div class="foot"><div class="foot-row"><a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a><a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a><a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a></div><div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div></div>
+        <div class="nav-row"><a class="nav-a" href="lesson04.html">Prev</a> <a class="nav-a next" href="lesson06.html">Next Lesson</a></div>
+        <div class="foot">
+          <div class="foot-row">
+            <a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a>
+            <a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a>
+            <a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a>
+          </div>
+          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div>
+        </div>
       </div>
     </div>
     <div class="panel" id="p-explain">
-      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem"><h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3><p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code. Click the tab to load.</p></div>
+      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies — no code.</p>
+      </div>
       <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
-        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span><div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div></div>
+        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span>
+          <div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div>
+        </div>
         <div class="ed-split">
           <div class="ed-side"><div id="cm-main" style="height:100%;min-height:290px"></div></div>
-          <div class="prev-side"><div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div><iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div>
+            <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Start coding — Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">What must you add when using target=&quot;_blank&quot;?</p>
-        <div class="q-opts"><button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">rel=&quot;nofollow&quot;</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">rel=&quot;noopener noreferrer&quot;</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">rel=&quot;external&quot;</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">type=&quot;text/html&quot;</span></button>
-</div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>Without rel=&quot;noopener noreferrer&quot; the new tab can access your page via window.opener. This is a genuine security vulnerability exploited in real attacks.</div>
+        <p class="q-question">Which rel value is required when using target=&quot;_blank&quot;?</p>
+        <div class="q-opts">
+<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">external</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">follow</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">noopener noreferrer</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">new-tab</span></button>
+        </div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>rel=&quot;noopener noreferrer&quot; is a security requirement with target=&quot;_blank&quot;. Without it, the opened page can access your page via window.opener, creating a security vulnerability.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Navigation Links</div>
-        <div class="chal-desc">Build a page with all three types of links: external, internal, and anchor.</div>
-        <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
-        <div class="c-req" id="cr0"><span class="c-dot"></span><span>external link</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>target blank</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>noopener</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>anchor hash link</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>id attribute</span></div>
-
+        <div class="chal-title">Full Navigation Page</div>
+        <div class="chal-desc">Build a page with external links (target=_blank with rel), email link, phone link, anchor link, and a navigation menu.</div>
+        <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>anchor tag</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>external href</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>target blank</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>mailto</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>nav element</span></div>
+<div class="c-req" id="cr5"><span class="c-dot"></span><span>anchor link #</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
         <div class="chal-split">
           <div class="ed-side"><div id="cm-chal" style="height:100%;min-height:240px"></div></div>
-          <div class="prev-side"><div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div><iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div>
+            <iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
-        <div class="chal-footer"><span id="chal-status">0/5 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
+        <div class="chal-footer"><span id="chal-status">0/6 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
       </div>
     </div>
     <div class="panel" id="p-community">
@@ -378,7 +478,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 5</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -398,18 +498,23 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, or any coding topic..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
-var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=5,LT='Links & Anchors',TOTAL=22,QA=1;
-var REQS=[{label:'external link',chk:function(c){return !!(c.indexOf('https://')>-1)}},
-{label:'target blank',chk:function(c){return !!(c.indexOf('_blank')>-1)}},
-{label:'noopener',chk:function(c){return !!(c.indexOf('noopener')>-1)}},
-{label:'anchor hash link',chk:function(c){return !!(/<a[^>]+href=['"]#/i.test(c))}},
-{label:'id attribute',chk:function(c){return !!(/ id=['"][a-z]/i.test(c))}}];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Links Practice</title>\n</head>\n<body>\n\n  <h1>HTML Links Demo</h1>\n\n  <!-- Jump to section on same page (anchor link) -->\n  <p>Jump to: <a href="#section2">Section 2</a> | <a href="#section3">Section 3</a></p>\n\n  <hr/>\n\n  <h2 id="section1">Section 1: External Links</h2>\n  <!-- External link - MUST have noopener with target blank -->\n  <p>Visit <a href="https://www.google.com" target="_blank" rel="noopener noreferrer">Google</a> - opens in new tab safely.</p>\n  <p>Visit <a href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener noreferrer">Coding Infinite YouTube</a></p>\n\n  <h2 id="section2">Section 2: Internal Links</h2>\n  <!-- Internal link - relative path to another page -->\n  <p><a href="lesson01.html">Go to Lesson 1</a></p>\n  <p><a href="lesson02.html">Go to Lesson 2</a></p>\n\n  <h2 id="section3">Section 3: Special Links</h2>\n  <!-- mailto opens email client -->\n  <p>Email us: <a href="mailto:codinginfinite2021@gmail.com">Send Email</a></p>\n  <!-- tel opens phone dialer on mobile -->\n  <p>Call us: <a href="tel:+91XXXXXXXXXX">Call Now</a></p>\n\n</body>\n</html>';
+
+
+var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=5,LT='Links & Anchors',TOTAL=22,QA=2;
+var REQS=[
+{label:'anchor tag',chk:function(c){return !!(c.indexOf('<a')>-1)}},
+{label:'external href',chk:function(c){return !!(c.indexOf('https://')>-1)}},
+{label:'target blank',chk:function(c){return !!(c.indexOf('target="_blank"')>-1||c.indexOf("target='_blank'")>-1)}},
+{label:'mailto',chk:function(c){return !!(c.indexOf('mailto:')>-1)}},
+{label:'nav element',chk:function(c){return !!(c.indexOf('<nav')>-1)}},
+{label:'anchor link #',chk:function(c){return !!(c.indexOf('href="#')>-1||c.indexOf("href='#")>-1)}}
+];
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>CIWeb Navigation Demo</title>\n</head>\n<body>\n\n  <!-- Navigation with links -->\n  <header>\n    <h1>CIWeb</h1>\n    <nav aria-label="Main navigation">\n      <a href="index.html">Home</a> |\n      <a href="blogs.html">Blogs</a> |\n      <a href="courses.html">Courses</a> |\n      <a href="contact.html">Contact</a>\n    </nav>\n  </header>\n\n  <main>\n    <h2>Welcome to CIWeb</h2>\n    <p>We have a free HTML course with 22 lessons.</p>\n\n    <!-- External link opens in new tab -->\n    <p>Follow us on\n      <a href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener noreferrer">\n        YouTube  Coding Infinite\n      </a>\n    </p>\n\n    <!-- Email link -->\n    <p>Questions? <a href="mailto:codinginfinite2021@gmail.com">Send us an email</a></p>\n\n    <!-- Anchor link: scroll to section -->\n    <a href="#courses">Jump to Courses Section</a>\n\n    <section id="courses">\n      <h2>Our Courses</h2>\n      <p>HTML course is live now with 22 free lessons!</p>\n    </section>\n  </main>\n\n  <footer>\n    <p>&copy; 2026 CIWeb &mdash; All rights reserved.</p>\n  </footer>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -515,14 +620,16 @@ function autoHint(){
   if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
   if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
   if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
+  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
   .then(function(r){return r.json();})
   .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
   .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
 }
 function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  AI.open();
+  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
 }
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
@@ -593,7 +700,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -618,19 +725,30 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -689,6 +807,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var fab=document.getElementById('mob-fab');
   if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}
 });
+
+
 
 </script>
 </body>
