@@ -257,7 +257,20 @@ html.light .toggle-lbl{left:6px;right:auto}
 #mob-fab:hover{background:var(--red)}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
-@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}</style>
+@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
+
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -282,9 +295,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <div class="sb-more">...up to Lesson 22</div></aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">INTRO</span><span class="badge b-time">8 min</span><span class="badge b-xp">20 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">INTRO</span><span class="badge b-time">6 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">What is HTML?</h1>
-      <p class="lesson-sub">Master What is HTML? with real examples, a live editor, and Shiv AI code review.</p>
+      <p class="lesson-sub">Learn What is HTML? with live examples, interactive editor, and Shiv AI tutor.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -296,74 +309,157 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="chai">Chai</button>
     </div>
     <div class="panel on" id="p-learn">
-      <div class="content" id="content-en"><h2>What is HTML?</h2>
-<p><strong>HTML (HyperText Markup Language)</strong> is the standard language for building web pages. It defines the <strong>structure and content</strong> that browsers read and display on screen.</p>
-<p>Think of a house. The skeleton of steel and concrete is HTML. CSS is the paint and decoration. JavaScript is the electricity. Every website starts with HTML.</p>
-<div class="card"><div class="card-head"><span class="chip">HTML File</span><span class="chip-sm">Basic Structure</span></div>
-<div class="row"><span class="rk">&lt;!DOCTYPE html&gt;</span><span class="rv">First line always. Activates HTML5 standards in every browser</span></div>
-<div class="row"><span class="rk">&lt;html lang="en"&gt;</span><span class="rv">Root element. lang matters for Google and screen readers</span></div>
-<div class="row"><span class="rk">&lt;head&gt;</span><span class="rv">Invisible metadata: title, charset, CSS links, SEO tags</span></div>
-<div class="row"><span class="rk">&lt;body&gt;</span><span class="rv">All visible content: headings, images, paragraphs, everything</span></div>
+      <div class="content" id="content-en">
+<h2>What is HTML?</h2>
+<p>HTML stands for <strong>HyperText Markup Language</strong>. It is the skeleton of every webpage on the internet. Without HTML, no website can exist. It tells the browser what content to show and how to structure it.</p>
+
+<div class="card"><div class="card-head"><span class="chip">Think of it this way</span></div>
+<div class="row"><span class="rk">HTML</span><span class="rv">The skeleton of a building — gives structure</span></div>
+<div class="row"><span class="rk">CSS</span><span class="rv">The paint, furniture, decoration — makes it look good</span></div>
+<div class="row"><span class="rk">JavaScript</span><span class="rv">The electricity, plumbing, doors — makes it interactive</span></div>
 </div>
-<div class="box box-seo"><div class="box-lbl">SEO Connection</div><p>Google reads your HTML to understand content. Clean semantic HTML means better crawl efficiency and better rankings. The <code>lang</code> attribute directly affects regional search results.</p></div>
-<h2>How a Browser Reads HTML</h2>
-<p>When you visit any website, this is what happens:</p>
-<ol><li>Your browser sends a request to the web server</li><li>The server responds with an HTML file</li><li>The browser reads top to bottom, line by line</li><li>It renders the visual page you see on screen</li></ol>
-<div class="box box-tip"><div class="box-lbl">Key Fact</div><p>HTML is a <strong>markup language</strong>, not a programming language. No logic or loops. It only describes structure. For logic you need JavaScript.</p></div>
-<div class="why"><div class="why-lbl">Why Does This Exist?</div><p>Tim Berners-Lee created HTML in 1991 at CERN. Today 1.9 billion websites all start with the exact same structure you are learning right now.</p></div></div>
+
+<h2>Your First HTML Page</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — A Complete Webpage in 10 Lines</div>
+  <pre class="ex-code"><span class="t-tag">&lt;!DOCTYPE html&gt;</span>
+<span class="t-tag">&lt;html</span> <span class="t-attr">lang</span><span class="t-txt">=</span><span class="t-val">"en"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head&gt;</span>
+  <span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span><span class="t-txt">=</span><span class="t-val">"UTF-8"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;title&gt;</span><span class="t-txt">My First Page</span><span class="t-tag">&lt;/title&gt;</span>
+<span class="t-tag">&lt;/head&gt;</span>
+<span class="t-tag">&lt;body&gt;</span>
+  <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Hello World!</span><span class="t-tag">&lt;/h1&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">I am learning HTML at CIWeb.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;/body&gt;</span>
+<span class="t-tag">&lt;/html&gt;</span></pre>
+  <div class="ex-out">
+    <div class="result-browser">
+      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
+      <div class="rb-body">
+        <h1 style="margin:0 0 8px;font-size:1.4rem;font-weight:bold">Hello World!</h1>
+        <p style="margin:0;font-size:.95rem">I am learning HTML at CIWeb.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ex-note">This is exactly what a browser renders from those 10 lines — a real webpage!</div>
+</div>
+
+<h2>What are Tags?</h2>
+<p>HTML uses <strong>tags</strong> to mark up content. Most tags come in pairs — an opening tag and a closing tag:</p>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Tag Structure Explained</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- Opening tag + content + closing tag --&gt;</span>
+<span class="t-tag">&lt;h1&gt;</span><span class="t-txt">This is a Heading</span><span class="t-tag">&lt;/h1&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">This is a paragraph of text.</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- Self-closing tags have no content --&gt;</span>
+<span class="t-tag">&lt;br/&gt;</span>   <span class="t-cm">&lt;!-- Line break --&gt;</span>
+<span class="t-tag">&lt;img</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"photo.jpg"</span> <span class="t-attr">alt</span><span class="t-txt">=</span><span class="t-val">"A photo"</span><span class="t-tag">/&gt;</span>  <span class="t-cm">&lt;!-- Image --&gt;</span>
+<span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span><span class="t-txt">=</span><span class="t-val">"UTF-8"</span><span class="t-tag">/&gt;</span>  <span class="t-cm">&lt;!-- Meta info --&gt;</span></pre>
+  <div class="ex-out" style="font-size:.85rem">
+    <p style="margin-bottom:.4rem"><strong>&lt;h1&gt;</strong> = opening tag &nbsp;|&nbsp; <strong>&lt;/h1&gt;</strong> = closing tag (note the <code>/</code>)</p>
+    <p>The content goes between the opening and closing tags.</p>
+  </div>
+  <div class="ex-note">The forward slash / in &lt;/h1&gt; means "closing tag". Self-closing tags like &lt;br/&gt; and &lt;img/&gt; do not need a separate closing tag.</div>
+</div>
+
+<h2>HTML in the Real World</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — This is What Popular Websites Are Made Of</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- A blog post card like you see on CIWeb --&gt;</span>
+<span class="t-tag">&lt;article&gt;</span>
+  <span class="t-tag">&lt;img</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"ai-blog.jpg"</span> <span class="t-attr">alt</span><span class="t-txt">=</span><span class="t-val">"AI Technology"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">AI Kya Hai? Complete Guide 2026</span><span class="t-tag">&lt;/h2&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">AI sikhna kitna easy hai aaj kal...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"blog-ai.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Read More</span><span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;/article&gt;</span></pre>
+  <div class="ex-out">
+    <div style="border:1px solid #ddd;border-radius:8px;overflow:hidden;max-width:260px;font-family:Arial,sans-serif">
+      <div style="background:linear-gradient(135deg,#667eea,#764ba2);height:70px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem">&#128161;</div>
+      <div style="padding:10px 12px">
+        <h2 style="font-size:.9rem;margin:0 0 6px;color:#111">AI Kya Hai? Complete Guide 2026</h2>
+        <p style="font-size:.78rem;color:#666;margin:0 0 8px">AI sikhna kitna easy hai aaj kal...</p>
+        <a href="#" style="color:#e8401c;font-size:.78rem;font-weight:700;text-decoration:none">Read More &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <div class="ex-note">This is real HTML from a blog card. You will build something like this by Lesson 5!</div>
+</div>
+
+<div class="box box-seo"><div class="box-lbl">Did You Know?</div><p>There are over 1.9 billion websites in the world. Every single one of them uses HTML as its foundation. Learning HTML is the first step toward building any of them.</p></div>
+<div class="why"><div class="why-lbl">A Brief History</div><p>HTML was invented by Tim Berners-Lee in 1991. He needed a way to share documents between scientists. Those 10 original tags have evolved into HTML5 today with over 100 tags — and you will learn the most important ones in this course.</p></div>
+      </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
-        <div class="nav-row"><span class="nav-a off">Prev</span><a class="nav-a next" href="lesson02.html">Next Lesson</a></div>
-        <div class="foot"><div class="foot-row"><a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a><a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a><a class="foot-a" href="certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a></div><div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div></div>
+        <div class="nav-row"><span class="nav-a off">Prev</span> <a class="nav-a next" href="lesson02.html">Next Lesson</a></div>
+        <div class="foot">
+          <div class="foot-row">
+            <a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a>
+            <a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a>
+            <a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a>
+          </div>
+          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div>
+        </div>
       </div>
     </div>
     <div class="panel" id="p-explain">
-      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem"><h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3><p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code. Click the tab to load.</p></div>
+      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies — no code.</p>
+      </div>
       <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
-        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span><div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div></div>
+        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span>
+          <div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div>
+        </div>
         <div class="ed-split">
           <div class="ed-side"><div id="cm-main" style="height:100%;min-height:290px"></div></div>
-          <div class="prev-side"><div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div><iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div>
+            <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Start coding — Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
         <p class="q-question">What does HTML stand for?</p>
-        <div class="q-opts"><button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">HyperText Markup Language</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">High Tech Modern Language</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">HyperText Modern Links</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">HighLevel Text Markup</span></button>
-</div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>HTML equals HyperText Markup Language. HyperText means text with links. Markup means structuring content with tags.</div>
+        <div class="q-opts">
+<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">HyperText Markup Language</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">HighText Main Language</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">HyperText Making Language</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">HyperText Modern Layout</span></button>
+        </div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>HTML stands for HyperText Markup Language. It is the standard language for creating webpages and is supported by every browser in the world.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Your First HTML Page</div>
-        <div class="chal-desc">Build a complete HTML page with your name and a short introduction paragraph.</div>
-        <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
-        <div class="c-req" id="cr0"><span class="c-dot"></span><span>DOCTYPE declaration</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>html lang attribute</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>meta charset</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>title tag</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>h1 heading</span></div>
-<div class="c-req" id="cr5"><span class="c-dot"></span><span>p paragraph</span></div>
-
+        <div class="chal-title">Your First Webpage</div>
+        <div class="chal-desc">Build a simple webpage about yourself with a heading, two paragraphs, and a line break.</div>
+        <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>DOCTYPE</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>html tag</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>head and body</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>h1 heading</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>paragraph</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
         <div class="chal-split">
           <div class="ed-side"><div id="cm-chal" style="height:100%;min-height:240px"></div></div>
-          <div class="prev-side"><div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div><iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div>
+            <iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
-        <div class="chal-footer"><span id="chal-status">0/6 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
+        <div class="chal-footer"><span id="chal-status">0/5 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
       </div>
     </div>
     <div class="panel" id="p-community">
@@ -372,7 +468,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 1</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -392,19 +488,22 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, or any coding topic..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
+
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=1,LT='What is HTML?',TOTAL=22,QA=0;
-var REQS=[{label:'DOCTYPE declaration',chk:function(c){return !!(c.trim().toLowerCase().startsWith('<!doctype'))}},
-{label:'html lang attribute',chk:function(c){return !!(c.indexOf('lang=')>-1)}},
-{label:'meta charset',chk:function(c){return !!(c.indexOf('charset')>-1)}},
-{label:'title tag',chk:function(c){return !!(/<title>[^<]+<\/title>/i.test(c))}},
-{label:'h1 heading',chk:function(c){return !!(/<h1/i.test(c))}},
-{label:'p paragraph',chk:function(c){return !!(/<p/i.test(c))}}];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>What is HTML - Practice</title>\n</head>\n<body>\n\n  <!-- HTML gives structure. This is a heading -->\n  <h1>I am Learning HTML!</h1>\n\n  <!-- This is a paragraph -->\n  <p>HTML stands for HyperText Markup Language.</p>\n  <p>It was created by Tim Berners-Lee in 1991.</p>\n\n  <!-- Try adding more tags below -->\n\n</body>\n</html>';
+var REQS=[
+{label:'DOCTYPE',chk:function(c){return !!(c.trim().toLowerCase().indexOf('<!doctype')===0)}},
+{label:'html tag',chk:function(c){return !!(c.indexOf('<html')>-1)}},
+{label:'head and body',chk:function(c){return !!(c.indexOf('<head')>-1&&c.indexOf('<body')>-1)}},
+{label:'h1 heading',chk:function(c){return !!(c.indexOf('<h1')>-1)}},
+{label:'paragraph',chk:function(c){return !!(c.indexOf('<p')>-1)}}
+];
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>My First HTML Page</title>\n</head>\n<body>\n\n  <!-- Add your content between the body tags -->\n  <h1>Hello, World!</h1>\n\n  <p>This is my first HTML page. I am learning at CIWeb!</p>\n\n  <!-- Try adding more text below -->\n  <p>HTML stands for HyperText Markup Language.</p>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -510,14 +609,16 @@ function autoHint(){
   if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
   if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
   if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
+  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
   .then(function(r){return r.json();})
   .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
   .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
 }
 function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  AI.open();
+  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
 }
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
@@ -588,7 +689,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -613,19 +714,30 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -684,6 +796,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var fab=document.getElementById('mob-fab');
   if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}
 });
+
+
 
 </script>
 </body>
