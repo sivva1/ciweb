@@ -257,7 +257,20 @@ html.light .toggle-lbl{left:6px;right:auto}
 #mob-fab:hover{background:var(--red)}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
-@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}</style>
+@media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
+
+</style>
 </head>
 <body>
 <nav class="nav">
@@ -285,9 +298,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <div class="sb-more">...up to Lesson 22</div></aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">TEXT</span><span class="badge b-time">9 min</span><span class="badge b-xp">20 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">TEXT</span><span class="badge b-time">8 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">Paragraphs & Text</h1>
-      <p class="lesson-sub">Master Paragraphs &amp; Text with real examples, a live editor, and Shiv AI code review.</p>
+      <p class="lesson-sub">Learn Paragraphs &amp; Text with live examples, interactive editor, and Shiv AI tutor.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -299,53 +312,145 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="chai">Chai</button>
     </div>
     <div class="panel on" id="p-learn">
-      <div class="content" id="content-en"><h2>Paragraphs and Text Formatting</h2>
-<p>The <code>&lt;p&gt;</code> tag creates paragraphs with automatic spacing. Text formatting tags add semantic meaning - not just visual style. This distinction matters for both SEO and accessibility.</p>
-<div class="card"><div class="card-head"><span class="chip">Text Tags</span><span class="chip-sm">Semantic Meaning</span></div>
-<div class="row"><span class="rk">&lt;p&gt;</span><span class="rv">Paragraph. Automatic top and bottom margin. Use for every block of text</span></div>
-<div class="row"><span class="rk">&lt;strong&gt;</span><span class="rv">Important text. Bold visually AND tells Google this content is important to the page</span></div>
-<div class="row"><span class="rk">&lt;em&gt;</span><span class="rv">Emphasis. Italic AND tells screen readers to stress this word when reading aloud</span></div>
-<div class="row"><span class="rk">&lt;b&gt;</span><span class="rv">Bold visual only. No semantic meaning. Use strong for actually important content</span></div>
-<div class="row"><span class="rk">&lt;mark&gt;</span><span class="rv">Highlighted text like a yellow marker pen. Great for search result pages</span></div>
-<div class="row"><span class="rk">&lt;del&gt;</span><span class="rv">Strikethrough deleted text. Used for price comparisons and edits</span></div>
-<div class="row"><span class="rk">&lt;code&gt;</span><span class="rv">Inline code in monospace font. Semantic - tells browser this is code</span></div>
-<div class="row"><span class="rk">&lt;pre&gt;</span><span class="rv">Preformatted text preserving spaces and line breaks. Used for code blocks</span></div>
-<div class="row"><span class="rk">&lt;blockquote&gt;</span><span class="rv">Quote from another source. Indented automatically. Helps with citations</span></div>
-<div class="row"><span class="rk">&lt;br&gt;</span><span class="rv">Line break. Self-closing. Use very rarely - never for paragraph spacing</span></div>
-<div class="row"><span class="rk">&lt;hr&gt;</span><span class="rv">Horizontal divider line indicating a topic change on the page</span></div>
+      <div class="content" id="content-en">
+<h2>Paragraphs and Text Formatting</h2>
+<p>After headings, the most used HTML element is the paragraph <code>&lt;p&gt;</code>. HTML also has many tags for formatting text: bold, italic, highlighted, subscript, superscript, and more.</p>
+
+<h2>The Paragraph Tag</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Paragraphs vs Line Breaks</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- p creates space before and after --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">HTML is the foundation of every website.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">CSS makes HTML beautiful with colors and fonts.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">JavaScript adds interactivity like buttons and animations.</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- br is a line break WITHIN a paragraph --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span>
+  <span class="t-txt">First line of a poem.</span><span class="t-tag">&lt;br/&gt;</span>
+  <span class="t-txt">Second line of the poem.</span><span class="t-tag">&lt;br/&gt;</span>
+  <span class="t-txt">Third line — each on its own line.</span>
+<span class="t-tag">&lt;/p&gt;</span></pre>
+  <div class="ex-out">
+    <div class="result-browser">
+      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
+      <div class="rb-body">
+        <p style="margin:0 0 10px">HTML is the foundation of every website.</p>
+        <p style="margin:0 0 10px">CSS makes HTML beautiful with colors and fonts.</p>
+        <p style="margin:0 0 10px">JavaScript adds interactivity like buttons and animations.</p>
+        <p style="margin:0">First line of a poem.<br/>Second line of the poem.<br/>Third line — each on its own line.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ex-note">Each &lt;p&gt; gets automatic spacing. Use &lt;br/&gt; only for line breaks within the same block — like addresses or poems.</div>
 </div>
-<div class="box box-warn"><div class="box-lbl">br vs p Mistake</div><p>Never use multiple br tags to space paragraphs. Use separate p tags instead. Multiple br tags is spotted immediately in professional code reviews and marks beginner-level HTML.</p></div>
-<div class="box box-seo"><div class="box-lbl">strong vs b for SEO</div><p>Google reads strong as a relevance signal - this text is important to the page topic. The b tag is purely visual with absolutely zero SEO benefit.</p></div>
-<div class="why"><div class="why-lbl">Semantic HTML History</div><p>CSS was invented in 1996 to separate presentation from structure. Since HTML5 in 2014, tags like strong and em carry semantic meaning that search engines, browsers, and assistive technology all understand and act on.</p></div></div>
+
+<h2>Text Formatting Tags</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Bold, Italic, and More</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- strong = bold with meaning (important!) --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Always use </span><span class="t-tag">&lt;strong&gt;</span><span class="t-txt">charset=UTF-8</span><span class="t-tag">&lt;/strong&gt;</span><span class="t-txt"> in your head section.</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- em = italic with meaning (emphasis) --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The word </span><span class="t-tag">&lt;em&gt;</span><span class="t-txt">semantic</span><span class="t-tag">&lt;/em&gt;</span><span class="t-txt"> means "meaningful structure".</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- mark = highlighted text --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The answer is </span><span class="t-tag">&lt;mark&gt;</span><span class="t-txt">42</span><span class="t-tag">&lt;/mark&gt;</span><span class="t-txt"> according to the guide.</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- sub = subscript (H2O), sup = superscript (E=mc2) --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Water is H</span><span class="t-tag">&lt;sub&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sub&gt;</span><span class="t-txt">O and Einstein's E=mc</span><span class="t-tag">&lt;sup&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sup&gt;</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- del = deleted text, ins = inserted text --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Price: </span><span class="t-tag">&lt;del&gt;</span><span class="t-txt">Rs.500</span><span class="t-tag">&lt;/del&gt;</span><span class="t-txt"> </span><span class="t-tag">&lt;ins&gt;</span><span class="t-txt">Rs.299</span><span class="t-tag">&lt;/ins&gt;</span><span class="t-tag">&lt;/p&gt;</span>
+
+<span class="t-cm">&lt;!-- code = monospace for code snippets --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Use the </span><span class="t-tag">&lt;code&gt;</span><span class="t-txt">console.log()</span><span class="t-tag">&lt;/code&gt;</span><span class="t-txt"> function to debug.</span><span class="t-tag">&lt;/p&gt;</span></pre>
+  <div class="ex-out">
+    <div class="result-browser">
+      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
+      <div class="rb-body" style="font-size:14px">
+        <p style="margin:4px 0">Always use <strong>charset=UTF-8</strong> in your head section.</p>
+        <p style="margin:4px 0">The word <em>semantic</em> means "meaningful structure".</p>
+        <p style="margin:4px 0">The answer is <mark>42</mark> according to the guide.</p>
+        <p style="margin:4px 0">Water is H<sub>2</sub>O and Einstein's E=mc<sup>2</sup></p>
+        <p style="margin:4px 0">Price: <del>Rs.500</del> <ins>Rs.299</ins></p>
+        <p style="margin:4px 0">Use the <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;font-family:monospace">console.log()</code> function to debug.</p>
+      </div>
+    </div>
+  </div>
+  <div class="ex-note">Use &lt;strong&gt; and &lt;em&gt; for meaningful emphasis — they tell screen readers this text is important. Use &lt;b&gt; and &lt;i&gt; only for visual styling.</div>
+</div>
+
+<h2>Blockquote and Pre</h2>
+<div class="ex-block">
+  <div class="ex-lbl">Example — Quotes and Preformatted Text</div>
+  <pre class="ex-code"><span class="t-tag">&lt;blockquote</span> <span class="t-attr">cite</span><span class="t-txt">=</span><span class="t-val">"https://ciweb.in"</span><span class="t-tag">&gt;</span>
+  <span class="t-txt">The best time to start learning HTML was yesterday. The second best time is right now.</span>
+  <span class="t-tag">&lt;footer&gt;</span><span class="t-txt">&mdash; Shiva Saini, CIWeb</span><span class="t-tag">&lt;/footer&gt;</span>
+<span class="t-tag">&lt;/blockquote&gt;</span>
+
+<span class="t-tag">&lt;pre&gt;</span><span class="t-txt">This    text
+  preserves   spacing
+    and line breaks exactly.</span><span class="t-tag">&lt;/pre&gt;</span></pre>
+  <div class="ex-out">
+    <blockquote style="border-left:4px solid #ccc;padding-left:1rem;margin:0 0 10px;color:#555;font-style:italic">
+      The best time to start learning HTML was yesterday. The second best time is right now.
+      <footer style="margin-top:4px;font-size:.82rem;color:#888">&mdash; Shiva Saini, CIWeb</footer>
+    </blockquote>
+    <pre style="background:#f5f5f5;padding:8px;border-radius:4px;font-size:.82rem;color:#333">This    text
+  preserves   spacing
+    and line breaks exactly.</pre>
+  </div>
+  <div class="ex-note">&lt;blockquote&gt; is for quoted content. &lt;pre&gt; preserves all whitespace and line breaks — useful for code examples.</div>
+</div>
+
+<div class="box box-tip"><div class="box-lbl">strong vs b — What is the Difference?</div><p>&lt;strong&gt; has semantic meaning: this text is <strong>important</strong>. Screen readers announce it with added emphasis. &lt;b&gt; is purely visual boldness with no semantic meaning. Same difference for &lt;em&gt; (emphasis, semantic) vs &lt;i&gt; (italic, visual).</p></div>
+<div class="why"><div class="why-lbl">Why HTML Ignores Extra Spaces</div><p>HTML collapses all whitespace — multiple spaces and newlines become a single space. This was a design decision to make HTML easy to write and format without worrying about indentation affecting the output. Use &lt;br/&gt; for line breaks and CSS for spacing.</p></div>
+      </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
-        <div class="nav-row"><a class="nav-a" href="lesson03.html">Prev</a><a class="nav-a next" href="lesson05.html">Next Lesson</a></div>
-        <div class="foot"><div class="foot-row"><a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a><a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a><a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a></div><div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div></div>
+        <div class="nav-row"><a class="nav-a" href="lesson03.html">Prev</a> <a class="nav-a next" href="lesson05.html">Next Lesson</a></div>
+        <div class="foot">
+          <div class="foot-row">
+            <a class="foot-a" href="https://youtube.com/@codinginfinite" target="_blank" rel="noopener"><svg width="13" height="13" viewBox="0 0 24 24" fill="#ff0000"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2C0 8.1 0 12 0 12s0 3.9.5 5.8a3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1C24 15.9 24 12 24 12s0-3.9-.5-5.8zM9.8 15.5V8.5l6.3 3.5-6.3 3.5z"/></svg> Coding Infinite</a>
+            <a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a>
+            <a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a>
+          </div>
+          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div>
+        </div>
       </div>
     </div>
     <div class="panel" id="p-explain">
-      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem"><h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3><p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code. Click the tab to load.</p></div>
+      <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies — no code.</p>
+      </div>
       <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
-        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span><div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div></div>
+        <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">index.html</span>
+          <div class="ed-actions"><button class="ed-btn" onclick="resetCode()">Reset</button><button class="ed-btn" onclick="copyCode()">Copy</button><button class="ed-btn go" onclick="runPreview()">Run</button></div>
+        </div>
         <div class="ed-split">
           <div class="ed-side"><div id="cm-main" style="height:100%;min-height:290px"></div></div>
-          <div class="prev-side"><div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div><iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Live Preview</span></div>
+            <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Start coding — Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">Which tag carries semantic importance for Google?</p>
-        <div class="q-opts"><button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">b tag</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">i tag</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">strong tag</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">big tag</span></button>
-</div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>strong carries semantic weight - Google reads it as an importance signal for that content. The b tag is purely visual with zero SEO benefit whatsoever.</div>
+        <p class="q-question">What is the difference between strong and b?</p>
+        <div class="q-opts">
+<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">They are identical</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">strong has semantic importance, b is only visual</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">b is newer than strong</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">strong is for headings only</span></button>
+        </div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>strong carries semantic meaning — it tells screen readers and search engines this text is important. The b tag only makes text bold visually with no semantic meaning. Always prefer strong when emphasis matters.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
@@ -353,20 +458,22 @@ html.light .toggle-lbl{left:6px;right:auto}
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
         <div class="chal-title">Formatted Article</div>
-        <div class="chal-desc">Write a properly formatted article using semantic text tags correctly.</div>
+        <div class="chal-desc">Write an article using strong, em, mark, sub or sup, del/ins, and blockquote.</div>
         <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
-        <div class="c-req" id="cr0"><span class="c-dot"></span><span>two or more p</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>strong tag</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>em tag</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>blockquote</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>hr tag</span></div>
-
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>paragraph</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>strong or em</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>mark del or ins</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>blockquote or code</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>sub or sup</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
         <div class="chal-split">
           <div class="ed-side"><div id="cm-chal" style="height:100%;min-height:240px"></div></div>
-          <div class="prev-side"><div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div><iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe></div>
+          <div class="prev-side">
+            <div class="prev-bar" style="flex-shrink:0"><span class="pdot" style="background:#ff5f57"></span><span class="pdot" style="background:#febc2e;margin:0 3px"></span><span class="pdot" style="background:#28c840"></span><span style="margin-left:.28rem">Preview</span></div>
+            <iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
+          </div>
         </div>
         <div class="chal-footer"><span id="chal-status">0/5 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
       </div>
@@ -377,7 +484,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 4</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -397,18 +504,22 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, or any coding topic..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
-var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=4,LT='Paragraphs & Text',TOTAL=22,QA=2;
-var REQS=[{label:'two or more p',chk:function(c){return !!((c.match(/<p/gi)||[]).length>=2)}},
-{label:'strong tag',chk:function(c){return !!(c.indexOf('<strong')>-1)}},
-{label:'em tag',chk:function(c){return !!(c.indexOf('<em')>-1)}},
-{label:'blockquote',chk:function(c){return !!(c.indexOf('<blockquote')>-1)}},
-{label:'hr tag',chk:function(c){return !!(c.indexOf('<hr')>-1)}}];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Text Formatting Practice</title>\n</head>\n<body>\n\n  <h1>Learning HTML Text Tags</h1>\n\n  <!-- Regular paragraph -->\n  <p>HTML has many text formatting tags. Each one has a <strong>specific purpose</strong> and semantic meaning.</p>\n\n  <!-- strong = important, em = emphasis -->\n  <p>Use <strong>strong</strong> for important content. Use <em>em</em> for emphasis or stress.</p>\n\n  <!-- mark highlights, del shows deleted content -->\n  <p>Highlighted: <mark>this text is highlighted</mark></p>\n  <p>Old price: <del>Rs.999</del> New price: Rs.499</p>\n\n  <!-- blockquote for quotes -->\n  <blockquote>\n    "The best way to learn HTML is to build things." - Every Developer\n  </blockquote>\n\n  <!-- hr for topic separation -->\n  <hr/>\n\n  <!-- code for inline code -->\n  <p>The tag for paragraphs is <code>&lt;p&gt;</code></p>\n\n</body>\n</html>';
+
+
+var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=4,LT='Paragraphs & Text',TOTAL=22,QA=1;
+var REQS=[
+{label:'paragraph',chk:function(c){return !!((c.match(/<p/gi)||[]).length>=2)}},
+{label:'strong or em',chk:function(c){return !!(c.indexOf('<strong')>-1||c.indexOf('<em')>-1)}},
+{label:'mark del or ins',chk:function(c){return !!(c.indexOf('<mark')>-1||c.indexOf('<del')>-1||c.indexOf('<ins')>-1)}},
+{label:'blockquote or code',chk:function(c){return !!(c.indexOf('<blockquote')>-1||c.indexOf('<code')>-1)}},
+{label:'sub or sup',chk:function(c){return !!(c.indexOf('<sub')>-1||c.indexOf('<sup')>-1)}}
+];
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Web Technologies 2026</title>\n</head>\n<body>\n\n  <h1>Web Technologies in 2026</h1>\n\n  <p>The three core web technologies are <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.</p>\n\n  <h2>HTML  The Skeleton</h2>\n  <p>HTML provides the <em>structure</em> and <em>content</em> of a webpage.\n  Without HTML, there would be nothing to style or interact with.</p>\n\n  <h2>CSS  The Design</h2>\n  <p>CSS makes HTML look beautiful. Colors, fonts, layouts  all CSS.</p>\n  <p>Price to learn: <del>Very Expensive</del> <ins>Completely Free at CIWeb!</ins></p>\n\n  <h2>JavaScript  The Logic</h2>\n  <p>JavaScript runs <code>functions</code> and handles user interactions.</p>\n  <p>Fun fact: Water (H<sub>2</sub>O) and Einstein (E=mc<sup>2</sup>) use sub and sup tags!</p>\n\n  <blockquote>\n    The web is for everyone. Learn it for free at CIWeb.\n    <footer> CIWeb Mission</footer>\n  </blockquote>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -514,14 +625,16 @@ function autoHint(){
   if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
   if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
   if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
+  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
   .then(function(r){return r.json();})
   .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
   .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
 }
 function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  AI.open();
+  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
 }
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
@@ -592,7 +705,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -617,19 +730,30 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -688,6 +812,8 @@ document.addEventListener('DOMContentLoaded',function(){
   var fab=document.getElementById('mob-fab');
   if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}
 });
+
+
 
 </script>
 </body>
