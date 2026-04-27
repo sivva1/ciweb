@@ -270,6 +270,19 @@ html.light .toggle-lbl{left:6px;right:auto}
 .rb-dot{width:9px;height:9px;border-radius:50%}
 .rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
 
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -313,69 +326,70 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
 <h2>HTML Headings — h1 to h6</h2>
-<p>HTML has 6 heading levels: <code>&lt;h1&gt;</code> through <code>&lt;h6&gt;</code>. Headings create a hierarchy of content — like a newspaper with a big headline, section titles, and sub-titles. Google uses headings heavily for SEO.</p>
+<p>HTML has 6 heading levels. They create a hierarchy of content like a newspaper: big headline, section titles, and sub-titles. Google uses headings heavily to understand your page and rank it in search.</p>
 
-<h2>All 6 Heading Sizes</h2>
+<h2>All 6 Sizes in Action</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — h1 to h6 in a Real Page Context</div>
-  <pre class="ex-code"><span class="t-tag">&lt;h1&gt;</span><span class="t-txt">CIWeb — Learn HTML Free</span><span class="t-tag">&lt;/h1&gt;</span>       <span class="t-cm">&lt;!-- Page title --&gt;</span>
-<span class="t-tag">&lt;h2&gt;</span><span class="t-txt">HTML Course</span><span class="t-tag">&lt;/h2&gt;</span>                <span class="t-cm">&lt;!-- Major section --&gt;</span>
-<span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Lesson 3: Headings</span><span class="t-tag">&lt;/h3&gt;</span>       <span class="t-cm">&lt;!-- Sub-section --&gt;</span>
-<span class="t-tag">&lt;h4&gt;</span><span class="t-txt">Heading Level 4</span><span class="t-tag">&lt;/h4&gt;</span>          <span class="t-cm">&lt;!-- Sub-sub-section --&gt;</span>
-<span class="t-tag">&lt;h5&gt;</span><span class="t-txt">Heading Level 5</span><span class="t-tag">&lt;/h5&gt;</span>          <span class="t-cm">&lt;!-- Rarely used --&gt;</span>
-<span class="t-tag">&lt;h6&gt;</span><span class="t-txt">Heading Level 6</span><span class="t-tag">&lt;/h6&gt;</span>          <span class="t-cm">&lt;!-- Smallest --&gt;</span></pre>
+  <div class="ex-lbl">Example 1 — All 6 Heading Levels</div>
+  <pre class="ex-code"><span class="t-tag">&lt;h1&gt;</span><span class="t-txt">CIWeb — Learn HTML Free</span><span class="t-tag">&lt;/h1&gt;</span>     <span class="t-cm">&lt;!-- Page title --&gt;</span>
+<span class="t-tag">&lt;h2&gt;</span><span class="t-txt">HTML Course</span><span class="t-tag">&lt;/h2&gt;</span>               <span class="t-cm">&lt;!-- Major section --&gt;</span>
+<span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Lesson 3: Headings</span><span class="t-tag">&lt;/h3&gt;</span>      <span class="t-cm">&lt;!-- Sub-section --&gt;</span>
+<span class="t-tag">&lt;h4&gt;</span><span class="t-txt">Level 4 Heading</span><span class="t-tag">&lt;/h4&gt;</span>         <span class="t-cm">&lt;!-- Rarely used --&gt;</span>
+<span class="t-tag">&lt;h5&gt;</span><span class="t-txt">Level 5 Heading</span><span class="t-tag">&lt;/h5&gt;</span>         <span class="t-cm">&lt;!-- Very rare --&gt;</span>
+<span class="t-tag">&lt;h6&gt;</span><span class="t-txt">Level 6 Heading</span><span class="t-tag">&lt;/h6&gt;</span>         <span class="t-cm">&lt;!-- Smallest --&gt;</span></pre>
   <div class="ex-out">
-    <div class="result-browser">
-      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
-      <div class="rb-body">
-        <h1 style="font-size:1.6rem;margin:2px 0;color:#111">CIWeb — Learn HTML Free</h1>
-        <h2 style="font-size:1.25rem;margin:2px 0;color:#222">HTML Course</h2>
-        <h3 style="font-size:1.05rem;margin:2px 0;color:#333">Lesson 3: Headings</h3>
-        <h4 style="font-size:.95rem;margin:2px 0;color:#444">Heading Level 4</h4>
-        <h5 style="font-size:.88rem;margin:2px 0;color:#555">Heading Level 5</h5>
-        <h6 style="font-size:.82rem;margin:2px 0;color:#666">Heading Level 6</h6>
-      </div>
-    </div>
+    <div class="browser-frame"><div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
+    <div class="browser-body">
+      <h1 style="font-size:1.7rem;margin:2px 0">CIWeb &mdash; Learn HTML Free</h1>
+      <h2 style="font-size:1.3rem;margin:2px 0">HTML Course</h2>
+      <h3 style="font-size:1.1rem;margin:2px 0">Lesson 3: Headings</h3>
+      <h4 style="font-size:1rem;margin:2px 0">Level 4 Heading</h4>
+      <h5 style="font-size:.9rem;margin:2px 0">Level 5 Heading</h5>
+      <h6 style="font-size:.8rem;margin:2px 0">Level 6 Heading</h6>
+    </div></div>
   </div>
-  <div class="ex-note">h1 is the largest and most important. h6 is the smallest. Notice how they create a visual hierarchy from big to small.</div>
+  <div class="ex-note">h1 is the largest and most important. h6 is the smallest. They create a visual and semantic hierarchy.</div>
 </div>
 
-<h2>Real Blog Post Structure</h2>
+<h2>Blog Post Heading Structure</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — How a Real Blog Post Uses Headings</div>
+  <div class="ex-lbl">Example 2 — Real Blog Post Structure</div>
   <pre class="ex-code"><span class="t-tag">&lt;article&gt;</span>
-  <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Python vs JavaScript in 2026: Which One to Learn First?</span><span class="t-tag">&lt;/h1&gt;</span>
-  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Both are great. But for web development, start with HTML first...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Python vs JavaScript in 2026</span><span class="t-tag">&lt;/h1&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Both are great. Let me compare them...</span><span class="t-tag">&lt;/p&gt;</span>
 
   <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">Python Advantages</span><span class="t-tag">&lt;/h2&gt;</span>
-  <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Easy Syntax</span><span class="t-tag">&lt;/h3&gt;</span>
-  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Python reads like English...</span><span class="t-tag">&lt;/p&gt;</span>
-  <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Great for AI and Data</span><span class="t-tag">&lt;/h3&gt;</span>
-  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Libraries like TensorFlow, Pandas...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Easy to Read</span><span class="t-tag">&lt;/h3&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Python code reads like English...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Great for AI</span><span class="t-tag">&lt;/h3&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">TensorFlow, Pandas, NumPy...</span><span class="t-tag">&lt;/p&gt;</span>
 
   <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">JavaScript Advantages</span><span class="t-tag">&lt;/h2&gt;</span>
   <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Runs in Browser</span><span class="t-tag">&lt;/h3&gt;</span>
-  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Only language browsers natively understand...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Only language browsers understand natively...</span><span class="t-tag">&lt;/p&gt;</span>
 <span class="t-tag">&lt;/article&gt;</span></pre>
-  <div class="ex-out" style="font-size:.84rem">
-    <strong style="font-size:1rem;display:block;margin-bottom:4px">Python vs JavaScript in 2026: Which One to Learn First?</strong>
-    <span style="color:#555">Both are great. But for web development, start with HTML first...</span>
-    <div style="margin-top:10px"><strong style="color:#333">Python Advantages</strong></div>
-    <div style="margin-left:14px"><em style="color:#555">Easy Syntax</em> &mdash; <span style="color:#777">Python reads like English...</span></div>
-    <div style="margin-left:14px"><em style="color:#555">Great for AI and Data</em> &mdash; <span style="color:#777">Libraries like TensorFlow...</span></div>
+  <div class="ex-out">
+    <div class="browser-body" style="padding:10px 14px;font-size:13px">
+      <strong style="font-size:1rem">Python vs JavaScript in 2026</strong><br/>
+      <span style="color:#666">Both are great. Let me compare them...</span>
+      <div style="margin-top:8px;font-size:.9rem;font-weight:600">Python Advantages</div>
+      <div style="margin-left:12px;font-size:.82rem;color:#555"><em>Easy to Read</em> — Python code reads like English...<br/><em>Great for AI</em> — TensorFlow, Pandas, NumPy...</div>
+      <div style="margin-top:6px;font-size:.9rem;font-weight:600">JavaScript Advantages</div>
+      <div style="margin-left:12px;font-size:.82rem;color:#555"><em>Runs in Browser</em> — Only language browsers understand...</div>
+    </div>
   </div>
-  <div class="ex-note">Google reads this heading hierarchy to understand the article structure. h1 = main topic, h2 = major sections, h3 = sub-topics within sections.</div>
+  <div class="ex-note">Google reads this hierarchy to understand the article. h1=main topic, h2=major sections, h3=sub-topics. This is how you rank in search.</div>
 </div>
 
-<div class="card"><div class="card-head"><span class="chip">Heading Rules</span><span class="chip-sm">Critical for SEO</span></div>
-<div class="row"><span class="rk">One h1 per page</span><span class="rv">Use only ONE h1 per page. It is the main topic signal to Google. Multiple h1 tags dilute your SEO.</span></div>
-<div class="row"><span class="rk">Order matters</span><span class="rv">Do not skip levels. After h2, use h3 — not h4 or h5. Skipping confuses screen readers.</span></div>
-<div class="row"><span class="rk">Describe content</span><span class="rv">Headings should describe what follows. Google ranks pages partly based on heading keywords.</span></div>
-<div class="row"><span class="rk">h4-h6</span><span class="rv">Rarely needed. Most real pages use only h1, h2, h3. Use h4-h6 only for deeply nested content.</span></div>
+<div class="card"><div class="card-head"><span class="chip">Heading Rules — Critical for SEO</span></div>
+<div class="row"><span class="rk">One h1 per page</span><span class="rv">Use only ONE h1. It tells Google the main topic. Multiple h1 tags dilute your SEO ranking.</span></div>
+<div class="row"><span class="rk">Do not skip levels</span><span class="rv">After h2 use h3, not h4. Skipping levels confuses screen readers and accessibility tools.</span></div>
+<div class="row"><span class="rk">Keywords in headings</span><span class="rv">Google gives extra weight to text inside heading tags. Include your keywords naturally.</span></div>
+<div class="row"><span class="rk">h4 to h6</span><span class="rv">Rarely needed. Most real pages only use h1, h2, h3. Use deeper levels only for complex documents.</span></div>
 </div>
 
-<div class="box box-seo"><div class="box-lbl">Headings = SEO Power</div><p>Google's algorithm gives extra weight to text inside heading tags. The words in your h1 are the strongest ranking signal on the page, followed by h2, then h3. A page titled "Learn HTML Free" will rank better for "learn HTML" than a page without an h1.</p></div>
-<div class="why"><div class="why-lbl">Why Only 6 Levels?</div><p>Tim Berners-Lee chose 6 heading levels in 1991 based on how printed documents were structured. Academic papers and books rarely go beyond 4-5 levels of hierarchy, so 6 was considered more than enough for any document structure.</p></div>
+<div class="box box-seo"><div class="box-lbl">Headings = Direct SEO Impact</div><p>The words in your h1 are the strongest ranking signal on the page. A page with "Learn HTML Free" in its h1 will rank better for that search than a page without it. Followed by h2, then h3.</p></div>
+<div class="why"><div class="why-lbl">Why Only 6 Levels?</div><p>Tim Berners-Lee chose 6 heading levels in 1991 based on printed document hierarchy. Academic papers rarely go beyond 4-5 levels, so 6 was considered more than enough for any document.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -393,9 +407,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies — no code.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies — no code at all.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -409,7 +423,7 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding — Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
@@ -417,11 +431,11 @@ html.light .toggle-lbl{left:6px;right:auto}
         <p class="q-question">How many h1 tags should a page have?</p>
         <div class="q-opts">
 <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">As many as needed</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Two — one for desktop one for mobile</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Two maximum</span></button>
 <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">Exactly one</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">Three maximum</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">Three for large pages</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>A page should have exactly ONE h1 tag. It signals the main topic to Google and screen readers. Multiple h1 tags confuse both search engines and accessibility tools.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>A page should have exactly ONE h1 tag. It signals the main topic to Google. Multiple h1 tags confuse search engines and accessibility tools.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
@@ -429,7 +443,7 @@ html.light .toggle-lbl{left:6px;right:auto}
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
         <div class="chal-title">Blog Post with Headings</div>
-        <div class="chal-desc">Build a blog post structure using h1 for title, h2 for major sections, and h3 for sub-sections.</div>
+        <div class="chal-desc">Build a blog post using h1 for the title, h2 for major sections, h3 for sub-sections.</div>
         <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
 <div class="c-req" id="cr0"><span class="c-dot"></span><span>one h1</span></div>
 <div class="c-req" id="cr1"><span class="c-dot"></span><span>h2 used</span></div>
@@ -455,7 +469,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 3</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -475,10 +489,11 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, or any coding topic..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
+
 
 
 
@@ -490,7 +505,7 @@ var REQS=[
 {label:'paragraph',chk:function(c){return !!(c.indexOf('<p')>-1)}},
 {label:'DOCTYPE',chk:function(c){return !!(c.trim().toLowerCase().indexOf('<!doctype')===0)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>Python vs JavaScript 2026</title>\n</head>\n<body>\n\n  <!-- Main page title - use only ONE h1 per page -->\n  <h1>Python vs JavaScript: Which to Learn in 2026?</h1>\n\n  <p>Both are powerful programming languages. Let me break down the differences.</p>\n\n  <!-- Major section heading -->\n  <h2>Python</h2>\n  <h3>Why Python is Great</h3>\n  <p>Python has very clean, readable syntax. Great for AI and data science.</p>\n  <h3>Python Use Cases</h3>\n  <p>Machine learning, data analysis, web backends (Django/Flask).</p>\n\n  <!-- Another major section -->\n  <h2>JavaScript</h2>\n  <h3>Why JavaScript is Great</h3>\n  <p>JavaScript is the only language that runs natively in browsers.</p>\n  <h3>JavaScript Use Cases</h3>\n  <p>Web frontends, Node.js backends, mobile apps (React Native).</p>\n\n  <h2>My Recommendation</h2>\n  <p>Start with HTML and CSS first, then learn JavaScript for web development!</p>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>Python vs JavaScript 2026</title>\n</head>\n<body>\n\n  <!-- ONE h1 per page: the main topic -->\n  <h1>Python vs JavaScript: Which to Learn in 2026?</h1>\n  <p>Both are great programming languages. Here is my analysis.</p>\n\n  <!-- Major section -->\n  <h2>Python</h2>\n  <h3>Why Python is Great</h3>\n  <p>Python has clean readable syntax. Perfect for AI and data science.</p>\n  <h3>Python Use Cases</h3>\n  <p>Machine learning, web backends with Django and Flask.</p>\n\n  <!-- Second major section -->\n  <h2>JavaScript</h2>\n  <h3>Why JavaScript is Great</h3>\n  <p>JavaScript is the only language that runs natively in browsers.</p>\n  <h3>JavaScript Use Cases</h3>\n  <p>Web frontends, Node.js, React, React Native mobile apps.</p>\n\n  <h2>My Recommendation</h2>\n  <p>Start with HTML first, then CSS, then JavaScript for web!</p>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -587,26 +602,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
-  var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
-}
-function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();
-  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
+  var problems=[];
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -709,20 +726,32 @@ var AI=(function(){
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
       var code=window._ed?window._ed.doc.getValue():'';
-      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
       fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
     },
     deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
       if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
-      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
-      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
       .then(function(r){return r.json();})
-      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
-      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
     },
     open:function(){if(!this._open)this.toggle();}
   };
@@ -785,6 +814,103 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 
+
+
+function deepAnalyze(){
+  var code = window._ed ? window._ed.doc.getValue() : '';
+  if(!code.trim()){ toast('Write some code first!','o'); return; }
+
+  var issues = [], tips = [];
+
+  // 1. Tag balance - count mathematically
+  var tags = ['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var re_o = new RegExp('<' + t + '(\\s[^>]*)?>','gi');
+    var re_c = new RegExp('<\\/' + t + '>','gi');
+    var o = (code.match(re_o)||[]).length;
+    var c = (code.match(re_c)||[]).length;
+    if(o > c) issues.push(t + ' tag not closed (' + o + ' open, ' + c + ' closed)');
+    if(c > o) issues.push('Extra </' + t + '> found (' + c + ' closing, ' + o + ' opening)');
+  });
+
+  // 2. img checks
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img)) issues.push('img missing alt attribute');
+    if(!/\bloading=/i.test(img)) tips.push('img: add loading="lazy" for better performance');
+  });
+
+  // 3. a with target blank
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a) && !/noopener/i.test(a))
+      issues.push('a with target="_blank" missing rel="noopener noreferrer"');
+  });
+
+  // 4. Document structure hints
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code)) issues.push('Missing <title> tag in <head>');
+    if(!/<meta[^>]+charset/i.test(code)) tips.push('Add <meta charset="UTF-8"/> to <head>');
+    if(!/<meta[^>]+viewport/i.test(code)) tips.push('Add viewport meta tag for mobile');
+  }
+  var h1c = (code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c > 1) issues.push('Found ' + h1c + ' h1 tags - use only ONE h1 per page');
+  if(/<body/i.test(code) && h1c === 0) tips.push('No h1 found - add a main heading for SEO');
+
+  // 5. Semantic hints
+  if(/<b[\s>]|<\/b>/i.test(code) && !/<strong/i.test(code))
+    tips.push('Use <strong> instead of <b> for semantic meaning');
+  if(/<i[\s>]|<\/i>/i.test(code) && !/<em/i.test(code))
+    tips.push('Use <em> instead of <i> for semantic meaning');
+
+  // Show in the hint bar area
+  showDA(issues, tips, code.length);
+}
+
+function showDA(issues, tips, len){
+  // Use the existing hint-bar area - inject a result panel right after it
+  var hbar = document.querySelector('.hint-bar');
+  if(!hbar) return;
+  var old = document.getElementById('da-result');
+  if(old) old.remove();
+
+  var panel = document.createElement('div');
+  panel.id = 'da-result';
+  panel.style.cssText = 'background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+
+  var closeBtn = '<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.95rem;line-height:1">&#10005;</button>';
+
+  var allGood = issues.length === 0 && tips.length === 0;
+  var html = closeBtn;
+  html += '<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">';
+  html += '&#128269; Analysis of ' + len + ' chars</div>';
+
+  if(allGood){
+    html += '<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. No errors found!</div>';
+  } else {
+    if(issues.length){
+      html += '<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; ' + issues.length + ' Error' + (issues.length>1?'s':'') + ':</div>';
+      issues.forEach(function(e,i){
+        html += '<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">';
+        html += (i+1) + '. ' + e + '</div>';
+      });
+    } else {
+      html += '<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; No syntax errors - all tags balanced</div>';
+    }
+    if(tips.length){
+      html += '<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; ' + tips.length + ' Tip' + (tips.length>1?'s':'') + ':</div>';
+      tips.forEach(function(t,i){
+        html += '<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">';
+        html += (i+1) + '. ' + t + '</div>';
+      });
+    }
+  }
+  html += '<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For SEO &amp; accessibility advice, ask Shiv AI below.</div>';
+
+  panel.innerHTML = html;
+  hbar.parentNode.insertBefore(panel, hbar.nextSibling);
+}
 
 </script>
 </body>
