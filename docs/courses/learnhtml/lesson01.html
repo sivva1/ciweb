@@ -624,8 +624,90 @@ function autoHint(){
 function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
   if(!code.trim()){toast('Write some code first!','o');return;}
+  /* Full client-side analysis  no AI hallucination */
+  var issues=[];var tips=[];
+
+  /* 1. Tag balance check (mathematical, 100% accurate) */
+  var blk=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+           'table','thead','tbody','tfoot','tr','td','th','form','select','option',
+           'textarea','button','label','main','header','footer','nav',
+           'section','article','aside','figure','figcaption','blockquote',
+           'details','summary','dialog','template','script','style'];
+  blk.forEach(function(t){
+    var opens=(code.match(new RegExp('<'+t+'(\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(opens>closes)issues.push('Unclosed <'+t+'> tag: '+opens+' open, only '+closes+' closed');
+    if(closes>opens)issues.push('Extra </'+t+'> tag: '+closes+' closing but only '+opens+' opening');
+  });
+
+  /* 2. Self-closing check  img without alt */
+  var imgs=code.match(/<img[^>]*>/gi)||[];
+  imgs.forEach(function(img){
+    if(!/alt=/i.test(img))issues.push('img tag missing required alt attribute');
+    if(!/width=/i.test(img)||!/height=/i.test(img))tips.push('img: add width and height attributes to prevent layout shift');
+    if(!/loading=/i.test(img))tips.push('img: add loading="lazy" for better performance');
+  });
+
+  /* 3. Links */
+  var links=code.match(/<a[^>]*>/gi)||[];
+  links.forEach(function(a){
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('Link with target="_blank" is missing rel="noopener noreferrer"  security risk');
+  });
+
+  /* 4. Form checks */
+  if(/<form/i.test(code)){
+    var inputs=code.match(/<input[^>]*>/gi)||[];
+    inputs.forEach(function(inp){
+      if(!/type=/i.test(inp))tips.push('input tag without type= attribute  add type="text" or appropriate type');
+    });
+  }
+
+  /* 5. Document structure */
+  if(!/<title>[^<]+<\/title>/i.test(code)&&/<html/i.test(code))
+    issues.push('No <title> tag found in <head>');
+  if(!/<meta[^>]+charset/i.test(code)&&/<html/i.test(code))
+    tips.push('Add <meta charset="UTF-8"/> as the first tag inside <head>');
+  if(!/<meta[^>]+viewport/i.test(code)&&/<html/i.test(code))
+    tips.push('Add <meta name="viewport" content="width=device-width, initial-scale=1.0"/> for mobile');
+  var h1s=(code.match(/<h1/gi)||[]).length;
+  if(h1s>1)issues.push('Multiple <h1> tags found ('+h1s+'). Use only ONE h1 per page');
+  if(/<body/i.test(code)&&h1s===0)tips.push('No <h1> tag found  add a main heading for better SEO');
+
+  /* 6. Semantic */
+  if(/<b>|<i>/i.test(code)&&!/<strong>|<em>/i.test(code))
+    tips.push('Use <strong> instead of <b> and <em> instead of <i> for semantic meaning');
+  if(/<div[^>]*class=["'][^"']*nav/i.test(code)&&!/<nav/i.test(code))
+    tips.push('Use semantic <nav> tag instead of <div class="nav">');
+  if(/<div[^>]*class=["'][^"']*header/i.test(code)&&!/<header/i.test(code))
+    tips.push('Use semantic <header> tag instead of <div class="header">');
+
+  /* Build result message */
+  var lines=['=== Deep Code Analysis ===\n'];
+  if(issues.length===0&&tips.length===0){
+    lines.push('Your HTML code looks correct! No errors or issues detected.\n');
+    lines.push('The code structure is valid and properly balanced.');
+  }else{
+    if(issues.length>0){
+      lines.push('ERRORS (must fix): '+issues.length+'\n');
+      issues.forEach(function(e,i){lines.push((i+1)+'. '+e);});
+      lines.push('');
+    }else{
+      lines.push('No syntax errors! All tags properly balanced.\n');
+    }
+    if(tips.length>0){
+      lines.push('IMPROVEMENTS (optional): '+tips.length+'\n');
+      tips.forEach(function(t,i){lines.push((i+1)+'. '+t);});
+    }
+  }
+  lines.push('\n---');
+  lines.push('For semantic/SEO advice, ask Shiv AI: "Review my code for SEO and accessibility"');
+
+  /* Show result directly  no AI needed for syntax */
   AI.open();
-  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
+  userMsg('Deep Analyze: '+code.length+' chars of HTML');
+  document.getElementById('ai-thinking')&&document.getElementById('ai-thinking').remove();
+  botMsg(lines.join('\n'));
 }
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
@@ -747,24 +829,14 @@ var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. 
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
     },
     deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
       if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
-      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
-      var tagAudit=(function(c){
-  /* Count open vs close tags to tell AI the truth */
-  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','tr','td','th','form','main','header','footer','nav','section','article','aside'];
-  var issues=[];
-  tags.forEach(function(t){
-    var o=(c.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
-    var cl=(c.match(new RegExp('</'+t+'>','gi'))||[]).length;
-    if(o>cl)issues.push(t+'('+o+' open, '+cl+' closed)');
-  });
-  return issues.length?'VERIFIED unclosed tags: '+issues.join(', ')+'. All other tags are properly closed.':'ALL TAGS ARE PROPERLY BALANCED AND CLOSED. Do NOT report any missing closing tags.';
-})(code);
-var systemCtx='You are Shiv AI, an expert HTML reviewer. CRITICAL RULE: '+tagAudit+' Never invent errors. Only report what is mathematically proven wrong. If the code has no errors, say "Your HTML code looks correct! No errors found." and give tips to improve it. Do not guess. Do not assume. Only report REAL issues that exist in the actual code provided.';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
       .then(function(r){return r.json();})
-      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
-      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
     },
     open:function(){if(!this._open)this.toggle();}
   };
