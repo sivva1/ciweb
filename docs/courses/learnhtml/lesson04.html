@@ -270,6 +270,19 @@ html.light .toggle-lbl{left:6px;right:auto}
 .rb-dot{width:9px;height:9px;border-radius:50%}
 .rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
 
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -298,7 +311,7 @@ html.light .toggle-lbl{left:6px;right:auto}
 <div class="sb-more">...up to Lesson 22</div></aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">TEXT</span><span class="badge b-time">8 min</span><span class="badge b-xp">20 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">TEXT</span><span class="badge b-time">9 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">Paragraphs & Text</h1>
       <p class="lesson-sub">Learn Paragraphs &amp; Text with live examples, interactive editor, and Shiv AI tutor.</p>
     </div>
@@ -314,97 +327,91 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
 <h2>Paragraphs and Text Formatting</h2>
-<p>After headings, the most used HTML element is the paragraph <code>&lt;p&gt;</code>. HTML also has many tags for formatting text: bold, italic, highlighted, subscript, superscript, and more.</p>
+<p>After headings, paragraphs are the most-used HTML element. HTML also provides many text formatting tags: bold, italic, highlighted, subscript, superscript, deleted text, and more.</p>
 
-<h2>The Paragraph Tag</h2>
+<h2>Paragraphs vs Line Breaks</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Paragraphs vs Line Breaks</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- p creates space before and after --&gt;</span>
+  <div class="ex-lbl">Example 1 — p vs br — When to Use Each</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- p creates a full block with space before and after --&gt;</span>
 <span class="t-tag">&lt;p&gt;</span><span class="t-txt">HTML is the foundation of every website.</span><span class="t-tag">&lt;/p&gt;</span>
 <span class="t-tag">&lt;p&gt;</span><span class="t-txt">CSS makes HTML beautiful with colors and fonts.</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">JavaScript adds interactivity like buttons and animations.</span><span class="t-tag">&lt;/p&gt;</span>
 
-<span class="t-cm">&lt;!-- br is a line break WITHIN a paragraph --&gt;</span>
+<span class="t-cm">&lt;!-- br is a line break WITHIN a block --&gt;</span>
 <span class="t-tag">&lt;p&gt;</span>
-  <span class="t-txt">First line of a poem.</span><span class="t-tag">&lt;br/&gt;</span>
-  <span class="t-txt">Second line of the poem.</span><span class="t-tag">&lt;br/&gt;</span>
-  <span class="t-txt">Third line — each on its own line.</span>
+  <span class="t-txt">First line of an address.</span><span class="t-tag">&lt;br/&gt;</span>
+  <span class="t-txt">Second line, same city.</span><span class="t-tag">&lt;br/&gt;</span>
+  <span class="t-txt">Pin code: 110001</span>
 <span class="t-tag">&lt;/p&gt;</span></pre>
   <div class="ex-out">
-    <div class="result-browser">
-      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
-      <div class="rb-body">
-        <p style="margin:0 0 10px">HTML is the foundation of every website.</p>
-        <p style="margin:0 0 10px">CSS makes HTML beautiful with colors and fonts.</p>
-        <p style="margin:0 0 10px">JavaScript adds interactivity like buttons and animations.</p>
-        <p style="margin:0">First line of a poem.<br/>Second line of the poem.<br/>Third line — each on its own line.</p>
-      </div>
-    </div>
+    <div class="browser-frame"><div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
+    <div class="browser-body">
+      <p style="margin:0 0 10px">HTML is the foundation of every website.</p>
+      <p style="margin:0 0 10px">CSS makes HTML beautiful with colors and fonts.</p>
+      <p style="margin:0">First line of an address.<br/>Second line, same city.<br/>Pin code: 110001</p>
+    </div></div>
   </div>
-  <div class="ex-note">Each &lt;p&gt; gets automatic spacing. Use &lt;br/&gt; only for line breaks within the same block — like addresses or poems.</div>
+  <div class="ex-note">Each &lt;p&gt; gets automatic spacing above and below. Use &lt;br/&gt; only for line breaks within the same content block like addresses or poetry.</div>
 </div>
 
 <h2>Text Formatting Tags</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Bold, Italic, and More</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- strong = bold with meaning (important!) --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Always use </span><span class="t-tag">&lt;strong&gt;</span><span class="t-txt">charset=UTF-8</span><span class="t-tag">&lt;/strong&gt;</span><span class="t-txt"> in your head section.</span><span class="t-tag">&lt;/p&gt;</span>
+  <div class="ex-lbl">Example 2 — All Key Formatting Tags</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- strong = bold WITH semantic importance --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Always put </span><span class="t-tag">&lt;strong&gt;</span><span class="t-txt">charset=UTF-8</span><span class="t-tag">&lt;/strong&gt;</span><span class="t-txt"> first in head.</span><span class="t-tag">&lt;/p&gt;</span>
 
-<span class="t-cm">&lt;!-- em = italic with meaning (emphasis) --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The word </span><span class="t-tag">&lt;em&gt;</span><span class="t-txt">semantic</span><span class="t-tag">&lt;/em&gt;</span><span class="t-txt"> means "meaningful structure".</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-cm">&lt;!-- em = italic WITH semantic emphasis --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The word </span><span class="t-tag">&lt;em&gt;</span><span class="t-txt">semantic</span><span class="t-tag">&lt;/em&gt;</span><span class="t-txt"> means "meaningful".</span><span class="t-tag">&lt;/p&gt;</span>
 
 <span class="t-cm">&lt;!-- mark = highlighted text --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The answer is </span><span class="t-tag">&lt;mark&gt;</span><span class="t-txt">42</span><span class="t-tag">&lt;/mark&gt;</span><span class="t-txt"> according to the guide.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The answer is </span><span class="t-tag">&lt;mark&gt;</span><span class="t-txt">HTML5</span><span class="t-tag">&lt;/mark&gt;</span><span class="t-txt">.</span><span class="t-tag">&lt;/p&gt;</span>
 
-<span class="t-cm">&lt;!-- sub = subscript (H2O), sup = superscript (E=mc2) --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Water is H</span><span class="t-tag">&lt;sub&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sub&gt;</span><span class="t-txt">O and Einstein's E=mc</span><span class="t-tag">&lt;sup&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sup&gt;</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-cm">&lt;!-- sub and sup: H2O and E=mc2 --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Water is H</span><span class="t-tag">&lt;sub&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sub&gt;</span><span class="t-txt">O and E=mc</span><span class="t-tag">&lt;sup&gt;</span><span class="t-txt">2</span><span class="t-tag">&lt;/sup&gt;</span><span class="t-tag">&lt;/p&gt;</span>
 
-<span class="t-cm">&lt;!-- del = deleted text, ins = inserted text --&gt;</span>
+<span class="t-cm">&lt;!-- del and ins: price updates --&gt;</span>
 <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Price: </span><span class="t-tag">&lt;del&gt;</span><span class="t-txt">Rs.500</span><span class="t-tag">&lt;/del&gt;</span><span class="t-txt"> </span><span class="t-tag">&lt;ins&gt;</span><span class="t-txt">Rs.299</span><span class="t-tag">&lt;/ins&gt;</span><span class="t-tag">&lt;/p&gt;</span>
 
-<span class="t-cm">&lt;!-- code = monospace for code snippets --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Use the </span><span class="t-tag">&lt;code&gt;</span><span class="t-txt">console.log()</span><span class="t-tag">&lt;/code&gt;</span><span class="t-txt"> function to debug.</span><span class="t-tag">&lt;/p&gt;</span></pre>
+<span class="t-cm">&lt;!-- code: inline code snippets --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Use </span><span class="t-tag">&lt;code&gt;</span><span class="t-txt">console.log()</span><span class="t-tag">&lt;/code&gt;</span><span class="t-txt"> to debug.</span><span class="t-tag">&lt;/p&gt;</span></pre>
   <div class="ex-out">
-    <div class="result-browser">
-      <div class="rb-bar"><div class="rb-dot" style="background:#ff5f57"></div><div class="rb-dot" style="background:#febc2e"></div><div class="rb-dot" style="background:#28c840"></div></div>
-      <div class="rb-body" style="font-size:14px">
-        <p style="margin:4px 0">Always use <strong>charset=UTF-8</strong> in your head section.</p>
-        <p style="margin:4px 0">The word <em>semantic</em> means "meaningful structure".</p>
-        <p style="margin:4px 0">The answer is <mark>42</mark> according to the guide.</p>
-        <p style="margin:4px 0">Water is H<sub>2</sub>O and Einstein's E=mc<sup>2</sup></p>
-        <p style="margin:4px 0">Price: <del>Rs.500</del> <ins>Rs.299</ins></p>
-        <p style="margin:4px 0">Use the <code style="background:#f0f0f0;padding:1px 4px;border-radius:3px;font-family:monospace">console.log()</code> function to debug.</p>
-      </div>
-    </div>
+    <div class="browser-frame"><div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
+    <div class="browser-body">
+      <p style="margin:3px 0">Always put <strong>charset=UTF-8</strong> first in head.</p>
+      <p style="margin:3px 0">The word <em>semantic</em> means "meaningful".</p>
+      <p style="margin:3px 0">The answer is <mark>HTML5</mark>.</p>
+      <p style="margin:3px 0">Water is H<sub>2</sub>O and E=mc<sup>2</sup></p>
+      <p style="margin:3px 0">Price: <del>Rs.500</del> <ins>Rs.299</ins></p>
+      <p style="margin:3px 0">Use <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px;font-family:monospace">console.log()</code> to debug.</p>
+    </div></div>
   </div>
-  <div class="ex-note">Use &lt;strong&gt; and &lt;em&gt; for meaningful emphasis — they tell screen readers this text is important. Use &lt;b&gt; and &lt;i&gt; only for visual styling.</div>
+  <div class="ex-note">Use &lt;strong&gt; and &lt;em&gt; for meaningful emphasis — they tell screen readers this text matters. Use &lt;b&gt; and &lt;i&gt; only for visual styling.</div>
 </div>
 
 <h2>Blockquote and Pre</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Quotes and Preformatted Text</div>
-  <pre class="ex-code"><span class="t-tag">&lt;blockquote</span> <span class="t-attr">cite</span><span class="t-txt">=</span><span class="t-val">"https://ciweb.in"</span><span class="t-tag">&gt;</span>
-  <span class="t-txt">The best time to start learning HTML was yesterday. The second best time is right now.</span>
+  <div class="ex-lbl">Example 3 — Quotes and Preformatted Text</div>
+  <pre class="ex-code"><span class="t-tag">&lt;blockquote&gt;</span>
+  <span class="t-txt">The best time to start learning was yesterday.</span>
+  <span class="t-txt">The second best time is right now.</span>
   <span class="t-tag">&lt;footer&gt;</span><span class="t-txt">&mdash; Shiva Saini, CIWeb</span><span class="t-tag">&lt;/footer&gt;</span>
 <span class="t-tag">&lt;/blockquote&gt;</span>
 
 <span class="t-tag">&lt;pre&gt;</span><span class="t-txt">This    text
-  preserves   spacing
+  preserves   spaces
     and line breaks exactly.</span><span class="t-tag">&lt;/pre&gt;</span></pre>
   <div class="ex-out">
-    <blockquote style="border-left:4px solid #ccc;padding-left:1rem;margin:0 0 10px;color:#555;font-style:italic">
-      The best time to start learning HTML was yesterday. The second best time is right now.
-      <footer style="margin-top:4px;font-size:.82rem;color:#888">&mdash; Shiva Saini, CIWeb</footer>
-    </blockquote>
-    <pre style="background:#f5f5f5;padding:8px;border-radius:4px;font-size:.82rem;color:#333">This    text
-  preserves   spacing
+    <div class="browser-body" style="padding:10px 14px">
+      <blockquote style="border-left:4px solid #ccc;padding-left:12px;margin:0 0 10px;color:#555;font-style:italic;font-size:13px">The best time to start learning was yesterday. The second best time is right now.<footer style="margin-top:4px;font-size:.8rem;color:#888">&mdash; Shiva Saini, CIWeb</footer></blockquote>
+      <pre style="background:#f5f5f5;padding:8px;border-radius:4px;font-size:.8rem">This    text
+  preserves   spaces
     and line breaks exactly.</pre>
+    </div>
   </div>
-  <div class="ex-note">&lt;blockquote&gt; is for quoted content. &lt;pre&gt; preserves all whitespace and line breaks — useful for code examples.</div>
+  <div class="ex-note">&lt;blockquote&gt; is for quoting someone. &lt;pre&gt; preserves all whitespace — great for showing code examples.</div>
 </div>
 
-<div class="box box-tip"><div class="box-lbl">strong vs b — What is the Difference?</div><p>&lt;strong&gt; has semantic meaning: this text is <strong>important</strong>. Screen readers announce it with added emphasis. &lt;b&gt; is purely visual boldness with no semantic meaning. Same difference for &lt;em&gt; (emphasis, semantic) vs &lt;i&gt; (italic, visual).</p></div>
-<div class="why"><div class="why-lbl">Why HTML Ignores Extra Spaces</div><p>HTML collapses all whitespace — multiple spaces and newlines become a single space. This was a design decision to make HTML easy to write and format without worrying about indentation affecting the output. Use &lt;br/&gt; for line breaks and CSS for spacing.</p></div>
+<div class="box box-tip"><div class="box-lbl">strong vs b — Key Difference</div><p>&lt;strong&gt; has semantic meaning — screen readers announce it with added emphasis. Search engines treat it as important content. &lt;b&gt; only adds visual boldness with zero semantic meaning. Always prefer &lt;strong&gt; when the text is genuinely important.</p></div>
+<div class="why"><div class="why-lbl">Why HTML Ignores Extra Spaces</div><p>HTML collapses all whitespace — multiple spaces and newlines become one space. This was intentional: write and indent HTML however you like without affecting the output. Use &lt;br/&gt; for line breaks and CSS for spacing.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -422,9 +429,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies — no code.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies — no code at all.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -438,7 +445,7 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding — Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
@@ -448,9 +455,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">They are identical</span></button>
 <button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">strong has semantic importance, b is only visual</span></button>
 <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">b is newer than strong</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">strong is for headings only</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">strong only works in headings</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>strong carries semantic meaning — it tells screen readers and search engines this text is important. The b tag only makes text bold visually with no semantic meaning. Always prefer strong when emphasis matters.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>strong carries semantic meaning — screen readers and search engines treat it as important content. b only makes text visually bold with no semantic meaning. Always prefer strong.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
@@ -458,9 +465,9 @@ html.light .toggle-lbl{left:6px;right:auto}
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
         <div class="chal-title">Formatted Article</div>
-        <div class="chal-desc">Write an article using strong, em, mark, sub or sup, del/ins, and blockquote.</div>
+        <div class="chal-desc">Write an article using strong, em, mark, sub/sup, del/ins, and blockquote.</div>
         <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
-<div class="c-req" id="cr0"><span class="c-dot"></span><span>paragraph</span></div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>paragraphs</span></div>
 <div class="c-req" id="cr1"><span class="c-dot"></span><span>strong or em</span></div>
 <div class="c-req" id="cr2"><span class="c-dot"></span><span>mark del or ins</span></div>
 <div class="c-req" id="cr3"><span class="c-dot"></span><span>blockquote or code</span></div>
@@ -484,7 +491,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 4</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -504,22 +511,23 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, or any coding topic..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
 
 
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=4,LT='Paragraphs & Text',TOTAL=22,QA=1;
 var REQS=[
-{label:'paragraph',chk:function(c){return !!((c.match(/<p/gi)||[]).length>=2)}},
+{label:'paragraphs',chk:function(c){return !!((c.match(/<p/gi)||[]).length>=2)}},
 {label:'strong or em',chk:function(c){return !!(c.indexOf('<strong')>-1||c.indexOf('<em')>-1)}},
 {label:'mark del or ins',chk:function(c){return !!(c.indexOf('<mark')>-1||c.indexOf('<del')>-1||c.indexOf('<ins')>-1)}},
 {label:'blockquote or code',chk:function(c){return !!(c.indexOf('<blockquote')>-1||c.indexOf('<code')>-1)}},
 {label:'sub or sup',chk:function(c){return !!(c.indexOf('<sub')>-1||c.indexOf('<sup')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Web Technologies 2026</title>\n</head>\n<body>\n\n  <h1>Web Technologies in 2026</h1>\n\n  <p>The three core web technologies are <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.</p>\n\n  <h2>HTML  The Skeleton</h2>\n  <p>HTML provides the <em>structure</em> and <em>content</em> of a webpage.\n  Without HTML, there would be nothing to style or interact with.</p>\n\n  <h2>CSS  The Design</h2>\n  <p>CSS makes HTML look beautiful. Colors, fonts, layouts  all CSS.</p>\n  <p>Price to learn: <del>Very Expensive</del> <ins>Completely Free at CIWeb!</ins></p>\n\n  <h2>JavaScript  The Logic</h2>\n  <p>JavaScript runs <code>functions</code> and handles user interactions.</p>\n  <p>Fun fact: Water (H<sub>2</sub>O) and Einstein (E=mc<sup>2</sup>) use sub and sup tags!</p>\n\n  <blockquote>\n    The web is for everyone. Learn it for free at CIWeb.\n    <footer> CIWeb Mission</footer>\n  </blockquote>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Web Technologies 2026</title>\n</head>\n<body>\n\n  <h1>Web Technologies in 2026</h1>\n\n  <p>The three core web technologies are <strong>HTML</strong>, <strong>CSS</strong>, and <strong>JavaScript</strong>.</p>\n\n  <h2>HTML</h2>\n  <p>HTML provides the <em>structure</em> of a webpage. Every website starts here.</p>\n\n  <h2>CSS</h2>\n  <p>CSS makes HTML look beautiful. Colors, fonts, layouts.</p>\n  <p>Price to learn: <del>Very Expensive</del> <ins>Completely Free at CIWeb!</ins></p>\n\n  <h2>JavaScript</h2>\n  <p>JavaScript runs <code>functions</code> and handles user interactions.</p>\n  <p>Fun fact: Water is H<sub>2</sub>O and Einstein\'s famous formula is E=mc<sup>2</sup></p>\n\n  <blockquote>\n    Start with HTML. Everything else will follow.\n    <footer>-- CIWeb</footer>\n  </blockquote>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -616,26 +624,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
-  var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
-}
-function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();
-  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
+  var problems=[];
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -738,20 +748,32 @@ var AI=(function(){
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
       var code=window._ed?window._ed.doc.getValue():'';
-      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
       fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
     },
     deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
       if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
-      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
-      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
       .then(function(r){return r.json();})
-      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
-      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
     },
     open:function(){if(!this._open)this.toggle();}
   };
@@ -814,6 +836,103 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 
+
+
+function deepAnalyze(){
+  var code = window._ed ? window._ed.doc.getValue() : '';
+  if(!code.trim()){ toast('Write some code first!','o'); return; }
+
+  var issues = [], tips = [];
+
+  // 1. Tag balance - count mathematically
+  var tags = ['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var re_o = new RegExp('<' + t + '(\\s[^>]*)?>','gi');
+    var re_c = new RegExp('<\\/' + t + '>','gi');
+    var o = (code.match(re_o)||[]).length;
+    var c = (code.match(re_c)||[]).length;
+    if(o > c) issues.push(t + ' tag not closed (' + o + ' open, ' + c + ' closed)');
+    if(c > o) issues.push('Extra </' + t + '> found (' + c + ' closing, ' + o + ' opening)');
+  });
+
+  // 2. img checks
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img)) issues.push('img missing alt attribute');
+    if(!/\bloading=/i.test(img)) tips.push('img: add loading="lazy" for better performance');
+  });
+
+  // 3. a with target blank
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a) && !/noopener/i.test(a))
+      issues.push('a with target="_blank" missing rel="noopener noreferrer"');
+  });
+
+  // 4. Document structure hints
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code)) issues.push('Missing <title> tag in <head>');
+    if(!/<meta[^>]+charset/i.test(code)) tips.push('Add <meta charset="UTF-8"/> to <head>');
+    if(!/<meta[^>]+viewport/i.test(code)) tips.push('Add viewport meta tag for mobile');
+  }
+  var h1c = (code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c > 1) issues.push('Found ' + h1c + ' h1 tags - use only ONE h1 per page');
+  if(/<body/i.test(code) && h1c === 0) tips.push('No h1 found - add a main heading for SEO');
+
+  // 5. Semantic hints
+  if(/<b[\s>]|<\/b>/i.test(code) && !/<strong/i.test(code))
+    tips.push('Use <strong> instead of <b> for semantic meaning');
+  if(/<i[\s>]|<\/i>/i.test(code) && !/<em/i.test(code))
+    tips.push('Use <em> instead of <i> for semantic meaning');
+
+  // Show in the hint bar area
+  showDA(issues, tips, code.length);
+}
+
+function showDA(issues, tips, len){
+  // Use the existing hint-bar area - inject a result panel right after it
+  var hbar = document.querySelector('.hint-bar');
+  if(!hbar) return;
+  var old = document.getElementById('da-result');
+  if(old) old.remove();
+
+  var panel = document.createElement('div');
+  panel.id = 'da-result';
+  panel.style.cssText = 'background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+
+  var closeBtn = '<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.95rem;line-height:1">&#10005;</button>';
+
+  var allGood = issues.length === 0 && tips.length === 0;
+  var html = closeBtn;
+  html += '<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">';
+  html += '&#128269; Analysis of ' + len + ' chars</div>';
+
+  if(allGood){
+    html += '<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. No errors found!</div>';
+  } else {
+    if(issues.length){
+      html += '<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; ' + issues.length + ' Error' + (issues.length>1?'s':'') + ':</div>';
+      issues.forEach(function(e,i){
+        html += '<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">';
+        html += (i+1) + '. ' + e + '</div>';
+      });
+    } else {
+      html += '<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; No syntax errors - all tags balanced</div>';
+    }
+    if(tips.length){
+      html += '<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; ' + tips.length + ' Tip' + (tips.length>1?'s':'') + ':</div>';
+      tips.forEach(function(t,i){
+        html += '<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">';
+        html += (i+1) + '. ' + t + '</div>';
+      });
+    }
+  }
+  html += '<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For SEO &amp; accessibility advice, ask Shiv AI below.</div>';
+
+  panel.innerHTML = html;
+  hbar.parentNode.insertBefore(panel, hbar.nextSibling);
+}
 
 </script>
 </body>
