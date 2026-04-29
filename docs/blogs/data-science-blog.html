@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Science: The Complete Guide — CIWeb</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Lora:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#04070d;--surface:#080f1c;--surface2:#0d1828;--surface3:#111f33;
+  --green:#00ff88;--blue:#00aaff;--purple:#9b5de5;--orange:#ff6b35;--pink:#ff006e;--yellow:#ffd60a;
+  --text:#dde4f0;--muted:#5a6a85;--border:rgba(255,255,255,0.06);
+  --accent:var(--green);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Lora',serif;overflow-x:hidden;line-height:1.7;}
+@media(pointer:fine){body{cursor:none;}}
+#cur{position:fixed;width:10px;height:10px;background:var(--green);border-radius:50%;pointer-events:none;z-index:9999;mix-blend-mode:screen;transition:transform .1s;}
+#cur-r{position:fixed;width:30px;height:30px;border:1px solid rgba(0,255,136,.4);border-radius:50%;pointer-events:none;z-index:9998;transition:all .2s ease;}
+@media(pointer:coarse){#cur,#cur-r{display:none;}}
+
+/* NOISE */
+body::after{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:999;}
+
+/* LANG TOGGLE */
+#lt{position:fixed;bottom:24px;right:24px;z-index:700;background:rgba(8,15,28,.9);border:1px solid rgba(0,255,136,.25);border-radius:40px;padding:9px 16px;display:flex;align-items:center;gap:9px;cursor:pointer;backdrop-filter:blur(12px);transition:all .3s;animation:glow 3s infinite;}
+#lt:hover{border-color:var(--green);box-shadow:0 0 20px rgba(0,255,136,.2);}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(0,255,136,.2);}50%{box-shadow:0 0 16px 2px rgba(0,255,136,.1);}}
+.lt-label{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:1.5px;color:var(--green);text-transform:uppercase;}
+.lt-sw{width:34px;height:18px;background:rgba(255,255,255,.08);border-radius:9px;position:relative;transition:background .3s;}
+.lt-sw::after{content:'';position:absolute;width:12px;height:12px;background:var(--muted);border-radius:50%;top:3px;left:3px;transition:all .3s;}
+.lang-hi #lt{border-color:rgba(0,255,136,.6);}
+.lang-hi .lt-sw{background:rgba(0,255,136,.25);}
+.lang-hi .lt-sw::after{left:19px;background:var(--green);}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:600;display:flex;align-items:center;justify-content:space-between;padding:.9rem 2rem;backdrop-filter:blur(24px);background:rgba(4,7,13,.8);border-bottom:1px solid var(--border);}
+.nav-brand{display:flex;align-items:center;gap:10px;text-decoration:none;}
+.nav-ci{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.9rem;color:#000;flex-shrink:0;}
+.nav-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.15rem;color:var(--green);letter-spacing:2px;}
+.nav-sub{font-family:'JetBrains Mono',monospace;font-size:.48rem;color:var(--muted);letter-spacing:1px;display:block;}
+.nav-pills{display:flex;gap:.5rem;}
+.nav-pill{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);text-decoration:none;padding:.35rem .8rem;border-radius:20px;border:1px solid transparent;transition:all .3s;}
+.nav-pill:hover{color:var(--green);border-color:rgba(0,255,136,.3);}
+.hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px;}
+.hbg span{display:block;width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s;}
+.mmenu{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(4,7,13,.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);z-index:599;padding:1.5rem;flex-direction:column;gap:.8rem;}
+.mmenu.open{display:flex;}
+.mmenu a{font-family:'JetBrains Mono',monospace;font-size:.75rem;color:var(--muted);text-decoration:none;letter-spacing:2px;text-transform:uppercase;padding:.5rem 0;border-bottom:1px solid var(--border);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;place-items:center;position:relative;overflow:hidden;padding:5rem 1.5rem 3rem;}
+.hero-bg{position:absolute;inset:0;}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,255,136,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,255,136,.03) 1px,transparent 1px);background-size:48px 48px;}
+.hero-orb1{position:absolute;width:min(600px,90vw);height:min(600px,90vw);border-radius:50%;background:radial-gradient(circle,rgba(0,255,136,.12),transparent 65%);top:-20%;left:-15%;filter:blur(60px);animation:drift 12s ease-in-out infinite alternate;}
+.hero-orb2{position:absolute;width:min(400px,70vw);height:min(400px,70vw);border-radius:50%;background:radial-gradient(circle,rgba(0,170,255,.1),transparent 65%);bottom:-15%;right:-10%;filter:blur(60px);animation:drift 10s ease-in-out infinite alternate-reverse;}
+.hero-orb3{position:absolute;width:min(300px,50vw);height:min(300px,50vw);border-radius:50%;background:radial-gradient(circle,rgba(155,93,229,.1),transparent 65%);top:40%;right:20%;filter:blur(80px);animation:drift 14s ease-in-out infinite alternate;}
+@keyframes drift{from{transform:translate(0,0) scale(1);}to{transform:translate(40px,30px) scale(1.08);}}
+.hero-inner{position:relative;text-align:center;max-width:900px;}
+.hero-eyebrow{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:5px;color:var(--green);text-transform:uppercase;margin-bottom:1.5rem;opacity:0;animation:up .8s .2s forwards;}
+.hero-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.8rem,10vw,7rem);line-height:.95;letter-spacing:-2px;margin-bottom:1.5rem;opacity:0;animation:up .8s .4s forwards;}
+.ht-ds{background:linear-gradient(135deg,var(--green),var(--blue));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.ht-sub{color:var(--muted);}
+.hero-desc{font-size:clamp(.95rem,2.5vw,1.1rem);color:var(--muted);max-width:600px;margin:0 auto 2.5rem;opacity:0;animation:up .8s .6s forwards;line-height:1.9;}
+.hero-stats{display:flex;gap:2rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.5rem;opacity:0;animation:up .8s .8s forwards;}
+.hstat{text-align:center;}
+.hstat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.5rem,4vw,2.2rem);color:var(--green);line-height:1;}
+.hstat-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:.3rem;}
+.hero-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;opacity:0;animation:up .8s 1s forwards;}
+.btn-primary{padding:.85rem 2rem;background:var(--green);color:#000;border:none;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:#00cc6e;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,255,136,.3);}
+.btn-ghost{padding:.85rem 2rem;background:transparent;color:var(--text);border:1px solid var(--border);border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;letter-spacing:1px;cursor:pointer;transition:all .3s;text-decoration:none;display:inline-block;}
+.btn-ghost:hover{border-color:var(--green);color:var(--green);}
+.scroll-ind{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);opacity:0;animation:up .8s 1.2s forwards,bounce 2s 2s infinite;}
+.scroll-ind span{font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:3px;color:var(--muted);text-transform:uppercase;}
+@keyframes up{from{opacity:0;transform:translateY(30px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(8px);}}
+
+/* SECTION SHELL */
+.sec{position:relative;}
+.sec-in{max-width:1100px;margin:0 auto;padding:5rem 1.5rem;}
+.sec-label{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:4px;text-transform:uppercase;color:var(--green);margin-bottom:.8rem;}
+.sec-title{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(1.8rem,5vw,3.5rem);line-height:1.05;margin-bottom:2rem;}
+.sec-desc{color:var(--muted);font-size:clamp(.88rem,2vw,1rem);max-width:620px;line-height:1.9;margin-bottom:2.5rem;}
+
+/* WHAT IS DS */
+.wds-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2rem;}
+.wds-card{padding:2rem;border-radius:12px;border:1px solid var(--border);background:var(--surface);position:relative;overflow:hidden;transition:transform .3s,border-color .3s;}
+.wds-card::before{content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;}
+.wds-card:hover{transform:translateY(-4px);}
+.wds-card:hover::before{opacity:1;}
+.wds-c1{border-color:rgba(0,255,136,.2);}
+.wds-c1::before{background:radial-gradient(circle at 30% 30%,rgba(0,255,136,.05),transparent 60%);}
+.wds-c1:hover{border-color:rgba(0,255,136,.4);}
+.wds-c2{border-color:rgba(0,170,255,.2);}
+.wds-c2::before{background:radial-gradient(circle at 70% 30%,rgba(0,170,255,.05),transparent 60%);}
+.wds-c2:hover{border-color:rgba(0,170,255,.4);}
+.wds-c3{border-color:rgba(155,93,229,.2);}
+.wds-c3::before{background:radial-gradient(circle at 30% 70%,rgba(155,93,229,.05),transparent 60%);}
+.wds-c3:hover{border-color:rgba(155,93,229,.4);}
+.wds-c4{border-color:rgba(255,107,53,.2);}
+.wds-c4::before{background:radial-gradient(circle at 70% 70%,rgba(255,107,53,.05),transparent 60%);}
+.wds-c4:hover{border-color:rgba(255,107,53,.4);}
+.wds-icon{font-size:2.2rem;margin-bottom:1rem;display:block;}
+.wds-card h3{font-family:'Syne',sans-serif;font-weight:700;font-size:1.15rem;margin-bottom:.6rem;}
+.wds-card p{font-size:.88rem;color:var(--muted);line-height:1.8;}
+
+/* LIFECYCLE */
+.lc-track{display:flex;gap:0;margin-top:2rem;overflow-x:auto;padding-bottom:1rem;}
+.lc-step{flex:1;min-width:140px;padding:1.5rem 1rem;border:1px solid var(--border);background:var(--surface);position:relative;cursor:pointer;transition:all .3s;}
+.lc-step:not(:last-child)::after{content:'→';position:absolute;right:-14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:.9rem;z-index:2;background:var(--bg);padding:0 2px;}
+.lc-step:hover,.lc-step.active{border-color:var(--green);background:rgba(0,255,136,.04);}
+.lc-step.active .lc-num{color:var(--green);}
+.lc-num{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:2px;margin-bottom:.5rem;}
+.lc-step h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.4rem;}
+.lc-step p{font-size:.75rem;color:var(--muted);line-height:1.6;display:none;}
+.lc-step.active p{display:block;color:var(--text);}
+.lc-emoji{font-size:1.5rem;margin-bottom:.6rem;display:block;}
+.lc-detail{margin-top:1.5rem;padding:1.5rem;border:1px solid rgba(0,255,136,.15);border-radius:10px;background:rgba(0,255,136,.03);display:none;}
+.lc-detail.show{display:block;}
+.lc-detail h4{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;color:var(--green);margin-bottom:.8rem;}
+.lc-detail p{color:var(--muted);font-size:.9rem;line-height:1.8;}
+.lc-detail ul{margin-top:.8rem;padding-left:1.2rem;}
+.lc-detail ul li{color:var(--muted);font-size:.85rem;line-height:1.8;margin-bottom:.3rem;}
+.lc-detail ul li strong{color:var(--text);}
+
+/* DS VENN / SKILLS */
+.venn-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-top:2rem;}
+.venn-svg{width:100%;max-width:380px;margin:0 auto;}
+.venn-list{display:flex;flex-direction:column;gap:.8rem;}
+.venn-item{display:flex;align-items:flex-start;gap:.8rem;padding:1rem;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:all .3s;}
+.venn-item:hover{border-color:rgba(0,255,136,.3);transform:translateX(5px);}
+.vi-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;margin-top:.35rem;}
+.vi-content h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.2rem;}
+.vi-content p{font-size:.78rem;color:var(--muted);line-height:1.6;}
+
+/* ALGO CARDS */
+.algo-tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.5rem;}
+.algo-tab{font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:1.5px;text-transform:uppercase;padding:.5rem 1rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .3s;}
+.algo-tab.active,.algo-tab:hover{border-color:var(--green);color:var(--green);background:rgba(0,255,136,.06);}
+.algo-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+.algo-card{padding:1.4rem;border-radius:10px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:all .3s;position:relative;overflow:hidden;}
+.algo-card::before{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:var(--accent);transform:scaleX(0);transition:transform .3s;}
+.algo-card:hover::before{transform:scaleX(1);}
+.algo-card:hover{border-color:rgba(0,255,136,.25);transform:translateY(-3px);}
+.algo-card-icon{font-size:1.6rem;margin-bottom:.6rem;display:block;}
+.algo-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.3rem;}
+.algo-card p{font-size:.75rem;color:var(--muted);line-height:1.6;}
+.algo-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;margin-top:.5rem;}
+.tag-sup{background:rgba(0,255,136,.1);color:var(--green);}
+.tag-unsup{background:rgba(0,170,255,.1);color:var(--blue);}
+.tag-re{background:rgba(155,93,229,.1);color:var(--purple);}
+.tag-dl{background:rgba(255,0,110,.1);color:var(--pink);}
+
+/* INTERACTIVE CHART */
+.chart-sec{background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.chart-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-top:2rem;}
+.chart-controls{display:flex;flex-direction:column;gap:1rem;}
+.ctrl-card{padding:1.2rem;border-radius:8px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;transition:all .3s;}
+.ctrl-card.active{border-color:var(--green);background:rgba(0,255,136,.04);}
+.ctrl-card:hover{border-color:rgba(0,255,136,.3);}
+.ctrl-card h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;margin-bottom:.3rem;}
+.ctrl-card p{font-size:.75rem;color:var(--muted);}
+#vis-canvas{width:100%;height:320px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);cursor:crosshair;}
+
+/* TOOLS ECOSYSTEM */
+.tools-orbit{position:relative;margin:3rem auto;width:min(400px,90vw);height:min(400px,90vw);}
+.orbit-center{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:.75rem;color:#000;text-align:center;z-index:5;}
+.orbit-ring{position:absolute;top:50%;left:50%;border-radius:50%;border:1px dashed rgba(0,255,136,.15);transform:translate(-50%,-50%);}
+.or1{width:calc(100% - 20px);height:calc(100% - 20px);}
+.or2{width:calc(70% - 10px);height:calc(70% - 10px);}
+.orbit-item{position:absolute;width:60px;height:60px;border-radius:12px;background:var(--surface2);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:1.3rem;cursor:pointer;transition:all .3s;z-index:4;}
+.orbit-item:hover{border-color:var(--green);transform:scale(1.15)!important;z-index:10;}
+.orbit-item span{font-family:'JetBrains Mono',monospace;font-size:.45rem;letter-spacing:1px;color:var(--muted);margin-top:2px;}
+.tools-list{display:flex;flex-direction:column;gap:.8rem;margin-top:2rem;}
+.tool-row{display:flex;align-items:center;gap:1rem;padding:1rem;border-radius:8px;border:1px solid var(--border);background:var(--surface);cursor:pointer;transition:all .3s;}
+.tool-row:hover{border-color:rgba(0,255,136,.3);transform:translateX(4px);}
+.tool-row-icon{font-size:1.4rem;flex-shrink:0;}
+.tool-row-info h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;margin-bottom:.2rem;}
+.tool-row-info p{font-size:.76rem;color:var(--muted);}
+.tool-row-tag{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.52rem;letter-spacing:1px;text-transform:uppercase;padding:.25rem .6rem;border-radius:4px;flex-shrink:0;}
+.tr-python{background:rgba(0,255,136,.1);color:var(--green);}
+.tr-viz{background:rgba(0,170,255,.1);color:var(--blue);}
+.tr-ml{background:rgba(155,93,229,.1);color:var(--purple);}
+.tr-db{background:rgba(255,107,53,.1);color:var(--orange);}
+
+/* SALARY / CAREER */
+.career-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.2rem;margin-top:2rem;}
+.career-card{padding:1.5rem;border-radius:12px;border:1px solid var(--border);background:var(--surface);transition:all .3s;}
+.career-card:hover{transform:translateY(-4px);border-color:rgba(0,255,136,.3);}
+.cc-role{font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem;}
+.cc-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:.4rem;}
+.cc-sal{font-family:'Syne',sans-serif;font-weight:800;font-size:1.3rem;color:var(--green);margin-bottom:.8rem;}
+.cc-bar-wrap{height:6px;border-radius:3px;background:rgba(255,255,255,.06);overflow:hidden;margin-bottom:.8rem;}
+.cc-bar{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--green),var(--blue));transition:width 1.2s cubic-bezier(.34,1.56,.64,1);}
+.cc-skills{display:flex;flex-wrap:wrap;gap:.3rem;}
+.cc-skill{font-family:'JetBrains Mono',monospace;font-size:.5rem;letter-spacing:1px;text-transform:uppercase;padding:.2rem .5rem;border-radius:3px;background:rgba(255,255,255,.04);color:var(--muted);}
+
+/* STATISTICS INTERACTIVE */
+.stats-demo{background:var(--surface);border-radius:16px;border:1px solid var(--border);padding:2rem;margin-top:2rem;}
+.stats-tabs{display:flex;gap:.5rem;margin-bottom:1.5rem;flex-wrap:wrap;}
+.stats-tab{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:1.5px;text-transform:uppercase;padding:.45rem .9rem;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--muted);cursor:pointer;transition:all .3s;}
+.stats-tab.active{border-color:var(--blue);color:var(--blue);background:rgba(0,170,255,.06);}
+#stats-canvas{width:100%;height:280px;border-radius:8px;background:var(--surface2);display:block;}
+.stats-info{margin-top:1.2rem;padding:1rem;border-radius:8px;background:var(--surface2);border:1px solid var(--border);}
+.stats-info h4{font-family:'Syne',sans-serif;font-weight:700;font-size:.95rem;margin-bottom:.4rem;color:var(--blue);}
+.stats-info p{font-size:.83rem;color:var(--muted);line-height:1.7;}
+
+/* ROADMAP */
+.roadmap{margin-top:2rem;}
+.rm-phase{margin-bottom:2rem;}
+.rm-phase-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;cursor:pointer;}
+.rm-phase-num{width:36px;height:36px;border-radius:50%;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--muted);flex-shrink:0;transition:all .3s;}
+.rm-phase.open .rm-phase-num{border-color:var(--green);color:var(--green);}
+.rm-phase-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1.1rem;}
+.rm-phase-dur{margin-left:auto;font-family:'JetBrains Mono',monospace;font-size:.58rem;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:.25rem .7rem;border-radius:20px;border:1px solid var(--border);}
+.rm-items{display:none;padding-left:1.8rem;border-left:1px solid rgba(0,255,136,.15);margin-left:17px;}
+.rm-phase.open .rm-items{display:flex;flex-direction:column;gap:.6rem;}
+.rm-item{display:flex;align-items:flex-start;gap:.8rem;padding:.8rem 1rem;border-radius:8px;background:var(--surface);border:1px solid var(--border);transition:all .3s;}
+.rm-item:hover{border-color:rgba(0,255,136,.2);}
+.rm-item-icon{font-size:1.1rem;flex-shrink:0;}
+.rm-item h5{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;margin-bottom:.2rem;}
+.rm-item p{font-size:.76rem;color:var(--muted);line-height:1.6;}
+
+/* QUIZ */
+.quiz-shell{background:var(--surface2);border-radius:16px;border:1px solid var(--border);padding:clamp(1.5rem,4vw,2.5rem);max-width:700px;margin:2rem auto 0;}
+.qprog{display:flex;gap:4px;margin-bottom:1.5rem;}
+.qd{flex:1;height:3px;border-radius:2px;background:rgba(255,255,255,.06);transition:background .4s;}
+.qd.done{background:rgba(0,255,136,.4);}
+.qd.act{background:var(--green);}
+.q-text{font-family:'Syne',sans-serif;font-weight:700;font-size:clamp(1.1rem,3vw,1.5rem);line-height:1.25;margin-bottom:1.2rem;min-height:52px;}
+.q-opts{display:flex;flex-direction:column;gap:.65rem;}
+.q-opt{padding:.85rem 1.1rem;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:transparent;color:var(--text);font-family:'Lora',serif;font-size:.9rem;cursor:pointer;text-align:left;transition:all .25s;}
+.q-opt:hover{border-color:var(--green);background:rgba(0,255,136,.04);transform:translateX(4px);}
+.q-opt.correct{border-color:#00ff88;background:rgba(0,255,136,.08);color:#00ff88;}
+.q-opt.wrong{border-color:var(--pink);background:rgba(255,0,110,.08);color:var(--pink);}
+.q-fb{margin-top:1rem;padding:.9rem 1.1rem;border-radius:8px;font-size:.84rem;line-height:1.6;display:none;}
+.q-fb.show{display:block;}
+.q-fb.cfb{background:rgba(0,255,136,.06);color:#69f0ae;border:1px solid rgba(0,255,136,.2);}
+.q-fb.wfb{background:rgba(255,0,110,.06);color:#ff80ab;border:1px solid rgba(255,0,110,.2);}
+.q-next{margin-top:1rem;padding:.8rem 2rem;background:var(--green);color:#000;border:none;border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px;cursor:pointer;display:none;transition:all .25s;}
+.q-next.show{display:inline-block;}
+.q-next:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,255,136,.3);}
+.q-score{text-align:center;display:none;}
+.q-score h3{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2rem,6vw,3rem);color:var(--green);margin-bottom:.5rem;}
+.q-score p{color:var(--muted);margin-bottom:1.5rem;}
+.q-restart{padding:.8rem 2rem;background:transparent;color:var(--green);border:1px solid var(--green);border-radius:6px;font-family:'Syne',sans-serif;font-weight:700;font-size:.8rem;letter-spacing:1px;cursor:pointer;transition:all .3s;}
+.q-restart:hover{background:var(--green);color:#000;}
+
+/* FOOTER */
+footer{padding:4rem 1.5rem;text-align:center;border-top:1px solid var(--border);background:var(--surface);}
+.foot-brand{display:flex;align-items:center;justify-content:center;gap:10px;text-decoration:none;margin-bottom:.8rem;}
+.foot-ci{width:38px;height:38px;border-radius:9px;background:linear-gradient(135deg,var(--green),var(--blue));display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-weight:800;font-size:1rem;color:#000;}
+.foot-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.5rem;letter-spacing:3px;color:var(--green);}
+.foot-domain{font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);letter-spacing:2px;margin-bottom:1.5rem;}
+.foot-note{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--muted);letter-spacing:1px;}
+
+/* DARK SECTION ALTERNATION */
+.sec-alt{background:var(--surface);}
+
+/* UTILITY */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.55rem;letter-spacing:1.5px;text-transform:uppercase;padding:.25rem .65rem;border-radius:4px;margin:.2rem .2rem .2rem 0;}
+.tag-g{background:rgba(0,255,136,.1);color:var(--green);border:1px solid rgba(0,255,136,.2);}
+.tag-b{background:rgba(0,170,255,.1);color:var(--blue);border:1px solid rgba(0,170,255,.2);}
+.tag-p{background:rgba(155,93,229,.1);color:var(--purple);border:1px solid rgba(155,93,229,.2);}
+.tag-o{background:rgba(255,107,53,.1);color:var(--orange);border:1px solid rgba(255,107,53,.2);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  nav{padding:.8rem 1.2rem;}
+  .nav-pills{display:none;}
+  .hbg{display:flex;}
+  .wds-grid{grid-template-columns:1fr;}
+  .venn-wrap{grid-template-columns:1fr;}
+  .chart-wrap{grid-template-columns:1fr;}
+  .lc-track{flex-direction:column;}
+  .lc-step:not(:last-child)::after{content:'↓';right:auto;top:auto;bottom:-14px;left:50%;transform:translateX(-50%);}
+  .tools-orbit{width:min(300px,90vw);height:min(300px,90vw);}
+  #lt{bottom:14px;right:14px;padding:8px 13px;}
+}
+@media(max-width:480px){
+  .hero{padding:4.5rem 1rem 3rem;}
+  .hero-stats{gap:1.2rem;}
+  .sec-in{padding:3.5rem 1rem;}
+  .algo-grid{grid-template-columns:1fr 1fr;}
+  .career-grid{grid-template-columns:1fr 1fr;}
+}
+</style>
+</head>
+<body>
+
+<div id="cur"></div>
+<div id="cur-r"></div>
+
+<!-- HINGLISH TOGGLE -->
+<div id="lt" onclick="toggleLang()">
+  <span style="font-size:1.1rem">🇮🇳</span>
+  <span class="lt-label" id="lt-lbl">Hinglish</span>
+  <div class="lt-sw"></div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-brand" href="https://ciweb.in" target="_blank">
+    <div class="nav-ci">CI</div>
+    <div>
+      <div class="nav-name">CIWeb</div>
+      <span class="nav-sub">ciweb.in</span>
+    </div>
+  </a>
+  <div class="nav-pills">
+    <a class="nav-pill" href="#what" data-en="What is DS" data-hi="DS क्या है">What is DS</a>
+    <a class="nav-pill" href="#lifecycle" data-en="Lifecycle" data-hi="Lifecycle">Lifecycle</a>
+    <a class="nav-pill" href="#algorithms" data-en="Algorithms" data-hi="Algorithms">Algorithms</a>
+    <a class="nav-pill" href="#tools" data-en="Tools" data-hi="Tools">Tools</a>
+    <a class="nav-pill" href="#careers" data-en="Careers" data-hi="Careers">Careers</a>
+    <a class="nav-pill" href="#roadmap" data-en="Roadmap" data-hi="Roadmap">Roadmap</a>
+    <a class="nav-pill" href="#quiz" data-en="Quiz" data-hi="Quiz">Quiz</a>
+  </div>
+  <button class="hbg" id="hbg" onclick="toggleMM()" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mmenu" id="mm">
+  <a href="#what" onclick="closeMM()" data-en="What is Data Science" data-hi="Data Science क्या है">What is Data Science</a>
+  <a href="#lifecycle" onclick="closeMM()" data-en="The DS Lifecycle" data-hi="DS Lifecycle">The DS Lifecycle</a>
+  <a href="#algorithms" onclick="closeMM()" data-en="Algorithms" data-hi="Algorithms">Algorithms</a>
+  <a href="#tools" onclick="closeMM()" data-en="Tools & Ecosystem" data-hi="Tools & Ecosystem">Tools & Ecosystem</a>
+  <a href="#careers" onclick="closeMM()" data-en="Careers & Salaries" data-hi="Careers & Salaries">Careers & Salaries</a>
+  <a href="#roadmap" onclick="closeMM()" data-en="Learning Roadmap" data-hi="Learning Roadmap">Learning Roadmap</a>
+  <a href="#quiz" onclick="closeMM()" data-en="Test Yourself" data-hi="Khud Ko Parkhो">Test Yourself</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="hero-grid"></div>
+    <div class="hero-orb1"></div>
+    <div class="hero-orb2"></div>
+    <div class="hero-orb3"></div>
+  </div>
+  <div class="hero-inner">
+    <p class="hero-eyebrow" data-en="// The Complete Interactive Guide — CIWeb.in" data-hi="// Poora Interactive Guide — CIWeb.in">// The Complete Interactive Guide — CIWeb.in</p>
+    <h1 class="hero-title">
+      <span class="ht-ds">Data</span><br>
+      <span class="ht-ds">Science</span><br>
+      <span class="ht-sub">Decoded.</span>
+    </h1>
+    <p class="hero-desc" data-en="From raw data to real insights — explore every corner of Data Science through animations, interactive visualizations, and hands-on learning. No fluff. Just knowledge." data-hi="Raw data se real insights tak — Data Science ke har corner ko animations, interactive visualizations, aur hands-on learning se explore karo. Koi bakwaas nahi. Sirf knowledge.">From raw data to real insights — explore every corner of Data Science through animations, interactive visualizations, and hands-on learning. No fluff. Just knowledge.</p>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-num" id="stat1">0</div><div class="hstat-label" data-en="Topics Covered" data-hi="Topics">Topics Covered</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat2">0</div><div class="hstat-label" data-en="Algorithms" data-hi="Algorithms">Algorithms</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat3">0</div><div class="hstat-label" data-en="Interactive Demos" data-hi="Live Demos">Interactive Demos</div></div>
+      <div class="hstat"><div class="hstat-num" id="stat4">0</div><div class="hstat-label" data-en="Quiz Questions" data-hi="Quiz Sawaal">Quiz Questions</div></div>
+    </div>
+    <div class="hero-ctas">
+      <a class="btn-primary" href="#what" data-en="Start Learning →" data-hi="Seekhna Shuru Karo →">Start Learning →</a>
+      <a class="btn-ghost" href="#roadmap" data-en="View Roadmap" data-hi="Roadmap Dekho">View Roadmap</a>
+    </div>
+  </div>
+  <div class="scroll-ind"><span data-en="↓ scroll to explore ↓" data-hi="↓ neeche scroll karo ↓">↓ scroll to explore ↓</span></div>
+</section>
+
+<!-- WHAT IS DS -->
+<section id="what" class="sec">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 01 — Foundation" data-hi="// 01 — Neev">// 01 — Foundation</p>
+    <h2 class="sec-title reveal" data-en="What is Data Science?" data-hi="Data Science Kya Hai?">What is<br>Data Science?</h2>
+    <p class="sec-desc reveal" data-en="Data Science is the art and science of extracting meaningful knowledge from raw data — combining statistics, computer science, and domain expertise to solve real-world problems." data-hi="Data Science ek art aur science hai raw data se meaningful knowledge nikalne ki — statistics, computer science, aur domain expertise ko combine karke real-world problems solve karne ki.">Data Science is the art and science of extracting meaningful knowledge from raw data — combining statistics, computer science, and domain expertise to solve real-world problems.</p>
+    <div class="wds-grid reveal">
+      <div class="wds-card wds-c1">
+        <span class="wds-icon">📊</span>
+        <h3 data-en="Statistics & Math" data-hi="Statistics & Math">Statistics & Math</h3>
+        <p data-en="The backbone. Probability, distributions, hypothesis testing, linear algebra, and calculus form the language of data science." data-hi="Yahi toh hai asli neev. Probability, distributions, hypothesis testing, linear algebra, aur calculus — yeh sab data science ki language hain.">The backbone. Probability, distributions, hypothesis testing, linear algebra, and calculus form the language of data science.</p>
+      </div>
+      <div class="wds-card wds-c2">
+        <span class="wds-icon">💻</span>
+        <h3 data-en="Programming" data-hi="Programming">Programming</h3>
+        <p data-en="Python and R are the workhorses. Libraries like pandas, NumPy, scikit-learn, and TensorFlow turn algorithms into reality." data-hi="Python aur R sabse zyada use hote hain. Libraries jaise pandas, NumPy, scikit-learn, aur TensorFlow algorithms ko reality mein convert karte hain.">Python and R are the workhorses. Libraries like pandas, NumPy, scikit-learn, and TensorFlow turn algorithms into reality.</p>
+      </div>
+      <div class="wds-card wds-c3">
+        <span class="wds-icon">🧠</span>
+        <h3 data-en="Machine Learning" data-hi="Machine Learning">Machine Learning</h3>
+        <p data-en="Building models that learn patterns from data and make predictions — from simple regressions to complex neural networks." data-hi="Aisa model banana jo data se patterns seekhe aur predictions kare — simple regressions se lekar complex neural networks tak.">Building models that learn patterns from data and make predictions — from simple regressions to complex neural networks.</p>
+      </div>
+      <div class="wds-card wds-c4">
+        <span class="wds-icon">🏢</span>
+        <h3 data-en="Domain Expertise" data-hi="Domain Expertise">Domain Expertise</h3>
+        <p data-en="Knowing your industry — healthcare, finance, e-commerce — is what transforms a good model into a truly valuable solution." data-hi="Apni industry jaanna — healthcare, finance, e-commerce — yahi ek achhe model ko truly valuable solution banata hai.">Knowing your industry — healthcare, finance, e-commerce — transforms a good model into a truly valuable solution.</p>
+      </div>
+    </div>
+
+    <!-- Venn / Skills -->
+    <div style="height:3rem"></div>
+    <p class="sec-label reveal" data-en="// The DS Skill Set" data-hi="// DS Skill Set">// The DS Skill Set</p>
+    <div class="venn-wrap reveal">
+      <svg class="venn-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <radialGradient id="g1" cx="50%" cy="50%"><stop offset="0%" stop-color="#00ff88" stop-opacity=".25"/><stop offset="100%" stop-color="#00ff88" stop-opacity="0"/></radialGradient>
+          <radialGradient id="g2" cx="50%" cy="50%"><stop offset="0%" stop-color="#00aaff" stop-opacity=".25"/><stop offset="100%" stop-color="#00aaff" stop-opacity="0"/></radialGradient>
+          <radialGradient id="g3" cx="50%" cy="50%"><stop offset="0%" stop-color="#9b5de5" stop-opacity=".25"/><stop offset="100%" stop-color="#9b5de5" stop-opacity="0"/></radialGradient>
+        </defs>
+        <circle cx="150" cy="110" r="90" fill="url(#g1)" stroke="rgba(0,255,136,.3)" stroke-width="1"/>
+        <circle cx="105" cy="195" r="90" fill="url(#g2)" stroke="rgba(0,170,255,.3)" stroke-width="1"/>
+        <circle cx="195" cy="195" r="90" fill="url(#g3)" stroke="rgba(155,93,229,.3)" stroke-width="1"/>
+        <text x="150" y="72" text-anchor="middle" fill="#00ff88" font-family="Syne,sans-serif" font-size="11" font-weight="700">Statistics</text>
+        <text x="63" y="225" text-anchor="middle" fill="#00aaff" font-family="Syne,sans-serif" font-size="11" font-weight="700">CS &amp; Coding</text>
+        <text x="237" y="225" text-anchor="middle" fill="#9b5de5" font-family="Syne,sans-serif" font-size="11" font-weight="700">Domain</text>
+        <text x="150" y="152" text-anchor="middle" fill="#ffd60a" font-family="Syne,sans-serif" font-size="13" font-weight="800">DATA</text>
+        <text x="150" y="167" text-anchor="middle" fill="#ffd60a" font-family="Syne,sans-serif" font-size="13" font-weight="800">SCIENCE</text>
+        <text x="110" y="152" text-anchor="middle" fill="#dde4f0" font-family="JetBrains Mono,monospace" font-size="8">ML</text>
+        <text x="190" y="152" text-anchor="middle" fill="#dde4f0" font-family="JetBrains Mono,monospace" font-size="8">Research</text>
+        <text x="150" y="210" text-anchor="middle" fill="#dde4f0" font-family="JetBrains Mono,monospace" font-size="8">DA</text>
+      </svg>
+      <div class="venn-list">
+        <div class="venn-item">
+          <div class="vi-dot" style="background:var(--green)"></div>
+          <div class="vi-content">
+            <h4 data-en="Statistics + CS = Machine Learning" data-hi="Statistics + CS = Machine Learning">Statistics + CS = Machine Learning</h4>
+            <p data-en="Where math meets code — building predictive models." data-hi="Jahan math aur code milte hain — predictive models banana.">Where math meets code — building predictive models.</p>
+          </div>
+        </div>
+        <div class="venn-item">
+          <div class="vi-dot" style="background:var(--blue)"></div>
+          <div class="vi-content">
+            <h4 data-en="CS + Domain = Data Analysis" data-hi="CS + Domain = Data Analysis">CS + Domain = Data Analysis</h4>
+            <p data-en="Using code to extract business insights from data." data-hi="Code use karke business insights nikalna data se.">Using code to extract business insights from data.</p>
+          </div>
+        </div>
+        <div class="venn-item">
+          <div class="vi-dot" style="background:var(--purple)"></div>
+          <div class="vi-content">
+            <h4 data-en="Statistics + Domain = Research" data-hi="Statistics + Domain = Research">Statistics + Domain = Research</h4>
+            <p data-en="Traditional statistical research with domain knowledge." data-hi="Domain knowledge ke saath traditional statistical research.">Traditional statistical research with domain knowledge.</p>
+          </div>
+        </div>
+        <div class="venn-item">
+          <div class="vi-dot" style="background:var(--yellow)"></div>
+          <div class="vi-content">
+            <h4 data-en="All Three = Data Science 🎯" data-hi="Teeno Milaakar = Data Science 🎯">All Three = Data Science 🎯</h4>
+            <p data-en="The unicorn skill — combining all three disciplines." data-hi="Unicorn skill — teeno disciplines ka combination.">The unicorn skill — combining all three disciplines.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LIFECYCLE -->
+<section id="lifecycle" class="sec sec-alt">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 02 — Process" data-hi="// 02 — Process">// 02 — Process</p>
+    <h2 class="sec-title reveal" data-en="The Data Science Lifecycle" data-hi="Data Science Lifecycle">The Data Science<br>Lifecycle</h2>
+    <p class="sec-desc reveal" data-en="Every data science project follows a structured process — from defining the problem to deploying the solution. Click each step to explore." data-hi="Har data science project ek structured process follow karta hai — problem define karne se leke solution deploy karne tak. Har step click karo aur explore karo.">Every data science project follows a structured process — from defining the problem to deploying the solution. Click each step to explore.</p>
+    <div class="lc-track reveal" id="lcTrack">
+      <div class="lc-step active" onclick="lcClick(0)">
+        <span class="lc-emoji">🎯</span>
+        <div class="lc-num">STEP 01</div>
+        <h4 data-en="Problem Definition" data-hi="Problem Define Karo">Problem Definition</h4>
+        <p data-en="Understand what you're solving." data-hi="Samjho kya solve karna hai.">Understand what you're solving.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(1)">
+        <span class="lc-emoji">🗄️</span>
+        <div class="lc-num">STEP 02</div>
+        <h4 data-en="Data Collection" data-hi="Data Collect Karo">Data Collection</h4>
+        <p data-en="Gather the right data sources." data-hi="Sahi data sources ikatha karo.">Gather the right data sources.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(2)">
+        <span class="lc-emoji">🔍</span>
+        <div class="lc-num">STEP 03</div>
+        <h4 data-en="EDA" data-hi="EDA">EDA</h4>
+        <p data-en="Explore and understand your data." data-hi="Data ko explore aur samjho.">Explore and understand your data.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(3)">
+        <span class="lc-emoji">🧹</span>
+        <div class="lc-num">STEP 04</div>
+        <h4 data-en="Data Cleaning" data-hi="Data Saaf Karo">Data Cleaning</h4>
+        <p data-en="Remove noise and fix issues." data-hi="Noise hatao aur issues fix karo.">Remove noise and fix issues.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(4)">
+        <span class="lc-emoji">⚙️</span>
+        <div class="lc-num">STEP 05</div>
+        <h4 data-en="Feature Engineering" data-hi="Feature Engineering">Feature Engineering</h4>
+        <p data-en="Build meaningful input variables." data-hi="Meaningful input variables banao.">Build meaningful input variables.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(5)">
+        <span class="lc-emoji">🤖</span>
+        <div class="lc-num">STEP 06</div>
+        <h4 data-en="Modeling" data-hi="Modeling">Modeling</h4>
+        <p data-en="Train and evaluate your models." data-hi="Models train aur evaluate karo.">Train and evaluate your models.</p>
+      </div>
+      <div class="lc-step" onclick="lcClick(6)">
+        <span class="lc-emoji">🚀</span>
+        <div class="lc-num">STEP 07</div>
+        <h4 data-en="Deployment" data-hi="Deploy Karo">Deployment</h4>
+        <p data-en="Ship it to the real world." data-hi="Real world mein ship karo.">Ship it to the real world.</p>
+      </div>
+    </div>
+    <div class="lc-detail show reveal" id="lcDetail">
+      <h4 id="lcd-title">Problem Definition</h4>
+      <p id="lcd-body">Understanding the business problem is the most crucial — yet most overlooked — step. Ask: What decision will this model support? What does success look like? What data do we have access to? A well-defined problem saves weeks of wasted modeling effort.</p>
+      <ul id="lcd-list">
+        <li><strong>Business Understanding:</strong> Talk to stakeholders. Understand the domain.</li>
+        <li><strong>Define Success Metrics:</strong> Accuracy? Revenue? User satisfaction?</li>
+        <li><strong>Scope the Project:</strong> What's in and what's out.</li>
+        <li><strong>Identify Data Needs:</strong> What data is needed? Does it exist?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- STATISTICS DEMO -->
+<section class="sec">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 03 — Statistics" data-hi="// 03 — Statistics">// 03 — Statistics</p>
+    <h2 class="sec-title reveal" data-en="Statistics: The Language of Data" data-hi="Statistics: Data ki Bhasha">Statistics: The<br>Language of Data</h2>
+    <p class="sec-desc reveal" data-en="Statistics isn't just formulas — it's how we understand uncertainty and draw conclusions. Explore key concepts interactively." data-hi="Statistics sirf formulas nahi hai — yahi hai uncertainty samajhne aur conclusions nikalne ka tarika. Key concepts interactively explore karo.">Statistics isn't just formulas — it's how we understand uncertainty and draw conclusions. Explore key concepts interactively.</p>
+    <div class="stats-demo reveal">
+      <div class="stats-tabs">
+        <button class="stats-tab active" onclick="statTab(0)" data-en="Normal Distribution" data-hi="Normal Distribution">Normal Distribution</button>
+        <button class="stats-tab" onclick="statTab(1)" data-en="Mean vs Median" data-hi="Mean vs Median">Mean vs Median</button>
+        <button class="stats-tab" onclick="statTab(2)" data-en="Correlation" data-hi="Correlation">Correlation</button>
+        <button class="stats-tab" onclick="statTab(3)" data-en="Outliers" data-hi="Outliers">Outliers</button>
+      </div>
+      <canvas id="stats-canvas"></canvas>
+      <div class="stats-info">
+        <h4 id="si-title">Normal Distribution</h4>
+        <p id="si-body">The bell curve appears everywhere in nature and data. Most values cluster around the mean (μ), with fewer values in the tails. In data science, many algorithms assume data follows this distribution. About 68% of data falls within 1 standard deviation (σ) of the mean.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALGORITHMS -->
+<section id="algorithms" class="sec sec-alt">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 04 — Algorithms" data-hi="// 04 — Algorithms">// 04 — Algorithms</p>
+    <h2 class="sec-title reveal" data-en="Core Algorithms" data-hi="Core Algorithms">Core<br>Algorithms</h2>
+    <p class="sec-desc reveal" data-en="From predicting house prices to recognizing images — these are the algorithms powering it all. Filter by type." data-hi="House prices predict karne se leke images recognize karne tak — yeh hain wo algorithms jo sab kuch power karte hain. Type se filter karo.">From predicting house prices to recognizing images — these are the algorithms powering it all. Filter by type.</p>
+    <div class="algo-tabs reveal" id="algoTabs">
+      <button class="algo-tab active" onclick="filterAlgo('all')" data-en="All" data-hi="Sab">All</button>
+      <button class="algo-tab" onclick="filterAlgo('sup')" data-en="Supervised" data-hi="Supervised">Supervised</button>
+      <button class="algo-tab" onclick="filterAlgo('unsup')" data-en="Unsupervised" data-hi="Unsupervised">Unsupervised</button>
+      <button class="algo-tab" onclick="filterAlgo('re')" data-en="Reinforcement" data-hi="Reinforcement">Reinforcement</button>
+      <button class="algo-tab" onclick="filterAlgo('dl')" data-en="Deep Learning" data-hi="Deep Learning">Deep Learning</button>
+    </div>
+    <div class="algo-grid reveal" id="algoGrid"></div>
+  </div>
+</section>
+
+<!-- INTERACTIVE VISUALIZER -->
+<section class="sec">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 05 — Visualizer" data-hi="// 05 — Visualizer">// 05 — Visualizer</p>
+    <h2 class="sec-title reveal" data-en="See Algorithms Think" data-hi="Algorithms Ko Sochte Dekho">See Algorithms<br>Think</h2>
+    <p class="sec-desc reveal" data-en="Click a concept below to see a live animated visualization. Then click on the canvas to interact!" data-hi="Neeche ek concept click karo aur live animated visualization dekho. Phir canvas pe click karo aur interact karo!">Click a concept below to see a live animated visualization. Then click on the canvas to interact!</p>
+    <div class="chart-wrap reveal">
+      <div class="chart-controls">
+        <div class="ctrl-card active" onclick="setVis(0)">
+          <h4 data-en="📈 Linear Regression" data-hi="📈 Linear Regression">📈 Linear Regression</h4>
+          <p data-en="Click canvas to add data points. Watch the line of best fit update." data-hi="Canvas pe click karo data points add karne ke liye. Best fit line update hoti dekho.">Click canvas to add data points. Watch the line of best fit update.</p>
+        </div>
+        <div class="ctrl-card" onclick="setVis(1)">
+          <h4 data-en="🔵 K-Means Clustering" data-hi="🔵 K-Means Clustering">🔵 K-Means Clustering</h4>
+          <p data-en="Points auto-cluster. Watch centroids move toward group centers." data-hi="Points auto-cluster hote hain. Centroids ko group centers ki taraf move karte dekho.">Points auto-cluster. Watch centroids move toward group centers.</p>
+        </div>
+        <div class="ctrl-card" onclick="setVis(2)">
+          <h4 data-en="🌳 Decision Boundary" data-hi="🌳 Decision Boundary">🌳 Decision Boundary</h4>
+          <p data-en="Click to place points and see how classification divides space." data-hi="Points place karo aur dekho classification space ko kaise divide karta hai.">Click to place points and see how classification divides space.</p>
+        </div>
+      </div>
+      <canvas id="vis-canvas"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- TOOLS -->
+<section id="tools" class="sec sec-alt">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 06 — Ecosystem" data-hi="// 06 — Ecosystem">// 06 — Ecosystem</p>
+    <h2 class="sec-title reveal" data-en="Tools & Ecosystem" data-hi="Tools & Ecosystem">Tools &<br>Ecosystem</h2>
+    <p class="sec-desc reveal" data-en="The modern data science stack is rich and powerful. Here are the essential tools every data scientist uses." data-hi="Modern data science stack bahut rich aur powerful hai. Yeh hain wo essential tools jo har data scientist use karta hai.">The modern data science stack is rich and powerful. Here are the essential tools every data scientist uses.</p>
+    <div class="tools-orbit reveal" id="toolsOrbit">
+      <div class="orbit-ring or1"></div>
+      <div class="orbit-ring or2"></div>
+      <div class="orbit-center">DATA<br>SCIENCE<br>STACK</div>
+      <!-- JS will place orbit items -->
+    </div>
+    <div class="tools-list reveal" id="toolsList"></div>
+  </div>
+</section>
+
+<!-- CAREERS -->
+<section id="careers" class="sec">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 07 — Careers" data-hi="// 07 — Careers">// 07 — Careers</p>
+    <h2 class="sec-title reveal" data-en="Careers & Salaries" data-hi="Careers & Salaries">Careers &<br>Salaries</h2>
+    <p class="sec-desc reveal" data-en="Data science is one of the fastest-growing and highest-paying fields. Here's what different roles look like." data-hi="Data science fastest-growing aur highest-paying fields mein se ek hai. Yahan different roles kaisi dikhti hain.">Data science is one of the fastest-growing and highest-paying fields. Here's what different roles look like.</p>
+    <div class="career-grid reveal" id="careerGrid"></div>
+  </div>
+</section>
+
+<!-- ROADMAP -->
+<section id="roadmap" class="sec sec-alt">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 08 — Learning Path" data-hi="// 08 — Seekhne ka Rasta">// 08 — Learning Path</p>
+    <h2 class="sec-title reveal" data-en="Your Learning Roadmap" data-hi="Tumhara Learning Roadmap">Your Learning<br>Roadmap</h2>
+    <p class="sec-desc reveal" data-en="A structured path from zero to data scientist. Click each phase to expand. This roadmap typically takes 6–12 months." data-hi="Zero se data scientist tak ek structured path. Har phase click karo expand karne ke liye. Yeh roadmap typically 6–12 mahine leta hai.">A structured path from zero to data scientist. Click each phase to expand. This roadmap typically takes 6–12 months.</p>
+    <div class="roadmap reveal" id="roadmapEl"></div>
+  </div>
+</section>
+
+<!-- QUIZ -->
+<section id="quiz" class="sec">
+  <div class="sec-in">
+    <p class="sec-label reveal" data-en="// 09 — Test Yourself" data-hi="// 09 — Khud Ko Parkho">// 09 — Test Yourself</p>
+    <h2 class="sec-title reveal" data-en="Knowledge Check" data-hi="Knowledge Check">Knowledge<br>Check</h2>
+    <div class="quiz-shell reveal">
+      <div class="qprog" id="qprog"></div>
+      <div id="qmain">
+        <p class="q-text" id="qtxt"></p>
+        <div class="q-opts" id="qopts"></div>
+        <div class="q-fb" id="qfb"></div>
+        <button class="q-next" id="qnext" onclick="nextQ()">Next →</button>
+      </div>
+      <div class="q-score" id="qscore">
+        <h3 id="qstxt"></h3>
+        <p id="qsmsg"></p>
+        <button class="q-restart" onclick="restartQ()">Try Again</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a class="foot-brand" href="https://ciweb.in" target="_blank">
+    <div class="foot-ci">CI</div>
+    <div class="foot-name">CIWeb</div>
+  </a>
+  <p class="foot-domain">ciweb.in</p>
+  <p class="foot-note" data-en="Original educational content — All rights reserved — Coding Infinite Web" data-hi="Original educational content — All rights reserved — Coding Infinite Web">Original educational content — All rights reserved — Coding Infinite Web</p>
+</footer>
+
+<script>
+/* ===== CURSOR ===== */
+const cur=document.getElementById('cur'),curR=document.getElementById('cur-r');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function ac(){if(cur){cur.style.left=mx-5+'px';cur.style.top=my-5+'px';}rx+=(mx-rx)*.1;ry+=(my-ry)*.1;if(curR){curR.style.left=rx-15+'px';curR.style.top=ry-15+'px';}requestAnimationFrame(ac);})();
+document.querySelectorAll('button,a,input,canvas').forEach(el=>{el.addEventListener('mouseenter',()=>cur&&(cur.style.transform='scale(2.5)'));el.addEventListener('mouseleave',()=>cur&&(cur.style.transform='scale(1)'));});
+
+/* ===== MOBILE MENU ===== */
+function toggleMM(){document.getElementById('mm').classList.toggle('open');}
+function closeMM(){document.getElementById('mm').classList.remove('open');}
+
+/* ===== SCROLL REVEAL ===== */
+const rObs=new IntersectionObserver(ents=>{ents.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*60);});},{threshold:.06});
+document.querySelectorAll('.reveal').forEach(el=>rObs.observe(el));
+
+/* ===== COUNTER ANIMATION ===== */
+function animCount(el,target,suffix=''){
+  let v=0;const step=target/60;
+  const iv=setInterval(()=>{v=Math.min(v+step,target);el.textContent=Math.floor(v)+(suffix);if(v>=target)clearInterval(iv);},20);
+}
+const cObs=new IntersectionObserver(ents=>{if(ents[0].isIntersecting){animCount(document.getElementById('stat1'),9,'+');animCount(document.getElementById('stat2'),20,'+');animCount(document.getElementById('stat3'),5,'');animCount(document.getElementById('stat4'),10,'');cObs.disconnect();}});
+cObs.observe(document.querySelector('.hero-stats'));
+
+/* ===== LANGUAGE TOGGLE ===== */
+let isHi=false;
+function toggleLang(){
+  isHi=!isHi;
+  document.body.classList.toggle('lang-hi',isHi);
+  document.getElementById('lt-lbl').textContent=isHi?'English':'Hinglish';
+  document.querySelectorAll('[data-en]').forEach(el=>{el.textContent=isHi?el.getAttribute('data-hi'):el.getAttribute('data-en');});
+  // Re-render dynamic content
+  renderAlgos(currentFilter);
+  renderLcDetail(currentLcStep);
+  renderStatInfo(currentStatTab);
+  if(qi<questions.length)loadQ();
+}
+
+/* ===== LIFECYCLE ===== */
+let currentLcStep=0;
+const lcData=[
+  {en:{t:'Problem Definition',b:'Understanding the business problem is the most crucial step. Ask: What decision will this model support? What does success look like? A well-defined problem saves weeks of wasted effort.',items:['Business Understanding: Talk to stakeholders and understand the domain.','Define Success Metrics: Accuracy? Revenue? User satisfaction?','Scope the Project: What is in and what is out.','Identify Data Needs: What data exists? What needs to be collected?']},hi:{t:'Problem Define Karo',b:'Business problem samajhna sabse important step hai. Poochho: Yeh model kaunsa decision support karega? Success kaisi dikhegi? Achhi tarah define problem hafte bhar ki mehnat bachati hai.',items:['Business Understanding: Stakeholders se baat karo aur domain samjho.','Success Metrics Define Karo: Accuracy? Revenue? User satisfaction?','Project Scope Karo: Kya andar hai aur kya bahar.','Data Needs Identify Karo: Kaunsa data exist karta hai?']}},
+  {en:{t:'Data Collection',b:'Data is the fuel. You may collect from databases, APIs, web scraping, surveys, sensors, or third-party providers. The quality and quantity of data directly impacts model performance.',items:['Internal Databases: SQL, NoSQL, data warehouses.','External APIs: Public datasets, paid data providers.','Web Scraping: BeautifulSoup, Scrapy for structured websites.','Manual Collection: Surveys, IoT sensors, human annotation.']},hi:{t:'Data Collection',b:'Data hi fuel hai. Data collect ho sakta hai databases, APIs, web scraping, surveys, sensors, ya third-party providers se. Data ki quality aur quantity seedha model performance affect karti hai.',items:['Internal Databases: SQL, NoSQL, data warehouses.','External APIs: Public datasets, paid data providers.','Web Scraping: BeautifulSoup, Scrapy websites ke liye.','Manual Collection: Surveys, IoT sensors, human annotation.']}},
+  {en:{t:'Exploratory Data Analysis (EDA)',b:'Before modeling, explore your data. EDA reveals patterns, distributions, anomalies, and relationships. Great EDA often leads to better features and model choices.',items:['Descriptive Statistics: Mean, median, std, min/max.','Distributions: Are variables normal? Skewed? Bimodal?','Correlations: Which features relate to the target?','Visualizations: Histograms, box plots, scatter plots, heatmaps.']},hi:{t:'Exploratory Data Analysis (EDA)',b:'Modeling se pehle, apna data explore karo. EDA patterns, distributions, anomalies, aur relationships reveal karta hai. Achha EDA better features aur model choices deta hai.',items:['Descriptive Statistics: Mean, median, std, min/max.','Distributions: Variables normal hain? Skewed? Bimodal?','Correlations: Kaunse features target se related hain?','Visualizations: Histograms, box plots, scatter plots, heatmaps.']}},
+  {en:{t:'Data Cleaning',b:'Real-world data is messy. Missing values, duplicates, incorrect formats, and outliers can destroy model performance. Cleaning is often 60-70% of the total project time.',items:['Handle Missing Values: Imputation (mean/median/mode) or removal.','Remove Duplicates: Identical or near-identical records.','Fix Data Types: Strings that should be numbers, wrong date formats.','Handle Outliers: IQR method, Z-score, domain knowledge.']},hi:{t:'Data Saaf Karo',b:'Real-world data bahut messy hota hai. Missing values, duplicates, incorrect formats, aur outliers model performance barbad kar sakte hain. Cleaning often 60-70% project time leta hai.',items:['Missing Values Handle Karo: Imputation (mean/median/mode) ya removal.','Duplicates Hatao: Identical ya near-identical records.','Data Types Fix Karo: Strings jo numbers hone chahiye, wrong date formats.','Outliers Handle Karo: IQR method, Z-score, domain knowledge.']}},
+  {en:{t:'Feature Engineering',b:"Features are the variables your model uses to learn. Good feature engineering can dramatically improve model performance — sometimes more than choosing a better algorithm.",items:["Feature Creation: Combine existing features into new ones.","Feature Selection: Remove irrelevant or redundant features.","Encoding: Convert categorical variables to numbers.","Scaling: Normalize or standardize numerical features."]},hi:{t:'Feature Engineering',b:'Features wo variables hain jo model seekhne ke liye use karta hai. Achhi feature engineering model performance dramatically improve kar sakti hai — kabhi kabhi better algorithm chunne se bhi zyada.',items:['Feature Creation: Existing features combine karke naye banao.','Feature Selection: Irrelevant ya redundant features hatao.','Encoding: Categorical variables ko numbers mein convert karo.','Scaling: Numerical features ko normalize ya standardize karo.']}},
+  {en:{t:'Modeling',b:'Choose, train, and evaluate algorithms. Start simple (linear models) and increase complexity only if needed. Always use proper validation techniques to avoid overfitting.',items:['Baseline Model: Always start with a simple model.','Train/Validation/Test Split: Never touch the test set until the end.','Cross-Validation: K-fold to estimate real-world performance.','Hyperparameter Tuning: Grid search, random search, Bayesian optimization.']},hi:{t:'Modeling',b:'Algorithms choose karo, train karo, aur evaluate karo. Simple se shuru karo (linear models) aur complexity tab badhaao jab zarurat ho. Overfitting avoid karne ke liye proper validation techniques use karo.',items:['Baseline Model: Hamesha simple model se shuru karo.','Train/Val/Test Split: Test set ko end tak mat chhuo.','Cross-Validation: K-fold real-world performance estimate karne ke liye.','Hyperparameter Tuning: Grid search, random search, Bayesian optimization.']}},
+  {en:{t:'Deployment',b:'A model only creates value when it\'s in production. Deployment means integrating your model into applications, APIs, or dashboards that real users interact with.',items:['REST APIs: Flask, FastAPI, Django to serve predictions.','Containerization: Docker for consistent environments.','Monitoring: Track model performance drift over time.','MLOps: CI/CD pipelines for automated retraining.']},hi:{t:'Deployment',b:'Model tabhi value create karta hai jab production mein ho. Deployment matlab hai apna model applications, APIs, ya dashboards mein integrate karna.',items:['REST APIs: Flask, FastAPI, Django predictions serve karne ke liye.','Containerization: Docker consistent environments ke liye.','Monitoring: Model performance drift track karo time ke saath.','MLOps: Automated retraining ke liye CI/CD pipelines.']}}
+];
+function lcClick(i){
+  currentLcStep=i;
+  document.querySelectorAll('.lc-step').forEach((s,idx)=>s.classList.toggle('active',idx===i));
+  renderLcDetail(i);
+}
+function renderLcDetail(i){
+  const lg=isHi?'hi':'en';
+  const d=lcData[i][lg];
+  document.getElementById('lcd-title').textContent=d.t;
+  document.getElementById('lcd-body').textContent=d.b;
+  const ul=document.getElementById('lcd-list');
+  ul.innerHTML=d.items.map(it=>`<li><strong>${it.split(':')[0]}:</strong>${it.includes(':')?it.substring(it.indexOf(':')+1):''}</li>`).join('');
+}
+
+/* ===== STATISTICS CANVAS ===== */
+const sc=document.getElementById('stats-canvas');
+const sctx=sc.getContext('2d');
+let currentStatTab=0;
+const statInfos={
+  en:[
+    {t:'Normal Distribution',b:'The bell curve appears everywhere. Most values cluster around the mean (μ), with fewer values in the tails. About 68% of data falls within 1 standard deviation of the mean, 95% within 2σ, and 99.7% within 3σ.'},
+    {t:'Mean vs Median',b:'Mean is the average — sensitive to outliers. Median is the middle value — robust to extreme values. For skewed data (like income), median is usually more informative. Always look at both!'},
+    {t:'Correlation',b:'Correlation measures the linear relationship between two variables. Values range from -1 (perfect negative) to +1 (perfect positive). 0 means no linear relationship. But correlation ≠ causation!'},
+    {t:'Outliers',b:'Outliers are extreme values that deviate significantly from other observations. They can be data errors, or genuinely important signals. Methods like IQR (box plot), Z-score, and isolation forests help detect them.'}
+  ],
+  hi:[
+    {t:'Normal Distribution',b:'Bell curve har jagah dikhti hai. Zyatdar values mean (μ) ke aas paas cluster hoti hain, tails mein kam values hoti hain. Lagbhag 68% data 1 standard deviation ke andar aata hai, 95% 2σ ke andar, aur 99.7% 3σ ke andar.'},
+    {t:'Mean vs Median',b:'Mean average hota hai — outliers se sensitive hota hai. Median middle value hoti hai — extreme values ke liye robust hoti hai. Skewed data ke liye (jaise income), median usually zyada informative hoti hai.'},
+    {t:'Correlation',b:'Correlation do variables ke beech linear relationship measure karta hai. Values -1 (perfect negative) se +1 (perfect positive) tak hoti hain. 0 matlab koi linear relationship nahi. Lekin correlation ≠ causation!'},
+    {t:'Outliers',b:'Outliers extreme values hain jo doosre observations se significantly alag hoti hain. Yeh data errors ho sakti hain ya genuinely important signals. IQR (box plot), Z-score, aur isolation forests se inhe detect karte hain.'}
+  ]
+};
+function renderStatInfo(i){
+  const lg=isHi?'hi':'en';
+  document.getElementById('si-title').textContent=statInfos[lg][i].t;
+  document.getElementById('si-body').textContent=statInfos[lg][i].b;
+}
+function statTab(i){
+  currentStatTab=i;
+  document.querySelectorAll('.stats-tab').forEach((t,idx)=>t.classList.toggle('active',idx===i));
+  renderStatInfo(i);
+  drawStat(i);
+}
+function resizeSC(){sc.width=sc.offsetWidth;sc.height=sc.offsetHeight;}
+function drawStat(type){
+  resizeSC();
+  const W=sc.width,H=sc.height;
+  sctx.clearRect(0,0,W,H);
+  const pad=40;
+  // axes
+  sctx.strokeStyle='rgba(255,255,255,.1)';sctx.lineWidth=1;
+  sctx.beginPath();sctx.moveTo(pad,pad);sctx.lineTo(pad,H-pad);sctx.lineTo(W-pad,H-pad);sctx.stroke();
+  if(type===0){
+    // Normal dist
+    const mu=W/2,sigma=(W-2*pad)/6;
+    sctx.beginPath();
+    for(let x=pad;x<W-pad;x++){
+      const z=(x-mu)/sigma;
+      const y=(H-pad)-(Math.exp(-.5*z*z)/(sigma*Math.sqrt(2*Math.PI))*(H-2*pad)*sigma*2.5);
+      x===pad?sctx.moveTo(x,y):sctx.lineTo(x,y);
+    }
+    sctx.strokeStyle='rgba(0,255,136,.8)';sctx.lineWidth=2;sctx.stroke();
+    // fill
+    sctx.beginPath();
+    for(let x=pad;x<W-pad;x++){const z=(x-mu)/sigma;const y=(H-pad)-(Math.exp(-.5*z*z)/(sigma*Math.sqrt(2*Math.PI))*(H-2*pad)*sigma*2.5);x===pad?sctx.moveTo(x,y):sctx.lineTo(x,y);}
+    sctx.lineTo(W-pad,H-pad);sctx.lineTo(pad,H-pad);sctx.closePath();
+    sctx.fillStyle='rgba(0,255,136,.07)';sctx.fill();
+    // labels
+    sctx.fillStyle='rgba(0,255,136,.8)';sctx.font=`bold 12px JetBrains Mono,monospace`;sctx.textAlign='center';
+    sctx.fillText('μ',mu,H-pad+16);
+    sctx.fillStyle='rgba(255,255,255,.4)';sctx.font='10px JetBrains Mono,monospace';
+    sctx.fillText('μ-2σ',mu-2*sigma,H-pad+16);sctx.fillText('μ+2σ',mu+2*sigma,H-pad+16);
+    // sigma lines
+    [-2,-1,1,2].forEach(s=>{sctx.beginPath();sctx.moveTo(mu+s*sigma,pad);sctx.lineTo(mu+s*sigma,H-pad);sctx.strokeStyle='rgba(255,255,255,.08)';sctx.lineWidth=1;sctx.setLineDash([4,4]);sctx.stroke();sctx.setLineDash([]);});
+  } else if(type===1){
+    // Mean vs Median — skewed bars
+    const data=[2,3,3,4,4,4,5,5,6,7,8,20];
+    const bw=(W-2*pad)/data.length,maxV=Math.max(...data);
+    data.forEach((v,i)=>{
+      const bh=(v/maxV)*(H-2*pad);
+      sctx.fillStyle='rgba(0,170,255,.5)';
+      sctx.fillRect(pad+i*bw,H-pad-bh,bw-3,bh);
+    });
+    const mean=data.reduce((a,b)=>a+b)/data.length;
+    const sorted=[...data].sort((a,b)=>a-b);
+    const median=(sorted[5]+sorted[6])/2;
+    const meanX=pad+(mean/data.length*(data.length-1)/(maxV)*(H-2*pad)/((H-2*pad)/data.length)*data.length);
+    // simple approximation
+    const mX=pad+(mean/maxV)*(W-2*pad);
+    const medX=pad+(median/maxV)*(W-2*pad);
+    sctx.beginPath();sctx.moveTo(mX,pad);sctx.lineTo(mX,H-pad);sctx.strokeStyle='rgba(255,107,53,.8)';sctx.lineWidth=2;sctx.stroke();
+    sctx.beginPath();sctx.moveTo(medX,pad);sctx.lineTo(medX,H-pad);sctx.strokeStyle='rgba(0,255,136,.8)';sctx.lineWidth=2;sctx.stroke();
+    sctx.fillStyle='rgba(255,107,53,.9)';sctx.font='11px JetBrains Mono,monospace';sctx.textAlign='center';sctx.fillText('MEAN',mX,pad+14);
+    sctx.fillStyle='rgba(0,255,136,.9)';sctx.fillText('MEDIAN',medX,pad+28);
+  } else if(type===2){
+    // Correlation scatter
+    const pts=[];for(let i=0;i<40;i++){const x=Math.random();pts.push({x,y:x*.8+Math.random()*.25-.125});}
+    pts.forEach(p=>{
+      const px=pad+p.x*(W-2*pad),py=(H-pad)-p.y*(H-2*pad);
+      sctx.beginPath();sctx.arc(px,py,5,0,Math.PI*2);sctx.fillStyle='rgba(0,170,255,.7)';sctx.fill();
+    });
+    // regression line
+    const n=pts.length;const mx=pts.reduce((a,p)=>a+p.x,0)/n,my=pts.reduce((a,p)=>a+p.y,0)/n;
+    let num=0,den=0;pts.forEach(p=>{num+=(p.x-mx)*(p.y-my);den+=(p.x-mx)**2;});
+    const slope=num/den,inter=my-slope*mx;
+    sctx.beginPath();sctx.moveTo(pad,H-pad-(inter)*(H-2*pad));sctx.lineTo(W-pad,H-pad-(slope+inter)*(H-2*pad));
+    sctx.strokeStyle='rgba(0,255,136,.8)';sctx.lineWidth=2;sctx.stroke();
+    sctx.fillStyle='rgba(0,255,136,.8)';sctx.font='bold 12px Syne,sans-serif';sctx.textAlign='left';sctx.fillText('r ≈ +0.84',pad+8,pad+18);
+  } else if(type===3){
+    // Outliers box plot style
+    const pts=[12,14,15,14,13,15,16,14,13,15,14,12,13,55,16,14,15,13];
+    const sorted=[...pts].sort((a,b)=>a-b);
+    const q1=sorted[Math.floor(pts.length*.25)],q3=sorted[Math.floor(pts.length*.75)];
+    const scaleX=(x)=>pad+(x/(Math.max(...pts)+5))*(W-2*pad);
+    const yMid=H/2;
+    // IQR box
+    sctx.fillStyle='rgba(0,170,255,.15)';sctx.strokeStyle='rgba(0,170,255,.5)';sctx.lineWidth=1.5;
+    sctx.fillRect(scaleX(q1),yMid-25,scaleX(q3)-scaleX(q1),50);
+    sctx.strokeRect(scaleX(q1),yMid-25,scaleX(q3)-scaleX(q1),50);
+    // median line
+    const med=sorted[Math.floor(pts.length/2)];
+    sctx.beginPath();sctx.moveTo(scaleX(med),yMid-25);sctx.lineTo(scaleX(med),yMid+25);sctx.strokeStyle='rgba(0,255,136,.8)';sctx.lineWidth=2;sctx.stroke();
+    // whiskers
+    const iqr=q3-q1,low=q1-1.5*iqr,high=q3+1.5*iqr;
+    sctx.beginPath();sctx.moveTo(scaleX(Math.max(low,sorted[0])),yMid);sctx.lineTo(scaleX(q1),yMid);
+    sctx.moveTo(scaleX(q3),yMid);sctx.lineTo(scaleX(Math.min(high,sorted[sorted.length-1])),yMid);
+    sctx.strokeStyle='rgba(255,255,255,.4)';sctx.lineWidth=1.5;sctx.stroke();
+    // outlier dots
+    pts.forEach(v=>{
+      if(v<low||v>high){sctx.beginPath();sctx.arc(scaleX(v),yMid,6,0,Math.PI*2);sctx.fillStyle='rgba(255,0,110,.8)';sctx.fill();}
+      else{sctx.beginPath();sctx.arc(scaleX(v),H-pad-10,4,0,Math.PI*2);sctx.fillStyle='rgba(0,170,255,.5)';sctx.fill();}
+    });
+    sctx.fillStyle='rgba(255,0,110,.9)';sctx.font='11px JetBrains Mono,monospace';sctx.textAlign='center';sctx.fillText('OUTLIER',scaleX(55),yMid-16);
+  }
+}
+window.addEventListener('resize',()=>drawStat(currentStatTab));
+setTimeout(()=>drawStat(0),100);
+
+/* ===== ALGORITHMS ===== */
+const algos=[
+  {icon:'📉',name:'Linear Regression',desc:'Predict continuous values by fitting a line through data.',tag:'sup',en:{name:'Linear Regression',desc:'Predict continuous values by fitting a line through data points.'},hi:{name:'Linear Regression',desc:'Data points mein se line fit karke continuous values predict karta hai.'}},
+  {icon:'🔀',name:'Logistic Regression',desc:'Binary classification using a sigmoid probability curve.',tag:'sup',en:{name:'Logistic Regression',desc:'Sigmoid curve use karke binary classification karta hai.'},hi:{name:'Logistic Regression',desc:'Sigmoid curve use karke binary classification karta hai.'}},
+  {icon:'🌳',name:'Decision Tree',desc:'Tree-like decisions splitting data by feature thresholds.',tag:'sup',en:{name:'Decision Tree',desc:'Feature thresholds se data split karke tree-like decisions.'},hi:{name:'Decision Tree',desc:'Feature thresholds se data split karke tree-like decisions.'}},
+  {icon:'🌲',name:'Random Forest',desc:'Ensemble of trees — reduces variance, improves accuracy.',tag:'sup',en:{name:'Random Forest',desc:'Trees ka ensemble — variance reduce karta hai, accuracy improve karta hai.'},hi:{name:'Random Forest',desc:'Trees ka ensemble — variance reduce karta hai, accuracy improve karta hai.'}},
+  {icon:'⚡',name:'XGBoost',desc:'Gradient boosting powerhouse — dominates tabular data.',tag:'sup',en:{name:'XGBoost',desc:'Gradient boosting ka champion — tabular data pe dominate karta hai.'},hi:{name:'XGBoost',desc:'Gradient boosting ka champion — tabular data pe dominate karta hai.'}},
+  {icon:'📐',name:'SVM',desc:'Finds optimal hyperplane separating classes in feature space.',tag:'sup',en:{name:'SVM',desc:'Feature space mein classes separate karne ke liye optimal hyperplane dhundhta hai.'},hi:{name:'SVM',desc:'Feature space mein classes separate karne ke liye optimal hyperplane dhundhta hai.'}},
+  {icon:'👥',name:'KNN',desc:'Classifies by majority vote of K nearest neighbors.',tag:'sup',en:{name:'KNN',desc:'K nearest neighbors ke majority vote se classify karta hai.'},hi:{name:'KNN',desc:'K nearest neighbors ke majority vote se classify karta hai.'}},
+  {icon:'🔵',name:'K-Means',desc:'Partitions data into K clusters by minimizing inertia.',tag:'unsup',en:{name:'K-Means',desc:'Inertia minimize karke data ko K clusters mein partition karta hai.'},hi:{name:'K-Means',desc:'Inertia minimize karke data ko K clusters mein partition karta hai.'}},
+  {icon:'🕸️',name:'DBSCAN',desc:'Density-based clustering — finds arbitrary shaped clusters.',tag:'unsup',en:{name:'DBSCAN',desc:'Density-based clustering — arbitrary shaped clusters dhundha hai.'},hi:{name:'DBSCAN',desc:'Density-based clustering — arbitrary shaped clusters dhundhta hai.'}},
+  {icon:'🗜️',name:'PCA',desc:'Dimensionality reduction by capturing variance in components.',tag:'unsup',en:{name:'PCA',desc:'Components mein variance capture karke dimensionality reduce karta hai.'},hi:{name:'PCA',desc:'Components mein variance capture karke dimensionality reduce karta hai.'}},
+  {icon:'🎮',name:'Q-Learning',desc:'Agent learns optimal actions through rewards and penalties.',tag:'re',en:{name:'Q-Learning',desc:'Agent rewards aur penalties ke through optimal actions seekhta hai.'},hi:{name:'Q-Learning',desc:'Agent rewards aur penalties ke through optimal actions seekhta hai.'}},
+  {icon:'🧠',name:'Neural Network',desc:'Layers of neurons learning hierarchical representations.',tag:'dl',en:{name:'Neural Network',desc:'Neurons ki layers hierarchical representations seekhti hain.'},hi:{name:'Neural Network',desc:'Neurons ki layers hierarchical representations seekhti hain.'}},
+  {icon:'👁️',name:'CNN',desc:'Convolutional filters for image recognition and classification.',tag:'dl',en:{name:'CNN',desc:'Image recognition aur classification ke liye convolutional filters.'},hi:{name:'CNN',desc:'Image recognition aur classification ke liye convolutional filters.'}},
+  {icon:'🔁',name:'LSTM / RNN',desc:'Sequential learning for time series and natural language.',tag:'dl',en:{name:'LSTM / RNN',desc:'Time series aur natural language ke liye sequential learning.'},hi:{name:'LSTM / RNN',desc:'Time series aur natural language ke liye sequential learning.'}},
+  {icon:'🤝',name:'Transformer',desc:'Self-attention mechanism powering modern language models.',tag:'dl',en:{name:'Transformer',desc:'Modern language models ko power karne wala self-attention mechanism.'},hi:{name:'Transformer',desc:'Modern language models ko power karne wala self-attention mechanism.'}}
+];
+let currentFilter='all';
+function filterAlgo(f){
+  currentFilter=f;
+  document.querySelectorAll('.algo-tab').forEach(t=>t.classList.remove('active'));
+  event.target.classList.add('active');
+  renderAlgos(f);
+}
+function renderAlgos(f){
+  const lg=isHi?'hi':'en';
+  const tagLbl={sup:'Supervised',unsup:'Unsupervised',re:'Reinforcement',dl:'Deep Learning'};
+  const tagCls={sup:'tag-sup',unsup:'tag-unsup',re:'tag-re',dl:'tag-dl'};
+  const filtered=f==='all'?algos:algos.filter(a=>a.tag===f);
+  document.getElementById('algoGrid').innerHTML=filtered.map(a=>`
+    <div class="algo-card">
+      <span class="algo-card-icon">${a.icon}</span>
+      <h4>${a[lg].name}</h4>
+      <p>${a[lg].desc}</p>
+      <span class="algo-tag ${tagCls[a.tag]}">${tagLbl[a.tag]}</span>
+    </div>`).join('');
+}
+renderAlgos('all');
+
+/* ===== INTERACTIVE VISUALIZER ===== */
+const vc=document.getElementById('vis-canvas');
+const vctx=vc.getContext('2d');
+let visMode=0,visPoints=[],kmCentroids=[],kmInterval=null;
+function setVis(i){
+  visMode=i;
+  document.querySelectorAll('.ctrl-card').forEach((c,idx)=>c.classList.toggle('active',idx===i));
+  visPoints=[];kmCentroids=[];clearInterval(kmInterval);
+  resizeVC();drawVis();
+  if(i===1)startKmeans();
+}
+function resizeVC(){vc.width=vc.offsetWidth;vc.height=vc.offsetHeight;}
+function drawVis(){
+  const W=vc.width,H=vc.height;
+  vctx.clearRect(0,0,W,H);
+  vctx.fillStyle='rgba(13,24,40,1)';vctx.fillRect(0,0,W,H);
+  // grid
+  vctx.strokeStyle='rgba(255,255,255,.04)';vctx.lineWidth=1;
+  for(let x=0;x<W;x+=40){vctx.beginPath();vctx.moveTo(x,0);vctx.lineTo(x,H);vctx.stroke();}
+  for(let y=0;y<H;y+=40){vctx.beginPath();vctx.moveTo(0,y);vctx.lineTo(W,y);vctx.stroke();}
+  if(visMode===0) drawLinReg(W,H);
+  else if(visMode===1) drawKmeans(W,H);
+  else if(visMode===2) drawDecBound(W,H);
+}
+/* Linear Regression */
+function drawLinReg(W,H){
+  if(visPoints.length===0){
+    vctx.fillStyle='rgba(255,255,255,.2)';vctx.font='13px JetBrains Mono,monospace';vctx.textAlign='center';
+    vctx.fillText('Click to add data points',W/2,H/2);return;
+  }
+  visPoints.forEach(p=>{vctx.beginPath();vctx.arc(p.x,p.y,6,0,Math.PI*2);vctx.fillStyle='rgba(0,170,255,.8)';vctx.fill();});
+  if(visPoints.length>=2){
+    const n=visPoints.length,mx=visPoints.reduce((a,p)=>a+p.x,0)/n,my=visPoints.reduce((a,p)=>a+p.y,0)/n;
+    let num=0,den=0;visPoints.forEach(p=>{num+=(p.x-mx)*(p.y-my);den+=(p.x-mx)**2;});
+    if(den===0)return;
+    const m=num/den,b=my-m*mx;
+    vctx.beginPath();vctx.moveTo(0,m*0+b);vctx.lineTo(W,m*W+b);
+    vctx.strokeStyle='rgba(0,255,136,.8)';vctx.lineWidth=2;vctx.stroke();
+    visPoints.forEach(p=>{const py=m*p.x+b;vctx.beginPath();vctx.moveTo(p.x,p.y);vctx.lineTo(p.x,py);vctx.strokeStyle='rgba(255,107,53,.4)';vctx.lineWidth=1;vctx.stroke();});
+  }
+  vctx.fillStyle='rgba(0,255,136,.7)';vctx.font='11px JetBrains Mono,monospace';vctx.textAlign='left';
+  vctx.fillText(`Points: ${visPoints.length}`,10,20);
+}
+/* K-Means */
+const colors=['rgba(0,255,136,.8)','rgba(0,170,255,.8)','rgba(255,107,53,.8)'];
+function startKmeans(){
+  const W=vc.width,H=vc.height;
+  // Generate random points
+  visPoints=[];for(let i=0;i<60;i++){const cx=[.25,.5,.75][Math.floor(Math.random()*3)];const cy=[.3,.7][Math.floor(Math.random()*2)];visPoints.push({x:(cx+Math.random()*.2-.1)*W,y:(cy+Math.random()*.2-.1)*H,cluster:Math.floor(Math.random()*3)});}
+  // Init centroids
+  kmCentroids=[{x:W*.25,y:H*.4},{x:W*.55,y:H*.5},{x:W*.75,y:H*.6}];
+  drawVis();
+  let iter=0;
+  kmInterval=setInterval(()=>{
+    iter++;
+    // Assign clusters
+    visPoints.forEach(p=>{let best=0,bd=Infinity;kmCentroids.forEach((c,i)=>{const d=Math.hypot(p.x-c.x,p.y-c.y);if(d<bd){bd=d;best=i;}});p.cluster=best;});
+    // Move centroids
+    kmCentroids=kmCentroids.map((c,i)=>{const grp=visPoints.filter(p=>p.cluster===i);if(!grp.length)return c;return{x:grp.reduce((a,p)=>a+p.x,0)/grp.length,y:grp.reduce((a,p)=>a+p.y,0)/grp.length};});
+    drawVis();
+    if(iter>20)clearInterval(kmInterval);
+  },400);
+}
+function drawKmeans(W,H){
+  visPoints.forEach(p=>{vctx.beginPath();vctx.arc(p.x,p.y,5,0,Math.PI*2);vctx.fillStyle=colors[p.cluster||0];vctx.fill();});
+  kmCentroids.forEach((c,i)=>{vctx.beginPath();vctx.arc(c.x,c.y,12,0,Math.PI*2);vctx.fillStyle=colors[i];vctx.fill();vctx.beginPath();vctx.arc(c.x,c.y,20,0,Math.PI*2);vctx.strokeStyle=colors[i];vctx.lineWidth=2;vctx.stroke();});
+  vctx.fillStyle='rgba(255,255,255,.5)';vctx.font='11px JetBrains Mono,monospace';vctx.textAlign='left';vctx.fillText('K-Means: 3 Clusters',10,20);
+}
+/* Decision Boundary */
+let classToggle=0;
+function drawDecBound(W,H){
+  if(visPoints.length===0){vctx.fillStyle='rgba(255,255,255,.2)';vctx.font='13px JetBrains Mono,monospace';vctx.textAlign='center';vctx.fillText('Click to add Class A / Class B points',W/2,H/2);vctx.fillText('(alternates between classes)',W/2,H/2+20);return;}
+  if(visPoints.length>=4){
+    // Simple linear boundary
+    const a=visPoints.filter(p=>p.cls===0),b=visPoints.filter(p=>p.cls===1);
+    if(a.length>0&&b.length>0){
+      const ac={x:a.reduce((s,p)=>s+p.x,0)/a.length,y:a.reduce((s,p)=>s+p.y,0)/a.length};
+      const bc={x:b.reduce((s,p)=>s+p.x,0)/b.length,y:b.reduce((s,p)=>s+p.y,0)/b.length};
+      const mx=(ac.x+bc.x)/2,my=(ac.y+bc.y)/2;
+      const dx=bc.x-ac.x,dy=bc.y-ac.y;
+      const perp={x:-dy,y:dx};
+      const len=Math.hypot(perp.x,perp.y);
+      const scale=Math.max(W,H)/len;
+      vctx.beginPath();vctx.moveTo(mx-perp.x*scale,my-perp.y*scale);vctx.lineTo(mx+perp.x*scale,my+perp.y*scale);
+      vctx.strokeStyle='rgba(255,214,10,.5)';vctx.lineWidth=2;vctx.setLineDash([8,4]);vctx.stroke();vctx.setLineDash([]);
+    }
+  }
+  visPoints.forEach(p=>{vctx.beginPath();vctx.arc(p.x,p.y,7,0,Math.PI*2);vctx.fillStyle=p.cls===0?'rgba(0,255,136,.8)':'rgba(255,107,53,.8)';vctx.fill();vctx.strokeStyle='rgba(255,255,255,.3)';vctx.lineWidth=1;vctx.stroke();});
+  vctx.fillStyle='rgba(255,255,255,.5)';vctx.font='11px JetBrains Mono,monospace';vctx.textAlign='left';
+  vctx.fillStyle='rgba(0,255,136,.8)';vctx.fillText('● Class A',10,20);vctx.fillStyle='rgba(255,107,53,.8)';vctx.fillText('● Class B',10,36);
+}
+vc.addEventListener('click',e=>{
+  const r=vc.getBoundingClientRect();
+  const x=e.clientX-r.left,y=e.clientY-r.top;
+  if(visMode===0){visPoints.push({x,y});drawVis();}
+  else if(visMode===2){visPoints.push({x,y,cls:classToggle});classToggle=1-classToggle;drawVis();}
+});
+vc.addEventListener('touchstart',e=>{e.preventDefault();const r=vc.getBoundingClientRect();const t=e.touches[0];const x=t.clientX-r.left,y=t.clientY-r.top;if(visMode===0){visPoints.push({x,y});drawVis();}else if(visMode===2){visPoints.push({x,y,cls:classToggle});classToggle=1-classToggle;drawVis();}},{passive:false});
+resizeVC();setVis(0);
+window.addEventListener('resize',()=>{resizeVC();drawVis();});
+
+/* ===== TOOLS ORBIT ===== */
+const toolItems=[
+  {icon:'🐍',name:'Python'},{icon:'📊',name:'Pandas'},{icon:'🔢',name:'NumPy'},
+  {icon:'📈',name:'Matplotlib'},{icon:'🤖',name:'Sklearn'},{icon:'🔥',name:'PyTorch'},
+  {icon:'🌊',name:'TensorFlow'},{icon:'💾',name:'SQL'},{icon:'📦',name:'Docker'},
+  {icon:'☁️',name:'AWS'}
+];
+const orbit=document.getElementById('toolsOrbit');
+toolItems.forEach((t,i)=>{
+  const angle=(i/toolItems.length)*Math.PI*2-Math.PI/2;
+  const r=orbit.offsetWidth*.44;
+  const x=50+Math.cos(angle)*44;
+  const y=50+Math.sin(angle)*44;
+  const el=document.createElement('div');
+  el.className='orbit-item';
+  el.innerHTML=`${t.icon}<span>${t.name}</span>`;
+  el.style.cssText=`left:calc(${x}% - 30px);top:calc(${y}% - 30px);transform:scale(1);animation:orbitSpin${i} 0s;`;
+  orbit.appendChild(el);
+});
+const toolsData=[
+  {icon:'🐍',name:'Python',desc:'The #1 language for data science. Readable, powerful, and has an unmatched ecosystem.',tag:'tr-python'},
+  {icon:'📊',name:'Pandas',desc:'Data manipulation and analysis. Your go-to for dataframes.',tag:'tr-python'},
+  {icon:'🔢',name:'NumPy',desc:'Numerical computing with N-dimensional arrays. Math made fast.',tag:'tr-python'},
+  {icon:'📈',name:'Matplotlib / Seaborn',desc:'Plotting libraries for creating beautiful visualizations.',tag:'tr-viz'},
+  {icon:'🎨',name:'Plotly / Tableau',desc:'Interactive and business-grade data visualizations.',tag:'tr-viz'},
+  {icon:'🤖',name:'Scikit-learn',desc:'The standard ML library. Dozens of algorithms, consistent API.',tag:'tr-ml'},
+  {icon:'🔥',name:'PyTorch',desc:'Research-first deep learning framework. Dynamic computation graphs.',tag:'tr-ml'},
+  {icon:'🌊',name:'TensorFlow',desc:"Google's production deep learning framework. Great for deployment.",tag:'tr-ml'},
+  {icon:'💾',name:'SQL',desc:'Essential for querying relational databases. Every data scientist needs it.',tag:'tr-db'},
+  {icon:'❄️',name:'Snowflake / BigQuery',desc:'Cloud data warehouses for analytics at massive scale.',tag:'tr-db'},
+];
+document.getElementById('toolsList').innerHTML=toolsData.map(t=>`
+  <div class="tool-row">
+    <span class="tool-row-icon">${t.icon}</span>
+    <div class="tool-row-info"><h4>${t.name}</h4><p>${t.desc}</p></div>
+    <span class="tool-row-tag ${t.tag}">${t.tag.replace('tr-','')}</span>
+  </div>`).join('');
+
+/* ===== CAREERS ===== */
+const careers=[
+  {role:'ENTRY LEVEL',title:'Data Analyst',sal:'$70K–95K',bar:55,skills:['SQL','Excel','Tableau','Python basics']},
+  {role:'MID LEVEL',title:'Data Scientist',sal:'$110K–150K',bar:75,skills:['ML','Python','Stats','A/B Testing']},
+  {role:'SENIOR',title:'Sr. Data Scientist',sal:'$150K–200K',bar:88,skills:['Deep Learning','MLOps','Leadership']},
+  {role:'SPECIALIST',title:'ML Engineer',sal:'$140K–190K',bar:82,skills:['MLOps','Deployment','Cloud','APIs']},
+  {role:'SPECIALIST',title:'Data Engineer',sal:'$120K–160K',bar:78,skills:['Spark','Kafka','SQL','Pipelines']},
+  {role:'LEADERSHIP',title:'Chief Data Officer',sal:'$200K+',bar:98,skills:['Strategy','Team','Stakeholders']}
+];
+document.getElementById('careerGrid').innerHTML=careers.map(c=>`
+  <div class="career-card">
+    <div class="cc-role">${c.role}</div>
+    <div class="cc-title">${c.title}</div>
+    <div class="cc-sal">${c.sal}</div>
+    <div class="cc-bar-wrap"><div class="cc-bar" style="width:0%" data-w="${c.bar}%"></div></div>
+    <div class="cc-skills">${c.skills.map(s=>`<span class="cc-skill">${s}</span>`).join('')}</div>
+  </div>`).join('');
+// Animate bars on scroll
+const barObs=new IntersectionObserver(ents=>{if(ents[0].isIntersecting){document.querySelectorAll('.cc-bar').forEach(b=>{setTimeout(()=>b.style.width=b.dataset.w,200);});barObs.disconnect();}});
+barObs.observe(document.getElementById('careerGrid'));
+
+/* ===== ROADMAP ===== */
+const rmData=[
+  {phase:'Foundation',dur:'2–3 Months',icon:'🏗️',items:[
+    {icon:'📐',en:{t:'Mathematics',d:'Linear Algebra, Calculus, Probability Theory, Statistics'},hi:{t:'Mathematics',d:'Linear Algebra, Calculus, Probability Theory, Statistics'}},
+    {icon:'🐍',en:{t:'Python Programming',d:'Syntax, data structures, OOP, file handling'},hi:{t:'Python Programming',d:'Syntax, data structures, OOP, file handling'}},
+    {icon:'🗄️',en:{t:'SQL Basics',d:'SELECT, JOIN, GROUP BY, subqueries, window functions'},hi:{t:'SQL Basics',d:'SELECT, JOIN, GROUP BY, subqueries, window functions'}}
+  ]},
+  {phase:'Data Skills',dur:'1–2 Months',icon:'📊',items:[
+    {icon:'🐼',en:{t:'Pandas & NumPy',d:'DataFrames, Series, vectorized operations, data manipulation'},hi:{t:'Pandas & NumPy',d:'DataFrames, Series, vectorized operations, data manipulation'}},
+    {icon:'📈',en:{t:'Data Visualization',d:'Matplotlib, Seaborn, Plotly — tell stories with charts'},hi:{t:'Data Visualization',d:'Matplotlib, Seaborn, Plotly — charts se stories batao'}},
+    {icon:'🔍',en:{t:'EDA Practice',d:'Explore real datasets from Kaggle or UCI ML Repository'},hi:{t:'EDA Practice',d:'Kaggle ya UCI ML Repository se real datasets explore karo'}}
+  ]},
+  {phase:'Machine Learning',dur:'2–3 Months',icon:'🤖',items:[
+    {icon:'📚',en:{t:'ML Theory',d:'Supervised, unsupervised, bias-variance, overfitting, cross-validation'},hi:{t:'ML Theory',d:'Supervised, unsupervised, bias-variance, overfitting, cross-validation'}},
+    {icon:'⚙️',en:{t:'Scikit-learn',d:'Build regression, classification, and clustering models'},hi:{t:'Scikit-learn',d:'Regression, classification, aur clustering models build karo'}},
+    {icon:'🏆',en:{t:'Kaggle Competitions',d:'Apply your skills. Win. Learn from top notebooks.'},hi:{t:'Kaggle Competitions',d:'Skills apply karo. Jito. Top notebooks se seekho.'}}
+  ]},
+  {phase:'Deep Learning',dur:'2–3 Months',icon:'🧠',items:[
+    {icon:'🔥',en:{t:'Neural Networks',d:'Perceptrons, backprop, activation functions, layers'},hi:{t:'Neural Networks',d:'Perceptrons, backprop, activation functions, layers'}},
+    {icon:'👁️',en:{t:'CNNs & Computer Vision',d:'Image classification, object detection, transfer learning'},hi:{t:'CNNs & Computer Vision',d:'Image classification, object detection, transfer learning'}},
+    {icon:'💬',en:{t:'NLP & Transformers',d:'Text classification, sentiment analysis, fine-tuning LLMs'},hi:{t:'NLP & Transformers',d:'Text classification, sentiment analysis, fine-tuning LLMs'}}
+  ]},
+  {phase:'Deployment & MLOps',dur:'1–2 Months',icon:'🚀',items:[
+    {icon:'🌐',en:{t:'APIs & Flask/FastAPI',d:'Serve your models as REST APIs'},hi:{t:'APIs & Flask/FastAPI',d:'Models ko REST APIs ke roop mein serve karo'}},
+    {icon:'📦',en:{t:'Docker & Cloud',d:'Containerize and deploy on AWS, GCP, or Azure'},hi:{t:'Docker & Cloud',d:'Containerize karo aur AWS, GCP, ya Azure pe deploy karo'}},
+    {icon:'📊',en:{t:'Build a Portfolio',d:'5+ end-to-end projects + GitHub + LinkedIn'},hi:{t:'Build a Portfolio',d:'5+ end-to-end projects + GitHub + LinkedIn'}}
+  ]}
+];
+document.getElementById('roadmapEl').innerHTML=rmData.map((ph,i)=>`
+  <div class="rm-phase ${i===0?'open':''}" id="rmp${i}">
+    <div class="rm-phase-header" onclick="togglePhase(${i})">
+      <div class="rm-phase-num">${i+1}</div>
+      <div class="rm-phase-title">${ph.icon} ${ph.phase}</div>
+      <div class="rm-phase-dur">${ph.dur}</div>
+    </div>
+    <div class="rm-items">
+      ${ph.items.map(it=>`<div class="rm-item"><span class="rm-item-icon">${it.icon}</span><div><h5>${it.en.t}</h5><p>${it.en.d}</p></div></div>`).join('')}
+    </div>
+  </div>`).join('');
+function togglePhase(i){
+  const p=document.getElementById('rmp'+i);
+  p.classList.toggle('open');
+}
+
+/* ===== QUIZ ===== */
+const questions=[
+  {en:{q:'What does EDA stand for in data science?',opts:['Exploratory Data Analysis','Extreme Data Algorithms','Encoded Data Architecture','Extended Data Automation'],fb:'EDA = Exploratory Data Analysis. It\'s the process of visually and statistically summarizing a dataset to understand its structure, patterns, and anomalies before modeling.'},hi:{q:'Data science mein EDA ka matlab kya hai?',opts:['Exploratory Data Analysis','Extreme Data Algorithms','Encoded Data Architecture','Extended Data Automation'],fb:'EDA = Exploratory Data Analysis. Modeling se pehle dataset ko visually aur statistically summarize karne ka process hai.'},ans:0},
+  {en:{q:'Which library is most commonly used for machine learning in Python?',opts:['TensorFlow','Seaborn','Scikit-learn','Matplotlib'],fb:'Scikit-learn is the standard ML library for classical machine learning in Python — offering dozens of algorithms with a consistent, easy-to-use API.'},hi:{q:'Python mein machine learning ke liye sabse common library kaunsi hai?',opts:['TensorFlow','Seaborn','Scikit-learn','Matplotlib'],fb:'Scikit-learn classical ML ke liye Python mein standard library hai — dozens of algorithms ek consistent API ke saath deta hai.'},ans:2},
+  {en:{q:'What is overfitting?',opts:['Model performs well on all data','Model learns noise in training data and fails on new data','Model is too simple to learn patterns','Data has too many features'],fb:'Overfitting happens when a model memorizes the training data (including noise) instead of learning the underlying patterns, causing poor performance on unseen data.'},hi:{q:'Overfitting kya hota hai?',opts:['Model saare data pe achha kaam karta hai','Model training data ka noise seekh leta hai aur naye data pe fail ho jaata hai','Model patterns seekhne ke liye bahut simple hai','Data mein bahut zyada features hain'],fb:'Overfitting tab hota hai jab model training data (including noise) yaad kar leta hai, underlying patterns nahi seekhta, aur unseen data pe bura perform karta hai.'},ans:1},
+  {en:{q:'Which of these is an unsupervised learning algorithm?',opts:['Linear Regression','Random Forest','K-Means Clustering','Logistic Regression'],fb:'K-Means is an unsupervised algorithm — it clusters data without using any labels. The other options all require labeled training data.'},hi:{q:'Inme se kaun sa unsupervised learning algorithm hai?',opts:['Linear Regression','Random Forest','K-Means Clustering','Logistic Regression'],fb:'K-Means ek unsupervised algorithm hai — bina kisi label ke data cluster karta hai. Baaki sab labeled training data maangte hain.'},ans:2},
+  {en:{q:'What is the role of a "feature" in machine learning?',opts:['The output prediction','An input variable used to train the model','A type of neural network layer','The test dataset'],fb:'Features are the input variables (columns) that a model uses to make predictions. Good feature engineering is one of the most impactful things you can do to improve model performance.'},hi:{q:'Machine learning mein "feature" ka kya role hota hai?',opts:['Output prediction','Model train karne ke liye use kiya jaane wala input variable','Ek type ka neural network layer','Test dataset'],fb:'Features wo input variables (columns) hain jo model predictions banane ke liye use karta hai. Achhi feature engineering model performance improve karne ka sabse impactful tarika hai.'},ans:1},
+  {en:{q:'Correlation between two variables means:',opts:['One causes the other','They are always related','They have a statistical linear relationship','They are identical'],fb:'Correlation measures linear relationship strength, NOT causation. Two variables can be correlated due to a third confounding variable. "Correlation ≠ Causation" is one of the most important principles in data science.'},hi:{q:'Do variables ke beech correlation ka matlab hai:',opts:['Ek doosre ki wajah hai','Hamesha related hote hain','Inme ek statistical linear relationship hai','Identical hain'],fb:'Correlation linear relationship ki strength measure karta hai, causation nahi. "Correlation ≠ Causation" data science ka sabse important principle hai.'},ans:2},
+  {en:{q:'Which step typically takes 60-70% of a data scientist\'s time?',opts:['Model Training','Feature Engineering & Data Cleaning','Deployment','Problem Definition'],fb:'Data cleaning and preparation is notoriously time-consuming. Real-world data is messy — handling missing values, fixing formats, removing duplicates, and engineering features takes the vast majority of project time.'},hi:{q:'Kaunsa step typically ek data scientist ka 60-70% time leta hai?',opts:['Model Training','Feature Engineering & Data Cleaning','Deployment','Problem Definition'],fb:'Data cleaning aur preparation bahut time-consuming hoti hai. Real-world data messy hota hai — missing values handle karna, formats fix karna, duplicates hatana, features engineer karna — yeh sab zyada time leta hai.'},ans:1},
+  {en:{q:'What does a Transformer architecture primarily use?',opts:['Convolutional filters','Recurrent loops','Self-attention mechanism','Decision trees'],fb:'Transformers use self-attention (introduced in "Attention Is All You Need", 2017) to process sequences in parallel and capture long-range dependencies — powering GPT, BERT, and virtually all modern LLMs.'},hi:{q:'Transformer architecture primarily kya use karta hai?',opts:['Convolutional filters','Recurrent loops','Self-attention mechanism','Decision trees'],fb:'Transformers self-attention use karte hain (2017 mein "Attention Is All You Need" mein introduce hua) sequences parallel mein process karne ke liye — GPT, BERT, aur saare modern LLMs isi pe based hain.'},ans:2},
+  {en:{q:'Cross-validation is used to:',opts:['Speed up model training','Estimate how well the model generalizes to unseen data','Visualize high-dimensional data','Clean missing values'],fb:'Cross-validation (especially k-fold) repeatedly splits data into train/validation sets to get a robust estimate of model performance on unseen data — preventing overfitting to a single validation split.'},hi:{q:'Cross-validation kisliye use hota hai?',opts:['Model training fast karne ke liye','Estimate karne ke liye ki model unseen data pe kitna achha kaam karega','High-dimensional data visualize karne ke liye','Missing values clean karne ke liye'],fb:'Cross-validation (especially k-fold) repeatedly data ko train/validation sets mein split karta hai — unseen data pe model performance ka robust estimate deta hai.'},ans:1},
+  {en:{q:'Which metric would you use for an imbalanced classification problem?',opts:['Accuracy','Mean Squared Error','F1 Score or AUC-ROC','R² Score'],fb:'Accuracy is misleading for imbalanced data. If 95% of examples are class A, a model predicting all-A gets 95% accuracy but is useless. F1 score (harmonic mean of precision & recall) and AUC-ROC are much better for imbalanced problems.'},hi:{q:'Imbalanced classification problem ke liye kaunsa metric use karoge?',opts:['Accuracy','Mean Squared Error','F1 Score ya AUC-ROC','R² Score'],fb:'Imbalanced data pe accuracy misleading hoti hai. Agar 95% examples class A hain, sab A predict karne se 95% accuracy milti hai lekin model useless hai. F1 score aur AUC-ROC zyada better hain.'},ans:2}
+];
+let qi=0,qscore=0;
+function buildQProg(){const p=document.getElementById('qprog');p.innerHTML='';questions.forEach((_,i)=>{const d=document.createElement('div');d.className='qd'+(i<qi?' done':i===qi?' act':'');p.appendChild(d);});}
+function loadQ(){
+  const lg=isHi?'hi':'en';const q=questions[qi][lg];
+  document.getElementById('qtxt').textContent=q.q;
+  const opts=document.getElementById('qopts');opts.innerHTML='';
+  q.opts.forEach((o,i)=>{const b=document.createElement('button');b.className='q-opt';b.textContent=o;b.onclick=()=>answerQ(i,b,q.fb);opts.appendChild(b);});
+  document.getElementById('qfb').className='q-fb';document.getElementById('qfb').textContent='';
+  const nxt=document.getElementById('qnext');nxt.className='q-next';nxt.textContent=isHi?'Aage →':'Next →';
+  buildQProg();
+}
+function answerQ(i,btn,fb){
+  const q=questions[qi];
+  document.querySelectorAll('.q-opt').forEach(b=>b.onclick=null);
+  const fe=document.getElementById('qfb');
+  if(i===q.ans){btn.classList.add('correct');fe.textContent='✓ '+fb;fe.className='q-fb cfb show';qscore++;}
+  else{btn.classList.add('wrong');document.querySelectorAll('.q-opt')[q.ans].classList.add('correct');fe.textContent='✗ '+(isHi?'Sahi jawab — ':'Correct — ')+fb;fe.className='q-fb wfb show';}
+  document.getElementById('qnext').className='q-next show';
+}
+function nextQ(){
+  qi++;
+  if(qi>=questions.length){
+    document.getElementById('qmain').style.display='none';
+    document.getElementById('qscore').style.display='block';
+    document.getElementById('qstxt').textContent=qscore+' / '+questions.length;
+    const em=['Data Science beginner! Keep going! 📚','Good foundation! Keep building! 💪','Strong grasp! You\'re on track! 🎯','Excellent! Data Science pro! 🧠','Perfect score! You\'re a genius! 🌟'];
+    const hm=['Data Science beginner ho! Chalo seekhte rehna! 📚','Achhi neev hai! Badhte raho! 💪','Zabardast! Sahi raaste pe ho! 🎯','Shandaar! Data Science pro ho! 🧠','Perfect! Genius ho bhai! 🌟'];
+    const mi=qscore<=2?0:qscore<=4?1:qscore<=6?2:qscore<=8?3:4;
+    document.getElementById('qsmsg').textContent=isHi?hm[mi]:em[mi];
+    document.querySelector('.q-restart').textContent=isHi?'Dobara Karo':'Try Again';
+  } else loadQ();
+}
+function restartQ(){qi=0;qscore=0;document.getElementById('qmain').style.display='block';document.getElementById('qscore').style.display='none';loadQ();}
+loadQ();
+</script>
+</body>
+</html>
