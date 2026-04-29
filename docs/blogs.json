@@ -1,4 +1,13 @@
 [
+{
+  "title_en": "All Information About Data Science",
+  "title_hi": "Data Science ke bare m sari jankariya jo apko pta honi chahiye ",
+  "desc_en": "Data Science is an interdisciplinary field that uses techniques from statistics, computer science, and mathematics to extract meaningful insights and knowledge from data.",
+  "desc_hi": "Data Science ek aisa field hai jo statistics, computer science aur mathematics ko combine karke data se useful insights nikalta hai.",
+  "tag": "Data Science",
+  "date": "29 april 2026",
+  "link": "blogs/data-science-blog.html"
+  },
  {
   "title_en": "All Information About ml and dl",
   "title_hi": "ml and dl ke bare m sari jankariya jo apko pta honi chahiye ",
