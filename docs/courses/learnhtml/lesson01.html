@@ -283,6 +283,19 @@ html.light .toggle-lbl{left:6px;right:auto}
 .brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
 
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -310,7 +323,7 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="hero">
       <div class="hero-meta"><span class="badge b-tag">INTRO</span><span class="badge b-time">6 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">What is HTML?</h1>
-      <p class="lesson-sub">Learn What is HTML? with live examples, interactive editor, and Shiv AI tutor.</p>
+      <p class="lesson-sub">Learn What is HTML? with live examples, interactive editor, and Shiv AI — your funny but brilliant coding tutor.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -319,22 +332,22 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">Chai &#127861;</button>
     </div>
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
 <h2>What is HTML?</h2>
-<p>HTML stands for <strong>HyperText Markup Language</strong>. It is the skeleton of every webpage. Without HTML, no website can exist. Every page you have ever visited — Google, YouTube, Instagram — is built with HTML at its core.</p>
+<p>HTML stands for <strong>HyperText Markup Language</strong>. It is the skeleton of every single webpage on the internet. Without HTML, your browser would just show a blank white screen — no text, no images, nothing. Not even Google.</p>
 
-<div class="card"><div class="card-head"><span class="chip">Three Languages of the Web</span></div>
-<div class="row"><span class="rk">HTML</span><span class="rv">Structure — the skeleton of every webpage</span></div>
-<div class="row"><span class="rk">CSS</span><span class="rv">Style — colors, fonts, layout, animations</span></div>
-<div class="row"><span class="rk">JavaScript</span><span class="rv">Behaviour — buttons, forms, live data</span></div>
+<div class="card"><div class="card-head"><span class="chip">The Three Amigos of the Web</span></div>
+<div class="row"><span class="rk">HTML &#129460;</span><span class="rv">The skeleton — structure and content. "What is on the page?"</span></div>
+<div class="row"><span class="rk">CSS &#127912;</span><span class="rv">The skin — colors, fonts, layout. "How does it look?"</span></div>
+<div class="row"><span class="rk">JavaScript &#9889;</span><span class="rv">The muscles — behaviour, clicks, live data. "What does it do?"</span></div>
 </div>
 
-<h2>Your First HTML Page</h2>
+<h2>Your First Real Webpage</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example 1 — A Complete Webpage in 10 Lines</div>
+  <div class="ex-lbl">Example 1 — 10 Lines. A Real Webpage.</div>
   <pre class="ex-code"><span class="t-tag">&lt;!DOCTYPE html&gt;</span>
 <span class="t-tag">&lt;html</span> <span class="t-attr">lang</span>=<span class="t-val">"en"</span><span class="t-tag">&gt;</span>
 <span class="t-tag">&lt;head&gt;</span>
@@ -347,55 +360,54 @@ html.light .toggle-lbl{left:6px;right:auto}
 <span class="t-tag">&lt;/body&gt;</span>
 <span class="t-tag">&lt;/html&gt;</span></pre>
   <div class="ex-out">
-    <div class="browser-frame">
-      <div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
-      <div class="browser-body"><h1 style="margin:0 0 8px;font-size:1.4rem;font-weight:bold">Hello World!</h1><p style="margin:0">I am learning HTML at CIWeb.</p></div>
+    <div class="brow">
+      <div class="brow-bar"><div class="brow-dot" style="background:#ff5f57"></div><div class="brow-dot" style="background:#febc2e"></div><div class="brow-dot" style="background:#28c840"></div></div>
+      <div class="brow-body"><h1 style="margin:0 0 8px;font-size:1.4rem;font-weight:bold">Hello World!</h1><p style="margin:0">I am learning HTML at CIWeb.</p></div>
     </div>
   </div>
-  <div class="ex-note">This is exactly what a browser renders — a real webpage from just 10 lines!</div>
+  <div class="ex-note">That is literally it. 10 lines = a real webpage that any browser in the world can open.</div>
 </div>
 
-<h2>Opening and Closing Tags</h2>
+<h2>How Tags Work</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example 2 — How Tags Work</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- Pair tags: opening + content + closing --&gt;</span>
+  <div class="ex-lbl">Example 2 — Opening, Closing, Self-Closing Tags</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- Most tags: opening + content + closing --&gt;</span>
 <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">This is a heading</span><span class="t-tag">&lt;/h1&gt;</span>
 <span class="t-tag">&lt;p&gt;</span><span class="t-txt">This is a paragraph.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;strong&gt;</span><span class="t-txt">This is bold.</span><span class="t-tag">&lt;/strong&gt;</span>
 
-<span class="t-cm">&lt;!-- Self-closing tags have no content --&gt;</span>
-<span class="t-tag">&lt;br/&gt;</span>   <span class="t-cm">&lt;!-- Line break --&gt;</span>
-<span class="t-tag">&lt;img</span> <span class="t-attr">src</span>=<span class="t-val">"photo.jpg"</span> <span class="t-attr">alt</span>=<span class="t-val">"A photo"</span><span class="t-tag">/&gt;</span>
-<span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span>=<span class="t-val">"UTF-8"</span><span class="t-tag">/&gt;</span></pre>
+<span class="t-cm">&lt;!-- Self-closing: no content, just attributes --&gt;</span>
+<span class="t-tag">&lt;br/&gt;</span>                         <span class="t-cm">&lt;!-- Line break --&gt;</span>
+<span class="t-tag">&lt;img</span> <span class="t-attr">src</span>=<span class="t-val">"cat.jpg"</span> <span class="t-attr">alt</span>=<span class="t-val">"A cat"</span><span class="t-tag">/&gt;</span>   <span class="t-cm">&lt;!-- Image --&gt;</span>
+<span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span>=<span class="t-val">"UTF-8"</span><span class="t-tag">/&gt;</span>           <span class="t-cm">&lt;!-- Meta info --&gt;</span></pre>
   <div class="ex-out">
-    <div class="browser-body" style="padding:8px 14px">
-      <strong>Rule:</strong> Opening tag = <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px">&lt;h1&gt;</code>&nbsp;&nbsp;
-      Closing tag = <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px">&lt;/h1&gt;</code>
-      (note the <strong>/</strong>)
+    <div class="brow-body" style="padding:8px 14px;background:#fff">
+      <span style="font-size:.85rem"><strong>Rule:</strong> &nbsp; Opening = <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px">&lt;p&gt;</code> &nbsp; Closing = <code style="background:#f0f0f0;padding:1px 5px;border-radius:3px">&lt;/p&gt;</code> (note the <strong>/</strong>)</span>
     </div>
   </div>
-  <div class="ex-note">The forward slash / in &lt;/h1&gt; means "end of tag". Self-closing tags like &lt;br/&gt; need no closing.</div>
+  <div class="ex-note">The / before the tag name means "end of this tag". Self-closing tags like &lt;br/&gt; need no closing tag because they have no content.</div>
 </div>
 
-<h2>A Real Blog Card — Pure HTML</h2>
+<h2>A Real Blog Card in 5 Lines of HTML</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example 3 — Like the Cards on CIWeb</div>
+  <div class="ex-lbl">Example 3 — Like Cards on CIWeb</div>
   <pre class="ex-code"><span class="t-tag">&lt;article&gt;</span>
-  <span class="t-tag">&lt;img</span> <span class="t-attr">src</span>=<span class="t-val">"ai-blog.jpg"</span> <span class="t-attr">alt</span>=<span class="t-val">"AI Technology"</span><span class="t-tag">/&gt;</span>
   <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">AI Kya Hai? Complete Guide 2026</span><span class="t-tag">&lt;/h2&gt;</span>
-  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Artificial Intelligence sikhna...</span><span class="t-tag">&lt;/p&gt;</span>
-  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"blog-ai.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Read More</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Artificial Intelligence ek machine ka dimag hai...</span><span class="t-tag">&lt;/p&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"blog-ai.html"</span><span class="t-tag">&gt;</span><span class="t-txt">Read More &rarr;</span><span class="t-tag">&lt;/a&gt;</span>
 <span class="t-tag">&lt;/article&gt;</span></pre>
   <div class="ex-out">
-    <div style="border:1px solid #ddd;border-radius:8px;overflow:hidden;max-width:260px;font-family:Arial,sans-serif">
-      <div style="background:linear-gradient(135deg,#667eea,#764ba2);height:60px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem">&#128161;</div>
-      <div style="padding:10px 12px"><h2 style="font-size:.9rem;margin:0 0 5px;color:#111">AI Kya Hai? Complete Guide 2026</h2><p style="font-size:.78rem;color:#555;margin:0 0 8px">Artificial Intelligence sikhna...</p><a href="#" style="color:#e8401c;font-size:.78rem;font-weight:700;text-decoration:none">Read More &rarr;</a></div>
+    <div style="border:1px solid #ddd;border-radius:8px;padding:12px 16px;max-width:280px;font-family:Arial,sans-serif;background:#fff">
+      <h2 style="font-size:.95rem;margin:0 0 6px;color:#111">AI Kya Hai? Complete Guide 2026</h2>
+      <p style="font-size:.8rem;color:#555;margin:0 0 8px">Artificial Intelligence ek machine ka dimag hai...</p>
+      <a href="#" style="color:#e8401c;font-size:.8rem;font-weight:700;text-decoration:none">Read More &rarr;</a>
     </div>
   </div>
-  <div class="ex-note">This is real HTML. You will build cards like this by Lesson 5!</div>
+  <div class="ex-note">This IS the actual HTML behind blog cards. By Lesson 5 you will build one from scratch.</div>
 </div>
 
-<div class="box box-seo"><div class="box-lbl">Why Learn HTML?</div><p>There are 1.9 billion websites on the internet. Every single one uses HTML. It is the #1 skill to start any web development career, and it takes only days to learn the basics.</p></div>
-<div class="why"><div class="why-lbl">Who Invented HTML?</div><p>Tim Berners-Lee invented HTML in 1991 to share research documents between scientists. Those 10 original tags have grown into HTML5 with 100+ tags. You will learn the most important ones in this course.</p></div>
+<div class="box box-seo"><div class="box-lbl">Fun Fact</div><p>There are 1.9 billion websites on the internet. Every single one uses HTML. Facebook, YouTube, Netflix — all HTML at the core. You are learning the language of the entire internet.</p></div>
+<div class="why"><div class="why-lbl">Who Made HTML?</div><p>Tim Berners-Lee created HTML in 1991 to share scientific documents. He never patented it. He gave it to the world for free. That is why the web exists today and why you can learn it at CIWeb for free.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -406,16 +418,16 @@ html.light .toggle-lbl{left:6px;right:auto}
             <a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a>
             <a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a>
           </div>
-          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div>
+          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free Forever</div>
         </div>
       </div>
     </div>
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
-        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies — no code at all.</p>
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">&#129302; Shiv AI Explains with Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using funny real-life analogies. No code — just vibes and clarity.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem;white-space:pre-wrap">Click the Explain tab to generate analogies automatically.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -429,7 +441,7 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code &rarr; click Deep Analyze for instant feedback</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
@@ -439,9 +451,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">HyperText Markup Language</span></button>
 <button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">HighText Main Language</span></button>
 <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">HyperText Making Language</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">HyperText Modern Layout</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">HyperTool Modern Layout</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>HTML stands for HyperText Markup Language. It is the standard language for creating webpages supported by every browser.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>HTML stands for HyperText Markup Language. It is the foundation of every webpage, supported by every browser since 1991.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
@@ -449,7 +461,7 @@ html.light .toggle-lbl{left:6px;right:auto}
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
         <div class="chal-title">Your First Webpage</div>
-        <div class="chal-desc">Build a simple webpage with a heading and two paragraphs.</div>
+        <div class="chal-desc">Build a webpage with a heading and two paragraphs about yourself.</div>
         <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
 <div class="c-req" id="cr0"><span class="c-dot"></span><span>DOCTYPE</span></div>
 <div class="c-req" id="cr1"><span class="c-dot"></span><span>html tag</span></div>
@@ -475,8 +487,8 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 1</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
-            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought, question, or breakthrough about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Share your code (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
         </div>
@@ -485,20 +497,57 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
+      <div class="chai-hero">
+      <h3>&#127861; Support CIWeb — Keep It Free Forever</h3>
+      <p>CIWeb is 100% free. No ads, no paywall, no subscription. If this course helped you, buy us a chai — it keeps the servers running and motivates Shiva to make more courses!</p>
+    </div>
+    <div id="chai-body">
+      <div style="background:var(--bg3);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin-bottom:1rem">
+        <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.8rem">&#128176; Donate via UPI</div>
+        <div style="background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:1rem;margin-bottom:.75rem;text-align:center">
+          <div style="font-family:var(--m);font-size:1.1rem;font-weight:700;color:var(--ink);letter-spacing:.5px">shiva.saini@fam</div>
+          <div style="font-size:.72rem;color:var(--ink3);margin-top:.3rem">GPay / PhonePe / Paytm / Any UPI</div>
+        </div>
+        <a href="upi://pay?pa=shiva.saini@fam&pn=CIWeb+Shiva+Saini&cu=INR" style="display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--red);color:#fff;border-radius:10px;padding:11px;font-weight:700;font-size:.86rem;text-decoration:none;margin-bottom:.6rem">&#127861; Pay with UPI App</a>
+        <a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--ba);color:var(--blue);border:1px solid var(--bb);border-radius:10px;padding:10px;font-weight:700;font-size:.84rem;text-decoration:none">&#128179; Pay via Razorpay (Card / UPI)</a>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:1.2rem">
+        <div style="font-size:.82rem;font-weight:700;color:var(--green);margin-bottom:.5rem">&#9733; What you get after donating</div>
+        <div style="font-size:.8rem;color:var(--ink2);line-height:1.8">
+          &#10003; +50 Shiv AI messages (one-time bonus)<br/>
+          &#10003; Priority support from Shiva<br/>
+          &#10003; Warm fuzzy feeling of doing good &#128522;
+        </div>
+        <div style="margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--ink3)">
+          <strong style="color:var(--ink2)">How to claim +50 AI msgs:</strong><br/>
+          After paying, message on YouTube <a href="https://youtube.com/@codinginfinite" target="_blank" style="color:var(--acc)">@codinginfinite</a> with your payment ID. Shiva will add +50 msgs to your account within 24 hours.
+        </div>
+      </div>
+    </div>
     </div>
   </main>
 </div>
 <button id="mob-fab" onclick="openLessons()" aria-label="All lessons"><span></span><span></span><span></span></button>
 <div class="ai-overlay" id="ai-overlay">
   <div class="ai-panel">
-    <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
+    <div class="ai-head">
+      <div class="ai-av">&#129302;</div>
+      <div>
+        <div class="ai-name">Shiv AI</div>
+        <div class="ai-status">Online &bull; Funny but Smart &#128526;</div>
+        <div id="ai-counter"></div>
+      </div>
+      <button class="ai-close" onclick="AI.toggle()">&#10005;</button>
+    </div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row">
+      <textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice, life advice, anything... &#128514;" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea>
+      <button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
   </div>
 </div>
 <script>
+
 
 
 
@@ -511,7 +560,7 @@ var REQS=[
 {label:'h1 heading',chk:function(c){return !!(c.indexOf('<h1')>-1)}},
 {label:'paragraph',chk:function(c){return !!(c.indexOf('<p')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>My First HTML Page</title>\n</head>\n<body>\n\n  <h1>Hello, World!</h1>\n  <p>I am learning HTML at CIWeb.</p>\n  <p>HTML stands for HyperText Markup Language.</p>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>My First HTML Page</title>\n</head>\n<body>\n\n  <h1>Hello, World!</h1>\n  <p>I am learning HTML at CIWeb.</p>\n  <p>HTML = HyperText Markup Language.</p>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -822,100 +871,71 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+
+
 function deepAnalyze(){
-  var code = window._ed ? window._ed.doc.getValue() : '';
-  if(!code.trim()){ toast('Write some code first!','o'); return; }
-
-  var issues = [], tips = [];
-
-  // 1. Tag balance - count mathematically
-  var tags = ['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
     'table','thead','tbody','tr','td','th','form','textarea','select','button',
     'label','main','header','footer','nav','section','article','aside',
     'figure','figcaption','blockquote','details','summary'];
   tags.forEach(function(t){
-    var re_o = new RegExp('<' + t + '(\\s[^>]*)?>','gi');
-    var re_c = new RegExp('<\\/' + t + '>','gi');
-    var o = (code.match(re_o)||[]).length;
-    var c = (code.match(re_c)||[]).length;
-    if(o > c) issues.push(t + ' tag not closed (' + o + ' open, ' + c + ' closed)');
-    if(c > o) issues.push('Extra </' + t + '> found (' + c + ' closing, ' + o + ' opening)');
+    var re_o=new RegExp('<'+t+'(\\s[^>]*)?>','gi');
+    var re_c=new RegExp('</'+t+'>','gi');
+    var o=(code.match(re_o)||[]).length;
+    var c=(code.match(re_c)||[]).length;
+    if(o>c)issues.push('&lt;'+t+'&gt; not closed ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, only '+o+' opening)');
   });
-
-  // 2. img checks
   (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
-    if(!/\balt=/i.test(img)) issues.push('img missing alt attribute');
-    if(!/\bloading=/i.test(img)) tips.push('img: add loading="lazy" for better performance');
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy" for speed');
   });
-
-  // 3. a with target blank
   (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
-    if(/target=["']_blank/i.test(a) && !/noopener/i.test(a))
-      issues.push('a with target="_blank" missing rel="noopener noreferrer"');
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
   });
-
-  // 4. Document structure hints
   if(/<html/i.test(code)){
-    if(!/<title>[^<]+<\/title>/i.test(code)) issues.push('Missing <title> tag in <head>');
-    if(!/<meta[^>]+charset/i.test(code)) tips.push('Add <meta charset="UTF-8"/> to <head>');
-    if(!/<meta[^>]+viewport/i.test(code)) tips.push('Add viewport meta tag for mobile');
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
   }
-  var h1c = (code.match(/<h1[\s>]/gi)||[]).length;
-  if(h1c > 1) issues.push('Found ' + h1c + ' h1 tags - use only ONE h1 per page');
-  if(/<body/i.test(code) && h1c === 0) tips.push('No h1 found - add a main heading for SEO');
-
-  // 5. Semantic hints
-  if(/<b[\s>]|<\/b>/i.test(code) && !/<strong/i.test(code))
-    tips.push('Use <strong> instead of <b> for semantic meaning');
-  if(/<i[\s>]|<\/i>/i.test(code) && !/<em/i.test(code))
-    tips.push('Use <em> instead of <i> for semantic meaning');
-
-  // Show in the hint bar area
-  showDA(issues, tips, code.length);
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Found '+h1c+' &lt;h1&gt; tags  use only ONE per page');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found  add a main heading');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
 }
-
-function showDA(issues, tips, len){
-  // Use the existing hint-bar area - inject a result panel right after it
-  var hbar = document.querySelector('.hint-bar');
-  if(!hbar) return;
-  var old = document.getElementById('da-result');
-  if(old) old.remove();
-
-  var panel = document.createElement('div');
-  panel.id = 'da-result';
-  panel.style.cssText = 'background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
-
-  var closeBtn = '<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.95rem;line-height:1">&#10005;</button>';
-
-  var allGood = issues.length === 0 && tips.length === 0;
-  var html = closeBtn;
-  html += '<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">';
-  html += '&#128269; Analysis of ' + len + ' chars</div>';
-
-  if(allGood){
-    html += '<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. No errors found!</div>';
-  } else {
+function showDA(issues,tips,len){
+  var old=document.getElementById('da-panel');if(old)old.remove();
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var ok=issues.length===0&&tips.length===0;
+  var html='<button onclick="document.getElementById(\'da-panel\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;line-height:1">&#10005;</button>';
+  html+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">&#128269; Analyzed '+len+' characters  client-side (100% accurate)</div>';
+  if(ok){
+    html+='<div style="color:#22c55e;font-weight:700;margin-bottom:.3rem">&#10003; Perfect! All tags are properly closed. No errors found.</div>';
+  }else{
     if(issues.length){
-      html += '<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; ' + issues.length + ' Error' + (issues.length>1?'s':'') + ':</div>';
-      issues.forEach(function(e,i){
-        html += '<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">';
-        html += (i+1) + '. ' + e + '</div>';
-      });
-    } else {
-      html += '<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; No syntax errors - all tags balanced</div>';
+      html+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' Error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){html+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.32rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;font-size:.82rem;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      html+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced  no syntax errors</div>';
     }
     if(tips.length){
-      html += '<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; ' + tips.length + ' Tip' + (tips.length>1?'s':'') + ':</div>';
-      tips.forEach(function(t,i){
-        html += '<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">';
-        html += (i+1) + '. ' + t + '</div>';
-      });
+      html+='<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; '+tips.length+' Suggestion'+(tips.length>1?'s':'')+':</div>';
+      tips.forEach(function(t,i){html+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.32rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;font-size:.82rem;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
     }
   }
-  html += '<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For SEO &amp; accessibility advice, ask Shiv AI below.</div>';
-
-  panel.innerHTML = html;
-  hbar.parentNode.insertBefore(panel, hbar.nextSibling);
+  html+='<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For semantic/SEO advice, ask Shiv AI below &#128071;</div>';
+  var panel=document.createElement('div');
+  panel.id='da-panel';
+  panel.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  panel.innerHTML=html;
+  hbar.parentNode.insertBefore(panel,hbar.nextSibling);
 }
 
 </script>
