@@ -488,8 +488,7 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
+<div id="chai-body"></div>
     </div>
   </main>
 </div>
@@ -611,25 +610,121 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
   var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
 function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();
-  AI.deepSend('Please do a thorough deep analysis of my HTML code. Check for every issue: unclosed/missing tags, wrong nesting, semantic HTML problems, accessibility (ARIA, alt, labels, roles), SEO (title, meta, heading structure), best practice violations, and anything that could break in a real browser. Be specific and mention every line that has a problem.',code);
+  var code = window._ed ? window._ed.doc.getValue() : '';
+  if(!code.trim()){ toast('Write some code first!','o'); return; }
+
+  var issues = [], tips = [];
+
+  // 1. Tag balance - count mathematically
+  var tags = ['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var re_o = new RegExp('<' + t + '(\\s[^>]*)?>','gi');
+    var re_c = new RegExp('<\\/' + t + '>','gi');
+    var o = (code.match(re_o)||[]).length;
+    var c = (code.match(re_c)||[]).length;
+    if(o > c) issues.push(t + ' tag not closed (' + o + ' open, ' + c + ' closed)');
+    if(c > o) issues.push('Extra </' + t + '> found (' + c + ' closing, ' + o + ' opening)');
+  });
+
+  // 2. img checks
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img)) issues.push('img missing alt attribute');
+    if(!/\bloading=/i.test(img)) tips.push('img: add loading="lazy" for better performance');
+  });
+
+  // 3. a with target blank
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a) && !/noopener/i.test(a))
+      issues.push('a with target="_blank" missing rel="noopener noreferrer"');
+  });
+
+  // 4. Document structure hints
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code)) issues.push('Missing <title> tag in <head>');
+    if(!/<meta[^>]+charset/i.test(code)) tips.push('Add <meta charset="UTF-8"/> to <head>');
+    if(!/<meta[^>]+viewport/i.test(code)) tips.push('Add viewport meta tag for mobile');
+  }
+  var h1c = (code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c > 1) issues.push('Found ' + h1c + ' h1 tags - use only ONE h1 per page');
+  if(/<body/i.test(code) && h1c === 0) tips.push('No h1 found - add a main heading for SEO');
+
+  // 5. Semantic hints
+  if(/<b[\s>]|<\/b>/i.test(code) && !/<strong/i.test(code))
+    tips.push('Use <strong> instead of <b> for semantic meaning');
+  if(/<i[\s>]|<\/i>/i.test(code) && !/<em/i.test(code))
+    tips.push('Use <em> instead of <i> for semantic meaning');
+
+  // Show in the hint bar area
+  showDA(issues, tips, code.length);
+}
+
+function showDA(issues, tips, len){
+  // Use the existing hint-bar area - inject a result panel right after it
+  var hbar = document.querySelector('.hint-bar');
+  if(!hbar) return;
+  var old = document.getElementById('da-result');
+  if(old) old.remove();
+
+  var panel = document.createElement('div');
+  panel.id = 'da-result';
+  panel.style.cssText = 'background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+
+  var closeBtn = '<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.95rem;line-height:1">&#10005;</button>';
+
+  var allGood = issues.length === 0 && tips.length === 0;
+  var html = closeBtn;
+  html += '<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">';
+  html += '&#128269; Analysis of ' + len + ' chars</div>';
+
+  if(allGood){
+    html += '<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. No errors found!</div>';
+  } else {
+    if(issues.length){
+      html += '<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; ' + issues.length + ' Error' + (issues.length>1?'s':'') + ':</div>';
+      issues.forEach(function(e,i){
+        html += '<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">';
+        html += (i+1) + '. ' + e + '</div>';
+      });
+    } else {
+      html += '<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; No syntax errors - all tags balanced</div>';
+    }
+    if(tips.length){
+      html += '<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; ' + tips.length + ' Tip' + (tips.length>1?'s':'') + ':</div>';
+      tips.forEach(function(t,i){
+        html += '<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">';
+        html += (i+1) + '. ' + t + '</div>';
+      });
+    }
+  }
+  html += '<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For SEO &amp; accessibility advice, ask Shiv AI below.</div>';
+
+  panel.innerHTML = html;
+  hbar.parentNode.insertBefore(panel, hbar.nextSibling);
 }
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
@@ -715,8 +810,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.6rem">Shiv AI Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.8rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.8rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.55rem">Your 15 free messages</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem">'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Ask any coding question  HTML, CSS, JS, Python</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Deep Analyze your code instantly</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Get real-life analogies for any lesson</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -733,20 +847,32 @@ var AI=(function(){
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
       var code=window._ed?window._ed.doc.getValue():'';
-      var systemCtx='You are Shiv AI, an expert coding assistant and tutor at CIWeb. You are NOT restricted to HTML only. Answer questions about HTML, CSS, JavaScript, React, Python, databases, web development, programming concepts, algorithms, debugging, career advice, and anything coding-related. Current lesson context: '+LT+'. Give clear, practical, detailed answers. When reviewing code, analyze the COMPLETE code provided - do not assume tags are missing if the code is valid.';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
       fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
     },
     deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
       if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
-      userMsg('Deep Analyze: '+code.length+' characters of code');thinking();Rate.use();updateCounter();
-      var systemCtx='You are Shiv AI, an expert HTML and web development code reviewer. Analyze the COMPLETE code carefully. Only report genuine errors - do not flag things that are correct. If a tag is properly closed, say so. Give specific line numbers when possible.';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'deepanalyze',system:systemCtx,full_code:true,analyze:true})})
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
       .then(function(r){return r.json();})
-      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Analysis failed. Try again.');})
-      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
     },
     open:function(){if(!this._open)this.toggle();}
   };
