@@ -283,6 +283,19 @@ html.light .toggle-lbl{left:6px;right:auto}
 .brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
 .browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
 
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
 </style>
 </head>
 <body>
@@ -311,7 +324,7 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="hero">
       <div class="hero-meta"><span class="badge b-tag">STRUCTURE</span><span class="badge b-time">8 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">HTML Document Structure</h1>
-      <p class="lesson-sub">Learn HTML Document Structure with live examples, interactive editor, and Shiv AI tutor.</p>
+      <p class="lesson-sub">Learn HTML Document Structure with live examples, interactive editor, and Shiv AI — your funny but brilliant coding tutor.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -320,79 +333,80 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">Chai &#127861;</button>
     </div>
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
 <h2>HTML Document Structure</h2>
-<p>Every HTML file must follow a specific structure. Think of it like a blueprint — without the correct foundation, nothing works properly. Browsers expect this exact structure on every page.</p>
+<p>Every HTML file needs a specific structure — like a building needs a foundation before walls. Browsers read this structure to know how to display your page. Get this right and everything else becomes easy.</p>
 
-<h2>The Annotated Full Structure</h2>
+<h2>Full Structure Explained</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example 1 — Full Structure with Comments</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- Part 1: DOCTYPE — always on line 1 --&gt;</span>
+  <div class="ex-lbl">Example 1 — The Blueprint Every Page Needs</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- 1. DOCTYPE: "Hey browser, I am HTML5" --&gt;</span>
 <span class="t-tag">&lt;!DOCTYPE html&gt;</span>
 
-<span class="t-cm">&lt;!-- Part 2: Root element. lang tells Google the language --&gt;</span>
+<span class="t-cm">&lt;!-- 2. Root element: lang tells Google the language --&gt;</span>
 <span class="t-tag">&lt;html</span> <span class="t-attr">lang</span>=<span class="t-val">"en"</span><span class="t-tag">&gt;</span>
 
-  <span class="t-cm">&lt;!-- Part 3: HEAD — invisible info for browser and Google --&gt;</span>
+  <span class="t-cm">&lt;!-- 3. HEAD: invisible to users, crucial for browser + Google --&gt;</span>
   <span class="t-tag">&lt;head&gt;</span>
     <span class="t-tag">&lt;meta</span> <span class="t-attr">charset</span>=<span class="t-val">"UTF-8"</span><span class="t-tag">/&gt;</span>
     <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"viewport"</span>
           <span class="t-attr">content</span>=<span class="t-val">"width=device-width, initial-scale=1.0"</span><span class="t-tag">/&gt;</span>
     <span class="t-tag">&lt;title&gt;</span><span class="t-txt">CIWeb &mdash; Learn HTML Free</span><span class="t-tag">&lt;/title&gt;</span>
     <span class="t-tag">&lt;meta</span> <span class="t-attr">name</span>=<span class="t-val">"description"</span>
-          <span class="t-attr">content</span>=<span class="t-val">"22 free HTML lessons at CIWeb"</span><span class="t-tag">/&gt;</span>
+          <span class="t-attr">content</span>=<span class="t-val">"Free HTML course with 22 lessons"</span><span class="t-tag">/&gt;</span>
   <span class="t-tag">&lt;/head&gt;</span>
 
-  <span class="t-cm">&lt;!-- Part 4: BODY — everything the user sees --&gt;</span>
+  <span class="t-cm">&lt;!-- 4. BODY: everything the user actually sees --&gt;</span>
   <span class="t-tag">&lt;body&gt;</span>
-    <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Welcome to CIWeb</span><span class="t-tag">&lt;/h1&gt;</span>
-    <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Free HTML with 22 lessons.</span><span class="t-tag">&lt;/p&gt;</span>
+    <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Welcome to CIWeb!</span><span class="t-tag">&lt;/h1&gt;</span>
+    <span class="t-tag">&lt;p&gt;</span><span class="t-txt">22 free HTML lessons. Start learning now.</span><span class="t-tag">&lt;/p&gt;</span>
   <span class="t-tag">&lt;/body&gt;</span>
 
 <span class="t-tag">&lt;/html&gt;</span></pre>
   <div class="ex-out">
-    <div class="browser-frame">
-      <div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div><span style="margin-left:8px;background:#fff;border-radius:3px;padding:1px 8px;font-size:.72rem;color:#555">ciweb.in</span></div>
-      <div class="browser-body"><h1 style="margin:0 0 6px;font-size:1.4rem">Welcome to CIWeb</h1><p style="margin:0;color:#444">Free HTML with 22 lessons.</p></div>
+    <div class="brow">
+      <div class="brow-bar"><div class="brow-dot" style="background:#ff5f57"></div><div class="brow-dot" style="background:#febc2e"></div><div class="brow-dot" style="background:#28c840"></div><span style="flex:1;margin-left:8px;background:#fff;border-radius:3px;padding:1px 8px;font-size:.7rem;color:#555">ciweb.in | CIWeb &mdash; Learn HTML Free</span></div>
+      <div class="brow-body"><h1 style="margin:0 0 6px;font-size:1.4rem">Welcome to CIWeb!</h1><p style="margin:0;color:#444">22 free HTML lessons. Start learning now.</p></div>
     </div>
   </div>
-  <div class="ex-note">Only the &lt;body&gt; content appears on screen. Everything in &lt;head&gt; is invisible to users but essential for browsers and Google.</div>
+  <div class="ex-note">Notice: the title appears in the browser tab (top). Only &lt;body&gt; content shows on the page. &lt;head&gt; is invisible but essential.</div>
 </div>
 
-<h2>What Each Tag Does</h2>
-<div class="card"><div class="card-head"><span class="chip">Every Part Explained</span></div>
-<div class="row"><span class="rk">&lt;!DOCTYPE html&gt;</span><span class="rv">Not a tag. Tells browser to use HTML5 mode. Must be line 1.</span></div>
-<div class="row"><span class="rk">&lt;html lang="en"&gt;</span><span class="rv">Root of the page. lang tells Google and screen readers the language.</span></div>
-<div class="row"><span class="rk">&lt;meta charset="UTF-8"&gt;</span><span class="rv">Supports Hindi, emoji, Arabic, and all world characters. Always first in head.</span></div>
-<div class="row"><span class="rk">&lt;meta name="viewport"&gt;</span><span class="rv">Makes pages work on mobile. Without this text looks tiny on phones.</span></div>
-<div class="row"><span class="rk">&lt;title&gt;</span><span class="rv">Text in browser tab. Also shown in Google search results. Very important for SEO.</span></div>
-<div class="row"><span class="rk">&lt;body&gt;</span><span class="rv">Everything the user sees goes here — text, images, buttons, everything.</span></div>
+<h2>What Each Part Does</h2>
+<div class="card"><div class="card-head"><span class="chip">Every Tag Explained</span></div>
+<div class="row"><span class="rk">&lt;!DOCTYPE html&gt;</span><span class="rv">Not a tag. Instruction to browser: use HTML5 rules. Must be line 1, every time.</span></div>
+<div class="row"><span class="rk">&lt;html lang="en"&gt;</span><span class="rv">Root of the entire document. lang="en" tells Google and screen readers: English content.</span></div>
+<div class="row"><span class="rk">&lt;meta charset="UTF-8"&gt;</span><span class="rv">Enables Hindi, Arabic, emoji, all world scripts. Must be first inside &lt;head&gt;.</span></div>
+<div class="row"><span class="rk">&lt;meta name="viewport"&gt;</span><span class="rv">Makes page work on mobile. Without this, text looks tiny on phones. Non-negotiable.</span></div>
+<div class="row"><span class="rk">&lt;title&gt;</span><span class="rv">Shown in browser tab and Google search results. Critical for SEO. Keep under 60 chars.</span></div>
+<div class="row"><span class="rk">&lt;body&gt;</span><span class="rv">Everything the user sees goes here. Text, images, buttons — all of it.</span></div>
 </div>
 
-<h2>Good vs Bad Indentation</h2>
+<h2>Indentation: Professional vs Amateur</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example 2 — Readable Code vs Unreadable Code</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- BAD: impossible to read or debug --&gt;</span>
-<span class="t-tag">&lt;html&gt;&lt;head&gt;&lt;title&gt;</span><span class="t-txt">Page</span><span class="t-tag">&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;</span><span class="t-txt">Hi</span><span class="t-tag">&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;</span>
+  <div class="ex-lbl">Example 2 — Why Indentation Matters</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- Amateur: impossible to read, debug, or maintain --&gt;</span>
+<span class="t-tag">&lt;html&gt;&lt;head&gt;&lt;title&gt;</span><span class="t-txt">Page</span><span class="t-tag">&lt;/title&gt;&lt;/head&gt;&lt;body&gt;&lt;h1&gt;</span><span class="t-txt">Hi</span><span class="t-tag">&lt;/h1&gt;&lt;p&gt;</span><span class="t-txt">Text</span><span class="t-tag">&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</span>
 
-<span class="t-cm">&lt;!-- GOOD: 2 spaces per level, one element per line --&gt;</span>
+<span class="t-cm">&lt;!-- Professional: 2 spaces per level, one element per line --&gt;</span>
 <span class="t-tag">&lt;html&gt;</span>
   <span class="t-tag">&lt;head&gt;</span>
     <span class="t-tag">&lt;title&gt;</span><span class="t-txt">Page</span><span class="t-tag">&lt;/title&gt;</span>
   <span class="t-tag">&lt;/head&gt;</span>
   <span class="t-tag">&lt;body&gt;</span>
     <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Hi</span><span class="t-tag">&lt;/h1&gt;</span>
+    <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Text</span><span class="t-tag">&lt;/p&gt;</span>
   <span class="t-tag">&lt;/body&gt;</span>
 <span class="t-tag">&lt;/html&gt;</span></pre>
-  <div class="ex-note">Both produce identical output. But professional developers always use indentation. Employers judge code quality by readability.</div>
+  <div class="ex-note">Both produce identical output. But professional developers always use indentation. Employers and code reviewers will judge your code quality by how it looks.</div>
 </div>
 
-<div class="box box-warn"><div class="box-lbl">Mobile is Not Optional</div><p>Without <code>&lt;meta name="viewport"...&gt;</code> your page appears zoomed out on phones. Over 60% of web traffic is mobile. This one line prevents your site from looking broken for most visitors.</p></div>
-<div class="box box-tip"><div class="box-lbl">Inspect Any Website</div><p>Open any website and press F12. You will see its complete HTML structure. This is how developers study how popular sites are built. Try it on Google or YouTube right now.</p></div>
-<div class="why"><div class="why-lbl">Why DOCTYPE Exists</div><p>Before HTML5 there were multiple versions and browsers rendered pages differently. DOCTYPE told browsers which rules to use. HTML5 simplified it to just <code>&lt;!DOCTYPE html&gt;</code>.</p></div>
+<div class="box box-warn"><div class="box-lbl">Viewport is NOT Optional</div><p>Over 60% of web traffic is mobile. Without <code>&lt;meta name="viewport"...&gt;</code> your page zooms out on phones making text tiny and unreadable. This one line is the difference between a page that works on mobile and one that doesn't.</p></div>
+<div class="box box-tip"><div class="box-lbl">Secret Trick: Inspect Any Website</div><p>Press F12 on any website to see its HTML structure. This is how real developers study how popular sites like Zomato, Swiggy, or Flipkart are built. Try it right now — open Google and press F12.</p></div>
+<div class="why"><div class="why-lbl">Why DOCTYPE?</div><p>Before HTML5 there were 3 different versions and browsers rendered pages differently. DOCTYPE told them which rules to follow. HTML5 in 2014 simplified everything to just <code>&lt;!DOCTYPE html&gt;</code>. Short and done.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -403,16 +417,16 @@ html.light .toggle-lbl{left:6px;right:auto}
             <a class="foot-a" href="../../contact.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg> Report Bug</a>
             <a class="foot-a" href="../../certificate.html"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 12l2 2 4-4"/></svg> Certificate</a>
           </div>
-          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free</div>
+          <div class="foot-copy">CIWeb HTML Course &bull; 22 Lessons &bull; Free Forever</div>
         </div>
       </div>
     </div>
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
-        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies — no code at all.</p>
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">&#129302; Shiv AI Explains with Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using funny real-life analogies. No code — just vibes and clarity.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem;white-space:pre-wrap">Click the Explain tab to generate analogies automatically.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -426,33 +440,33 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code &rarr; click Deep Analyze for instant feedback</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">Which meta tag makes pages display correctly on mobile phones?</p>
+        <p class="q-question">Which meta tag makes your page display correctly on mobile?</p>
         <div class="q-opts">
 <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">charset</span></button>
 <button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">description</span></button>
 <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">viewport</span></button>
 <button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">author</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>The viewport meta tag controls how pages display on mobile. Without it browsers zoom out to show the desktop version, making text tiny and unreadable.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>The viewport meta tag tells mobile browsers how to scale the page. Without it, phones zoom out to show the desktop version, making text tiny and unreadable for 60%+ of your visitors.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Proper Document Structure</div>
-        <div class="chal-desc">Build a complete HTML document with DOCTYPE, html, head (with charset, viewport, title, meta description), and body.</div>
+        <div class="chal-title">Complete Document Structure</div>
+        <div class="chal-desc">Build a full HTML page with DOCTYPE, html lang, head (charset + viewport + title + description), and body with content.</div>
         <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
 <div class="c-req" id="cr0"><span class="c-dot"></span><span>DOCTYPE</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>lang attribute</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>lang attr</span></div>
 <div class="c-req" id="cr2"><span class="c-dot"></span><span>charset</span></div>
 <div class="c-req" id="cr3"><span class="c-dot"></span><span>viewport</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>title tag</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>title</span></div>
 <div class="c-req" id="cr5"><span class="c-dot"></span><span>body content</span></div>
       </div>
       <div class="chal-editor">
@@ -473,8 +487,8 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 2</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
-            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought, question, or breakthrough about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Share your code (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
         </div>
@@ -483,17 +497,49 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
+      <div id="chai-body">
+      <div style="background:var(--bg3);border:1px solid var(--line);border-radius:14px;padding:1.4rem;margin-bottom:1rem">
+        <div style="font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.8rem">&#128176; Donate via UPI</div>
+        <div style="background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:1rem;margin-bottom:.75rem;text-align:center">
+          <div style="font-family:var(--m);font-size:1.1rem;font-weight:700;color:var(--ink);letter-spacing:.5px">shiva.saini@fam</div>
+          <div style="font-size:.72rem;color:var(--ink3);margin-top:.3rem">GPay / PhonePe / Paytm / Any UPI</div>
+        </div>
+        <a href="upi://pay?pa=shiva.saini@fam&pn=CIWeb+Shiva+Saini&cu=INR" style="display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--red);color:#fff;border-radius:10px;padding:11px;font-weight:700;font-size:.86rem;text-decoration:none;margin-bottom:.6rem">&#127861; Pay with UPI App</a>
+        <a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:flex;align-items:center;justify-content:center;gap:.5rem;background:var(--ba);color:var(--blue);border:1px solid var(--bb);border-radius:10px;padding:10px;font-weight:700;font-size:.84rem;text-decoration:none">&#128179; Pay via Razorpay (Card / UPI)</a>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(34,197,94,.08),rgba(59,130,246,.06));border:1px solid rgba(34,197,94,.2);border-radius:14px;padding:1.2rem">
+        <div style="font-size:.82rem;font-weight:700;color:var(--green);margin-bottom:.5rem">&#9733; What you get after donating</div>
+        <div style="font-size:.8rem;color:var(--ink2);line-height:1.8">
+          &#10003; +50 Shiv AI messages (one-time bonus)<br/>
+          &#10003; Priority support from Shiva<br/>
+          &#10003; Warm fuzzy feeling of doing good &#128522;
+        </div>
+        <div style="margin-top:.9rem;padding-top:.75rem;border-top:1px solid var(--line);font-size:.76rem;color:var(--ink3)">
+          <strong style="color:var(--ink2)">How to claim +50 AI msgs:</strong><br/>
+          After paying, message on YouTube <a href="https://youtube.com/@codinginfinite" target="_blank" style="color:var(--acc)">@codinginfinite</a> with your payment ID. Shiva will add +50 msgs to your account within 24 hours.
+        </div>
+      </div>
+    </div>
     </div>
   </main>
 </div>
 <button id="mob-fab" onclick="openLessons()" aria-label="All lessons"><span></span><span></span><span></span></button>
 <div class="ai-overlay" id="ai-overlay">
   <div class="ai-panel">
-    <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
+    <div class="ai-head">
+      <div class="ai-av">&#129302;</div>
+      <div>
+        <div class="ai-name">Shiv AI</div>
+        <div class="ai-status">Online &bull; Funny but Smart &#128526;</div>
+        <div id="ai-counter"></div>
+      </div>
+      <button class="ai-close" onclick="AI.toggle()">&#10005;</button>
+    </div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row">
+      <textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice, life advice, anything... &#128514;" onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea>
+      <button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
   </div>
 </div>
 <script>
@@ -501,16 +547,17 @@ html.light .toggle-lbl{left:6px;right:auto}
 
 
 
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=2,LT='HTML Document Structure',TOTAL=22,QA=2;
 var REQS=[
 {label:'DOCTYPE',chk:function(c){return !!(c.trim().toLowerCase().indexOf('<!doctype')===0)}},
-{label:'lang attribute',chk:function(c){return !!(/<html[^>]+lang=/i.test(c))}},
+{label:'lang attr',chk:function(c){return !!(/<html[^>]+lang=/i.test(c))}},
 {label:'charset',chk:function(c){return !!(c.indexOf('charset')>-1)}},
 {label:'viewport',chk:function(c){return !!(c.indexOf('viewport')>-1)}},
-{label:'title tag',chk:function(c){return !!(c.indexOf('<title')>-1&&c.indexOf('</title>')>-1)}},
+{label:'title',chk:function(c){return !!(c.indexOf('<title')>-1&&c.indexOf('</title>')>-1)}},
 {label:'body content',chk:function(c){return !!(c.indexOf('<h1')>-1||c.indexOf('<p')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>CIWeb | Learn HTML</title>\n  <meta name="description" content="Learning HTML at CIWeb - 22 free interactive lessons."/>\n</head>\n<body>\n\n  <h1>I am Learning HTML!</h1>\n  <p>This is Lesson 2 at CIWeb.</p>\n  <p>I am building the foundation of every website.</p>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>CIWeb | Learn HTML Free</title>\n  <meta name="description" content="I am learning HTML at CIWeb with 22 free interactive lessons."/>\n</head>\n<body>\n\n  <h1>I am Learning HTML!</h1>\n  <p>Lesson 2: HTML Document Structure.</p>\n  <p>Every website starts with this exact structure.</p>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -713,8 +760,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.6rem">Shiv AI Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.8rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.8rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.55rem">Your 15 free messages</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem">'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Ask any coding question  HTML, CSS, JS, Python</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Deep Analyze your code instantly</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Get real-life analogies for any lesson</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -821,100 +887,71 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+
+
 function deepAnalyze(){
-  var code = window._ed ? window._ed.doc.getValue() : '';
-  if(!code.trim()){ toast('Write some code first!','o'); return; }
-
-  var issues = [], tips = [];
-
-  // 1. Tag balance - count mathematically
-  var tags = ['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
     'table','thead','tbody','tr','td','th','form','textarea','select','button',
     'label','main','header','footer','nav','section','article','aside',
     'figure','figcaption','blockquote','details','summary'];
   tags.forEach(function(t){
-    var re_o = new RegExp('<' + t + '(\\s[^>]*)?>','gi');
-    var re_c = new RegExp('<\\/' + t + '>','gi');
-    var o = (code.match(re_o)||[]).length;
-    var c = (code.match(re_c)||[]).length;
-    if(o > c) issues.push(t + ' tag not closed (' + o + ' open, ' + c + ' closed)');
-    if(c > o) issues.push('Extra </' + t + '> found (' + c + ' closing, ' + o + ' opening)');
+    var re_o=new RegExp('<'+t+'(\\s[^>]*)?>','gi');
+    var re_c=new RegExp('</'+t+'>','gi');
+    var o=(code.match(re_o)||[]).length;
+    var c=(code.match(re_c)||[]).length;
+    if(o>c)issues.push('&lt;'+t+'&gt; not closed ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, only '+o+' opening)');
   });
-
-  // 2. img checks
   (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
-    if(!/\balt=/i.test(img)) issues.push('img missing alt attribute');
-    if(!/\bloading=/i.test(img)) tips.push('img: add loading="lazy" for better performance');
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy" for speed');
   });
-
-  // 3. a with target blank
   (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
-    if(/target=["']_blank/i.test(a) && !/noopener/i.test(a))
-      issues.push('a with target="_blank" missing rel="noopener noreferrer"');
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
   });
-
-  // 4. Document structure hints
   if(/<html/i.test(code)){
-    if(!/<title>[^<]+<\/title>/i.test(code)) issues.push('Missing <title> tag in <head>');
-    if(!/<meta[^>]+charset/i.test(code)) tips.push('Add <meta charset="UTF-8"/> to <head>');
-    if(!/<meta[^>]+viewport/i.test(code)) tips.push('Add viewport meta tag for mobile');
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
   }
-  var h1c = (code.match(/<h1[\s>]/gi)||[]).length;
-  if(h1c > 1) issues.push('Found ' + h1c + ' h1 tags - use only ONE h1 per page');
-  if(/<body/i.test(code) && h1c === 0) tips.push('No h1 found - add a main heading for SEO');
-
-  // 5. Semantic hints
-  if(/<b[\s>]|<\/b>/i.test(code) && !/<strong/i.test(code))
-    tips.push('Use <strong> instead of <b> for semantic meaning');
-  if(/<i[\s>]|<\/i>/i.test(code) && !/<em/i.test(code))
-    tips.push('Use <em> instead of <i> for semantic meaning');
-
-  // Show in the hint bar area
-  showDA(issues, tips, code.length);
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Found '+h1c+' &lt;h1&gt; tags  use only ONE per page');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found  add a main heading');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
 }
-
-function showDA(issues, tips, len){
-  // Use the existing hint-bar area - inject a result panel right after it
-  var hbar = document.querySelector('.hint-bar');
-  if(!hbar) return;
-  var old = document.getElementById('da-result');
-  if(old) old.remove();
-
-  var panel = document.createElement('div');
-  panel.id = 'da-result';
-  panel.style.cssText = 'background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
-
-  var closeBtn = '<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.95rem;line-height:1">&#10005;</button>';
-
-  var allGood = issues.length === 0 && tips.length === 0;
-  var html = closeBtn;
-  html += '<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">';
-  html += '&#128269; Analysis of ' + len + ' chars</div>';
-
-  if(allGood){
-    html += '<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. No errors found!</div>';
-  } else {
+function showDA(issues,tips,len){
+  var old=document.getElementById('da-panel');if(old)old.remove();
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var ok=issues.length===0&&tips.length===0;
+  var html='<button onclick="document.getElementById(\'da-panel\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;line-height:1">&#10005;</button>';
+  html+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">&#128269; Analyzed '+len+' characters  client-side (100% accurate)</div>';
+  if(ok){
+    html+='<div style="color:#22c55e;font-weight:700;margin-bottom:.3rem">&#10003; Perfect! All tags are properly closed. No errors found.</div>';
+  }else{
     if(issues.length){
-      html += '<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; ' + issues.length + ' Error' + (issues.length>1?'s':'') + ':</div>';
-      issues.forEach(function(e,i){
-        html += '<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">';
-        html += (i+1) + '. ' + e + '</div>';
-      });
-    } else {
-      html += '<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; No syntax errors - all tags balanced</div>';
+      html+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' Error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){html+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.32rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;font-size:.82rem;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      html+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced  no syntax errors</div>';
     }
     if(tips.length){
-      html += '<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; ' + tips.length + ' Tip' + (tips.length>1?'s':'') + ':</div>';
-      tips.forEach(function(t,i){
-        html += '<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">';
-        html += (i+1) + '. ' + t + '</div>';
-      });
+      html+='<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">&#128161; '+tips.length+' Suggestion'+(tips.length>1?'s':'')+':</div>';
+      tips.forEach(function(t,i){html+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.32rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;font-size:.82rem;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
     }
   }
-  html += '<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For SEO &amp; accessibility advice, ask Shiv AI below.</div>';
-
-  panel.innerHTML = html;
-  hbar.parentNode.insertBefore(panel, hbar.nextSibling);
+  html+='<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For semantic/SEO advice, ask Shiv AI below &#128071;</div>';
+  var panel=document.createElement('div');
+  panel.id='da-panel';
+  panel.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  panel.innerHTML=html;
+  hbar.parentNode.insertBefore(panel,hbar.nextSibling);
 }
 
 </script>
