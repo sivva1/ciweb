@@ -501,8 +501,7 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
+<div id="chai-body"></div>
     </div>
   </main>
 </div>
@@ -730,8 +729,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.6rem">Shiv AI Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.8rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.8rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.55rem">Your 15 free messages</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem">'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Ask any coding question  HTML, CSS, JS, Python</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Deep Analyze your code instantly</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#10003; Get real-life analogies for any lesson</div>'+
+      '<div style="font-size:.8rem;color:var(--ink2)">&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
