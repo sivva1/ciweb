@@ -258,46 +258,56 @@ html.light .toggle-lbl{left:6px;right:auto}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
 @media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
-/* ── EXAMPLE BLOCKS ── */
 .ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
-.ex-lbl{
-  display:flex;align-items:center;gap:.4rem;
-  background:var(--bg3);padding:.38rem .88rem;
-  font-size:.6rem;font-weight:800;text-transform:uppercase;
-  letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)
-}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
 .ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
 
-/* Code area — token colors that read well on dark AND light bg */
-.ex-code{
-  background:#1e1e2e;
-  padding:.75rem .95rem;margin:0;
-  font-family:var(--m);font-size:.76rem;
-  overflow-x:auto;white-space:pre;
-  line-height:1.72;border-bottom:1px solid var(--line);
-}
-/* Syntax highlight spans — inserted by JS */
-.t-tag{color:#89b4fa}       /* blue  - tags like <p> */
-.t-attr{color:#a6e3a1}      /* green - attributes   */
-.t-val{color:#fab387}       /* peach - values       */
-.t-cm{color:#6c7086;font-style:italic}  /* comment */
-.t-txt{color:#cdd6f4}       /* plain text           */
-.t-sp{color:#f38ba8}        /* special chars &lt;   */
 
-/* Output preview area */
-.ex-out{
-  padding:.9rem 1rem;
-  background:var(--bg2);
-  border-bottom:1px solid var(--line);
-  font-size:.85rem;color:var(--ink2);
-}
-/* Note bar */
-.ex-note{
-  padding:.38rem .88rem;
-  font-size:.72rem;color:var(--ink3);
-  font-style:italic;
-  background:var(--ba);
-}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
 
 </style>
 </head>
@@ -330,7 +340,7 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="hero">
       <div class="hero-meta"><span class="badge b-tag">SEMANTIC</span><span class="badge b-time">11 min</span><span class="badge b-xp">25 XP</span></div>
       <h1 class="lesson-title">Semantic Layout</h1>
-      <p class="lesson-sub">Learn Semantic Layout with syntax-highlighted examples, live output, and Shiv AI.</p>
+      <p class="lesson-sub">Learn Semantic Layout with live examples, interactive editor, and Shiv AI code review.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -339,93 +349,87 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">AI Msgs</button>
     </div>
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
-<h2>Semantic Layout Tags</h2>
-<p>HTML5 introduced semantic elements describing what content they contain. Before HTML5 everything was a <code>&lt;div&gt;</code>. Now we have specific tags that search engines and screen readers understand.</p>
+<h2>Semantic HTML Layout</h2>
+<p>Semantic HTML uses tags that describe their meaning — not just their appearance. HTML5 introduced layout tags like <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, <code>&lt;main&gt;</code>, <code>&lt;article&gt;</code>, <code>&lt;aside&gt;</code>, and <code>&lt;footer&gt;</code> to replace meaningless <code>&lt;div&gt;</code> soup.</p>
 
-<h2>The Semantic Page Blueprint</h2>
+<h2>Complete Semantic Page Layout</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Full Semantic Page Layout</div>
+  <div class="ex-lbl">Example 1 — Real Page Structure</div>
   <pre class="ex-code"><span class="t-tag">&lt;body&gt;</span>
 
+  <span class="t-cm">&lt;!-- Site-wide header with logo and navigation --&gt;</span>
   <span class="t-tag">&lt;header&gt;</span>
-    <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">CIWeb</span><span class="t-tag">&lt;/h1&gt;</span>
-    <span class="t-tag">&lt;nav&gt;</span>
-      <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"/"</span><span class="t-tag">&gt;</span><span class="t-txt">Home</span><span class="t-tag">&lt;/a&gt;</span>
-      <span class="t-tag">&lt;a</span> <span class="t-attr">href</span><span class="t-txt">=</span><span class="t-val">"/courses"</span><span class="t-tag">&gt;</span><span class="t-txt">Courses</span><span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"/"</span><span class="t-tag">&gt;</span><span class="t-txt">CIWeb</span><span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-tag">&lt;nav</span> <span class="t-attr">aria-label</span>=<span class="t-val">"Main navigation"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"/"</span><span class="t-tag">&gt;</span><span class="t-txt">Home</span><span class="t-tag">&lt;/a&gt;</span>
+      <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"/courses"</span><span class="t-tag">&gt;</span><span class="t-txt">Courses</span><span class="t-tag">&lt;/a&gt;</span>
     <span class="t-tag">&lt;/nav&gt;</span>
   <span class="t-tag">&lt;/header&gt;</span>
 
+  <span class="t-cm">&lt;!-- Main content area --&gt;</span>
   <span class="t-tag">&lt;main&gt;</span>
+
+    <span class="t-cm">&lt;!-- A self-contained blog post --&gt;</span>
     <span class="t-tag">&lt;article&gt;</span>
-      <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">Learn HTML Free</span><span class="t-tag">&lt;/h2&gt;</span>
-      <span class="t-tag">&lt;p&gt;</span><span class="t-txt">22 lessons, live editor, AI tutor.</span><span class="t-tag">&lt;/p&gt;</span>
+      <span class="t-tag">&lt;h1&gt;</span><span class="t-txt">Learn HTML in 22 Lessons</span><span class="t-tag">&lt;/h1&gt;</span>
+      <span class="t-tag">&lt;p&gt;</span><span class="t-txt">HTML is the foundation...</span><span class="t-tag">&lt;/p&gt;</span>
+
+      <span class="t-cm">&lt;!-- Section within the article --&gt;</span>
+      <span class="t-tag">&lt;section&gt;</span>
+        <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">Why Learn HTML?</span><span class="t-tag">&lt;/h2&gt;</span>
+        <span class="t-tag">&lt;p&gt;</span><span class="t-txt">HTML is used by every website...</span><span class="t-tag">&lt;/p&gt;</span>
+      <span class="t-tag">&lt;/section&gt;</span>
     <span class="t-tag">&lt;/article&gt;</span>
 
+    <span class="t-cm">&lt;!-- Sidebar with related content --&gt;</span>
     <span class="t-tag">&lt;aside&gt;</span>
-      <span class="t-tag">&lt;h3&gt;</span><span class="t-txt">Related Courses</span><span class="t-tag">&lt;/h3&gt;</span>
+      <span class="t-tag">&lt;h2&gt;</span><span class="t-txt">Related Courses</span><span class="t-tag">&lt;/h2&gt;</span>
+      <span class="t-tag">&lt;ul&gt;</span>
+        <span class="t-tag">&lt;li&gt;&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"/css"</span><span class="t-tag">&gt;</span><span class="t-txt">CSS Course</span><span class="t-tag">&lt;/a&gt;&lt;/li&gt;</span>
+      <span class="t-tag">&lt;/ul&gt;</span>
     <span class="t-tag">&lt;/aside&gt;</span>
+
   <span class="t-tag">&lt;/main&gt;</span>
 
+  <span class="t-cm">&lt;!-- Site-wide footer --&gt;</span>
   <span class="t-tag">&lt;footer&gt;</span>
-    <span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;copy; 2025 CIWeb</span><span class="t-tag">&lt;/p&gt;</span>
+    <span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;copy; 2026 CIWeb. All rights reserved.</span><span class="t-tag">&lt;/p&gt;</span>
   <span class="t-tag">&lt;/footer&gt;</span>
 
 <span class="t-tag">&lt;/body&gt;</span></pre>
-  <div class="ex-out" style="font-size:.8rem;border:1px solid var(--line);border-radius:6px;overflow:hidden">
-    <div style="background:var(--ba);padding:.4rem .75rem;border-bottom:1px solid var(--line);color:var(--blue);font-weight:700;font-size:.72rem">HEADER — logo + nav</div>
-    <div style="display:flex;min-height:80px;border-bottom:1px solid var(--line)">
-      <div style="flex:1;padding:.5rem .75rem;border-right:1px solid var(--line)">
-        <div style="font-size:.68rem;font-weight:700;color:var(--gold);margin-bottom:.25rem">MAIN &gt; ARTICLE</div>
-        <div>Learn HTML Free</div>
-        <div style="color:var(--ink3);font-size:.75rem">22 lessons, live editor, AI tutor.</div>
+  <div class="ex-out">
+    <div class="browser-frame"><div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
+    <div class="browser-body" style="padding:8px;font-size:12px">
+      <div style="background:#f0f0f0;padding:8px;margin-bottom:8px;border-radius:4px;display:flex;justify-content:space-between;align-items:center"><strong>CIWeb</strong><span>Home | Courses</span></div>
+      <div style="display:flex;gap:10px">
+        <div style="flex:1;background:#e8f0fe;padding:8px;border-radius:4px"><strong>Learn HTML in 22 Lessons</strong><br/><small>HTML is the foundation...</small><br/><div style="background:#d0e8ff;padding:5px;margin-top:5px;border-radius:3px"><strong>Why Learn HTML?</strong><br/><small>HTML is used by every website...</small></div></div>
+        <div style="width:100px;background:#e8f5e9;padding:8px;border-radius:4px"><strong>Related</strong><br/><small>• CSS Course</small></div>
       </div>
-      <div style="width:110px;padding:.5rem .6rem">
-        <div style="font-size:.68rem;font-weight:700;color:var(--gold);margin-bottom:.25rem">ASIDE</div>
-        <div style="color:var(--ink3);font-size:.75rem">Related Courses</div>
-      </div>
-    </div>
-    <div style="background:var(--bg3);padding:.35rem .75rem;font-size:.72rem;color:var(--ink3)">FOOTER — &copy; 2025 CIWeb</div>
+      <div style="background:#f5f5f5;padding:6px;margin-top:8px;border-radius:4px;text-align:center;font-size:.75rem">&copy; 2026 CIWeb. All rights reserved.</div>
+    </div></div>
   </div>
-  <div class="ex-note">Google reads header, main, article, footer to understand your page structure. This directly affects rankings.</div>
+  <div class="ex-note">This is the actual structure of CIWeb.in — header, nav, main, article, section, aside, footer. Google reads this and understands each part instantly.</div>
 </div>
 
-<h2>time and figure in Practice</h2>
-<div class="ex-block">
-  <div class="ex-lbl">Example — time and figure</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- time: machine-readable date --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Published </span>
-  <span class="t-tag">&lt;time</span> <span class="t-attr">datetime</span><span class="t-txt">=</span><span class="t-val">"2025-01-15"</span><span class="t-tag">&gt;</span>
-    <span class="t-txt">January 15, 2025</span>
-  <span class="t-tag">&lt;/time&gt;</span>
-<span class="t-tag">&lt;/p&gt;</span>
-
-<span class="t-cm">&lt;!-- figure: image with caption --&gt;</span>
-<span class="t-tag">&lt;figure&gt;</span>
-  <span class="t-tag">&lt;img</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"chart.png"</span> <span class="t-attr">alt</span><span class="t-txt">=</span><span class="t-val">"Growth chart"</span><span class="t-tag">/&gt;</span>
-  <span class="t-tag">&lt;figcaption&gt;</span><span class="t-txt">Student growth 2025</span><span class="t-tag">&lt;/figcaption&gt;</span>
-<span class="t-tag">&lt;/figure&gt;</span></pre>
-  <div class="ex-note">The datetime attribute gives Google a machine-readable date. You can display any human-friendly format in the text.</div>
+<h2>Semantic Tags Reference</h2>
+<div class="card"><div class="card-head"><span class="chip">HTML5 Semantic Tags</span><span class="chip-sm">Use these, not div</span></div>
+<div class="row"><span class="rk">&lt;header&gt;</span><span class="rv">Top of page or section. Contains logo, site title, navigation.</span></div>
+<div class="row"><span class="rk">&lt;nav&gt;</span><span class="rv">Navigation links. Use for main menu, breadcrumbs, page links.</span></div>
+<div class="row"><span class="rk">&lt;main&gt;</span><span class="rv">Primary content of the page. Only one main per page. Skip navigation links target this.</span></div>
+<div class="row"><span class="rk">&lt;article&gt;</span><span class="rv">Self-contained, reusable content. Blog posts, news articles, product cards, comments.</span></div>
+<div class="row"><span class="rk">&lt;section&gt;</span><span class="rv">Groups related content with a heading. Chapters, tabs, feature groups.</span></div>
+<div class="row"><span class="rk">&lt;aside&gt;</span><span class="rv">Content tangentially related to main content. Sidebars, callouts, related links.</span></div>
+<div class="row"><span class="rk">&lt;footer&gt;</span><span class="rv">Bottom of page or section. Copyright, links, contact info.</span></div>
+<div class="row"><span class="rk">&lt;address&gt;</span><span class="rv">Contact information for the nearest article or page author.</span></div>
 </div>
 
-<div class="card"><div class="card-head"><span class="chip">Semantic Tags</span><span class="chip-sm">HTML5 Layout</span></div>
-<div class="row"><span class="rk">&lt;header&gt;</span><span class="rv">Top of page or section. Logo, navigation, title</span></div>
-<div class="row"><span class="rk">&lt;nav&gt;</span><span class="rv">Navigation links. Screen readers can jump to it directly</span></div>
-<div class="row"><span class="rk">&lt;main&gt;</span><span class="rv">Primary unique content. Only ONE per page</span></div>
-<div class="row"><span class="rk">&lt;article&gt;</span><span class="rv">Self-contained content: blog post, news story, forum reply</span></div>
-<div class="row"><span class="rk">&lt;section&gt;</span><span class="rv">Thematic group with its own heading</span></div>
-<div class="row"><span class="rk">&lt;aside&gt;</span><span class="rv">Related but secondary content. Sidebar, related posts</span></div>
-<div class="row"><span class="rk">&lt;footer&gt;</span><span class="rv">Bottom of page or section. Copyright, contact, links</span></div>
-<div class="row"><span class="rk">&lt;figure&gt; &lt;figcaption&gt;</span><span class="rv">Media with its caption. Images, charts, code examples</span></div>
-<div class="row"><span class="rk">&lt;time&gt;</span><span class="rv">Machine-readable date. datetime gives Google the exact format</span></div>
-</div>
-
-<div class="box box-seo"><div class="box-lbl">SEO Impact</div><p>Google uses semantic tags to understand your page. <code>&lt;article&gt;</code> signals indexable content. <code>&lt;nav&gt;</code> helps Google map your site structure. Semantic HTML is a confirmed Google ranking factor.</p></div>
-<div class="box box-tip"><div class="box-lbl">div vs Semantic</div><p>Ask: does this element have a meaningful role on the page? If yes — there is a semantic tag for it. If you are grouping something purely for CSS styling — use div.</p></div>
-<div class="why"><div class="why-lbl">Why It Took 23 Years</div><p>HTML5 was finalized in 2014 — 23 years after HTML was invented in 1991. The W3C debated which semantic elements were worth standardizing for over a decade. All major browsers fully support them today.</p></div>
+<div class="box box-seo"><div class="box-lbl">Semantic HTML = Better Google Ranking</div><p>When Google crawls your page, semantic tags are ranking signals. A page with proper header, nav, main, article, footer structure gets crawled and understood faster than one with only divs. Google knows what is navigation, what is the main article, and what is a sidebar — which helps it rank your content accurately.</p></div>
+<div class="box box-warn"><div class="box-lbl">article vs section vs div</div><p>article: makes complete sense on its own (could be shared or syndicated). section: groups related content, needs context of the surrounding page. div: has zero semantic meaning — use only when no semantic tag fits.</p></div>
+<div class="why"><div class="why-lbl">Before HTML5 — The Div Soup Era</div><p>Before 2014, every page looked like div.header, div.nav, div.content, div.sidebar, div.footer. Developers used CSS class names to describe purpose. HTML5 semantic tags replaced this entirely. Modern code uses actual nav, header, main, footer — which any browser, screen reader, or search engine understands without a class name.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -443,9 +447,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code at all.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies. No code — just clear examples.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -459,32 +463,32 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">Which element should wrap your main navigation menu?</p>
+        <p class="q-question">What is the difference between article and section?</p>
         <div class="q-opts">
-<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">div</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">menu</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">nav</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">ul</span></button>
+<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">They are identical</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">article is self-contained content; section groups related content on a page</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">section is older than article</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">article is for images, section is for text</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>nav semantically marks navigation links. Screen readers announce it and Google understands it is navigation — unlike a generic div which means nothing to machines.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>An article makes complete sense on its own and can be reused anywhere (blog post, news article, comment). A section groups related content that needs the context of the surrounding page.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Semantic Page</div>
-        <div class="chal-desc">Build a complete page using header, nav, main, article, section, aside, and footer.</div>
+        <div class="chal-title">Semantic Blog Page</div>
+        <div class="chal-desc">Build a complete semantic page with header (with nav), main, article (with sections), aside, and footer.</div>
         <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
-<div class="c-req" id="cr0"><span class="c-dot"></span><span>header</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>nav</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>main</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>article</span></div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>header with nav</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>main</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>article</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>section</span></div>
 <div class="c-req" id="cr4"><span class="c-dot"></span><span>aside</span></div>
 <div class="c-req" id="cr5"><span class="c-dot"></span><span>footer</span></div>
       </div>
@@ -506,7 +510,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 10</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -516,7 +520,6 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
       <div id="chai-body"></div>
     </div>
   </main>
@@ -526,23 +529,26 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
 
 
-var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=10,LT='Semantic Layout',TOTAL=22,QA=2;
+
+
+
+var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=10,LT='Semantic Layout',TOTAL=22,QA=1;
 var REQS=[
-{label:'header',chk:function(c){return !!(c.indexOf('<header')>-1)}},
-{label:'nav',chk:function(c){return !!(c.indexOf('<nav')>-1)}},
+{label:'header with nav',chk:function(c){return !!(c.indexOf('<header')>-1&&c.indexOf('<nav')>-1)}},
 {label:'main',chk:function(c){return !!(c.indexOf('<main')>-1)}},
 {label:'article',chk:function(c){return !!(c.indexOf('<article')>-1)}},
+{label:'section',chk:function(c){return !!(c.indexOf('<section')>-1)}},
 {label:'aside',chk:function(c){return !!(c.indexOf('<aside')>-1)}},
 {label:'footer',chk:function(c){return !!(c.indexOf('<footer')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Semantic Layout</title>\n</head>\n<body>\n\n  <header>\n    <h1>CIWeb Learning</h1>\n    <nav>\n      <a href="#home">Home</a> |\n      <a href="#courses">Courses</a> |\n      <a href="#contact">Contact</a>\n    </nav>\n  </header>\n\n  <main>\n\n    <article>\n      <h2>Learning HTML in 2025</h2>\n      <p>Published: <time datetime="2025-01-15">January 15, 2025</time></p>\n      <p>HTML is the foundation of every website on the internet.</p>\n\n      <section>\n        <h3>Why HTML Matters</h3>\n        <p>Without HTML, there is no web page. Every site starts here.</p>\n      </section>\n\n      <figure>\n        <img\n          src="https://picsum.photos/id/1015/400/200"\n          alt="Mountain landscape"\n          width="400"\n          height="200"\n          loading="lazy"\n        />\n        <figcaption>Web development starts with HTML</figcaption>\n      </figure>\n    </article>\n\n    <aside>\n      <h3>Related Lessons</h3>\n      <ul>\n        <li><a href="#">HTML Basics</a></li>\n        <li><a href="#">CSS Styling</a></li>\n      </ul>\n    </aside>\n\n  </main>\n\n  <footer>\n    <p>&copy; 2025 CIWeb. All rights reserved.</p>\n  </footer>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <title>CIWeb Blog</title>\n</head>\n<body>\n\n  <header>\n    <a href="/">CIWeb</a>\n    <nav aria-label="Main navigation">\n      <a href="/">Home</a>\n      <a href="/courses">Courses</a>\n      <a href="/blogs">Blogs</a>\n      <a href="/contact">Contact</a>\n    </nav>\n  </header>\n\n  <main>\n\n    <article>\n      <h1>Learn HTML in 22 Free Lessons</h1>\n      <p>HTML is the language of the web. Every website uses it.</p>\n\n      <section>\n        <h2>Why Start with HTML?</h2>\n        <p>HTML is the entry point to web development. Once you know HTML, CSS and JavaScript become much easier to understand.</p>\n      </section>\n\n      <section>\n        <h2>What You Will Learn</h2>\n        <ul>\n          <li>Document structure</li>\n          <li>Tags and attributes</li>\n          <li>Semantic HTML</li>\n          <li>Forms and inputs</li>\n        </ul>\n      </section>\n    </article>\n\n    <aside>\n      <h2>Quick Links</h2>\n      <ul>\n        <li><a href="/courses">All Courses</a></li>\n        <li><a href="/certificate">Certificate</a></li>\n      </ul>\n    </aside>\n\n  </main>\n\n  <footer>\n    <p>&copy; 2026 CIWeb &mdash; Coding Infinite</p>\n    <address>\n      <a href="mailto:codinginfinite2021@gmail.com">Email Us</a>\n    </address>\n  </footer>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -639,24 +645,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
   var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
-function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
-}
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -726,7 +736,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -741,8 +751,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.5rem">Shiv AI &mdash; Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.78rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.75rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Your 15 free messages</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem;font-size:.8rem;color:var(--ink2)">'+
+      '<div>&#10003; Ask any coding question &mdash; HTML, CSS, JS, Python</div>'+
+      '<div>&#10003; Deep Analyze your code with one click</div>'+
+      '<div>&#10003; Get analogies to understand any lesson</div>'+
+      '<div>&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -751,19 +780,42 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -824,6 +876,77 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 
+
+
+
+
+
+
+
+
+
+function deepAnalyze(){
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var c=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>c)issues.push('Unclosed &lt;'+t+'&gt; ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, '+o+' opening)');
+  });
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy"');
+  });
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
+  });
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
+  }
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Multiple &lt;h1&gt; tags ('+h1c+'). Use only ONE per page.');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found. Add a main heading for SEO.');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
+}
+function showDA(issues,tips,len){
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var old=document.getElementById('da-result');if(old)old.remove();
+  var allOk=issues.length===0&&tips.length===0;
+  var p=document.createElement('div');
+  p.id='da-result';
+  p.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  var h='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;padding:4px;line-height:1">&#10005;</button>';
+  h+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.55rem">&#128269; Analyzed '+len+' chars &mdash; exact tag-balance check</div>';
+  if(allOk){
+    h+='<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. Zero errors found.</div>';
+    h+='<div style="color:var(--ink3);font-size:.76rem;margin-top:.3rem">Ask Shiv AI for semantic &amp; SEO review below.</div>';
+  }else{
+    if(issues.length){
+      h+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){h+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      h+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced &mdash; no syntax errors</div>';
+    }
+    if(tips.length){
+      h+='<div style="color:#fbbf24;font-weight:700;margin:.45rem 0 .3rem">&#128161; Suggestions:</div>';
+      tips.forEach(function(t,i){h+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
+    }
+  }
+  h+='<div style="margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink3)">For semantic/SEO review ask Shiv AI &#8595;</div>';
+  p.innerHTML=h;
+  hbar.parentNode.insertBefore(p,hbar.nextSibling);
+}
 
 </script>
 </body>
