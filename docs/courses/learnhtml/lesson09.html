@@ -258,46 +258,56 @@ html.light .toggle-lbl{left:6px;right:auto}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
 @media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
-/* ── EXAMPLE BLOCKS ── */
 .ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
-.ex-lbl{
-  display:flex;align-items:center;gap:.4rem;
-  background:var(--bg3);padding:.38rem .88rem;
-  font-size:.6rem;font-weight:800;text-transform:uppercase;
-  letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)
-}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
 .ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
 
-/* Code area — token colors that read well on dark AND light bg */
-.ex-code{
-  background:#1e1e2e;
-  padding:.75rem .95rem;margin:0;
-  font-family:var(--m);font-size:.76rem;
-  overflow-x:auto;white-space:pre;
-  line-height:1.72;border-bottom:1px solid var(--line);
-}
-/* Syntax highlight spans — inserted by JS */
-.t-tag{color:#89b4fa}       /* blue  - tags like <p> */
-.t-attr{color:#a6e3a1}      /* green - attributes   */
-.t-val{color:#fab387}       /* peach - values       */
-.t-cm{color:#6c7086;font-style:italic}  /* comment */
-.t-txt{color:#cdd6f4}       /* plain text           */
-.t-sp{color:#f38ba8}        /* special chars &lt;   */
 
-/* Output preview area */
-.ex-out{
-  padding:.9rem 1rem;
-  background:var(--bg2);
-  border-bottom:1px solid var(--line);
-  font-size:.85rem;color:var(--ink2);
-}
-/* Note bar */
-.ex-note{
-  padding:.38rem .88rem;
-  font-size:.72rem;color:var(--ink3);
-  font-style:italic;
-  background:var(--ba);
-}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
 
 </style>
 </head>
@@ -328,9 +338,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 <div class="sb-more">...up to Lesson 22</div></aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">FORMS</span><span class="badge b-time">14 min</span><span class="badge b-xp">25 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">FORMS</span><span class="badge b-time">12 min</span><span class="badge b-xp">25 XP</span></div>
       <h1 class="lesson-title">Forms & Inputs</h1>
-      <p class="lesson-sub">Learn Forms &amp; Inputs with syntax-highlighted examples, live output, and Shiv AI.</p>
+      <p class="lesson-sub">Learn Forms &amp; Inputs with live examples, interactive editor, and Shiv AI code review.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -339,92 +349,92 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">AI Msgs</button>
     </div>
     <div class="panel on" id="p-learn">
       <div class="content" id="content-en">
-<h2>Forms and Inputs</h2>
-<p>Forms let users send data to servers — login, signup, search, checkout. The <code>&lt;form&gt;</code> element is one of HTML's most powerful tags. HTML forms made e-commerce possible.</p>
+<h2>HTML Forms and Inputs</h2>
+<p>Forms collect user input — login data, search queries, contact messages, orders. The <code>&lt;form&gt;</code> element is a container. Inside it go <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;button&gt;</code> elements.</p>
 
-<h2>Basic Form</h2>
+<h2>Complete Login Form</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Simple Contact Form</div>
-  <pre class="ex-code"><span class="t-tag">&lt;form</span> <span class="t-attr">action</span><span class="t-txt">=</span><span class="t-val">"/submit"</span> <span class="t-attr">method</span><span class="t-txt">=</span><span class="t-val">"POST"</span><span class="t-tag">&gt;</span>
+  <div class="ex-lbl">Example 1 — Real Login Form</div>
+  <pre class="ex-code"><span class="t-tag">&lt;form</span> <span class="t-attr">action</span>=<span class="t-val">"/login"</span> <span class="t-attr">method</span>=<span class="t-val">"POST"</span><span class="t-tag">&gt;</span>
 
-  <span class="t-cm">&lt;!-- label for= links to input id= --&gt;</span>
-  <span class="t-tag">&lt;label</span> <span class="t-attr">for</span><span class="t-txt">=</span><span class="t-val">"name"</span><span class="t-tag">&gt;</span><span class="t-txt">Your Name</span><span class="t-tag">&lt;/label&gt;</span>
-  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"text"</span> <span class="t-attr">id</span><span class="t-txt">=</span><span class="t-val">"name"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"name"</span><span class="t-tag">/&gt;</span>
+  <span class="t-cm">&lt;!-- Text input --&gt;</span>
+  <span class="t-tag">&lt;label</span> <span class="t-attr">for</span>=<span class="t-val">"email"</span><span class="t-tag">&gt;</span><span class="t-txt">Email Address</span><span class="t-tag">&lt;/label&gt;</span>
+  <span class="t-tag">&lt;input</span>
+    <span class="t-attr">type</span>=<span class="t-val">"email"</span>
+    <span class="t-attr">id</span>=<span class="t-val">"email"</span>
+    <span class="t-attr">name</span>=<span class="t-val">"email"</span>
+    <span class="t-attr">required</span>
+    <span class="t-attr">placeholder</span>=<span class="t-val">"you@example.com"</span>
+    <span class="t-attr">autocomplete</span>=<span class="t-val">"email"</span>
+  <span class="t-tag">/&gt;</span>
 
-  <span class="t-tag">&lt;label</span> <span class="t-attr">for</span><span class="t-txt">=</span><span class="t-val">"email"</span><span class="t-tag">&gt;</span><span class="t-txt">Email</span><span class="t-tag">&lt;/label&gt;</span>
-  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"email"</span> <span class="t-attr">id</span><span class="t-txt">=</span><span class="t-val">"email"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"email"</span><span class="t-tag">/&gt;</span>
+  <span class="t-cm">&lt;!-- Password input --&gt;</span>
+  <span class="t-tag">&lt;label</span> <span class="t-attr">for</span>=<span class="t-val">"pass"</span><span class="t-tag">&gt;</span><span class="t-txt">Password</span><span class="t-tag">&lt;/label&gt;</span>
+  <span class="t-tag">&lt;input</span>
+    <span class="t-attr">type</span>=<span class="t-val">"password"</span>
+    <span class="t-attr">id</span>=<span class="t-val">"pass"</span>
+    <span class="t-attr">name</span>=<span class="t-val">"password"</span>
+    <span class="t-attr">required</span>
+    <span class="t-attr">minlength</span>=<span class="t-val">"8"</span>
+  <span class="t-tag">/&gt;</span>
 
-  <span class="t-tag">&lt;button</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"submit"</span><span class="t-tag">&gt;</span><span class="t-txt">Send</span><span class="t-tag">&lt;/button&gt;</span>
-
+  <span class="t-tag">&lt;button</span> <span class="t-attr">type</span>=<span class="t-val">"submit"</span><span class="t-tag">&gt;</span><span class="t-txt">Login</span><span class="t-tag">&lt;/button&gt;</span>
 <span class="t-tag">&lt;/form&gt;</span></pre>
-  <div class="ex-out" style="font-size:.84rem">
-    <div style="display:flex;flex-direction:column;gap:.5rem;max-width:260px">
-      <label style="font-weight:600;font-size:.8rem">Your Name</label>
-      <input type="text" placeholder="Shiva Saini" style="padding:6px 10px;background:var(--bg3);border:1px solid var(--line2);border-radius:5px;color:var(--ink);font-size:.83rem;outline:none;width:100%"/>
-      <label style="font-weight:600;font-size:.8rem">Email</label>
-      <input type="email" placeholder="you@example.com" style="padding:6px 10px;background:var(--bg3);border:1px solid var(--line2);border-radius:5px;color:var(--ink);font-size:.83rem;outline:none;width:100%"/>
-      <button style="background:var(--red);color:#fff;border:none;padding:8px;border-radius:5px;font-weight:700;font-size:.83rem;cursor:pointer;align-self:flex-start;padding:7px 18px">Send</button>
-    </div>
+  <div class="ex-out">
+    <div class="browser-frame"><div class="browser-bar"><div class="brdot" style="background:#ff5f57"></div><div class="brdot" style="background:#febc2e"></div><div class="brdot" style="background:#28c840"></div></div>
+    <div class="browser-body">
+      <form onsubmit="return false" style="display:flex;flex-direction:column;gap:10px;max-width:280px">
+        <label style="font-weight:600;font-size:13px">Email Address</label>
+        <input type="email" placeholder="you@example.com" style="padding:8px;border:1px solid #ccc;border-radius:5px;font-size:13px"/>
+        <label style="font-weight:600;font-size:13px">Password</label>
+        <input type="password" placeholder="Min 8 characters" style="padding:8px;border:1px solid #ccc;border-radius:5px;font-size:13px"/>
+        <button style="background:#e8401c;color:#fff;border:none;padding:10px;border-radius:6px;font-size:13px;font-weight:700;cursor:pointer">Login</button>
+      </form>
+    </div></div>
   </div>
-  <div class="ex-note">Clicking the label focuses the input. This is why label for= and input id= must match.</div>
+  <div class="ex-note">label for="email" connects to input id="email". Click the label and the input gets focus — this is critical for accessibility.</div>
 </div>
 
-<h2>Checkbox and Radio</h2>
+<h2>Input Types</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Checkbox and Radio</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- Checkbox: multiple can be selected --&gt;</span>
-<span class="t-tag">&lt;label&gt;</span>
-  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"checkbox"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"agree"</span><span class="t-tag">/&gt;</span>
-  <span class="t-txt">I agree to terms</span>
-<span class="t-tag">&lt;/label&gt;</span>
+  <div class="ex-lbl">Example 2 — All Common Input Types</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- These types give different keyboards on mobile --&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"text"</span>     <span class="t-attr">placeholder</span>=<span class="t-val">"Any text"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"email"</span>    <span class="t-attr">placeholder</span>=<span class="t-val">"Email"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"tel"</span>      <span class="t-attr">placeholder</span>=<span class="t-val">"Phone"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"number"</span>   <span class="t-attr">min</span>=<span class="t-val">"1"</span> <span class="t-attr">max</span>=<span class="t-val">"100"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"date"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"checkbox"</span><span class="t-tag">/&gt;</span> <span class="t-txt">Remember me</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"radio"</span>    <span class="t-attr">name</span>=<span class="t-val">"plan"</span> <span class="t-attr">value</span>=<span class="t-val">"free"</span><span class="t-tag">/&gt;</span> <span class="t-txt">Free</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"file"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"range"</span>   <span class="t-attr">min</span>=<span class="t-val">"0"</span> <span class="t-attr">max</span>=<span class="t-val">"100"</span><span class="t-tag">/&gt;</span>
 
-<span class="t-cm">&lt;!-- Radio: only ONE can be selected from group --&gt;</span>
-<span class="t-tag">&lt;label&gt;&lt;input</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"radio"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"plan"</span> <span class="t-attr">value</span><span class="t-txt">=</span><span class="t-val">"free"</span><span class="t-tag">/&gt;</span> <span class="t-txt">Free</span><span class="t-tag">&lt;/label&gt;</span>
-<span class="t-tag">&lt;label&gt;&lt;input</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"radio"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"plan"</span> <span class="t-attr">value</span><span class="t-txt">=</span><span class="t-val">"paid"</span><span class="t-tag">/&gt;</span> <span class="t-txt">Paid</span><span class="t-tag">&lt;/label&gt;</span></pre>
-  <div class="ex-out" style="display:flex;flex-direction:column;gap:.4rem;font-size:.84rem">
-    <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer"><input type="checkbox"/> I agree to terms</label>
-    <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer"><input type="radio" name="d1"/> Free Plan</label>
-    <label style="display:flex;align-items:center;gap:.4rem;cursor:pointer"><input type="radio" name="d1"/> Paid Plan</label>
-  </div>
-  <div class="ex-note">Radio buttons share the same name attribute — that makes them a group where only one can be selected.</div>
-</div>
+<span class="t-cm">&lt;!-- Textarea for multi-line text --&gt;</span>
+<span class="t-tag">&lt;textarea</span> <span class="t-attr">rows</span>=<span class="t-val">"4"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"Your message..."</span><span class="t-tag">&gt;&lt;/textarea&gt;</span>
 
-<h2>Select Dropdown</h2>
-<div class="ex-block">
-  <div class="ex-lbl">Example — Dropdown</div>
-  <pre class="ex-code"><span class="t-tag">&lt;label</span> <span class="t-attr">for</span><span class="t-txt">=</span><span class="t-val">"course"</span><span class="t-tag">&gt;</span><span class="t-txt">Pick a course</span><span class="t-tag">&lt;/label&gt;</span>
-<span class="t-tag">&lt;select</span> <span class="t-attr">id</span><span class="t-txt">=</span><span class="t-val">"course"</span> <span class="t-attr">name</span><span class="t-txt">=</span><span class="t-val">"course"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span><span class="t-txt">=</span><span class="t-val">""</span><span class="t-tag">&gt;</span><span class="t-txt">Select...</span><span class="t-tag">&lt;/option&gt;</span>
-  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span><span class="t-txt">=</span><span class="t-val">"html"</span><span class="t-tag">&gt;</span><span class="t-txt">HTML Basics</span><span class="t-tag">&lt;/option&gt;</span>
-  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span><span class="t-txt">=</span><span class="t-val">"css"</span><span class="t-tag">&gt;</span><span class="t-txt">CSS Styling</span><span class="t-tag">&lt;/option&gt;</span>
+<span class="t-cm">&lt;!-- Select dropdown --&gt;</span>
+<span class="t-tag">&lt;select&gt;</span>
+  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span>=<span class="t-val">""</span><span class="t-tag">&gt;</span><span class="t-txt">Select course</span><span class="t-tag">&lt;/option&gt;</span>
+  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span>=<span class="t-val">"html"</span><span class="t-tag">&gt;</span><span class="t-txt">HTML</span><span class="t-tag">&lt;/option&gt;</span>
+  <span class="t-tag">&lt;option</span> <span class="t-attr">value</span>=<span class="t-val">"css"</span><span class="t-tag">&gt;</span><span class="t-txt">CSS</span><span class="t-tag">&lt;/option&gt;</span>
 <span class="t-tag">&lt;/select&gt;</span></pre>
-  <div class="ex-out" style="font-size:.84rem">
-    <label style="display:block;font-weight:600;font-size:.8rem;margin-bottom:.3rem">Pick a course</label>
-    <select style="padding:6px 10px;background:var(--bg3);border:1px solid var(--line2);border-radius:5px;color:var(--ink);font-size:.83rem">
-      <option>Select...</option><option>HTML Basics</option><option>CSS Styling</option>
-    </select>
-  </div>
+  <div class="ex-note">type="email" shows @ keyboard on iPhone. type="tel" shows number keypad. type="date" shows a date picker. Always use the right type.</div>
 </div>
 
-<div class="card"><div class="card-head"><span class="chip">Input Types</span><span class="chip-sm">HTML5</span></div>
-<div class="row"><span class="rk">type="text"</span><span class="rv">Single line text. For names, usernames, general input</span></div>
-<div class="row"><span class="rk">type="email"</span><span class="rv">Email field. Browser validates format. Email keyboard on mobile</span></div>
-<div class="row"><span class="rk">type="password"</span><span class="rv">Hides characters as user types</span></div>
-<div class="row"><span class="rk">type="checkbox"</span><span class="rv">Check or uncheck. Multiple can be selected</span></div>
-<div class="row"><span class="rk">type="radio"</span><span class="rv">Select one from a group. Group with same name attribute</span></div>
-<div class="row"><span class="rk">type="number"</span><span class="rv">Numbers only with min, max, step</span></div>
-<div class="row"><span class="rk">type="date"</span><span class="rv">Date picker. Native calendar UI on mobile</span></div>
-<div class="row"><span class="rk">type="file"</span><span class="rv">File upload. Opens native file picker</span></div>
-<div class="row"><span class="rk">type="submit"</span><span class="rv">Submit button that sends the form</span></div>
+<div class="card"><div class="card-head"><span class="chip">Key Form Attributes</span></div>
+<div class="row"><span class="rk">action</span><span class="rv">URL where form data is sent. Leave blank to send to same page.</span></div>
+<div class="row"><span class="rk">method="POST"</span><span class="rv">POST hides data in request body. Use for login, signup, any sensitive data.</span></div>
+<div class="row"><span class="rk">method="GET"</span><span class="rv">GET appends data to URL as ?query=value. Use for search forms.</span></div>
+<div class="row"><span class="rk">required</span><span class="rv">Browser prevents submission if field is empty. Shows error automatically.</span></div>
+<div class="row"><span class="rk">autocomplete</span><span class="rv">Tells browser what data to autofill. "email", "name", "tel", "off".</span></div>
 </div>
 
-<div class="box box-tip"><div class="box-lbl">label is Essential</div><p>Every input needs a label. Without labels, screen readers cannot tell blind users what each field is for. Labels also improve tap targets on mobile — the whole label area becomes clickable.</p></div>
-<div class="box box-warn"><div class="box-lbl">GET vs POST</div><p>Use GET for search forms (data visible in URL). Use POST for login, signup, checkout (data in request body, more secure). NEVER use GET for passwords.</p></div>
-<div class="why"><div class="why-lbl">Forms Built E-Commerce</div><p>The first secure online purchase was in 1994 — a Sting CD sold on NetMarket using an encrypted HTML form. Today HTML forms process trillions of dollars in transactions every year.</p></div>
+<div class="box box-warn"><div class="box-lbl">Never Skip the label</div><p>Every input must have a label connected via for and id attributes. Without it: clicking the label does not focus the input, screen readers cannot describe the field, browser autocomplete does not work reliably, and Google may penalize your form for poor accessibility.</p></div>
+<div class="why"><div class="why-lbl">GET vs POST — Real Difference</div><p>GET: data goes in the URL (?search=html). Bookmarkable, shareable, cached by browser. Use for search. POST: data goes in the request body. Not visible in URL, not cached, more secure. Use for login, signup, payment. Never send passwords via GET.</p></div>
       </div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
@@ -442,9 +452,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code at all.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies. No code — just clear examples.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -458,34 +468,34 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">Which form method should a login form use?</p>
+        <p class="q-question">Which HTTP method should you use for a login form?</p>
         <div class="q-opts">
-<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">GET</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">POST</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">PUT</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">SEND</span></button>
+<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">GET — it is faster</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">POST — data goes in request body, not URL</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">PUT — it is the most secure</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">DELETE — it clears old sessions</span></button>
         </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>POST sends data in the request body not the URL. GET appends data to the URL visible in browser history — never use GET for passwords.</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>POST sends form data in the request body, keeping sensitive information like passwords hidden from the URL. GET appends data to the URL which would expose passwords to browser history and server logs.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Contact Form</div>
-        <div class="chal-desc">Build a contact form with name, email, textarea, and a labeled checkbox.</div>
+        <div class="chal-title">Registration Form</div>
+        <div class="chal-desc">Build a registration form with text, email, tel, select, textarea, checkbox inputs. Each must have a label.</div>
         <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
-<div class="c-req" id="cr0"><span class="c-dot"></span><span>form</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>text input</span></div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>form with method</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>label with for</span></div>
 <div class="c-req" id="cr2"><span class="c-dot"></span><span>email input</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>textarea</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>two labels</span></div>
-<div class="c-req" id="cr5"><span class="c-dot"></span><span>submit</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>select with options</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>textarea</span></div>
+<div class="c-req" id="cr5"><span class="c-dot"></span><span>required field</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
@@ -505,7 +515,7 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 9</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
             <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
@@ -515,7 +525,6 @@ html.light .toggle-lbl{left:6px;right:auto}
       </div>
     </div>
     <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
       <div id="chai-body"></div>
     </div>
   </main>
@@ -525,23 +534,26 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, Python, career advice..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
 
 
+
+
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=9,LT='Forms & Inputs',TOTAL=22,QA=1;
 var REQS=[
-{label:'form',chk:function(c){return !!(c.indexOf('<form')>-1)}},
-{label:'text input',chk:function(c){return !!(c.indexOf('type="text"')>-1||c.indexOf("type='text'")>-1)}},
-{label:'email input',chk:function(c){return !!(c.indexOf('type="email"')>-1||c.indexOf("type='email'")>-1)}},
+{label:'form with method',chk:function(c){return !!(/<form[^>]+method=/i.test(c))}},
+{label:'label with for',chk:function(c){return !!(c.indexOf('<label')>-1&&c.indexOf('for=')>-1)}},
+{label:'email input',chk:function(c){return !!(/<input[^>]+type=['"]email/i.test(c))}},
+{label:'select with options',chk:function(c){return !!(c.indexOf('<select')>-1&&c.indexOf('<option')>-1)}},
 {label:'textarea',chk:function(c){return !!(c.indexOf('<textarea')>-1)}},
-{label:'two labels',chk:function(c){return !!((c.match(/<label/gi)||[]).length>=2)}},
-{label:'submit',chk:function(c){return !!(c.indexOf('submit')>-1)}}
+{label:'required field',chk:function(c){return !!(c.indexOf('required')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Forms Practice</title>\n</head>\n<body>\n\n  <h1>Contact Form</h1>\n\n  <form action="/submit" method="POST">\n\n    <p>\n      <label for="name">Full Name</label><br/>\n      <input type="text" id="name" name="name" placeholder="Shiva Saini"/>\n    </p>\n\n    <p>\n      <label for="email">Email</label><br/>\n      <input type="email" id="email" name="email" placeholder="you@example.com"/>\n    </p>\n\n    <p>\n      <label for="course">Choose Course</label><br/>\n      <select id="course" name="course">\n        <option value="">Select...</option>\n        <option value="html">HTML Basics</option>\n        <option value="css">CSS Styling</option>\n        <option value="js">JavaScript</option>\n      </select>\n    </p>\n\n    <p>\n      <label for="msg">Message</label><br/>\n      <textarea id="msg" name="msg" rows="4" cols="40" placeholder="Your message..."></textarea>\n    </p>\n\n    <p>\n      <label>\n        <input type="checkbox" name="newsletter"/>\n        Subscribe to newsletter\n      </label>\n    </p>\n\n    <p>\n      <button type="submit">Send Message</button>\n    </p>\n\n  </form>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>CIWeb Registration</title>\n</head>\n<body>\n\n  <h1>Create Your CIWeb Account</h1>\n\n  <form action="/register" method="POST">\n\n    <p>\n      <label for="fullname">Full Name *</label><br/>\n      <input\n        type="text"\n        id="fullname"\n        name="fullname"\n        required\n        placeholder="Shiva Saini"\n        autocomplete="name"\n      />\n    </p>\n\n    <p>\n      <label for="email">Email Address *</label><br/>\n      <input\n        type="email"\n        id="email"\n        name="email"\n        required\n        placeholder="you@example.com"\n        autocomplete="email"\n      />\n    </p>\n\n    <p>\n      <label for="phone">Phone Number</label><br/>\n      <input\n        type="tel"\n        id="phone"\n        name="phone"\n        placeholder="+91 98765 43210"\n        autocomplete="tel"\n      />\n    </p>\n\n    <p>\n      <label for="course">Select Course *</label><br/>\n      <select id="course" name="course" required>\n        <option value="">Choose a course...</option>\n        <option value="html">HTML Fundamentals</option>\n        <option value="css">CSS Styling</option>\n        <option value="js">JavaScript</option>\n      </select>\n    </p>\n\n    <p>\n      <label for="msg">Why do you want to learn? (optional)</label><br/>\n      <textarea id="msg" name="message" rows="4" placeholder="I want to build my own website..."></textarea>\n    </p>\n\n    <p>\n      <label>\n        <input type="checkbox" name="terms" required/>\n        I agree to the Terms and Conditions\n      </label>\n    </p>\n\n    <button type="submit">Create Account</button>\n    <button type="reset">Clear Form</button>\n\n  </form>\n\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -638,27 +650,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
-  var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code,lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
-}
-function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
-  var msg='Deep analyze this HTML code and give detailed feedback on:\n1. Syntax errors and missing tags\n2. Semantic HTML issues\n3. Accessibility problems (ARIA, alt, labels)\n4. SEO improvements (meta, headings, structure)\n5. Best practice violations\n6. Specific line-by-line improvements\n\nCode:\n```html\n'+code+'\n```';
-  AI.toggle();
-  AI.say(msg);
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
+  var problems=[];
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -743,8 +756,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.5rem">Shiv AI &mdash; Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.78rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.75rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Your 15 free messages</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem;font-size:.8rem;color:var(--ink2)">'+
+      '<div>&#10003; Ask any coding question &mdash; HTML, CSS, JS, Python</div>'+
+      '<div>&#10003; Deep Analyze your code with one click</div>'+
+      '<div>&#10003; Get analogies to understand any lesson</div>'+
+      '<div>&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -753,7 +785,7 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
@@ -761,11 +793,34 @@ var AI=(function(){
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
       var code=window._ed?window._ed.doc.getValue():'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'general'})})
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -826,6 +881,77 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 
 
+
+
+
+
+
+
+
+
+
+function deepAnalyze(){
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var c=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>c)issues.push('Unclosed &lt;'+t+'&gt; ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, '+o+' opening)');
+  });
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy"');
+  });
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
+  });
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
+  }
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Multiple &lt;h1&gt; tags ('+h1c+'). Use only ONE per page.');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found. Add a main heading for SEO.');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
+}
+function showDA(issues,tips,len){
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var old=document.getElementById('da-result');if(old)old.remove();
+  var allOk=issues.length===0&&tips.length===0;
+  var p=document.createElement('div');
+  p.id='da-result';
+  p.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  var h='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;padding:4px;line-height:1">&#10005;</button>';
+  h+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.55rem">&#128269; Analyzed '+len+' chars &mdash; exact tag-balance check</div>';
+  if(allOk){
+    h+='<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. Zero errors found.</div>';
+    h+='<div style="color:var(--ink3);font-size:.76rem;margin-top:.3rem">Ask Shiv AI for semantic &amp; SEO review below.</div>';
+  }else{
+    if(issues.length){
+      h+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){h+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      h+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced &mdash; no syntax errors</div>';
+    }
+    if(tips.length){
+      h+='<div style="color:#fbbf24;font-weight:700;margin:.45rem 0 .3rem">&#128161; Suggestions:</div>';
+      tips.forEach(function(t,i){h+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
+    }
+  }
+  h+='<div style="margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink3)">For semantic/SEO review ask Shiv AI &#8595;</div>';
+  p.innerHTML=h;
+  hbar.parentNode.insertBefore(p,hbar.nextSibling);
+}
 
 </script>
 </body>
