@@ -259,7 +259,6 @@ html.light .toggle-lbl{left:6px;right:auto}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
 @media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
-/* ── EXAMPLE BLOCKS ── */
 .ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
 .ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
 .ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
@@ -267,6 +266,62 @@ html.light .toggle-lbl{left:6px;right:auto}
 .t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
 .ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
 .ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
 
 </style>
 </head>
@@ -299,7 +354,7 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="hero">
       <div class="hero-meta"><span class="badge b-tag">ENTITIES</span><span class="badge b-time">7 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">HTML Entities</h1>
-      <p class="lesson-sub">Learn HTML Entities with syntax-highlighted examples, live output, and Shiv AI.</p>
+      <p class="lesson-sub">Learn HTML Entities with live examples, interactive editor, and Shiv AI code review.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -308,64 +363,76 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">AI Msgs</button>
     </div>
     <div class="panel on" id="p-learn">
-      <div class="content" id="content-en">
-<h2>HTML Entities and Special Characters</h2>
-<p>Some characters have special meaning in HTML — like <code>&lt;</code> and <code>&gt;</code> which mark tags. To display them as visible text you use <strong>HTML entities</strong>. They start with <code>&amp;</code> and end with <code>;</code>.</p>
+      <div class="content" id="content-en"><h2>HTML Entities</h2>
+<p>HTML entities let you display characters that would otherwise break HTML parsing or that are not available on your keyboard. They start with <code>&amp;</code> and end with <code>;</code>.</p>
 
-<h2>The Problem — Reserved Characters</h2>
+<h2>Why Entities Exist</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Why Entities Are Needed</div>
-  <pre class="ex-code"><span class="t-cm">&lt;!-- WRONG: browser thinks &lt;b&gt; is a new tag --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The tag for bold is </span><span class="t-sp">&lt;b&gt;</span><span class="t-txt"> in HTML</span><span class="t-tag">&lt;/p&gt;</span>
+  <div class="ex-lbl">Example 1 — The Problem and the Solution</div>
+  <pre class="ex-code"><span class="t-cm">&lt;!-- PROBLEM: This breaks HTML --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">5 &lt; 10 and 10 &gt; 5</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-cm">&lt;!-- Browser sees &lt;10 as a tag! --&gt;</span>
 
-<span class="t-cm">&lt;!-- CORRECT: use &amp;lt; and &amp;gt; --&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">The tag for bold is </span><span class="t-val">&amp;lt;</span><span class="t-txt">b</span><span class="t-val">&amp;gt;</span><span class="t-txt"> in HTML</span><span class="t-tag">&lt;/p&gt;</span></pre>
+<span class="t-cm">&lt;!-- SOLUTION: Use entities --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">5 &amp;lt; 10 and 10 &amp;gt; 5</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-cm">&lt;!-- Renders as: 5 &lt; 10 and 10 &gt; 5 --&gt;</span>
+
+<span class="t-cm">&lt;!-- Copyright and brand symbols --&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;copy; 2026 CIWeb &amp;mdash; All rights reserved.</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Price: &amp;rupees; 99 &amp;mdash; Buy Now!</span><span class="t-tag">&lt;/p&gt;</span></pre>
   <div class="ex-out">
-    <p style="margin:0">The tag for bold is <strong>&lt;b&gt;</strong> in HTML</p>
+    <div class="browser-body">
+      <p>5 &lt; 10 and 10 &gt; 5</p>
+      <p>&copy; 2026 CIWeb &mdash; All rights reserved.</p>
+      <p>Price: &#8377; 99 &mdash; Buy Now!</p>
+    </div>
   </div>
-  <div class="ex-note">Using &amp;lt; and &amp;gt; displays the angle brackets as visible text without confusing the HTML parser.</div>
+  <div class="ex-note">The browser renders &amp;lt; as &lt; and &amp;gt; as &gt;. They are safe HTML representations of characters that would otherwise confuse the parser.</div>
 </div>
 
-<h2>Common Entities</h2>
+<h2>Essential Entities Reference</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Essential Entities in Use</div>
-  <pre class="ex-code"><span class="t-tag">&lt;p&gt;</span><span class="t-txt">Copyright: </span><span class="t-val">&amp;copy;</span><span class="t-txt"> 2025 CIWeb</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Trademark: CIWeb</span><span class="t-val">&amp;trade;</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Price: </span><span class="t-val">&amp;#8377;</span><span class="t-txt">11</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Arrow: Home </span><span class="t-val">&amp;rarr;</span><span class="t-txt"> Courses</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Dash: HTML </span><span class="t-val">&amp;mdash;</span><span class="t-txt"> the skeleton</span><span class="t-tag">&lt;/p&gt;</span>
-<span class="t-tag">&lt;p&gt;</span><span class="t-txt">Non-breaking: Rs.</span><span class="t-val">&amp;nbsp;</span><span class="t-txt">11</span><span class="t-tag">&lt;/p&gt;</span></pre>
-  <div class="ex-out" style="display:flex;flex-direction:column;gap:.3rem;font-size:.85rem">
-    <p style="margin:0">Copyright: &copy; 2025 CIWeb</p>
-    <p style="margin:0">Trademark: CIWeb&trade;</p>
-    <p style="margin:0">Price: &#8377;11</p>
-    <p style="margin:0">Arrow: Home &rarr; Courses</p>
-    <p style="margin:0">Dash: HTML &mdash; the skeleton</p>
-    <p style="margin:0">Non-breaking: Rs.&nbsp;11</p>
+  <div class="ex-lbl">Example 2 — Most Used Entities</div>
+  <pre class="ex-code"><span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;lt;    </span><span class="t-cm">&lt; (less-than, safe for HTML)</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;gt;    </span><span class="t-cm">&gt; (greater-than)</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;amp;   </span><span class="t-cm">&amp; (ampersand, use in HTML!)</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;quot;  </span><span class="t-cm">" (double quote)</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;apos;  </span><span class="t-cm">' (apostrophe)</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;nbsp;  </span><span class="t-cm">non-breaking space</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;copy;  </span><span class="t-cm">&copy; copyright symbol</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;reg;   </span><span class="t-cm">&reg; registered trademark</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;trade; </span><span class="t-cm">&#8482; trademark</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;mdash; </span><span class="t-cm">&mdash; em dash</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;ndash; </span><span class="t-cm">&ndash; en dash</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;#8377; </span><span class="t-cm">&#8377; Indian Rupee sign</span><span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;p&gt;</span><span class="t-txt">&amp;#128640;</span><span class="t-cm">&#128640; Rocket emoji</span><span class="t-tag">&lt;/p&gt;</span></pre>
+  <div class="ex-out">
+    <div class="browser-body" style="display:grid;grid-template-columns:1fr 1fr;gap:4px;font-size:13px">
+      <div>&lt; &gt; &amp; &quot; &apos;</div>
+      <div>&nbsp;&nbsp;&nbsp; (non-breaking spaces)</div>
+      <div>&copy; CIWeb 2026</div>
+      <div>&reg; Registered</div>
+      <div>&#8482; Trademark</div>
+      <div>Price &mdash; &#8377;299</div>
+      <div>2024&ndash;2026</div>
+      <div>&#128640; Rocket</div>
+    </div>
   </div>
+  <div class="ex-note">You can also use numeric codes: &amp;#8377; = &#8377;. Any Unicode character can be written as &amp;#NNNN; where NNNN is the Unicode code point.</div>
 </div>
 
-<div class="card"><div class="card-head"><span class="chip">Essential Entities</span><span class="chip-sm">Must Know</span></div>
-<div class="row"><span class="rk">&amp;amp;</span><span class="rv">Displays &amp; — ampersand. Required in URLs and text</span></div>
-<div class="row"><span class="rk">&amp;lt;</span><span class="rv">Displays &lt; — less than. Required to show HTML tags as text</span></div>
-<div class="row"><span class="rk">&amp;gt;</span><span class="rv">Displays &gt; — greater than</span></div>
-<div class="row"><span class="rk">&amp;nbsp;</span><span class="rv">Non-breaking space. Prevents line break between words</span></div>
-<div class="row"><span class="rk">&amp;copy;</span><span class="rv">Displays &copy; copyright symbol</span></div>
-<div class="row"><span class="rk">&amp;trade;</span><span class="rv">Displays &trade; trademark</span></div>
-<div class="row"><span class="rk">&amp;reg;</span><span class="rv">Displays &reg; registered trademark</span></div>
-<div class="row"><span class="rk">&amp;#8377;</span><span class="rv">Displays &#8377; Indian Rupee (numeric code)</span></div>
-<div class="row"><span class="rk">&amp;euro;</span><span class="rv">Displays &euro; Euro currency</span></div>
-<div class="row"><span class="rk">&amp;rarr;</span><span class="rv">Displays &rarr; right arrow. Used in breadcrumbs</span></div>
-<div class="row"><span class="rk">&amp;mdash;</span><span class="rv">Displays &mdash; em dash. Longer than hyphen</span></div>
+<div class="card"><div class="card-head"><span class="chip">When to Use Entities</span></div>
+<div class="row"><span class="rk">&amp;amp;</span><span class="rv">Use instead of &amp; in HTML text. Required in URLs inside href attributes too.</span></div>
+<div class="row"><span class="rk">&amp;lt; &amp;gt;</span><span class="rv">Required when writing HTML code examples in HTML, or comparison operators in text.</span></div>
+<div class="row"><span class="rk">&amp;nbsp;</span><span class="rv">Non-breaking space: two words joined by &amp;nbsp; will never break across lines. Use for units: 50&amp;nbsp;km.</span></div>
+<div class="row"><span class="rk">&amp;copy;</span><span class="rv">Copyright in footer. Looks professional. Exactly the same as typing © if your file is UTF-8.</span></div>
 </div>
 
-<div class="box box-warn"><div class="box-lbl">Always Escape These</div><p>Always use <code>&amp;amp;</code> <code>&amp;lt;</code> <code>&amp;gt;</code> when displaying them as visible text. Leaving them unescaped can break your HTML or introduce XSS security vulnerabilities.</p></div>
-<div class="box box-tip"><div class="box-lbl">Named vs Numeric</div><p>Entities have named forms like <code>&amp;copy;</code> and numeric forms like <code>&amp;#169;</code>. Named are more readable. Numeric work for any Unicode character even without a name — like the Indian Rupee sign.</p></div>
-<div class="why"><div class="why-lbl">Why Entities Exist</div><p>HTML uses &lt; and &gt; for tags so you cannot type them directly as visible text — the browser would think a new tag is starting. Entities are the escape system that separates HTML syntax from displayed content.</p></div>
-      </div>
+<div class="box box-tip"><div class="box-lbl">Modern HTML is UTF-8</div><p>With &lt;meta charset="UTF-8"&gt; you can type or paste any character directly — Hindi text, emojis, ©, ₹, → — without entities. Entities are mainly needed for &lt;, &gt;, and &amp; which have special meaning in HTML. Everything else can be typed directly in UTF-8 files.</p></div>
+<div class="why"><div class="why-lbl">Why &amp;amp; is the Special One</div><p>The & character starts every entity. If you write an & in HTML without a valid entity following it, browsers try to parse it as the start of an entity and may display garbled text. Always write &amp;amp; when you mean a literal ampersand — for example in URLs, song titles like "Faith &amp; Courage", or company names like "H&amp;M".</p></div></div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
         <div class="nav-row"><a class="nav-a" href="lesson13.html">Prev</a> <a class="nav-a next" href="lesson15.html">Next Lesson</a></div>
@@ -382,9 +449,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code at all.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies &mdash; no code, just clear examples.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -398,19 +465,18 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">How do you display the &lt; character as visible text?</p>
-        <div class="q-opts">
-<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">Just type &lt; directly</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Use &amp;lt;</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">Use {less}</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">Use /less/</span></button>
-        </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>&amp;lt; is the HTML entity for the less-than sign. Typing &lt; directly makes the browser think a new tag is starting which breaks your HTML.</div>
+        <p class="q-question">Which entity must you use to display the &amp; character in HTML?</p>
+        <div class="q-opts"><button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">&amp;and;</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">&amp;amp;</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">&amp;plus;</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">&amp;char;</span></button>
+</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>&amp;amp;amp; is the entity for the ampersand &amp;amp; character. Since &amp;amp; starts all entities in HTML, you must escape it as &amp;amp;amp; when you want to display a literal ampersand. Writing raw &amp;amp; in HTML text may cause parsing issues.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
@@ -418,13 +484,13 @@ html.light .toggle-lbl{left:6px;right:auto}
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
         <div class="chal-title">Entities Page</div>
-        <div class="chal-desc">Build a page showing reserved characters, symbols, currency, and arrows using HTML entities.</div>
+        <div class="chal-desc">Build a page using at least 5 different HTML entities: &amp;amp;lt;, &amp;amp;gt;, &amp;amp;amp;, &amp;amp;copy;, &amp;amp;mdash;, and the rupee symbol.</div>
         <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
-<div class="c-req" id="cr0"><span class="c-dot"></span><span>amp entity</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>lt entity</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>gt entity</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>copyright</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>nbsp</span></div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>lt and gt</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>amp entity</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>copy</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>mdash or ndash</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>rupee or other numeric</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
@@ -444,19 +510,16 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 14</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
-            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
         </div>
-        <div class="wall-hd"><div class="wall-hd-l"><div class="wall-title">Recent Posts</div><div class="wall-sub">Lesson 14 only</div></div><button class="wall-refresh" onclick="loadPosts()">Refresh</button></div>
+        <div class="wall-hd"><div class="wall-hd-l"><div class="wall-title">Recent Posts</div><div class="wall-sub">Lesson 14</div></div><button class="wall-refresh" onclick="loadPosts()">Refresh</button></div>
         <div id="comm-wall"></div>
       </div>
     </div>
-    <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
-    </div>
+    <div class="panel" id="p-chai"><div id="chai-body"></div></div>
   </main>
 </div>
 <button id="mob-fab" onclick="openLessons()" aria-label="All lessons"><span></span><span></span><span></span></button>
@@ -464,22 +527,25 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, career..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
 
 
+
+
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=14,LT='HTML Entities',TOTAL=22,QA=1;
 var REQS=[
-{label:'amp entity',chk:function(c){return !!(c.indexOf('&amp;amp;')>-1||c.indexOf('&amp;')>-1)}},
-{label:'lt entity',chk:function(c){return !!(c.indexOf('&amp;lt;')>-1||c.indexOf('&lt;')>-1)}},
-{label:'gt entity',chk:function(c){return !!(c.indexOf('&amp;gt;')>-1||c.indexOf('&gt;')>-1)}},
-{label:'copyright',chk:function(c){return !!(c.indexOf('&amp;copy;')>-1||c.indexOf('&copy;')>-1)}},
-{label:'nbsp',chk:function(c){return !!(c.indexOf('&amp;nbsp;')>-1||c.indexOf('&nbsp;')>-1)}}
+{label:'lt and gt',chk:function(c){return !!(c.indexOf('&lt;')>-1&&c.indexOf('&gt;')>-1)}},
+{label:'amp entity',chk:function(c){return !!(c.indexOf('&amp;')>-1)}},
+{label:'copy',chk:function(c){return !!(c.indexOf('&copy;')>-1)}},
+{label:'mdash or ndash',chk:function(c){return !!(c.indexOf('&mdash;')>-1||c.indexOf('&ndash;')>-1)}},
+{label:'rupee or other numeric',chk:function(c){return !!(c.indexOf('&#8377;')>-1||c.indexOf('&#')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>HTML Entities</title>\n</head>\n<body>\n\n  <h1>HTML Special Characters</h1>\n\n  <!-- Reserved characters MUST be escaped -->\n  <h2>Reserved Characters</h2>\n  <p>Less-than sign: &lt;</p>\n  <p>Greater-than sign: &gt;</p>\n  <p>Ampersand: &amp;</p>\n  <p>An HTML tag looks like: &lt;p&gt;paragraph&lt;/p&gt;</p>\n\n  <!-- Symbols and currency -->\n  <h2>Symbols</h2>\n  <p>Copyright: &copy; 2025 CIWeb</p>\n  <p>Trademark: CIWeb&trade;</p>\n  <p>Registered: Brand&reg;</p>\n  <p>Rupee: &#8377;11</p>\n  <p>Euro: &euro;9.99</p>\n\n  <!-- Navigation arrow -->\n  <h2>Navigation</h2>\n  <p>Home &rarr; Courses &rarr; HTML</p>\n\n  <!-- Non-breaking space keeps words together -->\n  <h2>Non-breaking Space</h2>\n  <p>Price:&nbsp;Rs.&nbsp;11 (price and Rs. will not split across lines)</p>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>HTML Entities Demo</title>\n</head>\n<body>\n  <h1>HTML Entities</h1>\n  <h2>Math Symbols</h2>\n  <p>5 &lt; 10 is true. 100 &gt; 50 is also true.</p>\n  <p>Use &amp;amp; for ampersand in HTML.</p>\n  <h2>Typography</h2>\n  <p>Shiva Saini &mdash; Founder, CIWeb</p>\n  <p>Years: 2021&ndash;2026</p>\n  <p>&copy; 2026 CIWeb. All rights reserved.</p>\n  <h2>Price</h2>\n  <p>Course: <strong>FREE</strong></p>\n  <p>AI Boost: &#8377;11</p>\n  <h2>Safe HTML Code</h2>\n  <p>Image tag: &lt;img src="photo.jpg" alt="Photo"/&gt;</p>\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -576,24 +642,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
   var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
-function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
-}
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -663,7 +733,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -678,8 +748,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.5rem">Shiv AI &mdash; Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.78rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.75rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Your 15 free messages per day</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem;font-size:.8rem;color:var(--ink2)">'+
+      '<div>&#10003; Ask any coding question &mdash; HTML, CSS, JS, Python</div>'+
+      '<div>&#10003; Deep Analyze your code with one click</div>'+
+      '<div>&#10003; Get analogies to understand any concept</div>'+
+      '<div>&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -688,19 +777,42 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -762,6 +874,79 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+function deepAnalyze(){
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var c=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>c)issues.push('Unclosed &lt;'+t+'&gt; ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, '+o+' opening)');
+  });
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy"');
+  });
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
+  });
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
+  }
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Multiple &lt;h1&gt; tags ('+h1c+'). Use only ONE per page.');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found. Add a main heading for SEO.');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
+}
+function showDA(issues,tips,len){
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var old=document.getElementById('da-result');if(old)old.remove();
+  var allOk=issues.length===0&&tips.length===0;
+  var p=document.createElement('div');
+  p.id='da-result';
+  p.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  var h='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;padding:4px;line-height:1">&#10005;</button>';
+  h+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.55rem">&#128269; Analyzed '+len+' chars &mdash; exact tag-balance check</div>';
+  if(allOk){
+    h+='<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. Zero errors found.</div>';
+    h+='<div style="color:var(--ink3);font-size:.76rem;margin-top:.3rem">Ask Shiv AI for semantic &amp; SEO review below.</div>';
+  }else{
+    if(issues.length){
+      h+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){h+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      h+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced &mdash; no syntax errors</div>';
+    }
+    if(tips.length){
+      h+='<div style="color:#fbbf24;font-weight:700;margin:.45rem 0 .3rem">&#128161; Suggestions:</div>';
+      tips.forEach(function(t,i){h+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
+    }
+  }
+  h+='<div style="margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink3)">For semantic/SEO review ask Shiv AI &#8595;</div>';
+  p.innerHTML=h;
+  hbar.parentNode.insertBefore(p,hbar.nextSibling);
+}
 </script>
-</body>
-</html>
+</body></html>
