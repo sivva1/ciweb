@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="google-adsense-account" content="ca-pub-1601519075440950">
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <title>L15: Audio and Video | CIWeb HTML Course</title>
@@ -259,7 +258,6 @@ html.light .toggle-lbl{left:6px;right:auto}
 @media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
 @media(max-width:640px){.ed-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:290px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.prev-side{height:260px;flex-shrink:0}.chal-split{display:flex;flex-direction:column;height:auto}.chal-split .ed-side{height:240px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .prev-side{height:160px;flex-shrink:0}}
 @media(max-width:500px){.nav{padding:0 .75rem;gap:.28rem}.nav-pill{display:none}.progress-wrap{display:none}.shiv-btn{padding:5px 9px;font-size:.67rem}.toggle{width:42px;height:24px}.toggle::before{width:15px;height:15px}html.light .toggle::before{transform:translateX(18px)}.lesson-title{font-size:1.48rem}.tab{padding:.52rem .7rem;font-size:.74rem}.row{flex-direction:column;gap:.18rem}.rk{min-width:unset}}
-/* ── EXAMPLE BLOCKS ── */
 .ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
 .ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
 .ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
@@ -267,6 +265,62 @@ html.light .toggle-lbl{left:6px;right:auto}
 .t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}.t-sp{color:#f38ba8}
 .ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
 .ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.result-browser{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.rb-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.rb-dot{width:9px;height:9px;border-radius:50%}
+.rb-body{padding:1rem 1.2rem;color:#111;font-family:Arial,sans-serif;font-size:14px}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.brow{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.brow-bar{background:#e5e5e5;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brow-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.brow-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.5}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
+
+
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--red);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-tag{color:#89b4fa}.t-attr{color:#a6e3a1}.t-val{color:#fab387}.t-cm{color:#6c7086;font-style:italic}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--ba)}
+.browser-frame{border:1px solid var(--line2);border-radius:6px;overflow:hidden;background:#fff}
+.browser-bar{background:#e8e8ea;padding:4px 10px;display:flex;align-items:center;gap:6px}
+.brdot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.browser-body{padding:14px 16px;color:#111;font-family:Arial,sans-serif;font-size:14px;line-height:1.55}
 
 </style>
 </head>
@@ -297,9 +351,9 @@ html.light .toggle-lbl{left:6px;right:auto}
 </aside>
   <main class="main">
     <div class="hero">
-      <div class="hero-meta"><span class="badge b-tag">MEDIA</span><span class="badge b-time">11 min</span><span class="badge b-xp">20 XP</span></div>
+      <div class="hero-meta"><span class="badge b-tag">MEDIA</span><span class="badge b-time">10 min</span><span class="badge b-xp">20 XP</span></div>
       <h1 class="lesson-title">Audio and Video</h1>
-      <p class="lesson-sub">Learn Audio and Video with syntax-highlighted examples, live output, and Shiv AI.</p>
+      <p class="lesson-sub">Learn Audio and Video with live examples, interactive editor, and Shiv AI code review.</p>
     </div>
     <div class="tabs">
       <button class="tab on" data-tab="learn">Learn</button>
@@ -308,80 +362,99 @@ html.light .toggle-lbl{left:6px;right:auto}
       <button class="tab" data-tab="quiz">Quiz</button>
       <button class="tab" data-tab="challenge">Challenge</button>
       <button class="tab" data-tab="community">Community</button>
-      <button class="tab" data-tab="chai">Chai</button>
+      <button class="tab" data-tab="chai">AI Msgs</button>
     </div>
     <div class="panel on" id="p-learn">
-      <div class="content" id="content-en">
-<h2>Audio and Video in HTML</h2>
-<p>HTML5 introduced native audio and video support directly in the browser — no plugins needed. Before HTML5, websites needed Adobe Flash which was slow, insecure, and not mobile-friendly. Flash died December 31, 2020.</p>
+      <div class="content" id="content-en"><h2>Audio and Video in HTML5</h2>
+<p>HTML5 introduced native <code>&lt;audio&gt;</code> and <code>&lt;video&gt;</code> elements — no more Flash plugins needed. They work in every modern browser and support multiple formats for compatibility.</p>
 
 <h2>Video Element</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Video Player</div>
+  <div class="ex-lbl">Example 1 — Complete Video Player</div>
   <pre class="ex-code"><span class="t-tag">&lt;video</span>
-  <span class="t-attr">width</span><span class="t-txt">=</span><span class="t-val">"640"</span>
-  <span class="t-attr">height</span><span class="t-txt">=</span><span class="t-val">"360"</span>
+  <span class="t-attr">width</span>=<span class="t-val">"800"</span>
+  <span class="t-attr">height</span>=<span class="t-val">"450"</span>
   <span class="t-attr">controls</span>
-  <span class="t-attr">poster</span><span class="t-txt">=</span><span class="t-val">"thumbnail.jpg"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"video.mp4"</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"video/mp4"</span><span class="t-tag">/&gt;</span>
-  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"video.webm"</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"video/webm"</span><span class="t-tag">/&gt;</span>
-  <span class="t-txt">Your browser does not support video.</span>
+  <span class="t-attr">poster</span>=<span class="t-val">"thumbnail.jpg"</span>
+  <span class="t-attr">preload</span>=<span class="t-val">"metadata"</span>
+<span class="t-tag">&gt;</span>
+  <span class="t-cm">&lt;!-- Multiple formats for browser compatibility --&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"lesson.webm"</span> <span class="t-attr">type</span>=<span class="t-val">"video/webm"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"lesson.mp4"</span>  <span class="t-attr">type</span>=<span class="t-val">"video/mp4"</span><span class="t-tag">/&gt;</span>
+  <span class="t-cm">&lt;!-- Fallback for old browsers --&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Your browser does not support video. </span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"lesson.mp4"</span><span class="t-tag">&gt;</span><span class="t-txt">Download video</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;/video&gt;</span>
+
+<span class="t-cm">&lt;!-- Subtitles/captions --&gt;</span>
+<span class="t-tag">&lt;video</span> <span class="t-attr">controls</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"video.mp4"</span> <span class="t-attr">type</span>=<span class="t-val">"video/mp4"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;track</span>
+    <span class="t-attr">kind</span>=<span class="t-val">"subtitles"</span>
+    <span class="t-attr">src</span>=<span class="t-val">"subtitles-en.vtt"</span>
+    <span class="t-attr">srclang</span>=<span class="t-val">"en"</span>
+    <span class="t-attr">label</span>=<span class="t-val">"English"</span>
+  <span class="t-tag">/&gt;</span>
 <span class="t-tag">&lt;/video&gt;</span></pre>
   <div class="ex-out">
-    <div style="background:var(--bg3);border-radius:6px;padding:.7rem 1rem;font-size:.82rem;color:var(--ink3)">
-      <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem"><span style="font-size:1.3rem">&#9654;</span><span style="color:var(--ink)">video.mp4</span></div>
-      <div>Browser shows a native video player with play, pause, volume, and fullscreen controls.</div>
+    <div class="browser-body" style="padding:10px">
+      <div style="background:#111;border-radius:8px;overflow:hidden;max-width:400px">
+        <div style="background:linear-gradient(135deg,#1e1e2e,#16161f);height:160px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:.9rem;position:relative">
+          <div>Lesson Video Thumbnail</div>
+          <div style="position:absolute;width:48px;height:48px;background:rgba(232,64,28,.85);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:#fff">&#9654;</div>
+        </div>
+        <div style="background:#222;padding:6px 10px;display:flex;align-items:center;gap:8px">
+          <span style="color:#fff;font-size:.8rem">&#9654;</span>
+          <div style="flex:1;height:3px;background:#555;border-radius:2px"><div style="width:30%;height:100%;background:#e8401c;border-radius:2px"></div></div>
+          <span style="color:#aaa;font-size:.75rem">1:24 / 4:30</span>
+          <span style="color:#aaa;font-size:.8rem">&#128265;</span>
+        </div>
+      </div>
     </div>
   </div>
-  <div class="ex-note">Multiple source tags let the browser pick the format it supports. Always offer mp4 as the first option.</div>
-</div>
-
-<h2>Autoplay Background Video</h2>
-<div class="ex-block">
-  <div class="ex-lbl">Example — Autoplay (must be muted)</div>
-  <pre class="ex-code"><span class="t-tag">&lt;video</span>
-  <span class="t-attr">autoplay</span>
-  <span class="t-attr">muted</span>
-  <span class="t-attr">loop</span>
-  <span class="t-attr">playsinline</span>
-  <span class="t-attr">width</span><span class="t-txt">=</span><span class="t-val">"640"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"bg.mp4"</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"video/mp4"</span><span class="t-tag">/&gt;</span>
-<span class="t-tag">&lt;/video&gt;</span></pre>
-  <div class="ex-note">All modern browsers block autoplay unless muted is also present. playsinline is required for iOS Safari to play inline instead of fullscreen.</div>
+  <div class="ex-note">controls shows the default browser player. poster shows a thumbnail before play. preload="metadata" loads only duration info, not the full video.</div>
 </div>
 
 <h2>Audio Element</h2>
 <div class="ex-block">
-  <div class="ex-lbl">Example — Audio Player</div>
-  <pre class="ex-code"><span class="t-tag">&lt;audio</span> <span class="t-attr">controls</span> <span class="t-attr">preload</span><span class="t-txt">=</span><span class="t-val">"metadata"</span><span class="t-tag">&gt;</span>
-  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"audio.mp3"</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"audio/mpeg"</span><span class="t-tag">/&gt;</span>
-  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span><span class="t-txt">=</span><span class="t-val">"audio.ogg"</span> <span class="t-attr">type</span><span class="t-txt">=</span><span class="t-val">"audio/ogg"</span><span class="t-tag">/&gt;</span>
-  <span class="t-txt">Your browser does not support audio.</span>
-<span class="t-tag">&lt;/audio&gt;</span></pre>
+  <div class="ex-lbl">Example 2 — Audio Player</div>
+  <pre class="ex-code"><span class="t-tag">&lt;audio</span> <span class="t-attr">controls</span> <span class="t-attr">preload</span>=<span class="t-val">"metadata"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"lesson.ogg"</span> <span class="t-attr">type</span>=<span class="t-val">"audio/ogg"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"lesson.mp3"</span> <span class="t-attr">type</span>=<span class="t-val">"audio/mpeg"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;p&gt;</span><span class="t-txt">Browser does not support audio. </span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"lesson.mp3"</span><span class="t-tag">&gt;</span><span class="t-txt">Download MP3</span><span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;/p&gt;</span>
+<span class="t-tag">&lt;/audio&gt;</span>
+
+<span class="t-cm">&lt;!-- Autoplay (muted required on most browsers) --&gt;</span>
+<span class="t-tag">&lt;video</span> <span class="t-attr">autoplay</span> <span class="t-attr">muted</span> <span class="t-attr">loop</span> <span class="t-attr">playsinline</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;source</span> <span class="t-attr">src</span>=<span class="t-val">"background.mp4"</span> <span class="t-attr">type</span>=<span class="t-val">"video/mp4"</span><span class="t-tag">/&gt;</span>
+<span class="t-tag">&lt;/video&gt;</span></pre>
   <div class="ex-out">
-    <div style="background:var(--bg3);border-radius:6px;padding:.6rem 1rem;font-size:.82rem;color:var(--ink3);display:flex;align-items:center;gap:.6rem">
-      <span style="font-size:1.2rem">&#9654;</span>
-      <div style="flex:1;height:4px;background:var(--line2);border-radius:99px"><div style="width:30%;height:100%;background:var(--red);border-radius:99px"></div></div>
-      <span>0:00 / 3:24</span>
-      <span>&#128266;</span>
+    <div class="browser-body" style="padding:10px">
+      <div style="background:#f5f5f5;border-radius:6px;padding:8px;display:flex;align-items:center;gap:10px;max-width:350px">
+        <button style="width:32px;height:32px;background:#e8401c;border:none;border-radius:50%;color:#fff;font-size:.9rem;cursor:pointer">&#9654;</button>
+        <div style="flex:1;height:4px;background:#ddd;border-radius:2px"><div style="width:0%;height:100%;background:#e8401c;border-radius:2px"></div></div>
+        <span style="font-size:.75rem;color:#666">0:00 / 3:45</span>
+        <span style="font-size:.9rem">&#128265;</span>
+      </div>
     </div>
   </div>
-  <div class="ex-note">preload="metadata" loads only duration and track info — not the full file. Saves bandwidth on page load.</div>
+  <div class="ex-note">autoplay + muted is the correct combo for background videos. Browsers block autoplay with sound to protect users from unexpected noise.</div>
 </div>
 
-<div class="card"><div class="card-head"><span class="chip">Video Attributes</span><span class="chip-sm">Reference</span></div>
-<div class="row"><span class="rk">controls</span><span class="rv">Shows play, pause, volume controls. Always include for accessibility</span></div>
-<div class="row"><span class="rk">autoplay</span><span class="rv">Plays automatically. Requires muted to work in modern browsers</span></div>
-<div class="row"><span class="rk">muted</span><span class="rv">Starts muted. Required for autoplay. User can unmute</span></div>
-<div class="row"><span class="rk">loop</span><span class="rv">Loops the video continuously</span></div>
-<div class="row"><span class="rk">poster</span><span class="rv">Thumbnail image shown before video plays. Always set this</span></div>
-<div class="row"><span class="rk">playsinline</span><span class="rv">Plays inline on iOS instead of entering fullscreen mode</span></div>
-<div class="row"><span class="rk">preload</span><span class="rv">auto loads full file, metadata loads info only, none does not preload</span></div>
+<div class="card"><div class="card-head"><span class="chip">Video/Audio Attributes</span></div>
+<div class="row"><span class="rk">controls</span><span class="rv">Show default browser play/pause controls. Always include for user-controlled media.</span></div>
+<div class="row"><span class="rk">autoplay muted</span><span class="rv">Required together for background videos. Browsers block autoplay with sound.</span></div>
+<div class="row"><span class="rk">loop</span><span class="rv">Repeat the media when it ends. Good for background videos and ambient audio.</span></div>
+<div class="row"><span class="rk">poster</span><span class="rv">Image shown before video plays. Use a high-quality thumbnail: 16:9 ratio, 1280x720px.</span></div>
+<div class="row"><span class="rk">preload</span><span class="rv">none: don't preload. metadata: load only duration/dimensions. auto: load the file.</span></div>
+<div class="row"><span class="rk">playsinline</span><span class="rv">Required on iOS Safari to play video inline instead of fullscreen.</span></div>
 </div>
 
-<div class="box box-tip"><div class="box-lbl">Always Add Fallback Text</div><p>Put fallback text between video and audio tags. It shows only on very old browsers that do not support HTML5 media — very rare today but still good practice.</p></div>
-<div class="why"><div class="why-lbl">The Death of Flash</div><p>Adobe Flash was the dominant video technology from 1996 to 2015. Steve Jobs refused Flash on the iPhone in 2007 forcing the industry toward HTML5 video. Adobe officially ended Flash on December 31, 2020.</p></div>
-      </div>
+<div class="box box-warn"><div class="box-lbl">Always Provide Multiple Formats</div><p>No single video format works in 100% of browsers. Always provide WebM (Chrome/Firefox) + MP4 (Safari/Edge). The browser tries sources in order and uses the first one it supports. Without this, your video breaks on Safari (40% of iPhone users).</p></div>
+<div class="why"><div class="why-lbl">Why Flash is Gone</div><p>Before HTML5 (2014), video required Adobe Flash Player — a plugin that needed separate installation, was not available on mobile, and had constant security vulnerabilities. HTML5 audio and video replaced it entirely. Today Flash is dead and blocked by all browsers.</p></div></div>
       <div class="lesson-end">
         <button class="done-btn" id="done-btn" onclick="markDone()">Mark Complete + Continue</button>
         <div class="nav-row"><a class="nav-a" href="lesson14.html">Prev</a> <a class="nav-a next" href="lesson16.html">Next Lesson</a></div>
@@ -398,9 +471,9 @@ html.light .toggle-lbl{left:6px;right:auto}
     <div class="panel" id="p-explain">
       <div style="background:var(--ba);border:1px solid var(--bb);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
         <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">Explain with Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using only real-life analogies. No code at all.</p>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">Shiv AI explains this lesson using real-life analogies &mdash; no code, just clear examples.</p>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies automatically.</div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies.</div>
     </div>
     <div class="panel" id="p-editor">
       <div class="ed-card">
@@ -414,33 +487,33 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="prev-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="hint-bar"><span id="hint-txt">Start coding - Shiv AI monitors automatically</span><button class="hint-go" onclick="deepAnalyze()">Deep Analyze</button></div>
+        <div class="hint-bar"><span id="hint-txt">Write code then click Deep Analyze</span><button class="hint-go" onclick="deepAnalyze()">&#128269; Deep Analyze</button></div>
       </div>
     </div>
     <div class="panel" id="p-quiz">
       <div class="quiz-wrap">
-        <p class="q-question">Which attribute shows video playback controls?</p>
-        <div class="q-opts">
-<button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">autoplay</span></button>
-<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">controls</span></button>
-<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">src</span></button>
-<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">loop</span></button>
-        </div>
-        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>The controls attribute adds play, pause, volume and fullscreen buttons to a video. Without controls users have no way to interact with the video.</div>
+        <p class="q-question">Why must autoplay be combined with muted for videos?</p>
+        <div class="q-opts"><button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">It makes the video load faster</span></button>
+<button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Browsers block autoplay with sound to prevent unexpected noise</span></button>
+<button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">Muted videos use less bandwidth</span></button>
+<button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">It is required for Safari only</span></button>
+</div>
+        <div class="q-exp" id="q-exp"><span class="q-exp-lbl">Explanation</span>Browsers block autoplay with sound by default to protect users from unexpected, loud audio when a page loads. autoplay + muted is the correct and universally supported approach for background videos. The user can then manually unmute if they want sound.</div>
         <div class="q-result" id="q-result"></div>
       </div>
     </div>
     <div class="panel" id="p-challenge">
       <div class="chal-brief">
         <div class="chal-tag">Build Challenge</div>
-        <div class="chal-title">Media Player Page</div>
-        <div class="chal-desc">Build a page with both a video player and an audio player using source elements.</div>
-        <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
-<div class="c-req" id="cr0"><span class="c-dot"></span><span>video tag</span></div>
-<div class="c-req" id="cr1"><span class="c-dot"></span><span>audio tag</span></div>
-<div class="c-req" id="cr2"><span class="c-dot"></span><span>controls</span></div>
-<div class="c-req" id="cr3"><span class="c-dot"></span><span>source element</span></div>
-<div class="c-req" id="cr4"><span class="c-dot"></span><span>width height</span></div>
+        <div class="chal-title">Media Page</div>
+        <div class="chal-desc">Build a page with a video element (controls, poster, two source formats) and an audio element (controls, two source formats).</div>
+        <div class="chal-reqs-lbl">Requirements (6 to pass)</div>
+<div class="c-req" id="cr0"><span class="c-dot"></span><span>video</span></div>
+<div class="c-req" id="cr1"><span class="c-dot"></span><span>video controls</span></div>
+<div class="c-req" id="cr2"><span class="c-dot"></span><span>video source</span></div>
+<div class="c-req" id="cr3"><span class="c-dot"></span><span>audio</span></div>
+<div class="c-req" id="cr4"><span class="c-dot"></span><span>audio controls</span></div>
+<div class="c-req" id="cr5"><span class="c-dot"></span><span>poster or preload</span></div>
       </div>
       <div class="chal-editor">
         <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">solution.html</span></div>
@@ -451,7 +524,7 @@ html.light .toggle-lbl{left:6px;right:auto}
             <iframe id="chal-f" class="prev-frame" sandbox="allow-scripts allow-same-origin"></iframe>
           </div>
         </div>
-        <div class="chal-footer"><span id="chal-status">0/5 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
+        <div class="chal-footer"><span id="chal-status">0/6 requirements</span><button class="chal-check" onclick="checkChallenge()">Check</button></div>
       </div>
     </div>
     <div class="panel" id="p-community">
@@ -460,19 +533,16 @@ html.light .toggle-lbl{left:6px;right:auto}
           <div class="comm-hd"><div class="comm-hd-title">Community Wall</div><span class="l-pill">Lesson 15</span></div>
           <div id="cm-who"></div>
           <div class="comm-fields">
-            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought or question about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
-            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional, max 20 lines)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
+            <div><textarea class="cm-ta cm-msg" id="cm-msg-in" placeholder="Share a thought about this lesson..." maxlength="500" oninput="ctCount(this,'msg-ctr',500)"></textarea><span id="msg-ctr" class="cm-ctr">0/500</span></div>
+            <div><textarea class="cm-ta cm-code" id="cm-code-in" placeholder="Code snippet (optional)" maxlength="1000" oninput="ctLines(this)"></textarea><span id="code-lines" class="cm-ctr">0/20 lines</span></div>
             <div class="cm-foot"><button class="cm-submit" id="post-btn" onclick="postMsg()">Post to Community</button><span class="cm-as">as <b id="cm-who-name" style="color:var(--red)"></b></span></div>
           </div>
         </div>
-        <div class="wall-hd"><div class="wall-hd-l"><div class="wall-title">Recent Posts</div><div class="wall-sub">Lesson 15 only</div></div><button class="wall-refresh" onclick="loadPosts()">Refresh</button></div>
+        <div class="wall-hd"><div class="wall-hd-l"><div class="wall-title">Recent Posts</div><div class="wall-sub">Lesson 15</div></div><button class="wall-refresh" onclick="loadPosts()">Refresh</button></div>
         <div id="comm-wall"></div>
       </div>
     </div>
-    <div class="panel" id="p-chai">
-      <div class="chai-hero"><h3>Support CIWeb + Get +50 AI Messages</h3><p>Just Rs.11 gives you 50 extra Shiv AI messages and keeps CIWeb free for everyone.</p></div>
-      <div id="chai-body"></div>
-    </div>
+    <div class="panel" id="p-chai"><div id="chai-body"></div></div>
   </main>
 </div>
 <button id="mob-fab" onclick="openLessons()" aria-label="All lessons"><span></span><span></span><span></span></button>
@@ -480,22 +550,26 @@ html.light .toggle-lbl{left:6px;right:auto}
   <div class="ai-panel">
     <div class="ai-head"><div class="ai-av">AI</div><div><div class="ai-name">Shiv AI</div><div class="ai-status">Online</div><div id="ai-counter"></div></div><button class="ai-close" onclick="AI.toggle()">X</button></div>
     <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything or paste your code..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
+    <div class="ai-input-row"><textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything — HTML, CSS, JS, career..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea><button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button></div>
   </div>
 </div>
 <script>
 
 
 
+
+
+
 var FB='https://testingdata-2ae22-default-rtdb.firebaseio.com',SRV='https://ciweb-ai-server.vercel.app',LN=15,LT='Audio and Video',TOTAL=22,QA=1;
 var REQS=[
-{label:'video tag',chk:function(c){return !!(c.indexOf('<video')>-1)}},
-{label:'audio tag',chk:function(c){return !!(c.indexOf('<audio')>-1)}},
-{label:'controls',chk:function(c){return !!(c.indexOf('controls')>-1)}},
-{label:'source element',chk:function(c){return !!(c.indexOf('<source')>-1)}},
-{label:'width height',chk:function(c){return !!(c.indexOf('width=')>-1&&c.indexOf('height=')>-1)}}
+{label:'video',chk:function(c){return !!(c.indexOf('<video')>-1)}},
+{label:'video controls',chk:function(c){return !!(/<video[^>]*controls/i.test(c))}},
+{label:'video source',chk:function(c){return !!(c.indexOf('<source')>-1)}},
+{label:'audio',chk:function(c){return !!(c.indexOf('<audio')>-1)}},
+{label:'audio controls',chk:function(c){return !!(/<audio[^>]*controls/i.test(c))}},
+{label:'poster or preload',chk:function(c){return !!(c.indexOf('poster')>-1||c.indexOf('preload')>-1)}}
 ];
-var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>Media Elements</title>\n</head>\n<body>\n\n  <h1>HTML5 Media</h1>\n\n  <!-- VIDEO with controls -->\n  <h2>Video Player</h2>\n  <video\n    width="640"\n    height="360"\n    controls\n    poster="https://ciweb.in/media/nature.png"\n  >\n    <source src="https://ciweb.in/media/video.mp4" type="video/mp4"/>\n    <source src="video.webm" type="video/webm"/>\n    Your browser does not support the video element.\n  </video>\n\n  <!-- VIDEO that autoplays silently in background -->\n  <h2>Muted Autoplay</h2>\n  <video\n    width="640"\n    height="200"\n    autoplay\n    muted\n    loop\n    playsinline\n  >\n    <source src="background.mp4" type="video/mp4"/>\n  </video>\n\n  <!-- AUDIO player -->\n  <h2>Audio Player</h2>\n  <audio controls preload="metadata">\n    <source src="https://ciweb.in/media/song.mp3" type="audio/mp3"/>\n    <source src="https://ciweb.in/media/video.ogg" type="audio/ogg"/>\n    Your browser does not support audio.\n  </audio>\n\n</body>\n</html>';
+var DCODE='<!DOCTYPE html>\n<html lang="en">\n<head>\n  <meta charset="UTF-8"/>\n  <title>HTML5 Media</title>\n</head>\n<body>\n  <h1>HTML5 Media Elements</h1>\n  <h2>Video</h2>\n  <video width="640" height="360" controls preload="metadata">\n    <source src="lesson.webm" type="video/webm"/>\n    <source src="lesson.mp4" type="video/mp4"/>\n    <p>Browser does not support video. <a href="lesson.mp4">Download</a></p>\n  </video>\n  <h2>Audio</h2>\n  <audio controls preload="metadata">\n    <source src="lesson.ogg" type="audio/ogg"/>\n    <source src="lesson.mp3" type="audio/mpeg"/>\n    <p>Browser does not support audio. <a href="lesson.mp3">Download MP3</a></p>\n  </audio>\n</body>\n</html>';
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('cw_done')||'[]');}catch(e){return[];}}
 function isLDone(n){return getDone().indexOf(n)>-1;}
@@ -592,24 +666,28 @@ function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);runPreview();}
 function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
 function autoHint(){
   var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()||code.length<20)return;
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()||code.length<15){el.textContent='Start coding  Shiv AI monitors automatically';el.className='';return;}
   var problems=[];
-  if(!/<title>[^<]+<\/title>/i.test(code))problems.push('Missing title tag');
-  if(!/<meta[^>]+charset/i.test(code))problems.push('Missing charset meta tag');
-  if(/<b>|<i>/.test(code)&&!/<strong>|<em>/.test(code))problems.push('Use strong/em instead of b/i for semantics');
-  if((code.match(/<br>/gi)||[]).length>2)problems.push('Too many br tags - use p tags for paragraphs');
-  if(/<img[^>]*>/i.test(code)&&!/<img[^>]+alt=/i.test(code))problems.push('Image missing alt attribute');
-  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" with target blank');
-  if(problems.length>0){el.textContent=problems[0];el.className='err';return;}
-  fetch(SRV+'/api/check',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({code:code.slice(0,800),lesson:LT,lang:'en'})})
-  .then(function(r){return r.json();})
-  .then(function(d){var fb=d.feedback||'';el.textContent=fb||'Code looks good!';el.className=/error|wrong|missing|fix/i.test(fb)?'err':'ok';})
-  .catch(function(){el.textContent='Start coding - Shiv AI monitors automatically';el.className='';});
+  /* Check 1: unclosed tags  count open vs close for common block tags */
+  var blockTags=['div','section','article','main','header','footer','nav','ul','ol','table','form','p','h1','h2','h3','h4','h5','h6'];
+  blockTags.forEach(function(tag){
+    var opens=(code.match(new RegExp('<'+tag+'(\\s[^>]*)?>','gi'))||[]).length;
+    var closes=(code.match(new RegExp('</'+tag+'>','gi'))||[]).length;
+    if(opens>closes)problems.push('<'+tag+'> tag is not closed ('+opens+' open, '+closes+' closed)');
+  });
+  /* Check 2: img missing alt */
+  var imgTags=code.match(/<img[^>]*>/gi)||[];
+  imgTags.forEach(function(img){if(!/alt=/i.test(img))problems.push('One of your <img> tags is missing the alt attribute');});
+  /* Check 3: a with target blank missing rel */
+  if(/<a[^>]+_blank/i.test(code)&&!/noopener/i.test(code))problems.push('Add rel="noopener noreferrer" to your target="_blank" links');
+  /* Check 4: form with submit missing action or method (helpful hint only) */
+  if(/<form/i.test(code)&&!/<button[^>]*type="submit"/i.test(code)&&!/<input[^>]*type="submit"/i.test(code)&&code.indexOf('onsubmit')===-1){}
+  /* Show result */
+  if(problems.length>0){el.textContent=problems[0];el.className='err';}
+  else{el.textContent='Code looks good! Use Deep Analyze for full review.';el.className='ok';}
 }
-function deepAnalyze(){
-  var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}
-  AI.open();AI.say('Please review this HTML carefully. Look for: 1) Missing required tags 2) Semantic mistakes 3) Accessibility issues 4) SEO problems 5) Best practice violations. Be specific.\n\nCode:\n'+code.slice(0,800));
-}
+
 function checkChallenge(){
   var code=window._ced?window._ced.doc.getValue():'',passed=0;
   REQS.forEach(function(req,i){
@@ -679,7 +757,7 @@ function loadPosts(){
     if(!posts.length){wall.innerHTML='<div class="empty"><p>No posts for this lesson yet! Share what you learned.</p></div>';return;}
     wall.innerHTML=posts.map(function(e){
       var k=e[0],d=e[1],il=!!liked[k];
-      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code.slice(0,600))+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
+      var cb=d.code&&d.code.trim()?'<div class="post-code"><pre>'+_e(d.code)+'</pre><iframe sandbox="allow-scripts" srcdoc="'+d.code.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" loading="lazy"></iframe></div>':'';
       return '<div class="post"><div class="post-meta"><span class="post-author">'+_e(d.name||'Anon')+'</span><span class="post-lpill">L'+d.lessonId+'</span><span class="post-time">'+_ago(d.ts)+'</span></div>'+(d.msg?'<div class="post-body">'+_e(d.msg)+'</div>':'')+cb+'<div class="post-actions"><button class="post-like'+(il?' liked':'')+'" onclick="likePost(\''+k+'\',this)"><svg width="11" height="11" viewBox="0 0 24 24" fill="'+(il?'currentColor':'none')+'" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> '+(d.likes||0)+'</button></div></div>';
     }).join('');
   }).catch(function(){wall.innerHTML='<div class="empty"><p>Could not load posts.<br><button onclick="loadPosts()" style="margin-top:.5rem;background:var(--red);border:none;color:#fff;border-radius:5px;padding:5px 12px;font-size:.72rem;cursor:pointer;font-family:var(--f)">Retry</button></p></div>';});
@@ -694,8 +772,27 @@ function likePost(key,btn){
 }
 function showChai(){
   var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),boost=parseInt(S.get('cw_boost')||'0');
-  el.innerHTML='<div style="display:flex;flex-direction:column;gap:.75rem"><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.74rem;font-weight:700;color:var(--ink);margin-bottom:.28rem">Your AI Balance</div><div style="font-size:1.35rem;font-weight:800;color:var(--red);font-family:var(--m)">'+rem+' / '+lim+'</div><div style="font-size:.71rem;color:var(--ink3);margin-top:.12rem">messages remaining today (15 free per day)</div>'+(boost>0?'<div style="font-size:.7rem;color:var(--green);margin-top:.18rem">Admin bonus: +'+boost+' extra messages</div>':'')+'</div><div style="background:var(--bg3);border-radius:var(--r);padding:.88rem 1rem"><div style="font-size:.8rem;font-weight:700;color:var(--ink);margin-bottom:.4rem">Get +50 More AI Messages</div><div style="font-size:.8rem;color:var(--ink2);line-height:1.9">Pay Rs.11 via UPI. Admin verifies and unlocks +50 extra messages within a few hours.</div></div><a href="https://razorpay.me/@ciweb" target="_blank" rel="noopener" style="display:block;background:var(--red);color:#fff;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;text-align:center;text-decoration:none">Pay Rs.11 via Razorpay</a><div style="text-align:center;font-size:.74rem;color:var(--ink3)">UPI: shiva.saini@fam<br>After paying, admin verifies and unlocks your messages</div></div>';
+  var rem=Rate.left(),lim=Rate.limit();
+  el.innerHTML=
+  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center">'+
+    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.5rem">Shiv AI &mdash; Messages Today</div>'+
+    '<div style="font-size:3.2rem;font-weight:900;color:var(--red);font-family:var(--m);line-height:1">'+rem+'</div>'+
+    '<div style="font-size:.78rem;color:var(--ink3);margin-top:.3rem">of '+lim+' free messages remaining</div>'+
+    '<div style="margin-top:.75rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden">'+
+      '<div style="height:100%;width:'+(Math.round(rem/lim*100))+'%;background:linear-gradient(90deg,var(--red),#f59e0b);border-radius:99px"></div>'+
+    '</div>'+
+  '</div>'+
+  '<div style="background:var(--bg3);border-radius:var(--r);padding:1rem">'+
+    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.5rem">Your 15 free messages per day</div>'+
+    '<div style="display:flex;flex-direction:column;gap:.38rem;font-size:.8rem;color:var(--ink2)">'+
+      '<div>&#10003; Ask any coding question &mdash; HTML, CSS, JS, Python</div>'+
+      '<div>&#10003; Deep Analyze your code with one click</div>'+
+      '<div>&#10003; Get analogies to understand any concept</div>'+
+      '<div>&#9200; Resets every day at midnight</div>'+
+    '</div>'+
+  '</div>'+
+  '</div>';
 }
 var AI=(function(){
   var open=false,started=false;
@@ -704,19 +801,42 @@ var AI=(function(){
   function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">Shiv AI</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
   function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your HTML tutor!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help you:\n- Understand any HTML concept\n- Review your code and find issues\n- Answer questions step by step\n\nWhat would you like to learn?');updateCounter();}},
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hey! I am Shiv AI, your expert coding assistant!\n\nYou have '+Rate.left()+' of '+Rate.limit()+' messages left today.\n\nI can help with:\n- HTML, CSS, JavaScript, React\n- Code review and debugging\n- Web development concepts\n- Career advice and best practices\n\nAsk me anything coding-related!');updateCounter();}},
     open:function(){if(!open)this.toggle();},
     say:function(text){this.sendMsg(text);},
     sendMsg:function(text){
       text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
       if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow, or go to the Chai tab to get +50 more messages for just Rs.11!');updateCounter();return;}
       if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue().slice(0,600):'';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en'})})
+      var code=window._ed?window._ed.doc.getValue():'';
+      var codeAudit='';
+if(code&&code.length>30){
+  var auditTags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li','table','form','main','header','footer','nav','section','article'];
+  var badTags=[];
+  auditTags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var cl=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>cl)badTags.push(t);
+  });
+  codeAudit=badTags.length?'REAL unclosed tags found: '+badTags.join(', ')+'.':'CONFIRMED: All HTML tags in the code are properly balanced and closed.';
+}
+var systemCtx='You are Shiv AI, an expert full-stack coding assistant at CIWeb. Answer any coding question: HTML, CSS, JavaScript, React, Node.js, Python, SQL, Git, career advice, algorithms, debugging  anything. Current lesson: '+LT+'. '+(codeAudit?codeAudit+' Use this fact when reviewing code. ':'')+' Be direct and practical. If code is correct, say so clearly. Never invent errors.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:systemCtx,full_code:true})})
       .then(function(r){return r.json();})
       .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
       .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet connection and try again.');});
-    }
+    },
+    deepSend:function(instruction,code){
+      /* deepSend now only for semantic/AI review, not syntax */
+      if(!Rate.ok()){this.open();botMsg('No messages left today. Go to Chai tab for +50 more!');return;}
+      userMsg(instruction.slice(0,80)+'...');thinking();Rate.use();updateCounter();
+      var systemCtx='You are Shiv AI, a coding assistant. The user wants semantic/accessibility/SEO feedback on their HTML. Do NOT check for unclosed tags  that was already done by the client-side validator. Focus only on: semantic tag usage, SEO meta tags, accessibility (ARIA, alt text, labels), best practices, and code quality. Be specific and helpful.';
+      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:instruction,code:code,lesson:LT,lang:'en',mode:'semantic',system:systemCtx})})
+      .then(function(r){return r.json();})
+      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Could not analyze. Try again.');})
+      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect.');});
+    },
+    open:function(){if(!this._open)this.toggle();}
   };
 })();
 function openLessons(){
@@ -778,6 +898,79 @@ document.addEventListener('DOMContentLoaded',function(){
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+function deepAnalyze(){
+  var code=window._ed?window._ed.doc.getValue():'';
+  if(!code.trim()){toast('Write some code first!','o');return;}
+  var issues=[],tips=[];
+  var tags=['div','p','h1','h2','h3','h4','h5','h6','span','a','ul','ol','li',
+    'table','thead','tbody','tr','td','th','form','textarea','select','button',
+    'label','main','header','footer','nav','section','article','aside',
+    'figure','figcaption','blockquote','details','summary'];
+  tags.forEach(function(t){
+    var o=(code.match(new RegExp('<'+t+'(\\s[^>]*)?>','gi'))||[]).length;
+    var c=(code.match(new RegExp('</'+t+'>','gi'))||[]).length;
+    if(o>c)issues.push('Unclosed &lt;'+t+'&gt; ('+o+' open, '+c+' closed)');
+    if(c>o)issues.push('Extra &lt;/'+t+'&gt; ('+c+' closing, '+o+' opening)');
+  });
+  (code.match(/<img[^>]*>/gi)||[]).forEach(function(img){
+    if(!/\balt=/i.test(img))issues.push('&lt;img&gt; missing alt attribute');
+    if(!/\bloading=/i.test(img))tips.push('&lt;img&gt;: add loading="lazy"');
+  });
+  (code.match(/<a\s[^>]*>/gi)||[]).forEach(function(a){
+    if(/target=["']_blank/i.test(a)&&!/noopener/i.test(a))
+      issues.push('&lt;a target="_blank"&gt; needs rel="noopener noreferrer"');
+  });
+  if(/<html/i.test(code)){
+    if(!/<title>[^<]+<\/title>/i.test(code))issues.push('Missing &lt;title&gt; in &lt;head&gt;');
+    if(!/<meta[^>]+charset/i.test(code))tips.push('Add &lt;meta charset="UTF-8"/&gt;');
+    if(!/<meta[^>]+viewport/i.test(code))tips.push('Add viewport meta for mobile');
+  }
+  var h1c=(code.match(/<h1[\s>]/gi)||[]).length;
+  if(h1c>1)issues.push('Multiple &lt;h1&gt; tags ('+h1c+'). Use only ONE per page.');
+  if(/<body/i.test(code)&&h1c===0)tips.push('No &lt;h1&gt; found. Add a main heading for SEO.');
+  if(/<b[\s>]|<\/b>/i.test(code)&&!/<strong/i.test(code))tips.push('Use &lt;strong&gt; instead of &lt;b&gt;');
+  if(/<i[\s>]|<\/i>/i.test(code)&&!/<em/i.test(code))tips.push('Use &lt;em&gt; instead of &lt;i&gt;');
+  showDA(issues,tips,code.length);
+}
+function showDA(issues,tips,len){
+  var hbar=document.querySelector('.hint-bar');if(!hbar)return;
+  var old=document.getElementById('da-result');if(old)old.remove();
+  var allOk=issues.length===0&&tips.length===0;
+  var p=document.createElement('div');
+  p.id='da-result';
+  p.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
+  var h='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:1rem;padding:4px;line-height:1">&#10005;</button>';
+  h+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.55rem">&#128269; Analyzed '+len+' chars &mdash; exact tag-balance check</div>';
+  if(allOk){
+    h+='<div style="color:#22c55e;font-weight:700">&#10003; All tags closed correctly. Zero errors found.</div>';
+    h+='<div style="color:var(--ink3);font-size:.76rem;margin-top:.3rem">Ask Shiv AI for semantic &amp; SEO review below.</div>';
+  }else{
+    if(issues.length){
+      h+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">&#10005; '+issues.length+' error'+(issues.length>1?'s':'')+':</div>';
+      issues.forEach(function(e,i){h+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
+    }else{
+      h+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">&#10003; All tags balanced &mdash; no syntax errors</div>';
+    }
+    if(tips.length){
+      h+='<div style="color:#fbbf24;font-weight:700;margin:.45rem 0 .3rem">&#128161; Suggestions:</div>';
+      tips.forEach(function(t,i){h+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.3rem .65rem;margin-bottom:.28rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
+    }
+  }
+  h+='<div style="margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--line);font-size:.72rem;color:var(--ink3)">For semantic/SEO review ask Shiv AI &#8595;</div>';
+  p.innerHTML=h;
+  hbar.parentNode.insertBefore(p,hbar.nextSibling);
+}
 </script>
-</body>
-</html>
+</body></html>
