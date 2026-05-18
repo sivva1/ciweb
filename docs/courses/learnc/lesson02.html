@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>L2: Your First C Program | LearnC – Free C Programming Course</title>
+<meta name="description" content="Write your first Hello World C program. Learn the complete structure of a C program — #include, main(), printf, return 0 — with live editor."/>
+<meta name="keywords" content="first C program, hello world C, C program structure, printf in C, main function C, learn C programming"/>
+<meta property="og:title" content="Your First C Program | LearnC"/>
+<meta property="og:description" content="Write Hello World in C. Understand every single line with simple explanations. Free C course with live code editor."/>
+<meta property="og:type" content="website"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
+:root{--bg:#0d0c0a;--bg2:#171614;--bg3:#1e1c19;--bg4:#282520;--ink:#ede9e1;--ink2:#c0b9ae;--ink3:#857d74;--line:#2b2926;--line2:#3a3731;--acc:#3b82f6;--acc2:#60a5fa;--aa:rgba(59,130,246,.1);--ab:rgba(59,130,246,.28);--green:#22c55e;--ga:rgba(34,197,94,.09);--gb:rgba(34,197,94,.24);--gold:#fbbf24;--goa:rgba(251,191,36,.09);--f:'Plus Jakarta Sans',system-ui,sans-serif;--m:'JetBrains Mono',monospace;--r:10px;--rs:6px;--nav:54px}
+html.light{--bg:#f9f7f4;--bg2:#fff;--bg3:#f0ede7;--bg4:#e5e0d8;--ink:#1a1816;--ink2:#44403a;--ink3:#78716a;--line:#e5e0d8;--line2:#cec9bf;--acc:#1d4ed8;--acc2:#2563eb;--aa:rgba(29,78,216,.07);--ab:rgba(29,78,216,.2);--green:#15803d;--ga:rgba(21,128,61,.08);--gb:rgba(21,128,61,.22);--gold:#92400e;--goa:rgba(146,64,14,.08)}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:var(--f);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
+a{color:var(--acc2);text-decoration:none}
+code{font-family:var(--m);font-size:.8em;background:var(--bg3);color:var(--acc2);padding:1px 6px;border-radius:4px;font-weight:600}
+::selection{background:var(--aa);color:var(--acc2)}
+::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
+.nav{position:sticky;top:0;z-index:100;height:var(--nav);background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 1.1rem;gap:.5rem;backdrop-filter:blur(8px)}
+.logo{font-size:1.08rem;font-weight:800;letter-spacing:-.3px;color:var(--ink);text-decoration:none;flex-shrink:0}
+.logo em{color:var(--acc2);font-style:normal}
+.nav-pill{font-size:.57rem;font-weight:700;color:var(--ink3);background:var(--bg3);border:1px solid var(--line2);border-radius:99px;padding:2px 8px;font-family:var(--m);flex-shrink:0}
+.nav-gap{flex:1;min-width:0}
+.progress-wrap{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+.prog-bar{width:60px;height:3px;background:var(--line2);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:var(--acc);border-radius:99px;transition:width .5s}
+.prog-lbl{font-size:.56rem;font-weight:700;color:var(--ink3);font-family:var(--m);white-space:nowrap}
+.nav-actions{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
+.toggle{position:relative;width:50px;height:27px;background:var(--bg3);border:1px solid var(--line2);border-radius:99px;cursor:pointer;flex-shrink:0}
+.toggle::before{content:'';position:absolute;left:4px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--acc);transition:transform .22s}
+html.light .toggle::before{transform:translateX(23px);background:var(--gold)}
+.toggle-lbl{position:absolute;font-size:.52rem;font-weight:800;color:var(--ink3);pointer-events:none;right:6px;top:50%;transform:translateY(-50%)}
+html.light .toggle-lbl{left:6px;right:auto}
+.ai-fab{background:var(--acc);color:#fff;border:none;font-family:var(--f);font-size:.72rem;font-weight:700;padding:6px 13px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0}
+.ai-fab:hover{background:var(--acc2)}
+.layout{display:flex;min-height:calc(100vh - var(--nav))}
+.sidebar{width:200px;flex-shrink:0;position:sticky;top:var(--nav);height:calc(100vh - var(--nav));overflow-y:auto;border-right:1px solid var(--line);padding:.7rem .5rem;background:var(--bg)}
+.sb-hd{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);padding:.1rem .4rem;margin-bottom:.3rem}
+.sb-a{display:flex;align-items:center;gap:.38rem;padding:.35rem .5rem;border-radius:var(--rs);font-size:.74rem;color:var(--ink3);text-decoration:none;transition:all .12s;margin-bottom:1px}
+.sb-a:hover{background:var(--bg3);color:var(--ink)}
+.sb-a.cur{background:var(--aa);color:var(--acc2);font-weight:600}
+.sb-a.done{color:var(--green)}
+.sb-n{width:20px;height:20px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
+.sb-a.cur .sb-n{background:var(--acc);color:#fff}
+.sb-a.done .sb-n{background:var(--ga);color:var(--green)}
+.sb-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
+.main{flex:1;min-width:0;padding:1.6rem 1.9rem;overflow-x:hidden}
+.hero{margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
+.hero-meta{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem}
+.badge{display:inline-flex;align-items:center;font-size:.58rem;font-weight:700;border-radius:99px;padding:2px 9px}
+.b-tag{background:var(--aa);color:var(--acc2);border:1px solid var(--ab);font-family:var(--m);text-transform:uppercase;letter-spacing:.5px}
+.b-time{background:var(--bg3);color:var(--ink3)}
+.b-xp{background:var(--goa);color:var(--gold);font-family:var(--m)}
+.lesson-title{font-size:clamp(1.55rem,5vw,2.1rem);font-weight:800;line-height:1.15;letter-spacing:-.4px;margin-bottom:.42rem}
+.lesson-sub{font-size:.88rem;color:var(--ink3);line-height:1.6}
+.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:1.45rem;overflow-x:auto;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{background:none;border:none;font-family:var(--f);font-size:.78rem;font-weight:500;color:var(--ink3);cursor:pointer;padding:.6rem .88rem;white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:all .15s;flex-shrink:0}
+.tab:hover{color:var(--ink)}
+.tab.on{color:var(--acc2);border-bottom-color:var(--acc2);font-weight:700}
+.panel{display:none}
+.panel.on{display:block;animation:fadeUp .18s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
+.content h2{font-size:1.08rem;font-weight:700;color:var(--ink);margin:1.7rem 0 .55rem;padding-bottom:.38rem;border-bottom:1.5px solid var(--line)}
+.content h3{font-size:.95rem;font-weight:700;color:var(--ink2);margin:1.2rem 0 .38rem}
+.content p{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.85rem}
+.content ol,.content ul{padding-left:1.3rem;margin-bottom:.85rem}
+.content li{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.22rem}
+.content strong{font-weight:700;color:var(--ink)}
+.box{border-radius:var(--rs);padding:.82rem .98rem;margin:.82rem 0;border-left:2.5px solid}
+.box-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.28rem}
+.box-tip{background:var(--aa);border-color:var(--acc)}.box-tip .box-lbl{color:var(--acc2)}
+.box-warn{background:var(--goa);border-color:var(--gold)}.box-warn .box-lbl{color:var(--gold)}
+.box-seo{background:var(--ga);border-color:var(--green)}.box-seo .box-lbl{color:var(--green)}
+.box p{font-size:.82rem;color:var(--ink2);line-height:1.7;margin:0}
+.why{background:linear-gradient(135deg,var(--aa),var(--ga));border:1px solid var(--ab);border-radius:var(--r);padding:1rem 1.15rem;margin:1.2rem 0}
+.why-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--acc2);margin-bottom:.3rem}
+.why p{font-size:.84rem;color:var(--ink2);line-height:1.75;margin:0}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);flex-shrink:0}
+.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
+.t-kw{color:#ff79c6;font-weight:700}.t-fn{color:#50fa7b}.t-str{color:#f1fa8c}.t-cm{color:#6272a4;font-style:italic}.t-num{color:#bd93f9}.t-inc{color:#8be9fd;font-weight:700}.t-hdr{color:#ff5555}.t-txt{color:#cdd6f4}
+.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
+.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--aa)}
+.anno-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
+.anno-head{background:var(--bg3);padding:.4rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.4rem}
+.anno-head::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--green);flex-shrink:0}
+.anno-row{display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--line)}
+.anno-row:last-child{border-bottom:none}
+.anno-code{background:#1e1e2e;padding:.6rem .85rem;font-family:var(--m);font-size:.74rem;line-height:1.75;overflow-x:auto;white-space:pre}
+.anno-explain{padding:.6rem .9rem;font-size:.81rem;color:var(--ink2);line-height:1.65;background:var(--bg2);display:flex;align-items:center}
+.anno-explain strong{color:var(--ink)}
+.ed-card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.ed-bar{background:var(--bg3);border-bottom:1px solid var(--line);padding:.42rem .75rem;display:flex;align-items:center;gap:.3rem}
+.dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.d-r{background:#ff5f57}.d-y{background:#febc2e}.d-g{background:#28c840}
+.ed-fn{font-family:var(--m);font-size:.7rem;color:var(--ink3);margin-left:.28rem;flex:1}
+.ed-actions{display:flex;gap:.25rem;margin-left:auto;flex-shrink:0}
+.ed-btn{background:var(--bg4);border:none;border-radius:4px;padding:4px 9px;font-size:.64rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f);transition:all .12s}
+.ed-btn:hover{background:var(--ink);color:var(--bg)}
+.ed-btn.go{background:var(--acc);color:#fff}.ed-btn.go:hover{background:var(--acc2)}
+.ed-split{display:grid;grid-template-columns:55% 45%;height:420px}
+.ed-side{overflow:hidden;display:flex;flex-direction:column;height:100%}
+.ed-side:first-child{border-right:1px solid var(--line)}
+.term-side{display:flex;flex-direction:column;background:#0d1117;height:100%}
+.term-bar{background:#161b22;border-bottom:1px solid #30363d;padding:.3rem .7rem;display:flex;align-items:center;gap:.5rem;font-size:.64rem;font-weight:600;color:#8b949e;flex-shrink:0;font-family:var(--m)}
+.term-dot{width:8px;height:8px;border-radius:50%}
+.term-body{flex:1;padding:.7rem .9rem;font-family:var(--m);font-size:.78rem;line-height:1.75;overflow-y:auto;white-space:pre-wrap;word-break:break-all;color:#c9d1d9}
+.term-body.ok{color:#7ee787}.term-body.err{color:#f85149}
+.term-footer{background:#161b22;border-top:1px solid #30363d;padding:.35rem .7rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
+.stdin-lbl{font-size:.6rem;font-weight:700;color:#8b949e;font-family:var(--m);white-space:nowrap;flex-shrink:0}
+.stdin-in{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:4px;padding:3px 8px;font-family:var(--m);font-size:.72rem;color:#c9d1d9;outline:none}
+.stdin-in:focus{border-color:var(--acc)}
+.hint-bar{background:var(--bg3);border-top:1px solid var(--line);padding:.36rem .75rem;display:flex;align-items:center;gap:.42rem}
+#hint-txt{flex:1;font-size:.71rem;color:var(--ink3)}
+#hint-txt.ok{color:var(--green)}#hint-txt.err{color:#f87171}
+.hint-go{background:var(--bg4);border:none;border-radius:4px;padding:3px 9px;font-size:.63rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f);transition:all .12s}
+.hint-go:hover{background:var(--acc);color:#fff}
+.quiz-wrap{max-width:520px}
+.q-question{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:1rem;line-height:1.45}
+.q-opts{display:flex;flex-direction:column;gap:.4rem}
+.q-opt{background:var(--bg2);border:1.5px solid var(--line);border-radius:var(--r);padding:.68rem .9rem;font-size:.86rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:.62rem;text-align:left;color:var(--ink2);font-family:var(--f);width:100%}
+.q-opt:hover:not(:disabled){border-color:var(--acc);background:var(--aa);color:var(--ink)}
+.q-opt:disabled{cursor:not-allowed}
+.q-opt.correct{background:var(--ga)!important;border-color:var(--green)!important;color:var(--green)!important;font-weight:600}
+.q-opt.wrong{background:rgba(239,68,68,.08)!important;border-color:#f87171!important;color:#f87171!important}
+.q-key{width:25px;height:25px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:800;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
+.q-opt.correct .q-key{background:var(--green);color:#fff}
+.q-opt.wrong .q-key{background:#f87171;color:#fff}
+.q-txt{flex:1;line-height:1.4}
+.q-exp{display:none;background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:.8rem 1rem;font-size:.84rem;line-height:1.7;color:var(--ink2);margin-top:.65rem}
+.q-exp.show{display:block}
+.q-exp-lbl{display:block;font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--acc2);margin-bottom:.28rem}
+.q-result{display:none;margin-top:.65rem;padding:.6rem .9rem;border-radius:var(--r);font-size:.84rem;font-weight:600}
+.q-result.ok{display:block;background:var(--ga);color:var(--green)}
+.q-result.no{display:block;background:rgba(239,68,68,.08);color:#f87171}
+.chal-brief{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:.85rem}
+.chal-tag{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--acc2);margin-bottom:.3rem}
+.chal-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
+.chal-desc{font-size:.84rem;color:var(--ink2);line-height:1.6;margin-bottom:.8rem}
+.chal-reqs-lbl{font-size:.62rem;font-weight:700;color:var(--ink3);margin-bottom:.35rem;text-transform:uppercase}
+.c-req{display:flex;align-items:center;gap:.42rem;font-size:.82rem;color:var(--ink2);padding:.2rem 0;transition:color .18s}
+.c-req.done{color:var(--green)}
+.c-dot{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:700;color:transparent;transition:all .18s}
+.c-req.done .c-dot{background:var(--green);border-color:var(--green);color:#fff}
+.chal-editor{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.chal-split{display:grid;grid-template-columns:1fr 1fr;height:300px}
+.chal-footer{background:var(--bg3);border-top:1px solid var(--line);padding:.44rem .75rem;display:flex;align-items:center;justify-content:space-between}
+#chal-status{font-size:.76rem;color:var(--ink3)}
+#chal-status.done{color:var(--green);font-weight:700}
+.chal-check{background:var(--acc);color:#fff;border:none;border-radius:5px;padding:5px 13px;font-family:var(--f);font-size:.72rem;font-weight:700;cursor:pointer}
+.chal-check:hover{background:var(--acc2)}
+.chal-run{background:var(--bg4);color:var(--ink2);border:none;border-radius:5px;padding:5px 10px;font-family:var(--f);font-size:.72rem;font-weight:600;cursor:pointer;margin-right:.35rem}
+.chal-run:hover{background:var(--acc);color:#fff}
+.lesson-end{margin-top:3rem;padding-top:1.8rem;border-top:2px solid var(--line)}
+.done-btn{width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:var(--r);padding:14px;font-family:var(--f);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s}
+.done-btn:hover{background:var(--acc)}.done-btn.done{background:var(--green)!important;color:#fff}
+.nav-row{display:flex;gap:.5rem;margin-top:1.1rem}
+.nav-a{flex:1;display:flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:var(--r);font-family:var(--f);font-size:.8rem;font-weight:600;border:1px solid var(--line);color:var(--ink2);text-decoration:none;transition:all .15s}
+.nav-a:hover{border-color:var(--acc);color:var(--acc2)}
+.nav-a.next{background:var(--ink);color:var(--bg)!important;border-color:var(--ink)}
+.nav-a.next:hover{background:var(--acc);border-color:var(--acc)}
+.nav-a.off{opacity:.3;pointer-events:none}
+.foot{margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line)}
+.foot-copy{font-size:.7rem;color:var(--ink3)}
+.ai-overlay{position:fixed;inset:0;z-index:200;display:none;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:flex-end;padding:.8rem}
+.ai-overlay.on{display:flex}
+.ai-panel{background:var(--bg);border:1px solid var(--line);border-radius:14px;width:316px;max-width:calc(100vw - 1.6rem);max-height:66vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.35);animation:slideUp .2s ease}
+@keyframes slideUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
+.ai-head{padding:.76rem .95rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.55rem;flex-shrink:0}
+.ai-av{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--acc),#6366f1);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;font-family:var(--m);flex-shrink:0}
+.ai-name{font-size:.88rem;font-weight:700;color:var(--ink)}
+.ai-status{font-size:.62rem;color:var(--green)}
+#ai-counter{font-size:.57rem;color:var(--ink3);margin-top:1px}
+.ai-close{margin-left:auto;background:none;border:1px solid var(--line);width:26px;height:26px;border-radius:5px;cursor:pointer;color:var(--ink3);font-size:.72rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s}
+.ai-close:hover{border-color:var(--acc);color:var(--acc2)}
+.ai-messages{flex:1;overflow-y:auto;padding:.65rem .88rem;display:flex;flex-direction:column;gap:.55rem}
+.ai-msg{font-size:.81rem;line-height:1.62;max-width:92%;animation:fadeUp .17s ease}
+.ai-msg.bot{align-self:flex-start;background:var(--bg3);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 9px 9px 9px;padding:.52rem .78rem;color:var(--ink2)}
+.ai-msg.user{align-self:flex-end;background:var(--acc);color:#fff;border-radius:9px 0 9px 9px;padding:.52rem .78rem}
+.ai-lbl{display:block;font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--acc2);margin-bottom:.28rem;padding-bottom:.18rem;border-bottom:1px solid var(--ab)}
+.ai-body{display:block;line-height:1.65}
+.ai-input-row{padding:.54rem .74rem;border-top:1px solid var(--line);display:flex;gap:.35rem;align-items:flex-end;flex-shrink:0}
+.ai-input{flex:1;background:var(--bg3);border:1px solid var(--line);border-radius:var(--rs);padding:.48rem .65rem;font-family:var(--f);font-size:.82rem;color:var(--ink);resize:none;outline:none;transition:border-color .15s;line-height:1.5}
+.ai-input:focus{border-color:var(--acc)}
+.ai-send{background:var(--acc);color:#fff;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ai-send:hover{background:var(--acc2)}
+.chai-stat{background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center;margin-bottom:.85rem}
+.chai-num{font-size:3.2rem;font-weight:900;color:var(--acc2);font-family:var(--m);line-height:1}
+.chai-sub{font-size:.8rem;color:var(--ink3);margin-top:.3rem}
+.chai-bar-wrap{margin-top:.8rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden}
+.chai-bar-fill{height:100%;background:linear-gradient(90deg,var(--acc),#6366f1);border-radius:99px;transition:width .5s}
+.chai-features{background:var(--bg3);border-radius:var(--r);padding:1rem;margin-bottom:.85rem}
+.chai-feat{font-size:.8rem;color:var(--ink2);padding:.22rem 0}
+.toast{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);z-index:500;background:var(--bg4);color:var(--ink);padding:.52rem 1.1rem;border-radius:8px;font-size:.79rem;font-weight:600;font-family:var(--f);box-shadow:0 4px 18px rgba(0,0,0,.25);pointer-events:none;animation:toastIn .2s ease;white-space:nowrap;border:1px solid var(--line)}
+.toast.g{background:var(--green);color:#fff;border-color:var(--green)}
+.toast.o{background:#78350f;color:#fff}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%)}}
+.dots span{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--acc);animation:pulse 1.1s infinite;margin:0 2px}
+.dots span:nth-child(2){animation-delay:.22s}.dots span:nth-child(3){animation-delay:.44s}
+@keyframes pulse{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
+#mob-fab{position:fixed;bottom:20px;right:16px;z-index:149;width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--bg);border:none;cursor:pointer;display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 20px rgba(0,0,0,.35);transition:all .18s}
+#mob-fab span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px}
+#mob-fab:hover{background:var(--acc)}
+@media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
+@media(max-width:640px){.ed-split,.chal-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:280px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.term-side{height:220px;flex-shrink:0}.chal-split .ed-side{height:220px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .term-side{height:140px;flex-shrink:0}.anno-row{grid-template-columns:1fr;}.anno-explain{border-top:1px solid var(--line)}}
+@media(max-width:500px){.nav{padding:0 .75rem;gap:.3rem}.progress-wrap{display:none}.lesson-title{font-size:1.45rem}.tab{padding:.52rem .65rem;font-size:.73rem}}
+.CodeMirror{height:100%!important;font-family:var(--m)!important;font-size:13.5px!important;line-height:1.7!important}
+.CodeMirror-scroll{overflow:auto!important;height:100%!important}
+.CodeMirror-gutters{background:var(--bg3)!important;border-right:1px solid var(--line)!important}
+.CodeMirror-linenumber{color:var(--ink3)!important;font-size:11.5px!important}
+.ed-side .CodeMirror,.chal-split .CodeMirror{height:100%!important}
+.ed-side .CodeMirror-scroll,.chal-split .CodeMirror-scroll{height:100%!important;overflow:auto!important}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a class="logo" href="index.html">Learn<em>C</em></a>
+  <span class="nav-pill">L2/25</span>
+  <div class="nav-gap"></div>
+  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div><span class="prog-lbl" id="prog-lbl">0/25</span></div>
+  <div class="nav-actions">
+    <button class="toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="toggle-lbl">D</span></button>
+    <button class="ai-fab" onclick="AI.toggle()">C AI ✦</button>
+  </div>
+</nav>
+<div class="layout">
+  <aside class="sidebar">
+    <div class="sb-hd">C Course (25 Lessons)</div>
+    <a class="sb-a done" href="lesson01.html" data-id="1"><span class="sb-n">1</span><span class="sb-t">What is C?</span></a>
+    <a class="sb-a cur" href="lesson02.html" data-id="2"><span class="sb-n">2</span><span class="sb-t">First C Program</span></a>
+    <a class="sb-a" href="lesson03.html" data-id="3"><span class="sb-n">3</span><span class="sb-t">Variables & Data Types</span></a>
+    <a class="sb-a" href="#" data-id="4"><span class="sb-n">4</span><span class="sb-t">Constants & Literals</span></a>
+    <a class="sb-a" href="#" data-id="5"><span class="sb-n">5</span><span class="sb-t">Operators in C</span></a>
+    <a class="sb-a" href="#" data-id="6"><span class="sb-n">6</span><span class="sb-t">Input & Output</span></a>
+    <a class="sb-a" href="#" data-id="7"><span class="sb-n">7</span><span class="sb-t">If-Else Conditions</span></a>
+    <a class="sb-a" href="#" data-id="8"><span class="sb-n">8</span><span class="sb-t">Switch Statement</span></a>
+    <a class="sb-a" href="#" data-id="9"><span class="sb-n">9</span><span class="sb-t">While Loop</span></a>
+    <a class="sb-a" href="#" data-id="10"><span class="sb-n">10</span><span class="sb-t">For Loop</span></a>
+    <a class="sb-a" href="#" data-id="11"><span class="sb-n">11</span><span class="sb-t">Do-While Loop</span></a>
+    <a class="sb-a" href="#" data-id="12"><span class="sb-n">12</span><span class="sb-t">Break & Continue</span></a>
+    <a class="sb-a" href="#" data-id="13"><span class="sb-n">13</span><span class="sb-t">Functions</span></a>
+    <a class="sb-a" href="#" data-id="14"><span class="sb-n">14</span><span class="sb-t">Recursion</span></a>
+    <a class="sb-a" href="#" data-id="15"><span class="sb-n">15</span><span class="sb-t">Arrays (1D)</span></a>
+    <a class="sb-a" href="#" data-id="16"><span class="sb-n">16</span><span class="sb-t">2D Arrays</span></a>
+    <a class="sb-a" href="#" data-id="17"><span class="sb-n">17</span><span class="sb-t">Strings in C</span></a>
+    <a class="sb-a" href="#" data-id="18"><span class="sb-n">18</span><span class="sb-t">Pointers Basics</span></a>
+    <a class="sb-a" href="#" data-id="19"><span class="sb-n">19</span><span class="sb-t">Pointers & Arrays</span></a>
+    <a class="sb-a" href="#" data-id="20"><span class="sb-n">20</span><span class="sb-t">Structures</span></a>
+    <a class="sb-a" href="#" data-id="21"><span class="sb-n">21</span><span class="sb-t">Unions & Enums</span></a>
+    <a class="sb-a" href="#" data-id="22"><span class="sb-n">22</span><span class="sb-t">File Handling</span></a>
+    <a class="sb-a" href="#" data-id="23"><span class="sb-n">23</span><span class="sb-t">Dynamic Memory</span></a>
+    <a class="sb-a" href="#" data-id="24"><span class="sb-n">24</span><span class="sb-t">Preprocessor & Macros</span></a>
+    <a class="sb-a" href="#" data-id="25"><span class="sb-n">25</span><span class="sb-t">Final Project</span></a>
+  </aside>
+  <main class="main">
+    <div class="hero">
+      <div class="hero-meta">
+        <span class="badge b-tag">BASICS</span>
+        <span class="badge b-time">⏱ 10 min</span>
+        <span class="badge b-xp">✦ 20 XP</span>
+      </div>
+      <h1 class="lesson-title">Your First C Program</h1>
+      <p class="lesson-sub">Write "Hello, World!" and understand every single character — what it does, why it's there, and what happens when you press Run.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab on" data-tab="learn">📖 Learn</button>
+      <button class="tab" data-tab="explain">💡 Explain</button>
+      <button class="tab" data-tab="editor">⚡ Editor</button>
+      <button class="tab" data-tab="quiz">🧠 Quiz</button>
+      <button class="tab" data-tab="challenge">🏆 Challenge</button>
+      <button class="tab" data-tab="chai">☕ Chai</button>
+    </div>
+
+    <!-- LEARN -->
+    <div class="panel on" id="p-learn">
+      <div class="content" id="content-en">
+
+        <h2>The Hello World Tradition</h2>
+        <p>Every programmer's first program is <strong>Hello, World!</strong> — it is a tradition that started with C itself, in the original 1978 C book by Kernighan &amp; Ritchie. When you write it, you join millions of programmers who started exactly the same way.</p>
+
+        <div class="ex-block">
+          <div class="ex-lbl">Example 1 — The Classic Hello World</div>
+          <pre class="ex-code"><span class="t-inc">#include &lt;stdio.h&gt;</span>
+
+<span class="t-kw">int</span> <span class="t-fn">main</span>() {
+    <span class="t-fn">printf</span>(<span class="t-str">"Hello, World!\n"</span>);
+    <span class="t-kw">return</span> <span class="t-num">0</span>;
+}</pre>
+          <div class="ex-out" style="background:#0d1117;font-family:var(--m);font-size:.82rem;color:#7ee787;padding:.7rem 1rem">Hello, World!</div>
+          <div class="ex-note">This is the most famous program ever written. Let's understand every single line of it.</div>
+        </div>
+
+        <h2>Understanding Every Line</h2>
+        <div class="anno-block">
+          <div class="anno-head">Line-by-Line Breakdown — Every character explained</div>
+          <div class="anno-row">
+            <div class="anno-code"><span class="t-inc">#include &lt;stdio.h&gt;</span></div>
+            <div class="anno-explain"><div><strong>#include</strong> means "borrow code from a file". <strong>stdio.h</strong> is a header file that gives us printf and scanf. Without this, printf would not exist. Think of it like importing tools from a toolbox.</div></div>
+          </div>
+          <div class="anno-row">
+            <div class="anno-code"><span class="t-txt">(empty line)</span></div>
+            <div class="anno-explain"><div>Empty lines are ignored by the compiler. We use them to make code <strong>easier to read</strong> — like a gap between paragraphs in a book.</div></div>
+          </div>
+          <div class="anno-row">
+            <div class="anno-code"><span class="t-kw">int</span> <span class="t-fn">main</span>() {</div>
+            <div class="anno-explain"><div><strong>main()</strong> is where every C program starts running. The word <strong>int</strong> means it will give back a number when done. The <strong>{</strong> curly brace opens a block of code — like opening a box.</div></div>
+          </div>
+          <div class="anno-row">
+            <div class="anno-code">    <span class="t-fn">printf</span>(<span class="t-str">"Hello, World!\n"</span>);</div>
+            <div class="anno-explain"><div><strong>printf</strong> = "print formatted". It displays text on the screen. The text inside <strong>" "</strong> is called a <strong>string</strong>. <strong>\n</strong> means new line (like pressing Enter). The <strong>;</strong> semicolon ends every statement in C.</div></div>
+          </div>
+          <div class="anno-row">
+            <div class="anno-code">    <span class="t-kw">return</span> <span class="t-num">0</span>;</div>
+            <div class="anno-explain"><div><strong>return 0</strong> tells the operating system "my program finished successfully". 0 = success, any other number = error. This is mandatory in main().</div></div>
+          </div>
+          <div class="anno-row">
+            <div class="anno-code">}</div>
+            <div class="anno-explain"><div>The closing <strong>}</strong> curly brace closes the main() function — like closing the box we opened earlier. Every { must have a matching }.</div></div>
+          </div>
+        </div>
+
+        <h2>Comments in C</h2>
+        <p>Comments are notes you write for yourself (and other programmers) that the compiler completely ignores. Good code always has comments explaining <em>why</em> things are done.</p>
+
+        <div class="ex-block">
+          <div class="ex-lbl">Example 2 — Two Types of Comments</div>
+          <pre class="ex-code"><span class="t-inc">#include &lt;stdio.h&gt;</span>
+
+<span class="t-cm">// This is a single-line comment</span>
+<span class="t-cm">// Use // for short notes on one line</span>
+
+<span class="t-cm">/* This is a multi-line comment.
+   Use this for longer explanations
+   that span multiple lines. */</span>
+
+<span class="t-kw">int</span> <span class="t-fn">main</span>() {
+    <span class="t-cm">// Print a welcome message</span>
+    <span class="t-fn">printf</span>(<span class="t-str">"Welcome to C Programming!\n"</span>);
+
+    <span class="t-fn">printf</span>(<span class="t-str">"Let's learn together!\n"</span>); <span class="t-cm">// comment can go here too</span>
+
+    <span class="t-kw">return</span> <span class="t-num">0</span>; <span class="t-cm">/* exit with success */</span>
+}</pre>
+          <div class="ex-out" style="background:#0d1117;font-family:var(--m);font-size:.82rem;color:#7ee787;padding:.7rem 1rem">Welcome to C Programming!
+Let's learn together!</div>
+          <div class="ex-note">Comments never appear in the output. Write comments freely — they make your code 10x easier to understand later.</div>
+        </div>
+
+        <h2>The printf Function — Printing Text</h2>
+        <p>printf is your main tool for displaying output. It can print text, numbers, and use special <strong>escape sequences</strong>.</p>
+
+        <div class="ex-block">
+          <div class="ex-lbl">Example 3 — printf Escape Sequences</div>
+          <pre class="ex-code"><span class="t-inc">#include &lt;stdio.h&gt;</span>
+
+<span class="t-kw">int</span> <span class="t-fn">main</span>() {
+    <span class="t-fn">printf</span>(<span class="t-str">"Line 1\n"</span>);          <span class="t-cm">// \n = new line</span>
+    <span class="t-fn">printf</span>(<span class="t-str">"Line 2\n"</span>);
+    <span class="t-fn">printf</span>(<span class="t-str">"Col1\tCol2\tCol3\n"</span>); <span class="t-cm">// \t = tab space</span>
+    <span class="t-fn">printf</span>(<span class="t-str">"Say \"Hello!\"\n"</span>);    <span class="t-cm">// \" = print a quote</span>
+    <span class="t-fn">printf</span>(<span class="t-str">"Back\\slash\n"</span>);    <span class="t-cm">// \\ = print a backslash</span>
+
+    <span class="t-kw">return</span> <span class="t-num">0</span>;
+}</pre>
+          <div class="ex-out" style="background:#0d1117;font-family:var(--m);font-size:.82rem;color:#7ee787;padding:.7rem 1rem;white-space:pre">Line 1
+Line 2
+Col1	Col2	Col3
+Say "Hello!"
+Back\slash</div>
+          <div class="ex-note">\n, \t, \" and \\ are called escape sequences. They start with a backslash and represent special characters you can't type directly inside a string.</div>
+        </div>
+
+        <div class="ex-block">
+          <div class="ex-lbl">Escape Sequence Reference</div>
+          <div class="ex-out" style="padding:0">
+            <table style="width:100%;border-collapse:collapse;font-size:.82rem;font-family:var(--m)">
+              <thead><tr style="background:var(--bg3)">
+                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase;font-family:var(--f)">Escape</th>
+                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase;font-family:var(--f)">Meaning</th>
+                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase;font-family:var(--f)">Example Output</th>
+              </tr></thead>
+              <tbody>
+                <tr style="border-top:1px solid var(--line)"><td style="padding:.45rem .8rem;color:var(--acc2)">\n</td><td style="padding:.45rem .8rem;color:var(--ink2)">New line</td><td style="padding:.45rem .8rem;color:var(--ink3)">Moves cursor to next line</td></tr>
+                <tr style="border-top:1px solid var(--line)"><td style="padding:.45rem .8rem;color:var(--acc2)">\t</td><td style="padding:.45rem .8rem;color:var(--ink2)">Tab</td><td style="padding:.45rem .8rem;color:var(--ink3)">Adds a tab space (like pressing Tab)</td></tr>
+                <tr style="border-top:1px solid var(--line)"><td style="padding:.45rem .8rem;color:var(--acc2)">\"</td><td style="padding:.45rem .8rem;color:var(--ink2)">Double quote</td><td style="padding:.45rem .8rem;color:var(--ink3)">Prints " character</td></tr>
+                <tr style="border-top:1px solid var(--line)"><td style="padding:.45rem .8rem;color:var(--acc2)">\\</td><td style="padding:.45rem .8rem;color:var(--ink2)">Backslash</td><td style="padding:.45rem .8rem;color:var(--ink3)">Prints \ character</td></tr>
+                <tr style="border-top:1px solid var(--line)"><td style="padding:.45rem .8rem;color:var(--acc2)">\0</td><td style="padding:.45rem .8rem;color:var(--ink2)">Null character</td><td style="padding:.45rem .8rem;color:var(--ink3)">Used to end strings in C</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <h2>How C Compiles Your Code</h2>
+        <p>When you click <strong>Run</strong> in our editor, here is what happens behind the scenes:</p>
+
+        <div class="ex-block">
+          <div class="ex-lbl">Compilation Steps</div>
+          <div class="ex-out" style="line-height:2;padding:1rem;font-size:.84rem">
+            <strong>Step 1 — Preprocessing:</strong> The compiler reads <code>#include</code> and pastes the stdio.h file content in<br/>
+            <strong>Step 2 — Compilation:</strong> Converts your C code to assembly language<br/>
+            <strong>Step 3 — Assembling:</strong> Converts assembly to binary machine code (0s and 1s)<br/>
+            <strong>Step 4 — Linking:</strong> Connects your code with library functions like printf<br/>
+            <strong>Step 5 — Execution:</strong> The CPU runs the final binary → you see the output!
+          </div>
+          <div class="ex-note">In our editor this all happens in under 2 seconds. On your computer you'd type: <code>gcc main.c -o output</code> then <code>./output</code></div>
+        </div>
+
+        <div class="box box-warn">
+          <div class="box-lbl">⚠ Most Common Beginner Mistakes</div>
+          <p>1. <strong>Forgetting the semicolon</strong> — Every statement must end with <code>;</code><br/>
+          2. <strong>Wrong case</strong> — C is case-sensitive. <code>printf</code> ≠ <code>Printf</code> ≠ <code>PRINTF</code><br/>
+          3. <strong>Missing #include</strong> — Without stdio.h, printf does not exist<br/>
+          4. <strong>Mismatched braces</strong> — Every <code>{</code> needs a closing <code>}</code></p>
+        </div>
+
+        <div class="why">
+          <div class="why-lbl">🎯 Key Takeaway</div>
+          <p>Every C program needs: <strong>#include &lt;stdio.h&gt;</strong> for I/O, <strong>int main() { }</strong> as the starting point, and <strong>return 0;</strong> to signal success. Master these 3 parts and you can build anything. The rest of the course adds more tools to your toolbox.</p>
+        </div>
+
+        <div class="box box-seo">
+          <div class="box-lbl">✅ What You Learned</div>
+          <p>#include borrows tools from header files · main() is where C programs start · printf prints text to screen · \n adds a new line · ; ends every statement · // and /* */ are used for comments · return 0 tells the OS the program succeeded</p>
+        </div>
+
+      </div>
+      <div class="lesson-end">
+        <button class="done-btn" id="done-btn" onclick="markDone()">✓ Mark Complete &amp; Continue → Lesson 3</button>
+        <div class="nav-row">
+          <a class="nav-a" href="lesson01.html">← Lesson 1: What is C?</a>
+          <a class="nav-a next" href="lesson03.html">Next: Variables →</a>
+        </div>
+        <div class="foot"><div class="foot-copy">LearnC — 25 Lessons — Free C Programming Course</div></div>
+      </div>
+    </div>
+
+    <!-- EXPLAIN -->
+    <div class="panel" id="p-explain">
+      <div style="background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
+        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">💡 Explain with Real-Life Analogies</h3>
+        <p style="font-size:.84rem;color:var(--ink3);margin:0">AI explains this lesson using everyday comparisons — zero jargon.</p>
+      </div>
+      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate...</div>
+    </div>
+
+    <!-- EDITOR -->
+    <div class="panel" id="p-editor">
+      <div class="ed-card">
+        <div class="ed-bar">
+          <span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span>
+          <span class="ed-fn">main.c</span>
+          <div class="ed-actions">
+            <button class="ed-btn" onclick="resetCode()">Reset</button>
+            <button class="ed-btn" onclick="copyCode()">Copy</button>
+            <button class="ed-btn go" id="run-btn" onclick="runCode()">▶ Run</button>
+          </div>
+        </div>
+        <div class="ed-split">
+          <div class="ed-side"><div id="cm-main" style="height:100%;min-height:290px"></div></div>
+          <div class="term-side">
+            <div class="term-bar">
+              <span class="term-dot" style="background:#ff5f57"></span>
+              <span class="term-dot" style="background:#febc2e;margin:0 3px"></span>
+              <span class="term-dot" style="background:#28c840"></span>
+              <span style="margin-left:.4rem">Terminal Output</span>
+            </div>
+            <div class="term-body" id="output">Click ▶ Run to compile and execute your code...</div>
+            <div class="term-footer">
+              <span class="stdin-lbl">stdin:</span>
+              <input class="stdin-in" id="stdin-in" placeholder="Input for scanf() (not needed yet)..."/>
+            </div>
+          </div>
+        </div>
+        <div class="hint-bar">
+          <span id="hint-txt">Write code then click Deep Analyze</span>
+          <button class="hint-go" onclick="deepAnalyze()">🔍 Deep Analyze</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- QUIZ -->
+    <div class="panel" id="p-quiz">
+      <div class="quiz-wrap">
+        <p class="q-question">What does the <code>\n</code> inside printf do?</p>
+        <div class="q-opts">
+          <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">Prints the letter n</span></button>
+          <button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Moves the cursor to a new line</span></button>
+          <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">Adds a tab space</span></button>
+          <button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">Ends the program</span></button>
+        </div>
+        <div class="q-exp" id="q-exp">
+          <span class="q-exp-lbl">Explanation</span>
+          \n is the newline escape sequence. It tells printf to move the cursor to the next line, just like pressing Enter on a keyboard. Without \n, all your printf output would appear on the same line! \t is for tab, the program ends with return 0, and \n never prints an actual "n".
+        </div>
+        <div class="q-result" id="q-result"></div>
+      </div>
+    </div>
+
+    <!-- CHALLENGE -->
+    <div class="panel" id="p-challenge">
+      <div class="chal-brief">
+        <div class="chal-tag">⚡ Code Challenge</div>
+        <div class="chal-title">Print Your Resume</div>
+        <div class="chal-desc">Write a C program that prints your information like a mini resume: your name, city, skills, and a fun quote about yourself. Use printf with proper formatting including \n and \t.</div>
+        <div class="chal-reqs-lbl">Requirements (5 to pass)</div>
+        <div class="c-req" id="cr0"><span class="c-dot">✓</span><span>Has #include &lt;stdio.h&gt;</span></div>
+        <div class="c-req" id="cr1"><span class="c-dot">✓</span><span>Has int main() function</span></div>
+        <div class="c-req" id="cr2"><span class="c-dot">✓</span><span>Uses printf at least 4 times</span></div>
+        <div class="c-req" id="cr3"><span class="c-dot">✓</span><span>Uses \n (newline) in at least one printf</span></div>
+        <div class="c-req" id="cr4"><span class="c-dot">✓</span><span>Has return 0;</span></div>
+      </div>
+      <div class="chal-editor">
+        <div class="ed-bar">
+          <span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span>
+          <span class="ed-fn">resume.c</span>
+        </div>
+        <div class="chal-split">
+          <div class="ed-side"><div id="cm-chal" style="height:100%;min-height:240px"></div></div>
+          <div class="term-side">
+            <div class="term-bar"><span class="term-dot" style="background:#28c840"></span><span style="margin-left:.4rem">Output</span></div>
+            <div class="term-body" id="chal-out">Run to see output...</div>
+          </div>
+        </div>
+        <div class="chal-footer">
+          <span id="chal-status">0/5 requirements</span>
+          <div style="display:flex;gap:.35rem">
+            <button class="chal-run" onclick="runChallenge()">▶ Run</button>
+            <button class="chal-check" onclick="checkChallenge()">✓ Check</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAI -->
+    <div class="panel" id="p-chai">
+      <div id="chai-body"></div>
+    </div>
+  </main>
+</div>
+<button id="mob-fab" onclick="openLessons()" aria-label="All lessons"><span></span><span></span><span></span></button>
+<div class="ai-overlay" id="ai-overlay">
+  <div class="ai-panel">
+    <div class="ai-head">
+      <div class="ai-av">AI</div>
+      <div><div class="ai-name">C AI Tutor</div><div class="ai-status">● Online</div><div id="ai-counter"></div></div>
+      <button class="ai-close" onclick="AI.toggle()">✕</button>
+    </div>
+    <div class="ai-messages" id="ai-messages"></div>
+    <div class="ai-input-row">
+      <textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask about C programs, printf, errors..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea>
+      <button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+    </div>
+  </div>
+</div>
+<script>
+var SRV='https://ciweb-ai-server.vercel.app';
+var LN=2,LT='Your First C Program',TOTAL=25,QA=1;
+var PISTON='https://emkc.org/api/v2/piston/execute';
+var DCODE='#include <stdio.h>\n\n// My First C Program!\n// Change the text inside printf() and click Run\n\nint main() {\n    printf("Hello, World!\\n");\n    printf("I am learning C programming.\\n");\n    printf("This is so cool!\\n");\n\n    // Try adding more printf lines below!\n\n    return 0; // Program finished successfully\n}';
+var CHAL_START='#include <stdio.h>\n\nint main() {\n    // Print your mini resume!\n    // Add your name, city, skills, and a quote\n    \n    printf("=== MY RESUME ===\\n");\n    printf("Name: Your Name Here\\n");\n    printf("City: Your City\\n");\n    printf("Skills: C programming (beginner)\\n");\n    printf("Quote: I am going to be a great programmer!\\n");\n    \n    return 0;\n}';
+var REQS=[
+  {label:'Has #include <stdio.h>',chk:function(c){return /\#include\s*<stdio\.h>/.test(c);}},
+  {label:'Has int main() function',chk:function(c){return /int\s+main\s*\(/.test(c);}},
+  {label:'Uses printf at least 4 times',chk:function(c){return (c.match(/printf\s*\(/g)||[]).length>=4;}},
+  {label:'Uses \\n in at least one printf',chk:function(c){return /printf\s*\(.*\\n/.test(c);}},
+  {label:'Has return 0;',chk:function(c){return /return\s+0\s*;/.test(c);}}
+];
+var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
+function getDone(){try{return JSON.parse(S.get('lc_done')||'[]');}catch(e){return[];}}
+function addXP(n){S.set('lc_xp',String(parseInt(S.get('lc_xp')||'0')+n));}
+function markDone(){var d=getDone();if(d.indexOf(LN)===-1){d.push(LN);S.set('lc_done',JSON.stringify(d));addXP(20);toast('🎉 +20 XP! Lesson complete!','g');}var b=document.getElementById('done-btn');if(b){b.classList.add('done');b.textContent='✓ Completed! Go to Lesson 3 →';}updateProg();}
+function updateProg(){var d=getDone(),pct=Math.round(d.length/TOTAL*100);var bar=document.getElementById('prog-fill');if(bar)bar.style.width=pct+'%';var lbl=document.getElementById('prog-lbl');if(lbl)lbl.textContent=d.length+'/'+TOTAL;document.querySelectorAll('.sb-a[data-id]').forEach(function(a){var id=parseInt(a.dataset.id),nm=a.querySelector('.sb-n');if(d.indexOf(id)>-1){a.classList.add('done');if(nm&&!a.classList.contains('cur'))nm.textContent='✓';}});if(d.indexOf(LN)>-1){var b=document.getElementById('done-btn');if(b){b.classList.add('done');b.textContent='✓ Completed!';}}}
+var Rate=(function(){var KEY='lc_rate',BASE=15;function rd(){try{var r=JSON.parse(atob(S.get(KEY)||btoa('{}')))||{};if(Date.now()-(r.t||0)>86400000)r={n:0,t:Date.now()};return r;}catch(e){return{n:0,t:Date.now()};}}function wr(r){try{S.set(KEY,btoa(JSON.stringify(r)));}catch(e){}}function lim(){return BASE+Math.min(parseInt(S.get('lc_boost')||'0'),500);}return{limit:lim,left:function(){var r=rd();return Math.max(0,lim()-(r.n||0));},ok:function(){return rd().n<lim();},use:function(){var r=rd();r.n=(r.n||0)+1;wr(r);}};})();
+function initTheme(){var t=S.get('lc_theme')||'dark';document.documentElement.classList.toggle('light',t==='light');syncCM();}
+function toggleTheme(){var l=document.documentElement.classList.contains('light');document.documentElement.classList.toggle('light',!l);S.set('lc_theme',l?'dark':'light');syncCM();}
+function syncCM(){var light=document.documentElement.classList.contains('light'),th=light?'default':'dracula';if(window._ed)window._ed.setOption('theme',th);if(window._ced)window._ced.setOption('theme',th);}
+function initTabs(){document.querySelectorAll('.tab').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});btn.classList.add('on');var p=document.getElementById('p-'+btn.dataset.tab);if(p)p.classList.add('on');var t=btn.dataset.tab;if(t==='explain')startExplain();if(t==='chai')showChai();if(t==='challenge')setTimeout(initChalEd,80);if(t==='editor')setTimeout(function(){try{if(window._ed)window._ed.refresh();}catch(e){}},60);});});}
+function initEditor(){var el=document.getElementById('cm-main');if(!el||typeof CodeMirror==='undefined')return;var light=document.documentElement.classList.contains('light');window._ed=CodeMirror(el,{value:DCODE,mode:'text/x-csrc',theme:light?'default':'dracula',lineNumbers:true,tabSize:4,lineWrapping:true,autoCloseBrackets:true,matchBrackets:true});var t;window._ed.on('change',function(){clearTimeout(t);t=setTimeout(function(){clearTimeout(window._ht);window._ht=setTimeout(autoHint,2000);},300);});setTimeout(autoHint,1000);}
+function initChalEd(){var el=document.getElementById('cm-chal');if(!el||typeof CodeMirror==='undefined'||window._ced)return;var light=document.documentElement.classList.contains('light');window._ced=CodeMirror(el,{value:CHAL_START,mode:'text/x-csrc',theme:light?'default':'dracula',lineNumbers:true,tabSize:4,lineWrapping:true,autoCloseBrackets:true});}
+function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);toast('Code reset!');}
+function copyCode(){var code=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}}
+async function runCode(){var btn=document.getElementById('run-btn');var out=document.getElementById('output');var code=window._ed?window._ed.doc.getValue():'';var stdin=(document.getElementById('stdin-in')||{}).value||'';if(!code.trim()){toast('Write some code first!','o');return;}btn.textContent='⏳ Running...';btn.disabled=true;out.className='term-body';out.textContent='Compiling and running...\n';try{var resp=await fetch(PISTON,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:'c',version:'*',files:[{name:'main.c',content:code}],stdin:stdin})});var data=await resp.json();var result='';if(data.compile&&data.compile.stderr&&data.compile.code!==0){result='❌ Compile Error:\n'+data.compile.stderr;out.className='term-body err';}else if(data.run){result=(data.run.stdout||'')+(data.run.stderr?'\n⚠ Error:\n'+data.run.stderr:'');if(!result.trim())result='(program ran with no output)';out.className=data.run.stderr?'term-body err':'term-body ok';}else{result='Could not get output.';out.className='term-body err';}out.textContent=result;}catch(e){out.textContent='Could not connect to compiler.\nCheck your internet.';out.className='term-body err';}btn.textContent='▶ Run';btn.disabled=false;}
+async function runChallenge(){var out=document.getElementById('chal-out');var code=window._ced?window._ced.doc.getValue():'';if(!code.trim())return;out.className='term-body';out.textContent='Running...';try{var resp=await fetch(PISTON,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({language:'c',version:'*',files:[{name:'main.c',content:code}],stdin:''})});var data=await resp.json();if(data.compile&&data.compile.stderr&&data.compile.code!==0){out.textContent='❌ Compile Error:\n'+data.compile.stderr;out.className='term-body err';}else if(data.run){out.textContent=data.run.stdout||'(no output)';out.className=data.run.stderr?'term-body err':'term-body ok';}}catch(e){out.textContent='Could not connect.';out.className='term-body err';}}
+function checkChallenge(){var code=window._ced?window._ced.doc.getValue():'';var passed=0;REQS.forEach(function(req,i){var ok=req.chk(code),row=document.getElementById('cr'+i);if(row){row.classList.toggle('done',ok);var dot=row.querySelector('.c-dot');if(dot)dot.textContent=ok?'✓':'';}if(ok)passed++;});var s=document.getElementById('chal-status'),all=passed===REQS.length;if(s){s.textContent=passed+'/'+REQS.length+' requirements'+(all?' — Complete! 🎉':'');s.className=all?'done':'';}if(all&&!window._chalWon){window._chalWon=true;addXP(50);toast('🏆 Challenge complete! +50 XP','g');}}
+function autoHint(){var el=document.getElementById('hint-txt');if(!el)return;var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){el.textContent='Write C code and the analyzer monitors it automatically';el.className='';return;}var issues=[];if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h> at the top');if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main() — every C program needs main');if((code.match(/\{/g)||[]).length!==(code.match(/\}/g)||[]).length)issues.push('Mismatched braces { } — check your opening and closing');if(!/return\s+0\s*;/.test(code)&&/int\s+main/.test(code))issues.push('Missing return 0; in main()');if(issues.length>0){el.textContent='⚠ '+issues[0];el.className='err';}else{el.textContent='✓ Structure looks good! Click Deep Analyze for full review.';el.className='ok';}}
+function deepAnalyze(){var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){toast('Write some code first!','o');return;}var issues=[],tips=[];if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h>');if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main() function');if((code.match(/\{/g)||[]).length!==(code.match(/\}/g)||[]).length)issues.push('Mismatched braces { }');if(!/return\s+0\s*;/.test(code)&&/int\s+main/.test(code))issues.push('main() should return 0');if(/printf/.test(code)&&!/\\n/.test(code))tips.push('Add \\n at the end of printf strings for clean output');if(!/\/\/|\/\*/.test(code))tips.push('Add comments to explain what your code does');showDA(issues,tips,code.length);}
+function showDA(issues,tips,len){var hbar=document.querySelector('.hint-bar');if(!hbar)return;var old=document.getElementById('da-result');if(old)old.remove();var panel=document.createElement('div');panel.id='da-result';panel.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';var allGood=issues.length===0&&tips.length===0;var html='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.9rem">✕</button>';html+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">🔍 Analysis of '+len+' characters</div>';if(allGood){html+='<div style="color:#22c55e;font-weight:700">✓ All checks passed! Your C code structure looks great.</div>';}else{if(issues.length){html+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">✕ '+issues.length+' Error'+(issues.length>1?'s':'')+':</div>';issues.forEach(function(e,i){html+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});}else{html+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">✓ No structural errors found</div>';}if(tips.length){html+='<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">💡 '+tips.length+' Tip'+(tips.length>1?'s':'')+':</div>';tips.forEach(function(t,i){html+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});}}html+='<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For detailed review, ask the C AI Tutor.</div>';panel.innerHTML=html;hbar.parentNode.insertBefore(panel,hbar.nextSibling);}
+function initQuiz(){document.querySelectorAll('.q-opt').forEach(function(btn,i){btn.addEventListener('click',function(){if(S.get('lc_q_'+LN)!==null)return;S.set('lc_q_'+LN,String(i));var correct=i===QA;if(correct)addXP(10);document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===i)b.classList.add('wrong');});var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');var res=document.getElementById('q-result');if(res){res.className='q-result '+(correct?'ok':'no');res.textContent=correct?'✓ Correct! +10 XP':'✕ Wrong — read the explanation above';}});});var saved=S.get('lc_q_'+LN);if(saved!==null){var si=parseInt(saved);document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===si&&si!==QA)b.classList.add('wrong');});var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');var res=document.getElementById('q-result');if(res){res.className='q-result '+(si===QA?'ok':'no');res.textContent=si===QA?'✓ Correct! +10 XP':'✕ Wrong — read the explanation above';}}}
+var _expLoaded=false;
+function startExplain(){if(_expLoaded)return;_expLoaded=true;var box=document.getElementById('explain-box');if(!box)return;box.innerHTML='<div style="display:flex;align-items:center;gap:.6rem;color:var(--ink3);font-size:.84rem"><div class="dots"><span></span><span></span><span></span></div>Generating analogies...</div>';var ctx=document.getElementById('content-en');var prompt='Explain "'+LT+'" (C programming) using ONLY real-life analogies. No code. 5 bullet points, each one analogy. Under 150 words. Very simple — a 10-year-old should understand. Context: '+(ctx?ctx.innerText.slice(0,400):'');fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:prompt,code:'',lesson:LT,lang:'en',mode:'explain'})}).then(function(r){return r.json();}).then(function(d){var txt=(d.reply||'Could not load.').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');box.innerHTML='<div style="font-size:.88rem;line-height:1.9;color:var(--ink2)">'+txt+'</div><button onclick="_expLoaded=false;startExplain()" style="margin-top:.8rem;background:var(--aa);border:1px solid var(--ab);border-radius:var(--rs);padding:5px 13px;font-size:.73rem;font-weight:700;cursor:pointer;color:var(--acc2);font-family:var(--f)">🔄 Generate Again</button>';}).catch(function(){box.innerHTML='<div style="color:var(--ink3);font-size:.84rem">Could not connect to AI. Check your internet.</div>';_expLoaded=false;});}
+function showChai(){var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';var rem=Rate.left(),lim=Rate.limit(),pct=Math.round(rem/lim*100);el.innerHTML='<div style="display:flex;flex-direction:column;gap:.85rem"><div class="chai-stat"><div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.6rem">AI Messages Remaining Today</div><div class="chai-num">'+rem+'</div><div class="chai-sub">of '+lim+' free messages</div><div class="chai-bar-wrap"><div class="chai-bar-fill" style="width:'+pct+'%"></div></div></div><div class="chai-features"><div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.55rem">✦ What your messages include</div><div class="chai-feat">✓ Ask any C programming question</div><div class="chai-feat">✓ Deep Analyze your code with AI</div><div class="chai-feat">✓ Debug compile errors — paste and ask</div><div class="chai-feat">✓ Get plain-English analogies for any concept</div><div class="chai-feat">⏰ Resets every day at midnight</div></div></div>';}
+var AI=(function(){var open=false,started=false;function botMsg(txt){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.innerHTML='<span class="ai-lbl">C AI Tutor</span><span class="ai-body">'+txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')+'</span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}function userMsg(txt){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg user';d.textContent=txt;c.appendChild(d);c.scrollTop=c.scrollHeight;}function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">C AI Tutor</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}return{toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hi! C AI Tutor here! 🖥️\n\nI can help you with:\n• Explain what each line of your code does\n• Fix compile errors — paste the error message\n• Write simple C programs for you to study\n• Answer any question about C\n\nYou have '+Rate.left()+' messages. Ask anything!');updateCounter();}},_open:false,say:function(text){this.sendMsg(text);},sendMsg:function(text){text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today. Come back tomorrow!');updateCounter();return;}if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();var code=window._ed?window._ed.doc.getValue():'';var sys='You are an expert C programming tutor for absolute beginners. Current lesson: "'+LT+'". Be very clear and simple. Explain every concept like you are talking to a 12-year-old. If showing code, add detailed comments. If someone shares a compile error, explain what it means and how to fix it.';fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:sys})}).then(function(r){return r.json();}).then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Try again.');}).catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet.');});},open:function(){if(!this._open)this.toggle();}};})();
+function openLessons(){var LESSONS={"1":"What is C?","2":"First C Program","3":"Variables & Data Types","4":"Constants & Literals","5":"Operators in C","6":"Input & Output","7":"If-Else Conditions","8":"Switch Statement","9":"While Loop","10":"For Loop","11":"Do-While Loop","12":"Break & Continue","13":"Functions","14":"Recursion","15":"Arrays (1D)","16":"2D Arrays","17":"Strings in C","18":"Pointers Basics","19":"Pointers & Arrays","20":"Structures","21":"Unions & Enums","22":"File Handling","23":"Dynamic Memory","24":"Preprocessor & Macros","25":"Final Project"};var done=getDone();var ov=document.createElement('div');ov.id='ls';ov.style.cssText='position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.65);display:flex;align-items:flex-end';var items='';for(var i=1;i<=TOTAL;i++){var t=LESSONS[i]||'Lesson '+i,dn=done.indexOf(i)>-1,isNow=i===LN;var ns=isNow?'background:var(--acc);color:#fff;':dn?'background:var(--ga);color:var(--green);':'';var rs=isNow?'color:var(--acc2);font-weight:700;':dn?'color:var(--green);':'';var href=i<=3?'lesson'+('0'+i).slice(-2)+'.html':'#';items+='<a href="'+href+'" style="display:flex;align-items:center;gap:.45rem;padding:.44rem 1rem;text-decoration:none;color:var(--ink2);border-bottom:1px solid var(--line);'+rs+'"><span style="width:22px;height:22px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;font-family:var(--m);flex-shrink:0;'+ns+'">'+(dn&&!isNow?'✓':i)+'</span><span style="font-size:.79rem">'+t+'</span>'+(isNow?'<span style="margin-left:auto;font-size:.58rem;background:var(--acc);color:#fff;border-radius:99px;padding:1px 7px">NOW</span>':'')+'</a>';}ov.innerHTML='<div style="background:var(--bg);border-radius:20px 20px 0 0;width:100%;max-height:78vh;display:flex;flex-direction:column;animation:slideUp .22s ease"><div style="padding:.88rem 1rem .6rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-shrink:0"><span style="font-size:.9rem;font-weight:800;color:var(--ink)">C Programming (25 Lessons)</span><button onclick="document.getElementById(\'ls\').remove();document.body.style.overflow=\'\'" style="background:none;border:1px solid var(--line);border-radius:5px;width:26px;height:26px;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;font-family:var(--f);font-size:.72rem">✕</button></div><div style="overflow-y:auto;flex:1;overscroll-behavior:contain">'+items+'</div></div>';document.body.appendChild(ov);document.body.style.overflow='hidden';ov.addEventListener('click',function(e){if(e.target===ov){ov.remove();document.body.style.overflow='';}});setTimeout(function(){var cur=ov.querySelector('[style*="NOW"]');if(cur)cur.scrollIntoView({block:'center'});},100);}
+function toast(msg,type){var t=document.createElement('div');t.className='toast'+(type?' '+type:'');t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.remove();},2800);}
+document.addEventListener('DOMContentLoaded',function(){initTheme();initTabs();initEditor();initQuiz();updateProg();var ov=document.getElementById('ai-overlay');if(ov)ov.addEventListener('click',function(e){if(e.target===ov)AI.toggle();});var fab=document.getElementById('mob-fab');if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}});
+</script>
+</body>
+</html>
