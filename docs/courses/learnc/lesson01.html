@@ -1,950 +1,700 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-<title>L1: What is C? | LearnC – Free C Programming Course for Beginners</title>
-<meta name="description" content="Learn what C programming language is, its history, why it matters, and where it is used. Perfect for absolute beginners and kids learning to code."/>
-<meta name="keywords" content="what is C language, learn C programming, C for beginners, C programming tutorial, C language history, Dennis Ritchie"/>
-<meta name="author" content="LearnC Course"/>
-<meta property="og:title" content="What is C? – Lesson 1 | LearnC"/>
-<meta property="og:description" content="Discover C – the mother of all programming languages. Free beginner course with live code editor and AI tutor."/>
-<meta property="og:type" content="website"/>
+<title>L1: What is C? | LearnC</title>
+<meta name="description" content="Learn C programming from scratch. Free course with live GCC compiler, AI tutor and Hinglish support."/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.css"/>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/theme/dracula.min.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/codemirror.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/mode/clike/clike.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/closebrackets.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.16/addon/edit/matchbrackets.min.js"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap');
-:root{--bg:#0d0c0a;--bg2:#171614;--bg3:#1e1c19;--bg4:#282520;--ink:#ede9e1;--ink2:#c0b9ae;--ink3:#857d74;--line:#2b2926;--line2:#3a3731;--acc:#3b82f6;--acc2:#60a5fa;--aa:rgba(59,130,246,.1);--ab:rgba(59,130,246,.28);--green:#22c55e;--ga:rgba(34,197,94,.09);--gb:rgba(34,197,94,.24);--gold:#fbbf24;--goa:rgba(251,191,36,.09);--f:'Plus Jakarta Sans',system-ui,sans-serif;--m:'JetBrains Mono',monospace;--r:10px;--rs:6px;--nav:54px}
-html.light{--bg:#f9f7f4;--bg2:#fff;--bg3:#f0ede7;--bg4:#e5e0d8;--ink:#1a1816;--ink2:#44403a;--ink3:#78716a;--line:#e5e0d8;--line2:#cec9bf;--acc:#1d4ed8;--acc2:#2563eb;--aa:rgba(29,78,216,.07);--ab:rgba(29,78,216,.2);--green:#15803d;--ga:rgba(21,128,61,.08);--gb:rgba(21,128,61,.22);--gold:#92400e;--goa:rgba(146,64,14,.08)}
+:root{--bg:#0d0c0a;--bg2:#171614;--bg3:#1e1c19;--bg4:#282520;--ink:#ede9e1;--ink2:#c0b9ae;--ink3:#857d74;--line:#2b2926;--line2:#3a3731;--acc:#3b82f6;--acc2:#60a5fa;--aa:rgba(59,130,246,.12);--ab:rgba(59,130,246,.3);--green:#22c55e;--ga:rgba(34,197,94,.1);--gold:#fbbf24;--goa:rgba(251,191,36,.1);--orange:#f97316;--oa:rgba(249,115,22,.1);--red:#f87171;--f:"Plus Jakarta Sans",system-ui,sans-serif;--m:"JetBrains Mono",monospace;--r:10px;--rs:6px;--nav:54px}
+html.light{--bg:#f5f3ef;--bg2:#fff;--bg3:#ece8e1;--bg4:#ddd8ce;--ink:#1a1816;--ink2:#3d3830;--ink3:#6b6258;--line:#ddd8ce;--line2:#ccc6bb;--acc:#1d4ed8;--acc2:#2563eb;--aa:rgba(29,78,216,.08);--ab:rgba(29,78,216,.22);--green:#15803d;--ga:rgba(21,128,61,.08);--gold:#92400e;--goa:rgba(146,64,14,.08);--orange:#c2410c;--oa:rgba(194,65,12,.08);--red:#dc2626}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{-webkit-text-size-adjust:100%}
 body{font-family:var(--f);background:var(--bg);color:var(--ink);line-height:1.65;overflow-x:hidden;min-height:100vh;-webkit-font-smoothing:antialiased}
 a{color:var(--acc2);text-decoration:none}
-code{font-family:var(--m);font-size:.8em;background:var(--bg3);color:var(--acc2);padding:1px 6px;border-radius:4px;font-weight:600}
-::selection{background:var(--aa);color:var(--acc2)}
+code{font-family:var(--m);font-size:.82em;background:var(--bg3);color:var(--acc2);padding:1px 6px;border-radius:4px;font-weight:600}
 ::-webkit-scrollbar{width:4px;height:4px}::-webkit-scrollbar-thumb{background:var(--line2);border-radius:9px}
-
-/* NAV */
-.nav{position:sticky;top:0;z-index:100;height:var(--nav);background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 1.1rem;gap:.5rem;backdrop-filter:blur(8px)}
-.logo{font-size:1.08rem;font-weight:800;letter-spacing:-.3px;color:var(--ink);text-decoration:none;flex-shrink:0}
+.nav{position:sticky;top:0;z-index:100;height:var(--nav);background:var(--bg);border-bottom:1px solid var(--line);display:flex;align-items:center;padding:0 1rem;gap:.38rem;backdrop-filter:blur(10px)}
+.logo{font-size:1.05rem;font-weight:800;color:var(--ink);text-decoration:none;letter-spacing:-.3px;flex-shrink:0}
 .logo em{color:var(--acc2);font-style:normal}
 .nav-pill{font-size:.57rem;font-weight:700;color:var(--ink3);background:var(--bg3);border:1px solid var(--line2);border-radius:99px;padding:2px 8px;font-family:var(--m);flex-shrink:0}
-.nav-gap{flex:1;min-width:0}
-.progress-wrap{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
-.prog-bar{width:60px;height:3px;background:var(--line2);border-radius:99px;overflow:hidden}
+.nav-gap{flex:1}
+.prog-wrap{display:flex;align-items:center;gap:.35rem;flex-shrink:0}
+.prog-bar{width:55px;height:3px;background:var(--line2);border-radius:99px;overflow:hidden}
 .prog-fill{height:100%;background:var(--acc);border-radius:99px;transition:width .5s}
-.prog-lbl{font-size:.56rem;font-weight:700;color:var(--ink3);font-family:var(--m);white-space:nowrap}
-.nav-actions{display:flex;align-items:center;gap:.4rem;flex-shrink:0}
-.toggle{position:relative;width:50px;height:27px;background:var(--bg3);border:1px solid var(--line2);border-radius:99px;cursor:pointer;flex-shrink:0;-webkit-tap-highlight-color:transparent}
-.toggle::before{content:'';position:absolute;left:4px;top:4px;width:17px;height:17px;border-radius:50%;background:var(--acc);transition:transform .22s}
-html.light .toggle::before{transform:translateX(23px);background:var(--gold)}
-.toggle-lbl{position:absolute;font-size:.52rem;font-weight:800;color:var(--ink3);pointer-events:none;right:6px;top:50%;transform:translateY(-50%)}
-html.light .toggle-lbl{left:6px;right:auto}
-.ai-fab{background:var(--acc);color:#fff;border:none;font-family:var(--f);font-size:.72rem;font-weight:700;padding:6px 13px;border-radius:7px;cursor:pointer;white-space:nowrap;transition:background .15s;flex-shrink:0}
-.ai-fab:hover{background:var(--acc2)}
-
-/* LAYOUT */
+.prog-lbl{font-size:.56rem;font-weight:700;color:var(--ink3);font-family:var(--m)}
+.nav-btns{display:flex;align-items:center;gap:.3rem;flex-shrink:0}
+.theme-btn{position:relative;width:44px;height:24px;background:var(--bg3);border:1px solid var(--line2);border-radius:99px;cursor:pointer;flex-shrink:0}
+.theme-btn::before{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--acc);transition:transform .22s}
+html.light .theme-btn::before{transform:translateX(20px);background:var(--gold)}
+.lang-btn{background:var(--oa);color:var(--orange);border:1px solid rgba(249,115,22,.35);font-family:var(--f);font-size:.63rem;font-weight:700;padding:4px 9px;border-radius:99px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s}
+.lang-btn:hover{background:var(--orange);color:#fff}
+.ai-btn{background:var(--acc);color:#fff;border:none;font-family:var(--f);font-size:.67rem;font-weight:700;padding:5px 10px;border-radius:7px;cursor:pointer;flex-shrink:0}
 .layout{display:flex;min-height:calc(100vh - var(--nav))}
-.sidebar{width:200px;flex-shrink:0;position:sticky;top:var(--nav);height:calc(100vh - var(--nav));overflow-y:auto;border-right:1px solid var(--line);padding:.7rem .5rem;background:var(--bg)}
-.sb-hd{font-size:.55rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);padding:.1rem .4rem;margin-bottom:.3rem}
-.sb-a{display:flex;align-items:center;gap:.38rem;padding:.35rem .5rem;border-radius:var(--rs);font-size:.74rem;color:var(--ink3);text-decoration:none;transition:all .12s;margin-bottom:1px}
+.sidebar{width:196px;flex-shrink:0;position:sticky;top:var(--nav);height:calc(100vh - var(--nav));overflow-y:auto;border-right:1px solid var(--line);padding:.6rem .42rem;background:var(--bg)}
+.sb-hd{font-size:.52rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--ink3);padding:.1rem .4rem;margin-bottom:.28rem}
+.sb-a{display:flex;align-items:center;gap:.34rem;padding:.32rem .42rem;border-radius:var(--rs);font-size:.72rem;color:var(--ink3);text-decoration:none;transition:all .12s;margin-bottom:1px}
 .sb-a:hover{background:var(--bg3);color:var(--ink)}
 .sb-a.cur{background:var(--aa);color:var(--acc2);font-weight:600}
 .sb-a.done{color:var(--green)}
-.sb-n{width:20px;height:20px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
+.sb-n{width:19px;height:19px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
 .sb-a.cur .sb-n{background:var(--acc);color:#fff}
 .sb-a.done .sb-n{background:var(--ga);color:var(--green)}
 .sb-t{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex:1}
-
-/* MAIN */
-.main{flex:1;min-width:0;padding:1.6rem 1.9rem;overflow-x:hidden}
-.hero{margin-bottom:1.4rem;padding-bottom:1.2rem;border-bottom:1px solid var(--line)}
-.hero-meta{display:flex;align-items:center;gap:.35rem;flex-wrap:wrap;margin-bottom:.6rem}
-.badge{display:inline-flex;align-items:center;font-size:.58rem;font-weight:700;border-radius:99px;padding:2px 9px}
+.main{flex:1;min-width:0;padding:1.5rem 1.8rem;overflow-x:hidden}
+.welcome{background:linear-gradient(135deg,#1a2e4a,#1a1e1c);border:1px solid var(--ab);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:1.2rem;position:relative;overflow:hidden;display:none}
+.welcome.show{display:block}
+.wglow{position:absolute;top:-20px;right:-20px;width:110px;height:110px;background:rgba(59,130,246,.15);border-radius:50%;filter:blur(28px)}
+.wtitle{font-size:.94rem;font-weight:800;color:#fff;margin-bottom:.2rem}
+.wsub{font-size:.77rem;color:rgba(255,255,255,.7);line-height:1.5}
+.wstats{display:flex;gap:.55rem;margin-top:.6rem;flex-wrap:wrap}
+.wstat{background:rgba(255,255,255,.09);border-radius:var(--rs);padding:.26rem .62rem;font-size:.67rem;font-weight:700;color:rgba(255,255,255,.85)}
+.hero{margin-bottom:1.3rem;padding-bottom:1.1rem;border-bottom:1px solid var(--line)}
+.hero-meta{display:flex;align-items:center;gap:.3rem;flex-wrap:wrap;margin-bottom:.5rem}
+.badge{display:inline-flex;align-items:center;font-size:.57rem;font-weight:700;border-radius:99px;padding:2px 9px}
 .b-tag{background:var(--aa);color:var(--acc2);border:1px solid var(--ab);font-family:var(--m);text-transform:uppercase;letter-spacing:.5px}
 .b-time{background:var(--bg3);color:var(--ink3)}
 .b-xp{background:var(--goa);color:var(--gold);font-family:var(--m)}
-.lesson-title{font-size:clamp(1.55rem,5vw,2.1rem);font-weight:800;line-height:1.15;letter-spacing:-.4px;margin-bottom:.42rem}
-.lesson-sub{font-size:.88rem;color:var(--ink3);line-height:1.6}
-
-/* TABS */
-.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:1.45rem;overflow-x:auto;scrollbar-width:none}
+.b-act{background:var(--oa);color:var(--orange)}
+.lesson-title{font-size:clamp(1.45rem,5vw,2rem);font-weight:800;line-height:1.15;letter-spacing:-.4px;margin-bottom:.38rem}
+.lesson-sub{font-size:.86rem;color:var(--ink3);line-height:1.6}
+.tabs{display:flex;border-bottom:1px solid var(--line);margin-bottom:1.3rem;overflow-x:auto;scrollbar-width:none}
 .tabs::-webkit-scrollbar{display:none}
-.tab{background:none;border:none;font-family:var(--f);font-size:.78rem;font-weight:500;color:var(--ink3);cursor:pointer;padding:.6rem .88rem;white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:all .15s;flex-shrink:0}
-.tab:hover{color:var(--ink)}
-.tab.on{color:var(--acc2);border-bottom-color:var(--acc2);font-weight:700}
-.panel{display:none}
-.panel.on{display:block;animation:fadeUp .18s ease}
+.tab{background:none;border:none;font-family:var(--f);font-size:.76rem;font-weight:500;color:var(--ink3);cursor:pointer;padding:.54rem .78rem;white-space:nowrap;border-bottom:2.5px solid transparent;margin-bottom:-1px;transition:all .15s;flex-shrink:0}
+.tab:hover{color:var(--ink)}.tab.on{color:var(--acc2);border-bottom-color:var(--acc2);font-weight:700}
+.panel{display:none}.panel.on{display:block;animation:fadeUp .18s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
-
-/* CONTENT */
-.content h2{font-size:1.08rem;font-weight:700;color:var(--ink);margin:1.7rem 0 .55rem;padding-bottom:.38rem;border-bottom:1.5px solid var(--line)}
-.content h3{font-size:.95rem;font-weight:700;color:var(--ink2);margin:1.2rem 0 .38rem}
-.content p{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.85rem}
-.content ol,.content ul{padding-left:1.3rem;margin-bottom:.85rem}
-.content li{font-size:.9rem;color:var(--ink2);line-height:1.8;margin-bottom:.22rem}
+.content h2{font-size:1.05rem;font-weight:700;color:var(--ink);margin:1.6rem 0 .5rem;padding-bottom:.33rem;border-bottom:1.5px solid var(--line)}
+.content p{font-size:.88rem;color:var(--ink2);line-height:1.82;margin-bottom:.78rem}
+.content ol,.content ul{padding-left:1.3rem;margin-bottom:.78rem}
+.content li{font-size:.88rem;color:var(--ink2);line-height:1.82;margin-bottom:.2rem}
 .content strong{font-weight:700;color:var(--ink)}
-
-/* CARDS / BOXES */
-.card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
-.card-head{background:var(--bg3);border-bottom:1px solid var(--line);padding:.5rem .9rem;display:flex;align-items:center;gap:.45rem;flex-wrap:wrap}
-.box{border-radius:var(--rs);padding:.82rem .98rem;margin:.82rem 0;border-left:2.5px solid}
-.box-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.28rem}
+.box{border-radius:var(--rs);padding:.75rem .92rem;margin:.75rem 0;border-left:2.5px solid}
+.box-lbl{font-size:.54rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.24rem}
 .box-tip{background:var(--aa);border-color:var(--acc)}.box-tip .box-lbl{color:var(--acc2)}
 .box-warn{background:var(--goa);border-color:var(--gold)}.box-warn .box-lbl{color:var(--gold)}
-.box-seo{background:var(--ga);border-color:var(--green)}.box-seo .box-lbl{color:var(--green)}
-.box p{font-size:.82rem;color:var(--ink2);line-height:1.7;margin:0}
-.why{background:linear-gradient(135deg,var(--aa),var(--ga));border:1px solid var(--ab);border-radius:var(--r);padding:1rem 1.15rem;margin:1.2rem 0}
-.why-lbl{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--acc2);margin-bottom:.3rem}
-.why p{font-size:.84rem;color:var(--ink2);line-height:1.75;margin:0}
-
-/* EX BLOCKS */
-.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1.2rem 0}
-.ex-lbl{display:flex;align-items:center;gap:.4rem;background:var(--bg3);padding:.38rem .88rem;font-size:.6rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
-.ex-lbl::before{content:'';display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);flex-shrink:0}
-.ex-code{background:#1e1e2e;padding:.75rem .95rem;margin:0;font-family:var(--m);font-size:.76rem;overflow-x:auto;white-space:pre;line-height:1.72;border-bottom:1px solid var(--line)}
-.t-kw{color:#ff79c6;font-weight:700}.t-fn{color:#50fa7b}.t-str{color:#f1fa8c}.t-cm{color:#6272a4;font-style:italic}.t-num{color:#bd93f9}.t-inc{color:#8be9fd}.t-op{color:#ff79c6}.t-txt{color:#cdd6f4}.t-hdr{color:#ff5555;font-weight:600}
-.ex-out{padding:.9rem 1rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.85rem;color:var(--ink2)}
-.ex-note{padding:.38rem .88rem;font-size:.72rem;color:var(--ink3);font-style:italic;background:var(--aa)}
-.term-out{background:#0d1117;border-top:1px solid var(--line);padding:.6rem .9rem;font-family:var(--m);font-size:.8rem;color:#7ee787;line-height:1.8}
-.term-out::before{content:'$ output\A';white-space:pre;color:#666;font-size:.65rem}
-
-/* EDITOR */
+.box-ok{background:var(--ga);border-color:var(--green)}.box-ok .box-lbl{color:var(--green)}
+.box p,.box li{font-size:.81rem;color:var(--ink2);line-height:1.7;margin:0}
+.box ul{padding-left:1.1rem;margin-top:.28rem}
+.why{background:linear-gradient(135deg,var(--aa),var(--ga));border:1px solid var(--ab);border-radius:var(--r);padding:.9rem 1.05rem;margin:1rem 0}
+.why-lbl{font-size:.54rem;font-weight:800;text-transform:uppercase;letter-spacing:1px;color:var(--acc2);margin-bottom:.26rem}
+.why p{font-size:.82rem;color:var(--ink2);line-height:1.75;margin:0}
+.ex-block{border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin:1rem 0}
+.ex-lbl{display:flex;align-items:center;gap:.38rem;background:var(--bg3);padding:.33rem .82rem;font-size:.58rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--ink3);border-bottom:1px solid var(--line)}
+.ex-lbl::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--acc);flex-shrink:0}
+.ex-out{padding:.82rem .95rem;background:var(--bg2);border-bottom:1px solid var(--line);font-size:.84rem;color:var(--ink2);line-height:1.7}
+.ex-note{padding:.33rem .82rem;font-size:.71rem;color:var(--ink3);font-style:italic;background:var(--aa)}
+.tbl{width:100%;border-collapse:collapse;font-size:.81rem}
+.tbl th{padding:.4rem .75rem;text-align:left;color:var(--ink3);font-size:.63rem;text-transform:uppercase;background:var(--bg3);font-family:var(--f)}
+.tbl td{padding:.4rem .75rem;border-top:1px solid var(--line);color:var(--ink2);line-height:1.45}
+.tbl td:first-child{font-family:var(--m);font-weight:700;color:var(--acc2)}
+.flow{display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin:.85rem 0;padding:.7rem .9rem;background:var(--bg3);border-radius:var(--r);border:1px solid var(--line)}
+.flow-box{background:var(--bg2);border:1.5px solid var(--line2);border-radius:7px;padding:.38rem .72rem;font-size:.75rem;font-weight:600;color:var(--ink);text-align:center;flex-shrink:0;line-height:1.4}
+.flow-box.hl{border-color:var(--acc);background:var(--aa);color:var(--acc2)}
+.flow-arr{color:var(--ink3);font-size:.85rem;flex-shrink:0}
 .ed-card{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.ed-bar{background:var(--bg3);border-bottom:1px solid var(--line);padding:.42rem .75rem;display:flex;align-items:center;gap:.3rem}
+.ed-bar{background:var(--bg3);border-bottom:1px solid var(--line);padding:.38rem .7rem;display:flex;align-items:center;gap:.28rem}
 .dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
 .d-r{background:#ff5f57}.d-y{background:#febc2e}.d-g{background:#28c840}
-.ed-fn{font-family:var(--m);font-size:.7rem;color:var(--ink3);margin-left:.28rem;flex:1}
-.ed-actions{display:flex;gap:.25rem;margin-left:auto;flex-shrink:0}
-.ed-btn{background:var(--bg4);border:none;border-radius:4px;padding:4px 9px;font-size:.64rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f);transition:all .12s}
+.ed-fn{font-family:var(--m);font-size:.68rem;color:var(--ink3);margin-left:.22rem;flex:1}
+.ed-actions{display:flex;gap:.2rem;margin-left:auto}
+.ed-btn{background:var(--bg4);border:none;border-radius:4px;padding:4px 9px;font-size:.62rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f)}
 .ed-btn:hover{background:var(--ink);color:var(--bg)}
-.ed-btn.go{background:var(--acc);color:#fff}.ed-btn.go:hover{background:var(--acc2)}
-.ed-split{display:grid;grid-template-columns:55% 45%;height:420px}
-.ed-side{overflow:hidden;display:flex;flex-direction:column;height:100%}
-.ed-side:first-child{border-right:1px solid var(--line)}
-.term-side{display:flex;flex-direction:column;background:#0d1117;height:100%}
-.term-bar{background:#161b22;border-bottom:1px solid #30363d;padding:.3rem .7rem;display:flex;align-items:center;gap:.5rem;font-size:.64rem;font-weight:600;color:#8b949e;flex-shrink:0;font-family:var(--m)}
-.term-dot{width:8px;height:8px;border-radius:50%}
-.term-body{flex:1;padding:.7rem .9rem;font-family:var(--m);font-size:.78rem;line-height:1.75;overflow-y:auto;white-space:pre-wrap;word-break:break-all;color:#c9d1d9}
-.term-body.ok{color:#7ee787}
-.term-body.err{color:#f85149}
-.term-footer{background:#161b22;border-top:1px solid #30363d;padding:.35rem .7rem;display:flex;align-items:center;gap:.5rem;flex-shrink:0}
-.stdin-lbl{font-size:.6rem;font-weight:700;color:#8b949e;font-family:var(--m);white-space:nowrap;flex-shrink:0}
-.stdin-in{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:4px;padding:3px 8px;font-family:var(--m);font-size:.72rem;color:#c9d1d9;outline:none}
+.ed-btn.go{background:var(--acc);color:#fff}
+.ed-split{display:grid;grid-template-columns:55% 45%;height:400px}
+.ed-left{overflow:hidden;display:flex;flex-direction:column;height:100%;border-right:1px solid var(--line)}
+.ed-right{display:flex;flex-direction:column;background:#0d1117;height:100%}
+.trm-bar{background:#161b22;border-bottom:1px solid #30363d;padding:.26rem .62rem;display:flex;align-items:center;gap:.42rem;font-size:.61rem;font-weight:600;color:#8b949e;flex-shrink:0;font-family:var(--m)}
+.trm-dot{width:8px;height:8px;border-radius:50%}
+.trm-out{flex:1;padding:.62rem .82rem;font-family:var(--m);font-size:.77rem;line-height:1.75;overflow-y:auto;white-space:pre-wrap;word-break:break-word;color:#555e68}
+.trm-out.ok{color:#7ee787}.trm-out.err{color:#f85149}.trm-out.busy{color:#8b949e}
+.trm-foot{background:#161b22;border-top:1px solid #30363d;padding:.28rem .62rem;display:flex;align-items:center;gap:.42rem;flex-shrink:0}
+.stdin-lbl{font-size:.58rem;font-weight:700;color:#8b949e;font-family:var(--m);flex-shrink:0}
+.stdin-in{flex:1;background:#0d1117;border:1px solid #30363d;border-radius:4px;padding:3px 7px;font-family:var(--m);font-size:.7rem;color:#c9d1d9;outline:none}
 .stdin-in:focus{border-color:var(--acc)}
-.hint-bar{background:var(--bg3);border-top:1px solid var(--line);padding:.36rem .75rem;display:flex;align-items:center;gap:.42rem}
-#hint-txt{flex:1;font-size:.71rem;color:var(--ink3)}
-#hint-txt.ok{color:var(--green)}#hint-txt.err{color:#f87171}
-.hint-go{background:var(--bg4);border:none;border-radius:4px;padding:3px 9px;font-size:.63rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f);transition:all .12s}
+.hint-bar{background:var(--bg3);border-top:1px solid var(--line);padding:.3rem .7rem;display:flex;align-items:center;gap:.38rem}
+.hint-txt{flex:1;font-size:.68rem;color:var(--ink3)}
+.hint-txt.ok{color:var(--green)}.hint-txt.err{color:var(--red)}
+.hint-go{background:var(--bg4);border:none;border-radius:4px;padding:3px 8px;font-size:.61rem;font-weight:600;cursor:pointer;color:var(--ink2);font-family:var(--f)}
 .hint-go:hover{background:var(--acc);color:#fff}
-
-/* QUIZ */
-.quiz-wrap{max-width:520px}
-.q-question{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:1rem;line-height:1.45}
-.q-opts{display:flex;flex-direction:column;gap:.4rem}
-.q-opt{background:var(--bg2);border:1.5px solid var(--line);border-radius:var(--r);padding:.68rem .9rem;font-size:.86rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:.62rem;text-align:left;color:var(--ink2);font-family:var(--f);width:100%}
-.q-opt:hover:not(:disabled){border-color:var(--acc);background:var(--aa);color:var(--ink)}
+.CodeMirror{height:100%!important;font-family:var(--m)!important;font-size:13px!important;line-height:1.7!important}
+.CodeMirror-scroll{overflow:auto!important;height:100%!important}
+.CodeMirror-gutters{background:var(--bg3)!important;border-right:1px solid var(--line)!important}
+.CodeMirror-linenumber{color:var(--ink3)!important;font-size:11px!important}
+.ed-left .CodeMirror,.chal-left .CodeMirror{height:100%!important}
+.ed-left .CodeMirror-scroll,.chal-left .CodeMirror-scroll{height:100%!important;overflow:auto!important}
+.quiz-wrap{max-width:510px}
+.q-q{font-size:.97rem;font-weight:700;color:var(--ink);margin-bottom:.9rem;line-height:1.45}
+.q-opts{display:flex;flex-direction:column;gap:.35rem}
+.q-opt{background:var(--bg2);border:1.5px solid var(--line);border-radius:var(--r);padding:.62rem .85rem;font-size:.84rem;cursor:pointer;transition:all .18s;display:flex;align-items:center;gap:.58rem;text-align:left;color:var(--ink2);font-family:var(--f);width:100%}
+.q-opt:hover:not(:disabled){border-color:var(--acc);background:var(--aa)}
 .q-opt:disabled{cursor:not-allowed}
 .q-opt.correct{background:var(--ga)!important;border-color:var(--green)!important;color:var(--green)!important;font-weight:600}
-.q-opt.wrong{background:rgba(239,68,68,.08)!important;border-color:#f87171!important;color:#f87171!important}
-.q-key{width:25px;height:25px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.66rem;font-weight:800;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
+.q-opt.wrong{background:rgba(248,113,113,.08)!important;border-color:var(--red)!important;color:var(--red)!important}
+.q-key{width:23px;height:23px;border-radius:5px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.63rem;font-weight:800;font-family:var(--m);flex-shrink:0;color:var(--ink3)}
 .q-opt.correct .q-key{background:var(--green);color:#fff}
-.q-opt.wrong .q-key{background:#f87171;color:#fff}
-.q-txt{flex:1;line-height:1.4}
-.q-exp{display:none;background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:.8rem 1rem;font-size:.84rem;line-height:1.7;color:var(--ink2);margin-top:.65rem}
+.q-opt.wrong .q-key{background:var(--red);color:#fff}
+.q-exp{display:none;background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:.72rem .92rem;font-size:.82rem;line-height:1.7;color:var(--ink2);margin-top:.58rem}
 .q-exp.show{display:block}
-.q-exp-lbl{display:block;font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--acc2);margin-bottom:.28rem}
-.q-result{display:none;margin-top:.65rem;padding:.6rem .9rem;border-radius:var(--r);font-size:.84rem;font-weight:600}
+.q-exp-lbl{display:block;font-size:.53rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--acc2);margin-bottom:.24rem}
+.q-result{display:none;margin-top:.58rem;padding:.52rem .85rem;border-radius:var(--r);font-size:.83rem;font-weight:600}
 .q-result.ok{display:block;background:var(--ga);color:var(--green)}
-.q-result.no{display:block;background:rgba(239,68,68,.08);color:#f87171}
-
-/* CHALLENGE */
-.chal-brief{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:.85rem}
-.chal-tag{font-size:.56rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--acc2);margin-bottom:.3rem}
-.chal-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:.3rem}
-.chal-desc{font-size:.84rem;color:var(--ink2);line-height:1.6;margin-bottom:.8rem}
-.chal-reqs-lbl{font-size:.62rem;font-weight:700;color:var(--ink3);margin-bottom:.35rem;text-transform:uppercase}
-.c-req{display:flex;align-items:center;gap:.42rem;font-size:.82rem;color:var(--ink2);padding:.2rem 0;transition:color .18s}
+.q-result.no{display:block;background:rgba(248,113,113,.08);color:var(--red)}
+.chal-brief{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:.9rem 1rem;margin-bottom:.78rem}
+.chal-tag{font-size:.53rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;color:var(--acc2);margin-bottom:.26rem}
+.chal-title{font-size:.97rem;font-weight:700;color:var(--ink);margin-bottom:.26rem}
+.chal-desc{font-size:.83rem;color:var(--ink2);line-height:1.65;margin-bottom:.72rem}
+.chal-rl{font-size:.59rem;font-weight:700;color:var(--ink3);margin-bottom:.3rem;text-transform:uppercase}
+.c-req{display:flex;align-items:center;gap:.38rem;font-size:.81rem;color:var(--ink2);padding:.16rem 0}
 .c-req.done{color:var(--green)}
-.c-dot{width:15px;height:15px;border-radius:50%;border:1.5px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.52rem;font-weight:700;color:transparent;transition:all .18s}
+.c-dot{width:14px;height:14px;border-radius:50%;border:1.5px solid var(--line2);flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:transparent;transition:all .18s}
 .c-req.done .c-dot{background:var(--green);border-color:var(--green);color:#fff}
 .chal-editor{border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.chal-split{display:grid;grid-template-columns:1fr 1fr;height:300px}
-.chal-footer{background:var(--bg3);border-top:1px solid var(--line);padding:.44rem .75rem;display:flex;align-items:center;justify-content:space-between}
-#chal-status{font-size:.76rem;color:var(--ink3)}
-#chal-status.done{color:var(--green);font-weight:700}
-.chal-check{background:var(--acc);color:#fff;border:none;border-radius:5px;padding:5px 13px;font-family:var(--f);font-size:.72rem;font-weight:700;cursor:pointer}
-.chal-check:hover{background:var(--acc2)}
-.chal-run{background:var(--bg4);color:var(--ink2);border:none;border-radius:5px;padding:5px 10px;font-family:var(--f);font-size:.72rem;font-weight:600;cursor:pointer;margin-right:.35rem}
+.chal-split{display:grid;grid-template-columns:1fr 1fr;height:275px}
+.chal-left{overflow:hidden;display:flex;flex-direction:column;height:100%;border-right:1px solid var(--line)}
+.chal-right{display:flex;flex-direction:column;background:#0d1117;height:100%}
+.chal-footer{background:var(--bg3);border-top:1px solid var(--line);padding:.4rem .7rem;display:flex;align-items:center;justify-content:space-between}
+.chal-st{font-size:.73rem;color:var(--ink3)}
+.chal-st.done{color:var(--green);font-weight:700}
+.chal-run{background:var(--bg4);color:var(--ink2);border:none;border-radius:5px;padding:5px 10px;font-family:var(--f);font-size:.69rem;font-weight:600;cursor:pointer;margin-right:.28rem}
 .chal-run:hover{background:var(--acc);color:#fff}
-
-/* LESSON END */
-.lesson-end{margin-top:3rem;padding-top:1.8rem;border-top:2px solid var(--line)}
-.done-btn{width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:var(--r);padding:14px;font-family:var(--f);font-size:.9rem;font-weight:700;cursor:pointer;transition:all .2s}
+.chal-check{background:var(--acc);color:#fff;border:none;border-radius:5px;padding:5px 12px;font-family:var(--f);font-size:.69rem;font-weight:700;cursor:pointer}
+.act-card{background:var(--bg2);border:2px dashed var(--orange);border-radius:var(--r);padding:1.05rem 1.15rem}
+.act-icon{font-size:1.9rem;margin-bottom:.45rem}
+.act-title{font-size:.98rem;font-weight:800;color:var(--ink);margin-bottom:.32rem}
+.act-desc{font-size:.84rem;color:var(--ink2);line-height:1.7;margin-bottom:.8rem}
+.act-steps{list-style:none;padding:0;margin-bottom:.8rem}
+.act-steps li{font-size:.82rem;color:var(--ink2);padding:.28rem 0;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;gap:.46rem;line-height:1.55}
+.act-steps li:last-child{border-bottom:none}
+.step-n{background:var(--orange);color:#fff;border-radius:50%;width:19px;height:19px;display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:800;flex-shrink:0;margin-top:1px}
+.act-goal{background:var(--aa);border-radius:var(--rs);padding:.6rem .82rem;font-size:.8rem;color:var(--ink2);margin-bottom:.8rem;line-height:1.65}
+.act-area{width:100%;background:var(--bg3);border:1.5px solid var(--line);border-radius:var(--rs);padding:.58rem .78rem;font-family:var(--f);font-size:.82rem;color:var(--ink);resize:vertical;min-height:68px;outline:none}
+.act-area:focus{border-color:var(--orange)}
+.act-submit{background:var(--orange);color:#fff;border:none;border-radius:var(--rs);padding:9px 17px;font-family:var(--f);font-size:.81rem;font-weight:700;cursor:pointer;margin-top:.65rem}
+.exp-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.59rem;font-weight:700;color:var(--orange);background:var(--oa);border:1px solid rgba(249,115,22,.3);border-radius:99px;padding:3px 10px;margin-bottom:.62rem}
+.lesson-end{margin-top:2.5rem;padding-top:1.5rem;border-top:2px solid var(--line)}
+.done-btn{width:100%;background:var(--ink);color:var(--bg);border:none;border-radius:var(--r);padding:13px;font-family:var(--f);font-size:.88rem;font-weight:700;cursor:pointer;transition:all .2s}
 .done-btn:hover{background:var(--acc)}.done-btn.done{background:var(--green)!important;color:#fff}
-.nav-row{display:flex;gap:.5rem;margin-top:1.1rem}
-.nav-a{flex:1;display:flex;align-items:center;justify-content:center;padding:9px 12px;border-radius:var(--r);font-family:var(--f);font-size:.8rem;font-weight:600;border:1px solid var(--line);color:var(--ink2);text-decoration:none;transition:all .15s}
+.nav-row{display:flex;gap:.42rem;margin-top:.95rem}
+.nav-a{flex:1;display:flex;align-items:center;justify-content:center;padding:8px 11px;border-radius:var(--r);font-family:var(--f);font-size:.77rem;font-weight:600;border:1px solid var(--line);color:var(--ink2);text-decoration:none;transition:all .15s}
 .nav-a:hover{border-color:var(--acc);color:var(--acc2)}
 .nav-a.next{background:var(--ink);color:var(--bg)!important;border-color:var(--ink)}
 .nav-a.next:hover{background:var(--acc);border-color:var(--acc)}
 .nav-a.off{opacity:.3;pointer-events:none}
-
-/* FOOTER */
-.foot{margin-top:2rem;padding-top:1.3rem;border-top:1px solid var(--line)}
-.foot-copy{font-size:.7rem;color:var(--ink3)}
-
-/* AI PANEL */
-.ai-overlay{position:fixed;inset:0;z-index:200;display:none;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:flex-end;padding:.8rem}
+.ai-overlay{position:fixed;inset:0;z-index:200;display:none;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:flex-end;padding:.72rem}
 .ai-overlay.on{display:flex}
-.ai-panel{background:var(--bg);border:1px solid var(--line);border-radius:14px;width:316px;max-width:calc(100vw - 1.6rem);max-height:66vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.35);animation:slideUp .2s ease}
+.ai-panel{background:var(--bg);border:1px solid var(--line);border-radius:14px;width:308px;max-width:calc(100vw - 1.4rem);max-height:64vh;display:flex;flex-direction:column;box-shadow:0 8px 40px rgba(0,0,0,.35);animation:slideUp .2s ease}
 @keyframes slideUp{from{transform:translateY(14px);opacity:0}to{transform:none;opacity:1}}
-.ai-head{padding:.76rem .95rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.55rem;flex-shrink:0}
-.ai-av{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--acc),#6366f1);display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:800;color:#fff;font-family:var(--m);flex-shrink:0}
-.ai-name{font-size:.88rem;font-weight:700;color:var(--ink)}
-.ai-status{font-size:.62rem;color:var(--green)}
-#ai-counter{font-size:.57rem;color:var(--ink3);margin-top:1px}
-.ai-close{margin-left:auto;background:none;border:1px solid var(--line);width:26px;height:26px;border-radius:5px;cursor:pointer;color:var(--ink3);font-size:.72rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:all .12s}
-.ai-close:hover{border-color:var(--acc);color:var(--acc2)}
-.ai-messages{flex:1;overflow-y:auto;padding:.65rem .88rem;display:flex;flex-direction:column;gap:.55rem}
-.ai-msg{font-size:.81rem;line-height:1.62;max-width:92%;animation:fadeUp .17s ease}
-.ai-msg.bot{align-self:flex-start;background:var(--bg3);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 9px 9px 9px;padding:.52rem .78rem;color:var(--ink2)}
-.ai-msg.user{align-self:flex-end;background:var(--acc);color:#fff;border-radius:9px 0 9px 9px;padding:.52rem .78rem}
-.ai-lbl{display:block;font-size:.55rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--acc2);margin-bottom:.28rem;padding-bottom:.18rem;border-bottom:1px solid var(--ab)}
-.ai-body{display:block;line-height:1.65}
-.ai-input-row{padding:.54rem .74rem;border-top:1px solid var(--line);display:flex;gap:.35rem;align-items:flex-end;flex-shrink:0}
-.ai-input{flex:1;background:var(--bg3);border:1px solid var(--line);border-radius:var(--rs);padding:.48rem .65rem;font-family:var(--f);font-size:.82rem;color:var(--ink);resize:none;outline:none;transition:border-color .15s;line-height:1.5}
-.ai-input:focus{border-color:var(--acc)}
-.ai-send{background:var(--acc);color:#fff;border:none;width:32px;height:32px;border-radius:7px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.ai-send:hover{background:var(--acc2)}
-
-/* CHAI TAB */
-.chai-stat{background:var(--bg3);border-radius:var(--r);padding:1.4rem;text-align:center;margin-bottom:.85rem}
-.chai-num{font-size:3.2rem;font-weight:900;color:var(--acc2);font-family:var(--m);line-height:1}
-.chai-sub{font-size:.8rem;color:var(--ink3);margin-top:.3rem}
-.chai-bar-wrap{margin-top:.8rem;background:var(--bg2);border-radius:99px;height:6px;overflow:hidden}
-.chai-bar-fill{height:100%;background:linear-gradient(90deg,var(--acc),#6366f1);border-radius:99px;transition:width .5s}
-.chai-features{background:var(--bg3);border-radius:var(--r);padding:1rem;margin-bottom:.85rem}
-.chai-feat{font-size:.8rem;color:var(--ink2);padding:.22rem 0}
-
-/* TOAST */
-.toast{position:fixed;bottom:1.1rem;left:50%;transform:translateX(-50%);z-index:500;background:var(--bg4);color:var(--ink);padding:.52rem 1.1rem;border-radius:8px;font-size:.79rem;font-weight:600;font-family:var(--f);box-shadow:0 4px 18px rgba(0,0,0,.25);pointer-events:none;animation:toastIn .2s ease;white-space:nowrap;border:1px solid var(--line)}
-.toast.g{background:var(--green);color:#fff;border-color:var(--green)}
-.toast.o{background:#78350f;color:#fff;border-color:#78350f}
+.ai-head{padding:.7rem .88rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.48rem;flex-shrink:0}
+.ai-av{width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--acc),#6366f1);display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:#fff;font-family:var(--m);flex-shrink:0}
+.ai-nm{font-size:.84rem;font-weight:700;color:var(--ink)}
+.ai-st{font-size:.59rem;color:var(--green)}
+.ai-cnt{font-size:.54rem;color:var(--ink3)}
+.ai-x{margin-left:auto;background:none;border:1px solid var(--line);width:24px;height:24px;border-radius:5px;cursor:pointer;color:var(--ink3);font-size:.82rem;display:flex;align-items:center;justify-content:center}
+.ai-msgs{flex:1;overflow-y:auto;padding:.58rem .8rem;display:flex;flex-direction:column;gap:.48rem}
+.ai-msg{font-size:.79rem;line-height:1.6;max-width:91%;animation:fadeUp .17s ease}
+.ai-msg.bot{align-self:flex-start;background:var(--bg3);border:1px solid var(--line);border-left:3px solid var(--acc);border-radius:0 8px 8px 8px;padding:.46rem .7rem;color:var(--ink2)}
+.ai-msg.user{align-self:flex-end;background:var(--acc);color:#fff;border-radius:8px 0 8px 8px;padding:.46rem .7rem}
+.ai-lbl{display:block;font-size:.52rem;font-weight:800;text-transform:uppercase;letter-spacing:.6px;color:var(--acc2);margin-bottom:.22rem;padding-bottom:.14rem;border-bottom:1px solid var(--ab)}
+.ai-inp-row{padding:.48rem .68rem;border-top:1px solid var(--line);display:flex;gap:.28rem;align-items:flex-end;flex-shrink:0}
+.ai-inp{flex:1;background:var(--bg3);border:1px solid var(--line);border-radius:var(--rs);padding:.42rem .58rem;font-family:var(--f);font-size:.79rem;color:var(--ink);resize:none;outline:none;line-height:1.5}
+.ai-inp:focus{border-color:var(--acc)}
+.ai-send{background:var(--acc);color:#fff;border:none;width:29px;height:29px;border-radius:6px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.toast{position:fixed;bottom:.9rem;left:50%;transform:translateX(-50%);z-index:500;background:var(--bg4);color:var(--ink);padding:.46rem .98rem;border-radius:8px;font-size:.76rem;font-weight:600;font-family:var(--f);box-shadow:0 4px 18px rgba(0,0,0,.25);pointer-events:none;animation:toastIn .2s ease;white-space:nowrap;border:1px solid var(--line)}
+.toast.g{background:var(--green);color:#fff}.toast.o{background:#c2410c;color:#fff}
 @keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(6px)}to{opacity:1;transform:translateX(-50%)}}
 .dots span{display:inline-block;width:4px;height:4px;border-radius:50%;background:var(--acc);animation:pulse 1.1s infinite;margin:0 2px}
 .dots span:nth-child(2){animation-delay:.22s}.dots span:nth-child(3){animation-delay:.44s}
 @keyframes pulse{0%,100%{opacity:.15;transform:scale(.8)}50%{opacity:1;transform:scale(1)}}
-
-/* FLOW DIAGRAM */
-.flow{display:flex;align-items:center;gap:.5rem;flex-wrap:wrap;margin:1rem 0;padding:.8rem 1rem;background:var(--bg3);border-radius:var(--r);border:1px solid var(--line)}
-.flow-box{background:var(--bg2);border:1.5px solid var(--line2);border-radius:7px;padding:.42rem .8rem;font-size:.78rem;font-weight:600;color:var(--ink);text-align:center;flex-shrink:0}
-.flow-box.hl{border-color:var(--acc);background:var(--aa);color:var(--acc2)}
-.flow-arrow{color:var(--ink3);font-size:.9rem;flex-shrink:0}
-
-/* MOBILE */
-#mob-fab{position:fixed;bottom:20px;right:16px;z-index:149;width:46px;height:46px;border-radius:12px;background:var(--ink);color:var(--bg);border:none;cursor:pointer;display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 20px rgba(0,0,0,.35);transition:all .18s}
-#mob-fab span{display:block;width:18px;height:2px;background:currentColor;border-radius:2px}
-#mob-fab:hover{background:var(--acc)}
-@media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1.1rem .95rem}}
-@media(max-width:640px){.ed-split,.chal-split{display:flex;flex-direction:column;height:auto}.ed-side:first-child{height:280px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.term-side{height:220px;flex-shrink:0}.chal-split .ed-side{height:220px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.chal-split .term-side{height:140px;flex-shrink:0}}
-@media(max-width:500px){.nav{padding:0 .75rem;gap:.3rem}.progress-wrap{display:none}.lesson-title{font-size:1.45rem}.tab{padding:.52rem .65rem;font-size:.73rem}}
-
-/* CM styles */
-.CodeMirror{height:100%!important;font-family:var(--m)!important;font-size:13.5px!important;line-height:1.7!important}
-.CodeMirror-scroll{overflow:auto!important;height:100%!important}
-.CodeMirror-gutters{background:var(--bg3)!important;border-right:1px solid var(--line)!important}
-.CodeMirror-linenumber{color:var(--ink3)!important;font-size:11.5px!important}
-.ed-side .CodeMirror,.chal-split .CodeMirror{height:100%!important}
-.ed-side .CodeMirror-scroll,.chal-split .CodeMirror-scroll{height:100%!important;overflow:auto!important}
+.xp-pop{position:fixed;top:70px;right:16px;z-index:300;background:var(--green);color:#fff;border-radius:10px;padding:.5rem .9rem;font-size:.85rem;font-weight:700;box-shadow:0 4px 20px rgba(34,197,94,.4);animation:xpAnim .4s ease;pointer-events:none}
+@keyframes xpAnim{0%{opacity:0;transform:translateY(-10px) scale(.9)}60%{transform:translateY(4px) scale(1.05)}100%{opacity:1;transform:none}}
+#mob-fab{position:fixed;bottom:18px;right:14px;z-index:149;width:43px;height:43px;border-radius:11px;background:var(--ink);color:var(--bg);border:none;cursor:pointer;display:none;flex-direction:column;align-items:center;justify-content:center;gap:5px;box-shadow:0 4px 18px rgba(0,0,0,.35)}
+#mob-fab span{display:block;width:17px;height:2px;background:currentColor;border-radius:2px}
+@media(max-width:860px){.sidebar{display:none}#mob-fab{display:flex}.main{padding:1rem .9rem}.welcome{display:none!important}}
+@media(max-width:640px){.ed-split,.chal-split{display:flex;flex-direction:column;height:auto}.ed-left{height:250px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}.ed-right,.chal-right{height:175px;flex-shrink:0}.chal-left{height:205px;flex-shrink:0;border-right:none;border-bottom:1px solid var(--line)}}
+@media(max-width:500px){.nav{padding:0 .6rem;gap:.22rem}.prog-wrap{display:none}.lesson-title{font-size:1.3rem}.tab{padding:.5rem .58rem;font-size:.7rem}.nav-pill{display:none}}
 </style>
 </head>
 <body>
-<!-- NAV -->
 <nav class="nav">
   <a class="logo" href="index.html">Learn<em>C</em></a>
-  <span class="nav-pill">L1/25</span>
+  <span class="nav-pill">L1/28</span>
   <div class="nav-gap"></div>
-  <div class="progress-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div><span class="prog-lbl" id="prog-lbl">0/25</span></div>
-  <div class="nav-actions">
-    <button class="toggle" onclick="toggleTheme()" aria-label="Toggle theme"><span class="toggle-lbl">D</span></button>
-    <button class="ai-fab" onclick="AI.toggle()">C AI ✦</button>
+  <div class="prog-wrap"><div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div><span class="prog-lbl" id="prog-lbl">0/28</span></div>
+  <div class="nav-btns">
+    <button class="theme-btn" onclick="toggleTheme()" aria-label="Theme"></button>
+    <button class="lang-btn" id="lang-btn" onclick="toggleLang()">&#127470;&#127475; Hinglish</button>
+    <button class="ai-btn" onclick="AI.toggle()">C AI &#10022;</button>
   </div>
 </nav>
-
-<!-- LAYOUT -->
 <div class="layout">
-  <!-- SIDEBAR -->
-  <aside class="sidebar">
-    <div class="sb-hd">C Course (25 Lessons)</div>
-    <a class="sb-a cur" href="lesson01.html" data-id="1"><span class="sb-n">1</span><span class="sb-t">What is C?</span></a>
-    <a class="sb-a" href="lesson02.html" data-id="2"><span class="sb-n">2</span><span class="sb-t">First C Program</span></a>
-    <a class="sb-a" href="lesson03.html" data-id="3"><span class="sb-n">3</span><span class="sb-t">Variables & Data Types</span></a>
-    <a class="sb-a" href="#" data-id="4"><span class="sb-n">4</span><span class="sb-t">Constants & Literals</span></a>
-    <a class="sb-a" href="#" data-id="5"><span class="sb-n">5</span><span class="sb-t">Operators in C</span></a>
-    <a class="sb-a" href="#" data-id="6"><span class="sb-n">6</span><span class="sb-t">Input & Output</span></a>
-    <a class="sb-a" href="#" data-id="7"><span class="sb-n">7</span><span class="sb-t">If-Else Conditions</span></a>
-    <a class="sb-a" href="#" data-id="8"><span class="sb-n">8</span><span class="sb-t">Switch Statement</span></a>
-    <a class="sb-a" href="#" data-id="9"><span class="sb-n">9</span><span class="sb-t">While Loop</span></a>
-    <a class="sb-a" href="#" data-id="10"><span class="sb-n">10</span><span class="sb-t">For Loop</span></a>
-    <a class="sb-a" href="#" data-id="11"><span class="sb-n">11</span><span class="sb-t">Do-While Loop</span></a>
-    <a class="sb-a" href="#" data-id="12"><span class="sb-n">12</span><span class="sb-t">Break & Continue</span></a>
-    <a class="sb-a" href="#" data-id="13"><span class="sb-n">13</span><span class="sb-t">Functions</span></a>
-    <a class="sb-a" href="#" data-id="14"><span class="sb-n">14</span><span class="sb-t">Recursion</span></a>
-    <a class="sb-a" href="#" data-id="15"><span class="sb-n">15</span><span class="sb-t">Arrays (1D)</span></a>
-    <a class="sb-a" href="#" data-id="16"><span class="sb-n">16</span><span class="sb-t">2D Arrays</span></a>
-    <a class="sb-a" href="#" data-id="17"><span class="sb-n">17</span><span class="sb-t">Strings in C</span></a>
-    <a class="sb-a" href="#" data-id="18"><span class="sb-n">18</span><span class="sb-t">Pointers Basics</span></a>
-    <a class="sb-a" href="#" data-id="19"><span class="sb-n">19</span><span class="sb-t">Pointers & Arrays</span></a>
-    <a class="sb-a" href="#" data-id="20"><span class="sb-n">20</span><span class="sb-t">Structures</span></a>
-    <a class="sb-a" href="#" data-id="21"><span class="sb-n">21</span><span class="sb-t">Unions & Enums</span></a>
-    <a class="sb-a" href="#" data-id="22"><span class="sb-n">22</span><span class="sb-t">File Handling</span></a>
-    <a class="sb-a" href="#" data-id="23"><span class="sb-n">23</span><span class="sb-t">Dynamic Memory</span></a>
-    <a class="sb-a" href="#" data-id="24"><span class="sb-n">24</span><span class="sb-t">Preprocessor & Macros</span></a>
-    <a class="sb-a" href="#" data-id="25"><span class="sb-n">25</span><span class="sb-t">Final Project</span></a>
-  </aside>
-
-  <!-- MAIN -->
-  <main class="main">
-    <div class="hero">
-      <div class="hero-meta">
-        <span class="badge b-tag">INTRO</span>
-        <span class="badge b-time">⏱ 8 min</span>
-        <span class="badge b-xp">✦ 20 XP</span>
+<aside class="sidebar">
+  <div class="sb-hd">C Course &mdash; 28 Lessons</div>
+  <a class="sb-a cur" href="lesson01.html" data-id="1"><span class="sb-n">1</span><span class="sb-t">What is C?</span></a>
+  <a class="sb-a" href="lesson02.html" data-id="2"><span class="sb-n">2</span><span class="sb-t">First C Program</span></a>
+  <a class="sb-a" href="#" data-id="3"><span class="sb-n">3</span><span class="sb-t">Variables &amp; Data Types</span></a>
+  <a class="sb-a" href="#" data-id="4"><span class="sb-n">4</span><span class="sb-t">Constants &amp; Literals</span></a>
+  <a class="sb-a" href="#" data-id="5"><span class="sb-n">5</span><span class="sb-t">Operators in C</span></a>
+  <a class="sb-a" href="#" data-id="6"><span class="sb-n">6</span><span class="sb-t">Input &amp; Output</span></a>
+  <a class="sb-a" href="#" data-id="7"><span class="sb-n">7</span><span class="sb-t">If-Else Conditions</span></a>
+  <a class="sb-a" href="#" data-id="8"><span class="sb-n">8</span><span class="sb-t">Switch Statement</span></a>
+  <a class="sb-a" href="#" data-id="9"><span class="sb-n">9</span><span class="sb-t">While Loop</span></a>
+  <a class="sb-a" href="#" data-id="10"><span class="sb-n">10</span><span class="sb-t">For Loop</span></a>
+  <a class="sb-a" href="#" data-id="11"><span class="sb-n">11</span><span class="sb-t">Do-While Loop</span></a>
+  <a class="sb-a" href="#" data-id="12"><span class="sb-n">12</span><span class="sb-t">Break &amp; Continue</span></a>
+  <a class="sb-a" href="#" data-id="13"><span class="sb-n">13</span><span class="sb-t">Functions Basics</span></a>
+  <a class="sb-a" href="#" data-id="14"><span class="sb-n">14</span><span class="sb-t">Function Params</span></a>
+  <a class="sb-a" href="#" data-id="15"><span class="sb-n">15</span><span class="sb-t">Recursion</span></a>
+  <a class="sb-a" href="#" data-id="16"><span class="sb-n">16</span><span class="sb-t">Arrays 1D</span></a>
+  <a class="sb-a" href="#" data-id="17"><span class="sb-n">17</span><span class="sb-t">Arrays 2D</span></a>
+  <a class="sb-a" href="#" data-id="18"><span class="sb-n">18</span><span class="sb-t">Strings in C</span></a>
+  <a class="sb-a" href="#" data-id="19"><span class="sb-n">19</span><span class="sb-t">String Functions</span></a>
+  <a class="sb-a" href="#" data-id="20"><span class="sb-n">20</span><span class="sb-t">Pointers Basics</span></a>
+  <a class="sb-a" href="#" data-id="21"><span class="sb-n">21</span><span class="sb-t">Pointers &amp; Arrays</span></a>
+  <a class="sb-a" href="#" data-id="22"><span class="sb-n">22</span><span class="sb-t">Structures</span></a>
+  <a class="sb-a" href="#" data-id="23"><span class="sb-n">23</span><span class="sb-t">Unions &amp; Enums</span></a>
+  <a class="sb-a" href="#" data-id="24"><span class="sb-n">24</span><span class="sb-t">File Handling</span></a>
+  <a class="sb-a" href="#" data-id="25"><span class="sb-n">25</span><span class="sb-t">Dynamic Memory</span></a>
+  <a class="sb-a" href="#" data-id="26"><span class="sb-n">26</span><span class="sb-t">Preprocessor</span></a>
+  <a class="sb-a" href="#" data-id="27"><span class="sb-n">27</span><span class="sb-t">Adv Pointers</span></a>
+  <a class="sb-a" href="#" data-id="28"><span class="sb-n">28</span><span class="sb-t">Final Project</span></a>
+</aside>
+<main class="main">
+  <div class="welcome" id="wb">
+    <div class="wglow"></div>
+    <div class="wtitle" data-en="&#127881; Welcome to LearnC &mdash; Free C Programming Course!" data-hi="&#127881; LearnC mein Swagat! Free C Programming Course!">&#127881; Welcome to LearnC &mdash; Free C Programming Course!</div>
+    <div class="wsub" data-en="28 lessons &bull; Live GCC compiler &bull; AI Tutor &bull; Hinglish support &bull; 100% Free" data-hi="28 lessons &bull; Live GCC compiler &bull; AI Tutor &bull; Hinglish support &bull; 100% Free">28 lessons &bull; Live GCC compiler &bull; AI Tutor &bull; Hinglish support &bull; 100% Free</div>
+    <div class="wstats"><span class="wstat">&#9200; 8 min/lesson</span><span class="wstat">&#10022; XP System</span><span class="wstat">&#127912; Activities</span><span class="wstat">&#129302; AI Help</span></div>
+  </div>
+  <div class="hero">
+    <div class="hero-meta">
+      <span class="badge b-tag">INTRO</span>
+      <span class="badge b-time">&#9200; 8 min</span>
+      <span class="badge b-xp">&#10022; 20 XP</span>
+      <span class="badge b-act">&#127912; Activity</span>
+    </div>
+    <h1 class="lesson-title" data-en="What is C?" data-hi="C Kya Hai? &#129300;">What is C?</h1>
+    <p class="lesson-sub" data-en="Discover the mother of all programming languages &mdash; its history, why it powers everything from NASA to Android, and why learning C makes every other language feel easy." data-hi="Programming ki maata language ke baare mein jaano &mdash; iski history, kyun NASA se Android tak sab C use karta hai, aur kyun C seekhne se baaki sab easy ho jaati hain.">Discover the mother of all programming languages &mdash; its history, why it powers everything from NASA to Android, and why learning C makes every other language feel easy.</p>
+  </div>
+  <div class="tabs">
+    <button class="tab on" data-tab="learn"><span data-en="&#128218; Learn" data-hi="&#128218; Seekho">&#128218; Learn</span></button>
+    <button class="tab" data-tab="explain"><span data-en="&#128161; Explain" data-hi="&#128161; Samjho">&#128161; Explain</span></button>
+    <button class="tab" data-tab="editor"><span data-en="&#9889; Editor" data-hi="&#9889; Editor">&#9889; Editor</span></button>
+    <button class="tab" data-tab="quiz"><span data-en="&#129504; Quiz" data-hi="&#129504; Quiz">&#129504; Quiz</span></button>
+    <button class="tab" data-tab="challenge"><span data-en="&#127942; Challenge" data-hi="&#127942; Challenge">&#127942; Challenge</span></button>
+    <button class="tab" data-tab="activity"><span data-en="&#127912; Activity" data-hi="&#127912; Activity">&#127912; Activity</span></button>
+  </div>
+  <div class="panel on" id="p-learn">
+    <div class="content lang-en">
+      <h2>What is C?</h2>
+      <p>C is a <strong>general-purpose programming language</strong> created by <strong>Dennis Ritchie</strong> at Bell Labs, USA in <strong>1972</strong>. One of the oldest languages still in heavy use today &mdash; and for very good reason.</p>
+      <p>Think of C as the <strong>engine of the programming world</strong>. Just like an engine powers all vehicles, C powers almost everything in computing.</p>
+      <div class="ex-block">
+        <div class="ex-lbl">C is Literally Everywhere</div>
+        <div class="ex-out" style="line-height:2.1">
+          &#128421; <strong>Windows, Linux, macOS</strong> &mdash; Core written in C<br/>
+          &#128241; <strong>Android &amp; iOS kernel</strong> &mdash; Foundation is C<br/>
+          &#127760; <strong>MySQL, SQLite, Git</strong> &mdash; Written in C<br/>
+          &#127918; <strong>Doom, Quake game engines</strong> &mdash; Pure C code<br/>
+          &#129302; <strong>Arduino, Raspberry Pi</strong> &mdash; Controlled via C<br/>
+          &#128640; <strong>NASA spacecraft</strong> &mdash; Mission-critical C programs
+        </div>
+        <div class="ex-note">C runs the world silently. Almost every major system you use was built with C foundations.</div>
       </div>
-      <h1 class="lesson-title">What is C?</h1>
-      <p class="lesson-sub">Discover the mother of all programming languages — where it came from, why it matters, and how it will make you a better programmer forever.</p>
-    </div>
-
-    <!-- TABS -->
-    <div class="tabs">
-      <button class="tab on" data-tab="learn">📖 Learn</button>
-      <button class="tab" data-tab="explain">💡 Explain</button>
-      <button class="tab" data-tab="editor">⚡ Editor</button>
-      <button class="tab" data-tab="quiz">🧠 Quiz</button>
-      <button class="tab" data-tab="challenge">🏆 Challenge</button>
-      <button class="tab" data-tab="chai">☕ Chai</button>
-    </div>
-
-    <!-- LEARN PANEL -->
-    <div class="panel on" id="p-learn">
-      <div class="content" id="content-en">
-
-        <h2>What is C?</h2>
-        <p>C is a <strong>general-purpose programming language</strong> created by <strong>Dennis Ritchie</strong> at Bell Labs (USA) in <strong>1972</strong>. It is one of the oldest programming languages still in heavy use today — and for very good reason.</p>
-
-        <p>Think of C as the <strong>engine of the programming world</strong>. Just like a car engine powers everything — sports cars, trucks, and buses — C powers almost everything in computing: operating systems, browsers, databases, game engines, and even the chips in your microwave!</p>
-
-        <div class="ex-block">
-          <div class="ex-lbl">Fun Fact — C is Everywhere</div>
-          <div class="ex-out" style="line-height:1.9;padding:1rem">
-            🖥️ <strong>Windows, Linux, macOS</strong> — Written largely in C<br/>
-            📱 <strong>Android, iOS kernel</strong> — Core written in C<br/>
-            🌐 <strong>MySQL, SQLite, Git</strong> — Written in C<br/>
-            🎮 <strong>Doom, Quake</strong> — Original game engines in C<br/>
-            🤖 <strong>Arduino, Raspberry Pi</strong> — Hardware controlled via C<br/>
-            🚀 <strong>NASA spacecraft systems</strong> — Mission-critical C code
-          </div>
-          <div class="ex-note">C runs the world silently. Almost every major system software you use was written in C.</div>
-        </div>
-
-        <h2>History in 2 Minutes</h2>
-        <div class="ex-block">
-          <div class="ex-lbl">Timeline — Birth of C</div>
-          <div class="ex-out" style="line-height:2;padding:1rem">
-            📅 <strong>1969</strong> — Ken Thompson creates a language called "B" at Bell Labs<br/>
-            📅 <strong>1972</strong> — Dennis Ritchie improves "B" → creates <strong>C</strong><br/>
-            📅 <strong>1978</strong> — Kernighan &amp; Ritchie publish <em>"The C Programming Language"</em> book<br/>
-            📅 <strong>1989</strong> — ANSI standardizes C → becomes <strong>ANSI C (C89)</strong><br/>
-            📅 <strong>1999</strong> — <strong>C99</strong> released (new features like // comments)<br/>
-            📅 <strong>2011</strong> — <strong>C11</strong> released<br/>
-            📅 <strong>2023</strong> — <strong>C23</strong> is the latest standard — C is still alive!
-          </div>
-          <div class="ex-note">Dennis Ritchie also co-created Unix. Without C, the modern computer world would look completely different.</div>
-        </div>
-
-        <h2>How Does C Work?</h2>
-        <p>C is a <strong>compiled language</strong>. This means you write code in plain English-like text, then a program called a <strong>compiler</strong> translates it into machine language (0s and 1s) that the computer actually understands.</p>
-
-        <div class="flow">
-          <div class="flow-box">📝 You write<br/><strong>source.c</strong></div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-box hl">⚙️ <strong>GCC Compiler</strong><br/>translates it</div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-box">📦 Creates<br/><strong>program.exe</strong></div>
-          <div class="flow-arrow">→</div>
-          <div class="flow-box hl">🖥️ CPU runs it<br/><strong>Super fast!</strong></div>
-        </div>
-
-        <div class="box box-tip">
-          <div class="box-lbl">Why is C So Fast?</div>
-          <p>Because C gives you <strong>direct access to memory</strong>. Unlike Python or JavaScript that run through an interpreter, C talks almost directly to the hardware. This makes C programs run 10x to 100x faster than interpreted languages.</p>
-        </div>
-
-        <h2>C vs Other Languages</h2>
-        <div class="ex-block">
-          <div class="ex-lbl">Comparison Table</div>
-          <div class="ex-out" style="padding:0">
-            <table style="width:100%;border-collapse:collapse;font-size:.82rem">
-              <thead><tr style="background:var(--bg3)">
-                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase">Language</th>
-                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase">Speed</th>
-                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase">Difficulty</th>
-                <th style="padding:.5rem .8rem;text-align:left;color:var(--ink3);font-size:.66rem;text-transform:uppercase">Used For</th>
-              </tr></thead>
-              <tbody>
-                <tr style="border-top:1px solid var(--line)"><td style="padding:.5rem .8rem;font-weight:700;color:var(--acc2)">C</td><td style="padding:.5rem .8rem">⚡⚡⚡ Blazing</td><td style="padding:.5rem .8rem">Medium</td><td style="padding:.5rem .8rem">OS, Embedded, Games</td></tr>
-                <tr style="border-top:1px solid var(--line)"><td style="padding:.5rem .8rem;font-weight:700">C++</td><td style="padding:.5rem .8rem">⚡⚡⚡ Very Fast</td><td style="padding:.5rem .8rem">Hard</td><td style="padding:.5rem .8rem">Games, Browsers, Trading</td></tr>
-                <tr style="border-top:1px solid var(--line)"><td style="padding:.5rem .8rem;font-weight:700">Python</td><td style="padding:.5rem .8rem">⚡ Slow</td><td style="padding:.5rem .8rem">Easy</td><td style="padding:.5rem .8rem">AI, Data Science, Scripts</td></tr>
-                <tr style="border-top:1px solid var(--line)"><td style="padding:.5rem .8rem;font-weight:700">JavaScript</td><td style="padding:.5rem .8rem">⚡⚡ Medium</td><td style="padding:.5rem .8rem">Easy</td><td style="padding:.5rem .8rem">Websites, Apps</td></tr>
-                <tr style="border-top:1px solid var(--line)"><td style="padding:.5rem .8rem;font-weight:700">Java</td><td style="padding:.5rem .8rem">⚡⚡ Medium</td><td style="padding:.5rem .8rem">Medium</td><td style="padding:.5rem .8rem">Android, Enterprise</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="ex-note">C is not the easiest, but learning it makes every other language feel simple. It teaches you HOW computers actually think.</div>
-        </div>
-
-        <h2>Why Should YOU Learn C?</h2>
-        <ol>
-          <li><strong>Understand computers deeply</strong> — Memory, CPU, how data is stored</li>
-          <li><strong>Makes other languages easy</strong> — After C, Python feels like writing English</li>
-          <li><strong>High-paying career</strong> — Embedded systems, OS, firmware engineers are rare and paid very well</li>
-          <li><strong>Foundation for C++, Java, Python</strong> — All borrow syntax from C</li>
-          <li><strong>Used in competitive programming</strong> — Fastest solution = C wins</li>
-        </ol>
-
-        <div class="why">
-          <div class="why-lbl">🎯 The Bottom Line</div>
-          <p>C teaches you to think like a computer. Every byte of memory, every millisecond of performance — C makes you aware of all of it. Once you know C, you understand WHY every other programming language does what it does. It is the best foundation you can build.</p>
-        </div>
-
-        <h2>Setting Up C on Your Computer</h2>
-        <p>You need a <strong>C compiler</strong>. The most popular one is <strong>GCC</strong> (GNU Compiler Collection). Here's how to install it:</p>
-
-        <div class="ex-block">
-          <div class="ex-lbl">Installation Guide</div>
-          <div class="ex-out" style="line-height:2;padding:1rem;font-size:.84rem">
-            🪟 <strong>Windows:</strong> Download <a href="https://www.mingw-w64.org/" target="_blank" rel="noopener" style="color:var(--acc2)">MinGW-W64</a> → Install → add to PATH<br/>
-            🍎 <strong>macOS:</strong> Open Terminal → type <code>xcode-select --install</code> → press Enter<br/>
-            🐧 <strong>Linux (Ubuntu):</strong> Run <code>sudo apt install gcc</code> in terminal<br/>
-            ☁️ <strong>Online (easiest!):</strong> Use <a href="https://www.onlinegdb.com/online_c_compiler" target="_blank" rel="noopener" style="color:var(--acc2)">OnlineGDB.com</a> — no installation needed!
-          </div>
-          <div class="ex-note">For this course, you can use our built-in editor! No installation needed. Just click the "Editor" tab above.</div>
-        </div>
-
-        <div class="box box-seo">
-          <div class="box-lbl">✅ What You Learned Today</div>
-          <p>C was created in 1972 by Dennis Ritchie · It is a compiled, fast, low-level language · Used in OS, embedded systems, games · GCC is the most popular compiler · Learning C is the best programming foundation you can have</p>
-        </div>
-
-      </div><!-- content -->
-
-      <div class="lesson-end">
-        <button class="done-btn" id="done-btn" onclick="markDone()">✓ Mark Complete &amp; Continue → Lesson 2</button>
-        <div class="nav-row">
-          <a class="nav-a off" href="#">← Prev</a>
-          <a class="nav-a next" href="lesson02.html">Next: First C Program →</a>
-        </div>
-        <div class="foot">
-          <div class="foot-copy">LearnC — 25 Lessons — Free C Programming Course</div>
+      <h2>History in 2 Minutes</h2>
+      <div class="ex-block">
+        <div class="ex-lbl">Timeline &mdash; Birth of C</div>
+        <div class="ex-out" style="line-height:2.1">
+          &#128197; <strong>1969</strong> &mdash; Ken Thompson creates language &ldquo;B&rdquo; at Bell Labs<br/>
+          &#128197; <strong>1972</strong> &mdash; Dennis Ritchie improves B &rarr; creates <strong>C</strong><br/>
+          &#128197; <strong>1978</strong> &mdash; Famous book &ldquo;The C Programming Language&rdquo; published<br/>
+          &#128197; <strong>1989</strong> &mdash; ANSI standardizes C &rarr; <strong>ANSI C / C89</strong><br/>
+          &#128197; <strong>1999</strong> &mdash; <strong>C99</strong> adds new features like // comments<br/>
+          &#128197; <strong>2023</strong> &mdash; <strong>C23</strong> is latest &mdash; C is still alive and thriving!
         </div>
       </div>
-    </div><!-- /learn -->
-
-    <!-- EXPLAIN PANEL -->
-    <div class="panel" id="p-explain">
-      <div style="background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:1rem 1.15rem;margin-bottom:1rem">
-        <h3 style="font-size:.92rem;font-weight:700;color:var(--ink);margin-bottom:.22rem">💡 Explain with Real-Life Analogies</h3>
-        <p style="font-size:.84rem;color:var(--ink3);margin:0">The AI explains this lesson using everyday comparisons — no jargon, no code.</p>
+      <h2>How Does C Work?</h2>
+      <p>C is a <strong>compiled language</strong>. You write plain text &rarr; a <strong>compiler (GCC)</strong> translates it to machine code (0s and 1s) &rarr; CPU runs it at blazing speed.</p>
+      <div class="flow">
+        <div class="flow-box">&#128221; You write<br/><strong>main.c</strong></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box hl">&#9881; <strong>GCC Compiler</strong><br/>translates</div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box">&#128230; Creates<br/><strong>a.out</strong></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box hl">&#128187; CPU runs<br/><strong>FAST!</strong></div>
       </div>
-      <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.15rem;min-height:90px;color:var(--ink3);font-size:.84rem">Click the Explain tab to generate analogies...</div>
-    </div>
-
-    <!-- EDITOR PANEL -->
-    <div class="panel" id="p-editor">
-      <div class="ed-card">
-        <div class="ed-bar">
-          <span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span>
-          <span class="ed-fn">main.c</span>
-          <div class="ed-actions">
-            <button class="ed-btn" onclick="resetCode()">Reset</button>
-            <button class="ed-btn" onclick="copyCode()">Copy</button>
-            <button class="ed-btn go" id="run-btn" onclick="runCode()">▶ Run</button>
-          </div>
+      <h2>C vs Other Languages</h2>
+      <div class="ex-block">
+        <div class="ex-lbl">Comparison</div>
+        <div class="ex-out" style="padding:0">
+          <table class="tbl">
+            <thead><tr><th>Language</th><th>Speed</th><th>Difficulty</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>C</td><td>&#9889;&#9889;&#9889; Blazing</td><td>Medium</td><td>OS, embedded, performance</td></tr>
+              <tr><td>Python</td><td>&#9889; Slow</td><td>Easy</td><td>AI, data science, scripts</td></tr>
+              <tr><td>JavaScript</td><td>&#9889;&#9889; Medium</td><td>Easy</td><td>Websites, apps</td></tr>
+              <tr><td>Java</td><td>&#9889;&#9889; Medium</td><td>Medium</td><td>Android, enterprise</td></tr>
+            </tbody>
+          </table>
         </div>
-        <div class="ed-split">
-          <div class="ed-side"><div id="cm-main" style="height:100%;min-height:290px"></div></div>
-          <div class="term-side">
-            <div class="term-bar">
-              <span class="term-dot" style="background:#ff5f57"></span>
-              <span class="term-dot" style="background:#febc2e;margin:0 3px"></span>
-              <span class="term-dot" style="background:#28c840"></span>
-              <span style="margin-left:.4rem">Terminal Output</span>
-            </div>
-            <div class="term-body" id="output">Click ▶ Run to execute your C code...</div>
-            <div class="term-footer">
-              <span class="stdin-lbl">stdin:</span>
-              <input class="stdin-in" id="stdin-in" placeholder="Input for scanf() here..."/>
-            </div>
-          </div>
-        </div>
-        <div class="hint-bar">
-          <span id="hint-txt">Write C code then click Deep Analyze</span>
-          <button class="hint-go" onclick="deepAnalyze()">🔍 Deep Analyze</button>
-        </div>
+        <div class="ex-note">After C, every other language feels easy. C teaches you HOW computers actually work at hardware level.</div>
+      </div>
+      <h2>Why Learn C First?</h2>
+      <ol>
+        <li><strong>Understand computers deeply</strong> &mdash; Memory, CPU, how data is really stored</li>
+        <li><strong>Makes every language easy</strong> &mdash; After C, Python/Java feel like writing English</li>
+        <li><strong>High-paying career</strong> &mdash; Embedded systems, OS, firmware engineers are rare and in demand</li>
+        <li><strong>C syntax influenced everything</strong> &mdash; C++, Java, JS, Python all borrowed from C</li>
+        <li><strong>Competitive programming</strong> &mdash; Fastest solution? C wins</li>
+      </ol>
+      <div class="why">
+        <div class="why-lbl">&#127919; The Bottom Line</div>
+        <p>C teaches you to think like a computer. Once you know C, you understand WHY every other language does what it does. It is the strongest foundation you can build as a programmer. And the best part &mdash; it is not as hard as people think!</p>
+      </div>
+      <div class="box box-ok">
+        <div class="box-lbl">&#10003; Key Points</div>
+        <p>C created 1972 by Dennis Ritchie &bull; Compiled, fast, low-level &bull; Powers OS, embedded, games &bull; GCC most popular compiler &bull; C syntax influenced ALL modern languages</p>
       </div>
     </div>
-
-    <!-- QUIZ PANEL -->
-    <div class="panel" id="p-quiz">
-      <div class="quiz-wrap">
-        <p class="q-question">Who created the C programming language?</p>
-        <div class="q-opts">
-          <button class="q-opt" id="qo0"><span class="q-key">A</span><span class="q-txt">Linus Torvalds</span></button>
-          <button class="q-opt" id="qo1"><span class="q-key">B</span><span class="q-txt">Dennis Ritchie</span></button>
-          <button class="q-opt" id="qo2"><span class="q-key">C</span><span class="q-txt">James Gosling</span></button>
-          <button class="q-opt" id="qo3"><span class="q-key">D</span><span class="q-txt">Guido van Rossum</span></button>
+    <div class="content lang-hi" style="display:none">
+      <h2>C Kya Hai? &#129300;</h2>
+      <p>C ek <strong>general-purpose programming language</strong> hai jo <strong>Dennis Ritchie</strong> ne Bell Labs, USA mein <strong>1972</strong> mein banai thi. Sabse purani languages mein se ek hai jo aaj bhi bahut use hoti hai!</p>
+      <p>C ko <strong>programming duniya ka engine</strong> samjho. Jaise engine sab vehicles chalata hai, waise hi C almost sari computing cheezein chalata hai.</p>
+      <div class="ex-block">
+        <div class="ex-lbl">C Literally Har Jagah Hai!</div>
+        <div class="ex-out" style="line-height:2.1">
+          &#128421; <strong>Windows, Linux, macOS</strong> &mdash; Core C mein likha hai<br/>
+          &#128241; <strong>Android aur iOS kernel</strong> &mdash; Foundation C hai<br/>
+          &#127760; <strong>MySQL, SQLite, Git</strong> &mdash; C mein banaye hain<br/>
+          &#127918; <strong>Doom, Quake game engines</strong> &mdash; Pure C code<br/>
+          &#129302; <strong>Arduino, Raspberry Pi</strong> &mdash; C se control hota hai<br/>
+          &#128640; <strong>NASA ke spacecraft</strong> &mdash; Mission-critical C programs
         </div>
-        <div class="q-exp" id="q-exp">
-          <span class="q-exp-lbl">Explanation</span>
-          Dennis Ritchie created C in 1972 at Bell Labs. Linus Torvalds created the Linux kernel (written in C!), James Gosling created Java, and Guido van Rossum created Python. Dennis Ritchie is one of the greatest computer scientists who ever lived.
+        <div class="ex-note">C chupchap duniya chalata hai. Jo bhi bade systems tum use karte ho, unka foundation C hai.</div>
+      </div>
+      <h2>2 Minute Mein History &#128220;</h2>
+      <div class="ex-block">
+        <div class="ex-lbl">Timeline &mdash; C Ka Janam</div>
+        <div class="ex-out" style="line-height:2.1">
+          &#128197; <strong>1969</strong> &mdash; Ken Thompson ne &ldquo;B&rdquo; language banai Bell Labs mein<br/>
+          &#128197; <strong>1972</strong> &mdash; Dennis Ritchie ne B improve kiya &rarr; <strong>C</strong> ban gayi<br/>
+          &#128197; <strong>1978</strong> &mdash; Famous book &ldquo;The C Programming Language&rdquo; publish hui<br/>
+          &#128197; <strong>1989</strong> &mdash; ANSI ne C standardize kiya &rarr; <strong>ANSI C / C89</strong><br/>
+          &#128197; <strong>1999</strong> &mdash; <strong>C99</strong> aaya, naye features add hue<br/>
+          &#128197; <strong>2023</strong> &mdash; <strong>C23</strong> latest hai &mdash; C abhi bhi zinda hai!
         </div>
-        <div class="q-result" id="q-result"></div>
+      </div>
+      <h2>C Kaise Kaam Karta Hai? &#9881;</h2>
+      <p>C ek <strong>compiled language</strong> hai. Tum plain text mein code likhte ho &rarr; <strong>compiler (GCC)</strong> use machine code mein translate karta hai &rarr; CPU use rocket speed se chalata hai.</p>
+      <div class="flow">
+        <div class="flow-box">&#128221; Tum likhte ho<br/><strong>main.c</strong></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box hl">&#9881; <strong>GCC Compiler</strong><br/>translate karta hai</div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box">&#128230; Banta hai<br/><strong>a.out</strong></div>
+        <div class="flow-arr">&rarr;</div>
+        <div class="flow-box hl">&#128187; CPU chalata hai<br/><strong>ROCKET SPEED!</strong></div>
+      </div>
+      <h2>C vs Dusri Languages &#129299;</h2>
+      <div class="ex-block">
+        <div class="ex-lbl">Comparison Table</div>
+        <div class="ex-out" style="padding:0">
+          <table class="tbl">
+            <thead><tr><th>Language</th><th>Speed</th><th>Mushkil</th><th>Best For</th></tr></thead>
+            <tbody>
+              <tr><td>C</td><td>&#9889;&#9889;&#9889; Blazing Fast</td><td>Medium</td><td>OS, embedded, performance</td></tr>
+              <tr><td>Python</td><td>&#9889; Slow</td><td>Aasaan</td><td>AI, data science</td></tr>
+              <tr><td>JavaScript</td><td>&#9889;&#9889; Medium</td><td>Aasaan</td><td>Websites, apps</td></tr>
+              <tr><td>Java</td><td>&#9889;&#9889; Medium</td><td>Medium</td><td>Android, enterprise</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="ex-note">C seekhne ke baad baaki sab easy lagti hain. C sikhata hai ki computers ACTUALLY kaise kaam karte hain.</div>
+      </div>
+      <h2>C Pehle Kyun Seekhna Chahiye? &#128640;</h2>
+      <ol>
+        <li><strong>Computers deeply samjho</strong> &mdash; Memory, CPU, data actually kaise store hota hai</li>
+        <li><strong>Har language easy ho jaati hai</strong> &mdash; C ke baad Python/Java aise lagti hai jaise English likhna</li>
+        <li><strong>High-paying career</strong> &mdash; Embedded systems, OS, firmware engineers rare hain aur demand mein hain</li>
+        <li><strong>C ka syntax sabne copy kiya</strong> &mdash; C++, Java, JS, Python sab ne C se seekha</li>
+        <li><strong>Competitive programming</strong> &mdash; Fastest solution chahiye? C use karo</li>
+      </ol>
+      <div class="why">
+        <div class="why-lbl">&#127919; Baat Ka Nichod</div>
+        <p>C tujhe computer ki tarah sochna sikhata hai. Ek baar C aagayi, toh samajh aata hai ki doosri languages kyun woh kaam karti hain jo karti hain. Yeh sabse strong foundation hai. Aur sabse achhi baat &mdash; utna mushkil bhi nahi hai jitna log samjhte hain!</p>
+      </div>
+      <div class="box box-ok">
+        <div class="box-lbl">&#10003; Key Points</div>
+        <p>C 1972 mein Dennis Ritchie ne banai &bull; Compiled, fast, low-level &bull; OS, embedded, games mein use &bull; GCC sabse popular compiler &bull; C ka syntax sabne copy kiya</p>
       </div>
     </div>
-
-    <!-- CHALLENGE PANEL -->
-    <div class="panel" id="p-challenge">
-      <div class="chal-brief">
-        <div class="chal-tag">⚡ Code Challenge</div>
-        <div class="chal-title">Your First C Output Program</div>
-        <div class="chal-desc">Write a C program that prints information about yourself using printf. Show your name, age, and your favourite subject. Use the code from the editor as a starting point!</div>
-        <div class="chal-reqs-lbl">Requirements (4 to pass)</div>
-        <div class="c-req" id="cr0"><span class="c-dot">✓</span><span>Has #include &lt;stdio.h&gt;</span></div>
-        <div class="c-req" id="cr1"><span class="c-dot">✓</span><span>Has main() function</span></div>
-        <div class="c-req" id="cr2"><span class="c-dot">✓</span><span>Uses printf at least twice</span></div>
-        <div class="c-req" id="cr3"><span class="c-dot">✓</span><span>Has return 0</span></div>
+    <div class="lesson-end">
+      <button class="done-btn" id="done-btn" onclick="markDone()"><span data-en="&#10003; Mark Complete &amp; Continue &rarr; Lesson 2" data-hi="&#10003; Complete Karo aur Aage Badho &rarr; Lesson 2">&#10003; Mark Complete &amp; Continue &rarr; Lesson 2</span></button>
+      <div class="nav-row">
+        <a class="nav-a off" href="#"><span data-en="&larr; Previous" data-hi="&larr; Pichla">&larr; Previous</span></a>
+        <a class="nav-a next" href="lesson02.html"><span data-en="Next: First C Program &rarr;" data-hi="Aage: Pehla C Program &rarr;">Next: First C Program &rarr;</span></a>
       </div>
-      <div class="chal-editor">
-        <div class="ed-bar">
-          <span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span>
-          <span class="ed-fn">solution.c</span>
+      <div style="margin-top:1.4rem;padding-top:.9rem;border-top:1px solid var(--line);font-size:.7rem;color:var(--ink3)">LearnC &mdash; 28 Lessons &mdash; Free C Programming Course</div>
+    </div>
+  </div>
+  <div class="panel" id="p-explain">
+    <div style="background:var(--aa);border:1px solid var(--ab);border-radius:var(--r);padding:.9rem 1.05rem;margin-bottom:.9rem">
+      <h3 style="font-size:.9rem;font-weight:700;color:var(--ink);margin-bottom:.2rem" data-en="&#127916; Bollywood Analogy Explanation" data-hi="&#127916; Bollywood Analogy Explanation">&#127916; Bollywood Analogy Explanation</h3>
+      <p style="font-size:.82rem;color:var(--ink3);margin:0" data-en="Each lesson uses a DIFFERENT style. This one: Bollywood movie analogy!" data-hi="Har lesson mein ALAG style hoti hai. Is mein: Bollywood movie analogy!">Each lesson uses a DIFFERENT style. This one: Bollywood movie analogy!</p>
+    </div>
+    <div id="explain-box" style="background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.1rem;min-height:90px;color:var(--ink3);font-size:.84rem">
+      <button onclick="startExplain()" style="background:var(--acc);color:#fff;border:none;border-radius:var(--rs);padding:8px 16px;font-family:var(--f);font-size:.8rem;font-weight:700;cursor:pointer"><span data-en="&#127916; Generate Bollywood Explanation" data-hi="&#127916; Bollywood Explanation Generate Karo">&#127916; Generate Bollywood Explanation</span></button>
+    </div>
+  </div>
+  <div class="panel" id="p-editor">
+    <div style="background:var(--oa);border:1px solid rgba(249,115,22,.3);border-radius:var(--rs);padding:.48rem .82rem;margin-bottom:.72rem;font-size:.73rem;color:var(--orange);font-weight:600" data-en="&#9889; Real GCC compiler (Piston API) &mdash; Write code, click Run, see output!" data-hi="&#9889; Real GCC compiler (Piston API) &mdash; Code likho, Run dabao, output dekho!">&#9889; Real GCC compiler (Piston API) &mdash; Write code, click Run, see output!</div>
+    <div class="ed-card">
+      <div class="ed-bar">
+        <span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span>
+        <span class="ed-fn">main.c</span>
+        <div class="ed-actions">
+          <button class="ed-btn" onclick="resetCode()"><span data-en="Reset" data-hi="Reset">Reset</span></button>
+          <button class="ed-btn" onclick="copyCode()"><span data-en="Copy" data-hi="Copy">Copy</span></button>
+          <button class="ed-btn go" id="run-btn" onclick="runCode()">&#9654; <span data-en="Run" data-hi="Run">Run</span></button>
         </div>
-        <div class="chal-split">
-          <div class="ed-side"><div id="cm-chal" style="height:100%;min-height:240px"></div></div>
-          <div class="term-side">
-            <div class="term-bar">
-              <span class="term-dot" style="background:#28c840"></span>
-              <span style="margin-left:.4rem">Output</span>
-            </div>
-            <div class="term-body" id="chal-out">Run your code to see output...</div>
+      </div>
+      <div class="ed-split">
+        <div class="ed-left"><div id="cm-main" style="height:100%"></div></div>
+        <div class="ed-right">
+          <div class="trm-bar">
+            <span class="trm-dot" style="background:#ff5f57"></span>
+            <span class="trm-dot" style="background:#febc2e;margin:0 3px"></span>
+            <span class="trm-dot" style="background:#28c840"></span>
+            <span style="margin-left:.38rem" data-en="Terminal &mdash; Real GCC" data-hi="Terminal &mdash; Real GCC">Terminal &mdash; Real GCC</span>
           </div>
-        </div>
-        <div class="chal-footer">
-          <span id="chal-status">0/4 requirements</span>
-          <div style="display:flex;gap:.35rem">
-            <button class="chal-run" onclick="runChallenge()">▶ Run</button>
-            <button class="chal-check" onclick="checkChallenge()">✓ Check</button>
+          <div id="main-out" class="trm-out busy" data-en="Click Run to compile and execute..." data-hi="Run dabao compile aur execute karne ke liye...">Click Run to compile and execute...</div>
+          <div class="trm-foot">
+            <span class="stdin-lbl">stdin:</span>
+            <input class="stdin-in" id="stdin-in" placeholder="Input for scanf()..."/>
           </div>
         </div>
       </div>
+      <div class="hint-bar">
+        <span class="hint-txt" id="hint-txt" data-en="Linter watches your code automatically..." data-hi="Linter code automatically check karta hai...">Linter watches your code automatically...</span>
+        <button class="hint-go" onclick="deepAnalyze()">&#128269; <span data-en="Analyze" data-hi="Analyze">Analyze</span></button>
+      </div>
     </div>
-
-    <!-- CHAI PANEL -->
-    <div class="panel" id="p-chai">
-      <div id="chai-body"></div>
+  </div>
+  <div class="panel" id="p-quiz">
+    <div class="quiz-wrap">
+      <p class="q-q" data-en="Who created C and in which year?" data-hi="C kisne banaya aur kaunse saal mein?">Who created C and in which year?</p>
+      <div class="q-opts">
+        <button class="q-opt" id="qo0"><span class="q-key">A</span><span data-en="Linus Torvalds, 1991" data-hi="Linus Torvalds, 1991">Linus Torvalds, 1991</span></button>
+        <button class="q-opt" id="qo1"><span class="q-key">B</span><span data-en="Dennis Ritchie, 1972" data-hi="Dennis Ritchie, 1972">Dennis Ritchie, 1972</span></button>
+        <button class="q-opt" id="qo2"><span class="q-key">C</span><span data-en="James Gosling, 1995" data-hi="James Gosling, 1995">James Gosling, 1995</span></button>
+        <button class="q-opt" id="qo3"><span class="q-key">D</span><span data-en="Bill Gates, 1975" data-hi="Bill Gates, 1975">Bill Gates, 1975</span></button>
+      </div>
+      <div class="q-exp" id="q-exp">
+        <span class="q-exp-lbl" data-en="Explanation" data-hi="Explanation">Explanation</span>
+        <span data-en="Dennis Ritchie created C in 1972 at Bell Labs. Linus Torvalds created Linux in 1991 (written IN C!). James Gosling created Java in 1995. Without Dennis Ritchie, modern computing would look completely different." data-hi="Dennis Ritchie ne C 1972 mein Bell Labs mein banaya. Linus Torvalds ne Linux 1991 mein banaya (jo C mein likha hua hai!). James Gosling ne Java 1995 mein banaya. Dennis Ritchie ke bina aaj ki computing bilkul alag dikhti.">Dennis Ritchie created C in 1972 at Bell Labs. Linus Torvalds created Linux in 1991 (written IN C!). James Gosling created Java in 1995. Without Dennis Ritchie, modern computing would look completely different.</span>
+      </div>
+      <div class="q-result" id="q-result"></div>
     </div>
-
-  </main>
+  </div>
+  <div class="panel" id="p-challenge">
+    <div class="chal-brief">
+      <div class="chal-tag" data-en="&#9889; Code Challenge &mdash; Lesson 1" data-hi="&#9889; Code Challenge &mdash; Lesson 1">&#9889; Code Challenge &mdash; Lesson 1</div>
+      <div class="chal-title" data-en="Print C Facts to the World!" data-hi="Duniya ko C ke Baare Mein Batao!">Print C Facts to the World!</div>
+      <div class="chal-desc" data-en="Write a C program that introduces C using printf. Print at least 3 interesting facts about C. Use your own creative words!" data-hi="Ek C program likho jo printf se C introduce kare. Kam se kam 3 interesting facts print karo. Apne creative words mein!">Write a C program that introduces C using printf. Print at least 3 interesting facts about C. Use your own creative words!</div>
+      <div class="chal-rl" data-en="Requirements (4 to pass)" data-hi="Requirements (4 pass karne ke liye)">Requirements (4 to pass)</div>
+      <div class="c-req" id="cr0"><span class="c-dot"></span><span data-en="Has #include &lt;stdio.h&gt;" data-hi="#include &lt;stdio.h&gt; hai">#include &lt;stdio.h&gt; present</span></div>
+      <div class="c-req" id="cr1"><span class="c-dot"></span><span data-en="Has int main() function" data-hi="int main() function hai">int main() function</span></div>
+      <div class="c-req" id="cr2"><span class="c-dot"></span><span data-en="Uses printf at least 3 times" data-hi="printf kam se kam 3 baar use hua">printf at least 3 times</span></div>
+      <div class="c-req" id="cr3"><span class="c-dot"></span><span data-en="Has return 0;" data-hi="return 0; hai">return 0; present</span></div>
+    </div>
+    <div class="chal-editor">
+      <div class="ed-bar"><span class="dot d-r"></span><span class="dot d-y"></span><span class="dot d-g"></span><span class="ed-fn">challenge.c</span></div>
+      <div class="chal-split">
+        <div class="chal-left"><div id="cm-chal" style="height:100%"></div></div>
+        <div class="chal-right">
+          <div class="trm-bar"><span class="trm-dot" style="background:#28c840"></span><span style="margin-left:.38rem" data-en="Output" data-hi="Output">Output</span></div>
+          <div id="chal-out" class="trm-out busy" data-en="Run to see output..." data-hi="Run karo output dekhne ke liye...">Run to see output...</div>
+        </div>
+      </div>
+      <div class="chal-footer">
+        <span class="chal-st" id="chal-st">0/4 <span data-en="requirements" data-hi="requirements">requirements</span></span>
+        <div>
+          <button class="chal-run" onclick="runChallenge()">&#9654; <span data-en="Run" data-hi="Run">Run</span></button>
+          <button class="chal-check" onclick="checkChallenge()">&#10003; <span data-en="Check" data-hi="Check">Check</span></button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="panel" id="p-activity">
+    <div class="act-card">
+      <div class="act-icon">&#128506;</div>
+      <div class="act-title" data-en="Activity: Draw the Programming Language Family Tree" data-hi="Activity: Programming Language Ka Family Tree Banao">Activity: Draw the Programming Language Family Tree</div>
+      <div class="act-desc" data-en="C is the ancestor of almost every popular programming language. Create a visual family tree showing how C influenced the entire programming world!" data-hi="C almost sab popular programming languages ka ancestor hai. Ek visual family tree banao jo dikhaye ki C ne poori programming duniya ko kaise influence kiya!">C is the ancestor of almost every popular programming language. Create a visual family tree showing how C influenced the entire programming world!</div>
+      <ul class="act-steps">
+        <li><span class="step-n">1</span><span data-en="Take paper or open a drawing app (Excalidraw, etc.)." data-hi="Paper lo ya drawing app kholo (Excalidraw, etc.).">Take paper or open a drawing app (Excalidraw, etc.).</span></li>
+        <li><span class="step-n">2</span><span data-en="Write C (1972) in a BIG circle at the CENTER of the page." data-hi="Page ke CENTER mein ek BIG circle mein C (1972) likho.">Write C (1972) in a BIG circle at the CENTER of the page.</span></li>
+        <li><span class="step-n">3</span><span data-en="Draw branches to: C++ (1983), Java (1995), Python (1991), JavaScript (1995), PHP (1994), Go (2009), Rust (2010), C# (2000)." data-hi="In languages ki taraf branches banao: C++ (1983), Java (1995), Python (1991), JavaScript (1995), PHP (1994), Go (2009).">Draw branches to: C++, Java, Python, JavaScript, PHP, Go, Rust, C#</span></li>
+        <li><span class="step-n">4</span><span data-en="For each language write ONE thing it is famous for (e.g. Java = Android, Python = AI)." data-hi="Har language ke liye ek cheez likho jo use famous banati hai (Java = Android, Python = AI).">For each language write ONE famous use case.</span></li>
+        <li><span class="step-n">5</span><span data-en="Circle in RED all languages that copied C syntax (hint: curly braces, semicolons)." data-hi="RED circle karo un sab languages ko jo C ka syntax copy kiya (curly braces, semicolons).">Circle in RED all languages that copied C syntax.</span></li>
+        <li><span class="step-n">6</span><span data-en="Count them &mdash; you will be shocked at how many!" data-hi="Unhe count karo &mdash; number dekh ke shocked ho jaoge!">Count them &mdash; you will be shocked!</span></li>
+      </ul>
+      <div class="act-goal" data-en="&#127919; Goal: After this you will FEEL why C is called the mother of all languages &mdash; not just know it." data-hi="&#127919; Lakshya: Is activity ke baad tum FEEL karoge kyun C ko sabhi languages ki maata kaha jaata hai.">&#127919; Goal: After this you will FEEL why C is called the mother of all languages &mdash; not just know it.</div>
+      <div style="font-size:.78rem;color:var(--ink3);margin-bottom:.45rem" data-en="Share what you drew:" data-hi="Batao tumne kya draw kiya:">Share what you drew:</div>
+      <textarea class="act-area" id="act-ans" placeholder="e.g. I drew C in the center. Branches to C++ (games), Java (Android), Python (AI)... Found 7 out of 9 languages use semicolons and braces just like C!"></textarea>
+      <br/>
+      <button class="act-submit" onclick="submitActivity()"><span data-en="&#127912; Submit Activity +30 XP" data-hi="&#127912; Activity Submit Karo +30 XP">&#127912; Submit Activity +30 XP</span></button>
+    </div>
+  </div>
+</main>
 </div>
-
-<!-- MOB FAB -->
-<button id="mob-fab" onclick="openLessons()" aria-label="All lessons">
-  <span></span><span></span><span></span>
-</button>
-
-<!-- AI OVERLAY -->
+<button id="mob-fab" onclick="openDrawer()" aria-label="Lessons"><span></span><span></span><span></span></button>
 <div class="ai-overlay" id="ai-overlay">
   <div class="ai-panel">
     <div class="ai-head">
       <div class="ai-av">AI</div>
-      <div>
-        <div class="ai-name">C AI Tutor</div>
-        <div class="ai-status">● Online</div>
-        <div id="ai-counter"></div>
-      </div>
-      <button class="ai-close" onclick="AI.toggle()">✕</button>
+      <div><div class="ai-nm">C AI Tutor</div><div class="ai-st">&#9679; Online</div><div class="ai-cnt" id="ai-cnt"></div></div>
+      <button class="ai-x" onclick="AI.toggle()">&#10005;</button>
     </div>
-    <div class="ai-messages" id="ai-messages"></div>
-    <div class="ai-input-row">
-      <textarea class="ai-input" id="ai-inp" rows="2" placeholder="Ask anything about C programming..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea>
-      <button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-      </button>
+    <div class="ai-msgs" id="ai-msgs"></div>
+    <div class="ai-inp-row">
+      <textarea class="ai-inp" id="ai-inp" rows="2" placeholder="C ke baare mein kuch bhi poocho..." onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();AI.say(this.value)}"></textarea>
+      <button class="ai-send" onclick="AI.say(document.getElementById('ai-inp').value)"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
     </div>
   </div>
-</div>
-
-<script>
-// ── CONFIG ───────────────────────────────────────────────
-var SRV = 'https://ciweb-ai-server.vercel.app';
-var LN = 1, LT = 'What is C?', TOTAL = 25, QA = 1;
-var PISTON = 'https://emkc.org/api/v2/piston/execute';
-
-var DCODE = '#include <stdio.h>\n\nint main() {\n    // This is your first C program!\n    // C was created by Dennis Ritchie in 1972\n    \n    printf("Hello! I am learning C programming.\\n");\n    printf("C was created in 1972 at Bell Labs.\\n");\n    printf("It is the mother of all languages!\\n");\n    \n    return 0;\n}';
-
-var CHAL_START = '#include <stdio.h>\n\nint main() {\n    // Write your personal info here!\n    // Use printf to print your name, age, and favourite subject\n    \n    printf("My name is: ...\\n");\n    \n    return 0;\n}';
-
-var REQS = [
-  {label:'Has #include <stdio.h>',chk:function(c){return /\#include\s*<stdio\.h>/.test(c);}},
-  {label:'Has main() function',chk:function(c){return /int\s+main\s*\(/.test(c);}},
-  {label:'Uses printf at least twice',chk:function(c){return (c.match(/printf\s*\(/g)||[]).length>=2;}},
-  {label:'Has return 0',chk:function(c){return /return\s+0\s*;/.test(c);}}
+</div><script>
+var LN=1,LT='What is C?',TOTAL=28,QA=1;
+var SRV='https://ciweb-ai-server.vercel.app';
+var DCODE='#include <stdio.h>\n\n// Your first C program!\n// Change the text and click Run\n\nint main() {\n    printf("Hello! I am learning C.\\n");\n    printf("C was created in 1972.\\n");\n    printf("It powers Linux, Android, NASA!\\n");\n    return 0;\n}';
+var CHAL_CODE='#include <stdio.h>\n\n// Challenge: Print 3+ facts about C!\n\nint main() {\n    printf("Fact 1: C was created in 1972.\\n");\n    // Add more facts here...\n    return 0;\n}';
+var REQS=[
+  {chk:function(c){return /\#include\s*<stdio\.h>/.test(c);}},
+  {chk:function(c){return /int\s+main\s*\(/.test(c);}},
+  {chk:function(c){return (c.match(/printf\s*\(/g)||[]).length>=3;}},
+  {chk:function(c){return /return\s+0\s*;/.test(c);}}
 ];
-
-// ── STORAGE ──────────────────────────────────────────────
 var S={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,String(v));}catch(e){}}};
 function getDone(){try{return JSON.parse(S.get('lc_done')||'[]');}catch(e){return[];}}
-function addXP(n){S.set('lc_xp',String(parseInt(S.get('lc_xp')||'0')+n));}
-function markDone(){
-  var d=getDone();
-  if(d.indexOf(LN)===-1){d.push(LN);S.set('lc_done',JSON.stringify(d));addXP(20);toast('🎉 +20 XP! Lesson complete!','g');}
-  var b=document.getElementById('done-btn');if(b){b.classList.add('done');b.textContent='✓ Completed! Go to Lesson 2 →';}
-  updateProg();
+function addXP(n){S.set('lc_xp',String(parseInt(S.get('lc_xp')||'0')+n));var p=document.createElement('div');p.className='xp-pop';p.textContent='+'+n+' XP!';document.body.appendChild(p);setTimeout(function(){if(p.parentNode)p.remove();},1800);}
+function markDone(){var d=getDone();if(d.indexOf(LN)===-1){d.push(LN);S.set('lc_done',JSON.stringify(d));addXP(20);toast('Lesson 1 complete!','g');}var b=document.getElementById('done-btn');if(b)b.classList.add('done');updateProg();}
+function updateProg(){var d=getDone(),pct=Math.round(d.length/TOTAL*100);var f=document.getElementById('prog-fill');if(f)f.style.width=pct+'%';var l=document.getElementById('prog-lbl');if(l)l.textContent=d.length+'/'+TOTAL;document.querySelectorAll('.sb-a[data-id]').forEach(function(a){var id=parseInt(a.dataset.id),nm=a.querySelector('.sb-n');if(d.indexOf(id)>-1){a.classList.add('done');if(nm&&!a.classList.contains('cur'))nm.textContent='v';}});if(d.indexOf(LN)>-1){var b=document.getElementById('done-btn');if(b)b.classList.add('done');}if(d.length>0){var wb=document.getElementById('wb');if(wb)wb.classList.remove('show');}}
+var Rate=(function(){var KEY='lc_rate',B=15;function rd(){try{var r=JSON.parse(atob(S.get(KEY)||btoa('{}')))||{};if(Date.now()-(r.t||0)>86400000)r={n:0,t:Date.now()};return r;}catch(e){return{n:0,t:Date.now()};}}function wr(r){try{S.set(KEY,btoa(JSON.stringify(r)));}catch(e){}}function lim(){return B+Math.min(parseInt(S.get('lc_boost')||'0'),500);}return{lim:lim,left:function(){return Math.max(0,lim()-rd().n);},ok:function(){return rd().n<lim();},use:function(){var r=rd();r.n=(r.n||0)+1;wr(r);}};})();
+function initTheme(){document.documentElement.classList.toggle('light',S.get('lc_theme')==='light');syncCM();}
+function toggleTheme(){var l=document.documentElement.classList.contains('light');document.documentElement.classList.toggle('light',!l);S.set('lc_theme',l?'dark':'light');syncCM();}
+function syncCM(){var th=document.documentElement.classList.contains('light')?'default':'dracula';if(window._ed)window._ed.setOption('theme',th);if(window._ced)window._ced.setOption('theme',th);}
+function toggleLang(){
+  var toHi=document.documentElement.dataset.lang!=='hi';
+  document.documentElement.dataset.lang=toHi?'hi':'en';
+  document.querySelectorAll('[data-en]').forEach(function(el){el.innerHTML=toHi?el.dataset.hi:el.dataset.en;});
+  document.querySelectorAll('.lang-en').forEach(function(el){el.style.display=toHi?'none':'';});
+  document.querySelectorAll('.lang-hi').forEach(function(el){el.style.display=toHi?'':'none';});
+  var btn=document.getElementById('lang-btn');
+  if(btn)btn.textContent=toHi?'English':'Hinglish';
+  S.set('lc_lang',toHi?'hi':'en');
 }
-function updateProg(){
-  var d=getDone(),pct=Math.round(d.length/TOTAL*100);
-  var bar=document.getElementById('prog-fill');if(bar)bar.style.width=pct+'%';
-  var lbl=document.getElementById('prog-lbl');if(lbl)lbl.textContent=d.length+'/'+TOTAL;
-  document.querySelectorAll('.sb-a[data-id]').forEach(function(a){
-    var id=parseInt(a.dataset.id),nm=a.querySelector('.sb-n');
-    if(d.indexOf(id)>-1){a.classList.add('done');if(nm&&!a.classList.contains('cur'))nm.textContent='✓';}
-  });
-  if(d.indexOf(LN)>-1){var b=document.getElementById('done-btn');if(b){b.classList.add('done');b.textContent='✓ Completed!';}}
-}
-
-// ── RATE LIMITING ─────────────────────────────────────────
-var Rate=(function(){
-  var KEY='lc_rate',BASE=15;
-  function rd(){try{var r=JSON.parse(atob(S.get(KEY)||btoa('{}')))||{};if(Date.now()-(r.t||0)>86400000)r={n:0,t:Date.now()};return r;}catch(e){return{n:0,t:Date.now()};}}
-  function wr(r){try{S.set(KEY,btoa(JSON.stringify(r)));}catch(e){}}
-  function lim(){return BASE+Math.min(parseInt(S.get('lc_boost')||'0'),500);}
-  return{limit:lim,left:function(){var r=rd();return Math.max(0,lim()-(r.n||0));},ok:function(){return rd().n<lim();},use:function(){var r=rd();r.n=(r.n||0)+1;wr(r);}};
-})();
-
-// ── THEME ────────────────────────────────────────────────
-function initTheme(){
-  var t=S.get('lc_theme')||'dark';
-  document.documentElement.classList.toggle('light',t==='light');
-  syncCM();
-}
-function toggleTheme(){
-  var l=document.documentElement.classList.contains('light');
-  document.documentElement.classList.toggle('light',!l);
-  S.set('lc_theme',l?'dark':'light');
-  syncCM();
-}
-function syncCM(){
-  var light=document.documentElement.classList.contains('light');
-  var th=light?'default':'dracula';
-  if(window._ed)window._ed.setOption('theme',th);
-  if(window._ced)window._ced.setOption('theme',th);
-}
-
-// ── TABS ─────────────────────────────────────────────────
-function initTabs(){
-  document.querySelectorAll('.tab').forEach(function(btn){
-    btn.addEventListener('click',function(){
-      document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});
-      document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});
-      btn.classList.add('on');
-      var p=document.getElementById('p-'+btn.dataset.tab);if(p)p.classList.add('on');
-      var t=btn.dataset.tab;
-      if(t==='explain')startExplain();
-      if(t==='chai')showChai();
-      if(t==='challenge')setTimeout(initChalEd,80);
-      if(t==='editor')setTimeout(function(){try{if(window._ed)window._ed.refresh();}catch(e){}},60);
-    });
-  });
-}
-
-// ── CODEMIRROR EDITOR ────────────────────────────────────
-function initEditor(){
-  var el=document.getElementById('cm-main');
-  if(!el||typeof CodeMirror==='undefined')return;
-  var light=document.documentElement.classList.contains('light');
-  window._ed=CodeMirror(el,{
-    value:DCODE,mode:'text/x-csrc',theme:light?'default':'dracula',
-    lineNumbers:true,tabSize:4,lineWrapping:true,
-    autoCloseBrackets:true,matchBrackets:true
-  });
-  var t;
-  window._ed.on('change',function(){clearTimeout(t);t=setTimeout(function(){clearTimeout(window._ht);window._ht=setTimeout(autoHint,2000);},300);});
-  setTimeout(autoHint,1000);
-}
-function initChalEd(){
-  var el=document.getElementById('cm-chal');
-  if(!el||typeof CodeMirror==='undefined'||window._ced)return;
-  var light=document.documentElement.classList.contains('light');
-  window._ced=CodeMirror(el,{
-    value:CHAL_START,mode:'text/x-csrc',theme:light?'default':'dracula',
-    lineNumbers:true,tabSize:4,lineWrapping:true,autoCloseBrackets:true
-  });
-}
-function resetCode(){if(window._ed)window._ed.doc.setValue(DCODE);toast('Code reset!');}
-function copyCode(){
-  var code=window._ed?window._ed.doc.getValue():'';
-  try{navigator.clipboard.writeText(code).then(function(){toast('Copied!');});}catch(e){}
-}
-
-// ── C CODE RUNNER (Piston API) ────────────────────────────
-async function runCode(){
-  var btn=document.getElementById('run-btn');
-  var out=document.getElementById('output');
-  var code=window._ed?window._ed.doc.getValue():'';
-  var stdin=(document.getElementById('stdin-in')||{}).value||'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
-  btn.textContent='⏳ Running...';btn.disabled=true;
-  out.className='term-body';out.textContent='Compiling and running your C code...\n';
+function initLang(){if(S.get('lc_lang')==='hi')toggleLang();}
+function initTabs(){document.querySelectorAll('.tab').forEach(function(btn){btn.addEventListener('click',function(){document.querySelectorAll('.tab').forEach(function(b){b.classList.remove('on');});document.querySelectorAll('.panel').forEach(function(p){p.classList.remove('on');});btn.classList.add('on');var tab=btn.dataset.tab;var p=document.getElementById('p-'+tab);if(p)p.classList.add('on');if(tab==='challenge')setTimeout(initChalEd,80);if(tab==='editor')setTimeout(function(){try{if(window._ed)window._ed.refresh();}catch(e){}},60);});});}
+function initEditor(){var el=document.getElementById('cm-main');if(!el||typeof CodeMirror==='undefined')return;var light=document.documentElement.classList.contains('light');window._ed=CodeMirror(el,{value:DCODE,mode:'text/x-csrc',theme:light?'default':'dracula',lineNumbers:true,tabSize:4,lineWrapping:true,autoCloseBrackets:true});window._ed.on('change',function(){clearTimeout(window._ht);window._ht=setTimeout(autoHint,2200);});setTimeout(autoHint,900);}
+function initChalEd(){var el=document.getElementById('cm-chal');if(!el||typeof CodeMirror==='undefined'||window._ced)return;var light=document.documentElement.classList.contains('light');window._ced=CodeMirror(el,{value:CHAL_CODE,mode:'text/x-csrc',theme:light?'default':'dracula',lineNumbers:true,tabSize:4,lineWrapping:true,autoCloseBrackets:true});}
+function resetCode(){if(window._ed){window._ed.doc.setValue(DCODE);toast('Reset!');}}
+function copyCode(){var t=window._ed?window._ed.doc.getValue():'';try{navigator.clipboard.writeText(t).then(function(){toast('Copied!');});}catch(e){}}
+async function runC(code,stdinVal){
+  var ctrl=new AbortController();
+  var timer=setTimeout(function(){ctrl.abort();},20000);
   try{
-    var resp=await fetch(PISTON,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({language:'c',version:'*',files:[{name:'main.c',content:code}],stdin:stdin})
-    });
-    var data=await resp.json();
-    var result='';
-    if(data.compile&&data.compile.stderr&&data.compile.code!==0){
-      result='❌ Compile Error:\n'+data.compile.stderr;
-      out.className='term-body err';
-    } else if(data.run){
-      result=(data.run.stdout||'')+(data.run.stderr?'\n⚠ Runtime Error:\n'+data.run.stderr:'');
-      if(!result.trim())result='(program ran with no output)';
-      out.className=data.run.stderr?'term-body err':'term-body ok';
-    } else {result='Could not get output.';out.className='term-body err';}
-    out.textContent=result;
-  } catch(e){
-    out.textContent='Could not connect to compiler.\nCheck your internet connection.';
-    out.className='term-body err';
+    var resp=await fetch('https://emkc.org/api/v2/piston/execute',{method:'POST',headers:{'Content-Type':'application/json'},signal:ctrl.signal,body:JSON.stringify({language:'c',version:'*',files:[{name:'main.c',content:code}],stdin:stdinVal||''})});
+    clearTimeout(timer);
+    if(!resp.ok)return{ok:false,out:'Server error: HTTP '+resp.status};
+    var d=await resp.json();
+    if(d.message)return{ok:false,out:'API error: '+d.message};
+    if(d.compile&&d.compile.code!==0&&(d.compile.stderr||d.compile.output))return{ok:false,out:'Compile Error:\n'+(d.compile.stderr||d.compile.output).trim()};
+    if(!d.run)return{ok:false,out:'No output received.'};
+    var out=(d.run.output||d.run.stdout||'').trim();
+    var err=(d.run.stderr||'').trim();
+    if(!out&&err)return{ok:false,out:'Runtime Error:\n'+err};
+    if(!out)return{ok:true,out:'Program ran (no output)\nDid you use printf?'};
+    return{ok:true,out:out};
+  }catch(e){
+    clearTimeout(timer);
+    if(e.name==='AbortError')return{ok:false,out:'Timeout after 20s.\nCheck internet and try again.'};
+    return{ok:false,out:'Connection failed:\n'+e.message};
   }
-  btn.textContent='▶ Run';btn.disabled=false;
 }
-
-async function runChallenge(){
-  var out=document.getElementById('chal-out');
-  var code=window._ced?window._ced.doc.getValue():'';
-  if(!code.trim())return;
-  out.className='term-body';out.textContent='Running...';
-  try{
-    var resp=await fetch(PISTON,{
-      method:'POST',headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({language:'c',version:'*',files:[{name:'main.c',content:code}],stdin:''})
-    });
-    var data=await resp.json();
-    var result='';
-    if(data.compile&&data.compile.stderr&&data.compile.code!==0){
-      result='❌ Compile Error:\n'+data.compile.stderr;out.className='term-body err';
-    } else if(data.run){
-      result=data.run.stdout||'(no output)';
-      out.className=data.run.stderr?'term-body err':'term-body ok';
-    }
-    out.textContent=result;
-  } catch(e){out.textContent='Could not connect.';out.className='term-body err';}
-}
-
-function checkChallenge(){
-  var code=window._ced?window._ced.doc.getValue():'';
-  var passed=0;
-  REQS.forEach(function(req,i){
-    var ok=req.chk(code),row=document.getElementById('cr'+i);
-    if(row){row.classList.toggle('done',ok);var dot=row.querySelector('.c-dot');if(dot)dot.textContent=ok?'✓':'';}
-    if(ok)passed++;
-  });
-  var s=document.getElementById('chal-status'),all=passed===REQS.length;
-  if(s){s.textContent=passed+'/'+REQS.length+' requirements'+(all?' — Complete! 🎉':'');s.className=all?'done':'';}
-  if(all&&!window._chalWon){window._chalWon=true;addXP(50);toast('🏆 Challenge complete! +50 XP','g');}
-}
-
-// ── AUTO HINT ─────────────────────────────────────────────
-function autoHint(){
-  var el=document.getElementById('hint-txt');if(!el)return;
-  var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){el.textContent='Write C code and the analyzer will check it automatically';el.className='';return;}
-  var issues=[];
-  if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h> — needed for printf/scanf');
-  if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main() — every C program needs a main function');
-  if((code.match(/\{/g)||[]).length!==(code.match(/\}/g)||[]).length)issues.push('Mismatched braces { } — check your opening and closing braces');
-  if(!/return\s+0\s*;/.test(code)&&/int\s+main/.test(code))issues.push('Missing return 0; at the end of main()');
-  if(issues.length>0){el.textContent='⚠ '+issues[0];el.className='err';}
-  else{el.textContent='✓ Code looks good! Use Deep Analyze for detailed feedback.';el.className='ok';}
-}
-
-// ── DEEP ANALYZE ──────────────────────────────────────────
+async function runCode(){var btn=document.getElementById('run-btn');var out=document.getElementById('main-out');var code=window._ed?window._ed.doc.getValue():'';var stdin=(document.getElementById('stdin-in')||{}).value||'';if(!code.trim()){toast('Code likho pehle!','o');return;}btn.textContent='...';btn.disabled=true;out.className='trm-out busy';out.textContent='Compiling with GCC...\nPlease wait 2-3 seconds.';var res=await runC(code,stdin);out.className='trm-out '+(res.ok?'ok':'err');out.textContent=res.out;btn.textContent='Run';btn.disabled=false;}
+async function runChallenge(){var out=document.getElementById('chal-out');var code=window._ced?window._ced.doc.getValue():'';if(!code.trim())return;out.className='trm-out busy';out.textContent='Compiling...';var res=await runC(code,'');out.className='trm-out '+(res.ok?'ok':'err');out.textContent=res.out;}
+function checkChallenge(){var code=window._ced?window._ced.doc.getValue():'';var passed=0;REQS.forEach(function(req,i){var ok=req.chk(code);var row=document.getElementById('cr'+i);if(row){row.classList.toggle('done',ok);var dot=row.querySelector('.c-dot');if(dot)dot.textContent=ok?'v':'';}if(ok)passed++;});var s=document.getElementById('chal-st');var all=passed===REQS.length;if(s){s.textContent=passed+'/'+REQS.length+' requirements'+(all?' Complete!':'');s.className='chal-st'+(all?' done':'');}if(all&&!window._cw){window._cw=true;addXP(50);toast('Challenge done! +50 XP','g');}}
+function autoHint(){var el=document.getElementById('hint-txt');if(!el)return;var code=window._ed?window._ed.doc.getValue():'';if(!code.trim()){el.textContent='Linter watches your code automatically...';el.className='hint-txt';return;}var issues=[];if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h>');if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main()');var ob=(code.match(/\{/g)||[]).length,cb=(code.match(/\}/g)||[]).length;if(ob!==cb)issues.push('Braces: '+ob+' open vs '+cb+' close');if(!/return\s+0/.test(code)&&/int\s+main/.test(code))issues.push('Missing return 0;');if(issues.length){el.textContent='! '+issues[0];el.className='hint-txt err';}else{el.textContent='OK - click Analyze for full check';el.className='hint-txt ok';}}
 function deepAnalyze(){
   var code=window._ed?window._ed.doc.getValue():'';
-  if(!code.trim()){toast('Write some code first!','o');return;}
+  if(!code.trim()){toast('Code likho pehle!','o');return;}
   var issues=[],tips=[];
-  if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h> — needed for printf/scanf');
-  if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main() function');
-  if((code.match(/\{/g)||[]).length!==(code.match(/\}/g)||[]).length)issues.push('Mismatched braces { } detected');
-  if(!/return\s+0\s*;/.test(code)&&/int\s+main/.test(code))issues.push('main() should return 0 at the end');
-  var openParens=(code.match(/\(/g)||[]).length,closeParens=(code.match(/\)/g)||[]).length;
-  if(openParens!==closeParens)issues.push('Mismatched parentheses ( ) — '+openParens+' open, '+closeParens+' close');
-  var lines=code.split('\n');
-  lines.forEach(function(line,i){
-    line=line.trim();
-    if(line&&!line.startsWith('//')&&!line.startsWith('/*')&&!line.startsWith('*')&&!line.endsWith('{')&&!line.endsWith('}')&&!line.endsWith(';')&&!line.startsWith('#')&&line.length>2){
-      if(/printf|scanf|int|float|char|return/.test(line)&&!/\/$/.test(line)){
-        tips.push('Line '+(i+1)+' might be missing a semicolon: '+line.slice(0,30));
-      }
-    }
-  });
-  if(/printf/.test(code)&&!/\\n/.test(code))tips.push('Consider adding \\n in printf for newlines');
-  showDA(issues,tips,code.length);
-}
-function showDA(issues,tips,len){
+  if(!/\#include\s*<stdio\.h>/.test(code))issues.push('Missing #include <stdio.h>');
+  if(!/int\s+main\s*\(/.test(code))issues.push('Missing int main()');
+  var ob=(code.match(/\{/g)||[]).length,cb=(code.match(/\}/g)||[]).length;
+  if(ob!==cb)issues.push('Braces: '+ob+' open, '+cb+' close');
+  if(!/return\s+0/.test(code)&&/int\s+main/.test(code))issues.push('main() needs return 0;');
+  if(/printf/.test(code)&&!/\\n/.test(code))tips.push('Add \\n inside printf for line endings');
+  if(!/\/\/|\/\*/.test(code))tips.push('Add comments to explain your code');
   var hbar=document.querySelector('.hint-bar');if(!hbar)return;
-  var old=document.getElementById('da-result');if(old)old.remove();
-  var panel=document.createElement('div');panel.id='da-result';
-  panel.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.85rem 1rem;font-size:.82rem;position:relative';
-  var allGood=issues.length===0&&tips.length===0;
-  var html='<button onclick="document.getElementById(\'da-result\').remove()" style="position:absolute;top:.5rem;right:.7rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.9rem">✕</button>';
-  html+='<div style="font-size:.7rem;color:var(--ink3);margin-bottom:.6rem">🔍 Analysis of '+len+' characters</div>';
-  if(allGood){html+='<div style="color:#22c55e;font-weight:700">✓ All checks passed! Your C code structure looks correct.</div>';}
+  var old=document.getElementById('da-panel');if(old)old.remove();
+  var panel=document.createElement('div');panel.id='da-panel';
+  panel.style.cssText='background:var(--bg2);border:1px solid var(--line);border-top:none;border-radius:0 0 var(--r) var(--r);padding:.78rem .92rem;font-size:.8rem;position:relative';
+  var closeBtn=document.createElement('button');closeBtn.textContent='X';closeBtn.style.cssText='position:absolute;top:.42rem;right:.62rem;background:none;border:none;color:var(--ink3);cursor:pointer;font-size:.9rem;font-weight:700';closeBtn.onclick=function(){panel.remove();};panel.appendChild(closeBtn);
+  var meta=document.createElement('div');meta.style.cssText='font-size:.68rem;color:var(--ink3);margin-bottom:.52rem';meta.textContent='Analyzed '+code.length+' characters';panel.appendChild(meta);
+  if(!issues.length&&!tips.length){var ok=document.createElement('div');ok.style.cssText='color:var(--green);font-weight:700';ok.textContent='All checks passed!';panel.appendChild(ok);}
   else{
-    if(issues.length){
-      html+='<div style="color:#f87171;font-weight:700;margin-bottom:.4rem">✕ '+issues.length+' Error'+(issues.length>1?'s':'')+':</div>';
-      issues.forEach(function(e,i){html+='<div style="background:rgba(239,68,68,.08);border-left:3px solid #f87171;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink)">'+(i+1)+'. '+e+'</div>';});
-    } else {html+='<div style="color:#22c55e;font-weight:600;margin-bottom:.4rem">✓ No structural errors found</div>';}
-    if(tips.length){
-      html+='<div style="color:#fbbf24;font-weight:700;margin:.5rem 0 .3rem">💡 '+tips.length+' Tip'+(tips.length>1?'s':'')+':</div>';
-      tips.forEach(function(t,i){html+='<div style="background:rgba(251,191,36,.06);border-left:3px solid #fbbf24;padding:.35rem .6rem;margin-bottom:.3rem;border-radius:0 5px 5px 0;color:var(--ink2)">'+(i+1)+'. '+t+'</div>';});
-    }
+    if(issues.length){var ih=document.createElement('div');ih.style.cssText='color:var(--red);font-weight:700;margin-bottom:.32rem';ih.textContent=issues.length+' issue(s):';panel.appendChild(ih);issues.forEach(function(e,i){var row=document.createElement('div');row.style.cssText='background:rgba(248,113,113,.07);border-left:3px solid var(--red);padding:.28rem .52rem;margin-bottom:.25rem;border-radius:0 4px 4px 0;color:var(--ink)';row.textContent=(i+1)+'. '+e;panel.appendChild(row);});}
+    if(tips.length){var th=document.createElement('div');th.style.cssText='color:var(--gold);font-weight:700;margin:.42rem 0 .28rem';th.textContent='Tips:';panel.appendChild(th);tips.forEach(function(t,i){var row=document.createElement('div');row.style.cssText='background:rgba(251,191,36,.06);border-left:3px solid var(--gold);padding:.28rem .52rem;margin-bottom:.25rem;border-radius:0 4px 4px 0;color:var(--ink2)';row.textContent=(i+1)+'. '+t;panel.appendChild(row);});}
   }
-  html+='<div style="margin-top:.6rem;padding-top:.5rem;border-top:1px solid var(--line);font-size:.74rem;color:var(--ink3)">For detailed code review, ask the C AI Tutor.</div>';
-  panel.innerHTML=html;hbar.parentNode.insertBefore(panel,hbar.nextSibling);
+  hbar.parentNode.insertBefore(panel,hbar.nextSibling);
 }
-
-// ── QUIZ ─────────────────────────────────────────────────
-function initQuiz(){
-  document.querySelectorAll('.q-opt').forEach(function(btn,i){
-    btn.addEventListener('click',function(){
-      if(S.get('lc_q_'+LN)!==null)return;
-      S.set('lc_q_'+LN,String(i));var correct=i===QA;if(correct)addXP(10);
-      document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===i)b.classList.add('wrong');});
-      var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');
-      var res=document.getElementById('q-result');if(res){res.className='q-result '+(correct?'ok':'no');res.textContent=correct?'✓ Correct! +10 XP':'✕ Wrong — read the explanation above';}
-    });
-  });
-  var saved=S.get('lc_q_'+LN);
-  if(saved!==null){
-    var si=parseInt(saved);
-    document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===si&&si!==QA)b.classList.add('wrong');});
-    var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');
-    var res=document.getElementById('q-result');if(res){res.className='q-result '+(si===QA?'ok':'no');res.textContent=si===QA?'✓ Correct! +10 XP':'✕ Wrong — read the explanation above';}
-  }
-}
-
-// ── AI EXPLAIN ────────────────────────────────────────────
-var _expLoaded=false;
+function initQuiz(){document.querySelectorAll('.q-opt').forEach(function(btn,i){btn.addEventListener('click',function(){if(S.get('lc_q_'+LN)!==null)return;S.set('lc_q_'+LN,String(i));var correct=i===QA;if(correct)addXP(10);document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===i)b.classList.add('wrong');});var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');var res=document.getElementById('q-result');if(res){res.className='q-result '+(correct?'ok':'no');res.textContent=correct?'Correct! +10 XP':'Wrong - read explanation';}});});var sv=S.get('lc_q_'+LN);if(sv!==null){var si=parseInt(sv);document.querySelectorAll('.q-opt').forEach(function(b,j){b.disabled=true;b.style.pointerEvents='none';if(j===QA)b.classList.add('correct');else if(j===si&&si!==QA)b.classList.add('wrong');});var exp=document.getElementById('q-exp');if(exp)exp.classList.add('show');var res=document.getElementById('q-result');if(res){res.className='q-result '+(si===QA?'ok':'no');res.textContent=si===QA?'Correct! +10 XP':'Wrong';}}}
+var _expL=false;
 function startExplain(){
-  if(_expLoaded)return;_expLoaded=true;
+  if(_expL)return;_expL=true;
   var box=document.getElementById('explain-box');if(!box)return;
-  box.innerHTML='<div style="display:flex;align-items:center;gap:.6rem;color:var(--ink3);font-size:.84rem"><div class="dots"><span></span><span></span><span></span></div>C AI is preparing real-life analogies...</div>';
-  var ctx=document.getElementById('content-en');
-  var prompt='Explain "'+LT+'" (C programming) using ONLY real-life analogies. No code. 5 bullet points, each one analogy. Under 150 words. Very simple language — a 10-year-old should understand. Topic: '+(ctx?ctx.innerText.slice(0,400):'');
+  var isHi=document.documentElement.dataset.lang==='hi';
+  box.innerHTML='<div style="display:flex;align-items:center;gap:.5rem;color:var(--ink3);font-size:.83rem"><div class="dots"><span></span><span></span><span></span></div>Generating...</div>';
+  var prompt=isHi
+    ?'C programming ko Bollywood movie analogy se explain karo (Hinglish mein). 5 bullet points. C = Yash Chopra jo OG director hai jiska style sabne copy kiya. Dusri languages = copy directors. GCC = editing team. Machine code = final film print. printf = hero ka dialogue. Under 140 words. Fun aur memorable!'
+    :'Explain C programming using a Bollywood movie analogy. 5 bullet points in Hinglish. C = the OG Bollywood director (like Yash Chopra) everyone copied. Other languages = directors who learned from C. GCC = editing team. Machine code = final film print. printf = hero delivering dialogue. Under 140 words. Fun and memorable!';
   fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:prompt,code:'',lesson:LT,lang:'en',mode:'explain'})})
   .then(function(r){return r.json();})
   .then(function(d){
     var txt=(d.reply||'Could not load.').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
-    box.innerHTML='<div style="font-size:.88rem;line-height:1.9;color:var(--ink2)">'+txt+'</div><button onclick="_expLoaded=false;startExplain()" style="margin-top:.8rem;background:var(--aa);border:1px solid var(--ab);border-radius:var(--rs);padding:5px 13px;font-size:.73rem;font-weight:700;cursor:pointer;color:var(--acc2);font-family:var(--f)">🔄 Generate Again</button>';
-  }).catch(function(){box.innerHTML='<div style="color:var(--ink3);font-size:.84rem">Could not connect to AI. Check your internet.</div>';_expLoaded=false;});
+    box.innerHTML='<div class="exp-badge">Bollywood Analogy</div><div style="font-size:.86rem;line-height:1.92;color:var(--ink2)">'+txt+'</div>'
+      +'<button onclick="_expL=false;startExplain()" style="margin-top:.72rem;background:var(--aa);border:1px solid var(--ab);border-radius:var(--rs);padding:5px 13px;font-size:.7rem;font-weight:700;cursor:pointer;color:var(--acc2);font-family:var(--f)">Regenerate</button>';
+  })
+  .catch(function(){box.innerHTML='<div style="color:var(--ink3)">Could not connect to AI.</div>';_expL=false;});
 }
-
-// ── CHAI TAB ─────────────────────────────────────────────
-function showChai(){
-  var el=document.getElementById('chai-body');if(!el||el.dataset.loaded)return;el.dataset.loaded='1';
-  var rem=Rate.left(),lim=Rate.limit(),pct=Math.round(rem/lim*100);
-  el.innerHTML=
-  '<div style="display:flex;flex-direction:column;gap:.85rem">'+
-  '<div class="chai-stat">'+
-    '<div style="font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--ink3);margin-bottom:.6rem">AI Messages Remaining Today</div>'+
-    '<div class="chai-num">'+rem+'</div>'+
-    '<div class="chai-sub">of '+lim+' free messages</div>'+
-    '<div class="chai-bar-wrap"><div class="chai-bar-fill" style="width:'+pct+'%"></div></div>'+
-  '</div>'+
-  '<div class="chai-features">'+
-    '<div style="font-size:.82rem;font-weight:700;color:var(--ink);margin-bottom:.55rem">✦ What your messages include</div>'+
-    '<div class="chai-feat">✓ Ask any C programming question</div>'+
-    '<div class="chai-feat">✓ Deep Analyze your code</div>'+
-    '<div class="chai-feat">✓ Get real-life analogies for any lesson</div>'+
-    '<div class="chai-feat">✓ Debug errors and get explanations</div>'+
-    '<div class="chai-feat">⏰ Resets every day at midnight</div>'+
-  '</div>'+
-  '<div style="background:var(--goa);border:1px solid var(--gold);border-radius:var(--r);padding:.85rem 1rem">'+
-    '<div style="font-size:.7rem;font-weight:800;text-transform:uppercase;letter-spacing:.7px;color:var(--gold);margin-bottom:.3rem">💡 Pro Tip</div>'+
-    '<div style="font-size:.82rem;color:var(--ink2);line-height:1.65">Click the <strong style="color:var(--acc2)">C AI ✦</strong> button in the top-right to open the AI tutor. You can paste your code and ask it to explain errors, find bugs, or teach concepts step by step.</div>'+
-  '</div>'+
-  '</div>';
-}
-
-// ── AI TUTOR ─────────────────────────────────────────────
+function submitActivity(){var el=document.getElementById('act-ans');var ans=el?el.value:'';var isHi=document.documentElement.dataset.lang==='hi';if(ans.trim().length<15){toast(isHi?'Thoda aur likho!':'Write a bit more!','o');return;}if(!S.get('lc_act_'+LN)){S.set('lc_act_'+LN,'1');addXP(30);toast(isHi?'Activity done! +30 XP':'Activity submitted! +30 XP','g');}else{toast(isHi?'Pehle se submit ho gaya!':'Already submitted!','o');}}
 var AI=(function(){
   var open=false,started=false;
-  function botMsg(txt){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.innerHTML='<span class="ai-lbl">C AI Tutor</span><span class="ai-body">'+txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')+'</span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
-  function userMsg(txt){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg user';d.textContent=txt;c.appendChild(d);c.scrollTop=c.scrollHeight;}
-  function thinking(){var c=document.getElementById('ai-messages');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-thinking';d.innerHTML='<span class="ai-lbl">C AI Tutor</span><span class="ai-body"><div class="dots"><span></span><span></span><span></span></div></span>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
-  function updateCounter(){var el=document.getElementById('ai-counter');if(el)el.textContent=Rate.left()+' / '+Rate.limit()+' messages left today';}
+  function addMsg(cls,txt){var c=document.getElementById('ai-msgs');if(!c)return;var d=document.createElement('div');d.className='ai-msg '+cls;if(cls==='bot'){d.innerHTML='<span class="ai-lbl">C AI Tutor</span><span>'+txt.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')+'</span>';}else{d.textContent=txt;}c.appendChild(d);c.scrollTop=c.scrollHeight;}
+  function thinking(){var c=document.getElementById('ai-msgs');if(!c)return;var d=document.createElement('div');d.className='ai-msg bot';d.id='ai-think';d.innerHTML='<span class="ai-lbl">C AI Tutor</span><div class="dots"><span></span><span></span><span></span></div>';c.appendChild(d);c.scrollTop=c.scrollHeight;}
+  function updateCnt(){var el=document.getElementById('ai-cnt');if(el)el.textContent=Rate.left()+'/'+Rate.lim()+' messages today';}
   return{
-    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;botMsg('Hi! I am your C Programming AI Tutor! 👋\n\nI can help you with:\n• C syntax, variables, pointers, arrays\n• Debugging your code — paste it and ask\n• Explaining concepts with simple examples\n• Career guidance for C programmers\n\nYou have '+Rate.left()+' messages today. Ask anything!');updateCounter();}},
     _open:false,
-    say:function(text){this.sendMsg(text);},
-    sendMsg:function(text){
-      text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;
-      if(!Rate.ok()){botMsg('You have used all '+Rate.limit()+' messages for today.\n\nCome back tomorrow for more free messages!');updateCounter();return;}
-      if(inp)inp.value='';userMsg(text);thinking();Rate.use();updateCounter();
-      var code=window._ed?window._ed.doc.getValue():'';
-      var sys='You are an expert C programming tutor. The student is learning C from scratch. Current lesson: "'+LT+'". Be clear, concise, and use simple language. If explaining code, add comments. If the user shares code, analyze it and be specific. Always be encouraging.';
-      fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:sys})})
-      .then(function(r){return r.json();})
-      .then(function(d){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg(d.reply||d.error||'Something went wrong. Please try again.');})
-      .catch(function(){var t=document.getElementById('ai-thinking');if(t)t.remove();botMsg('Could not connect. Check your internet and try again.');});
-    },
+    toggle:function(){var ov=document.getElementById('ai-overlay');if(!ov)return;open=!open;this._open=open;ov.classList.toggle('on',open);if(open&&!started){started=true;addMsg('bot','Namaste! Main hoon tera C AI Tutor!\n\nLesson: '+LT+'\n\nMujhse poocho:\n- C ke baare mein kuch bhi\n- Code paste karo, errors fix karta hoon\n- Career guidance bhi deta hoon\n\n'+Rate.left()+' messages hain. Freely poocho!');updateCnt();}},
+    say:function(text){text=(text||'').trim();var inp=document.getElementById('ai-inp');if(!text)return;var isHi=document.documentElement.dataset.lang==='hi';if(!Rate.ok()){addMsg('bot',isHi?'Aaj ke messages khatam! Kal wapas aao.':'Messages used up. Come back tomorrow!');updateCnt();return;}if(inp)inp.value='';addMsg('user',text);thinking();Rate.use();updateCnt();var code=window._ed?window._ed.doc.getValue():'';var sys='You are C AI Tutor for beginners. Lesson: "'+LT+'". Reply in Hinglish (Hindi+English mix). Be warm, simple, encouraging. Keep responses short.';fetch(SRV+'/api/hint',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({message:text,code:code,lesson:LT,lang:'en',mode:'expert',system:sys})}).then(function(r){return r.json();}).then(function(d){var t=document.getElementById('ai-think');if(t)t.remove();addMsg('bot',d.reply||d.error||'Kuch gadbad. Retry karo.');}).catch(function(){var t=document.getElementById('ai-think');if(t)t.remove();addMsg('bot','Internet check karo.');});},
     open:function(){if(!this._open)this.toggle();}
   };
 })();
-
-// ── MOBILE LESSONS DRAWER ─────────────────────────────────
-function openLessons(){
-  var LESSONS={"1":"What is C?","2":"First C Program","3":"Variables & Data Types","4":"Constants & Literals","5":"Operators in C","6":"Input & Output","7":"If-Else Conditions","8":"Switch Statement","9":"While Loop","10":"For Loop","11":"Do-While Loop","12":"Break & Continue","13":"Functions","14":"Recursion","15":"Arrays (1D)","16":"2D Arrays","17":"Strings in C","18":"Pointers Basics","19":"Pointers & Arrays","20":"Structures","21":"Unions & Enums","22":"File Handling","23":"Dynamic Memory","24":"Preprocessor & Macros","25":"Final Project"};
-  var done=getDone();
-  var ov=document.createElement('div');ov.id='ls';ov.style.cssText='position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.65);display:flex;align-items:flex-end';
-  var items='';
-  for(var i=1;i<=TOTAL;i++){
-    var t=LESSONS[i]||'Lesson '+i,dn=done.indexOf(i)>-1,isNow=i===LN;
-    var ns=isNow?'background:var(--acc);color:#fff;':dn?'background:var(--ga);color:var(--green);':'';
-    var rs=isNow?'color:var(--acc2);font-weight:700;':dn?'color:var(--green);':'';
-    var href=i<=3?'lesson'+('0'+i).slice(-2)+'.html':'#';
-    items+='<a href="'+href+'" style="display:flex;align-items:center;gap:.45rem;padding:.44rem 1rem;text-decoration:none;color:var(--ink2);border-bottom:1px solid var(--line);'+rs+'"><span style="width:22px;height:22px;border-radius:4px;background:var(--bg3);display:flex;align-items:center;justify-content:center;font-size:.58rem;font-weight:700;font-family:var(--m);flex-shrink:0;'+ns+'">'+(dn&&!isNow?'✓':i)+'</span><span style="font-size:.79rem">'+t+'</span>'+(isNow?'<span style="margin-left:auto;font-size:.58rem;background:var(--acc);color:#fff;border-radius:99px;padding:1px 7px">NOW</span>':'')+'</a>';
-  }
-  ov.innerHTML='<div style="background:var(--bg);border-radius:20px 20px 0 0;width:100%;max-height:78vh;display:flex;flex-direction:column;animation:slideUp .22s ease"><div style="padding:.88rem 1rem .6rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-shrink:0"><span style="font-size:.9rem;font-weight:800;color:var(--ink)">C Programming (25 Lessons)</span><button onclick="document.getElementById(\'ls\').remove();document.body.style.overflow=\'\'" style="background:none;border:1px solid var(--line);border-radius:5px;width:26px;height:26px;cursor:pointer;color:var(--ink3);display:flex;align-items:center;justify-content:center;font-family:var(--f);font-size:.72rem">✕</button></div><div style="overflow-y:auto;flex:1;overscroll-behavior:contain">'+items+'</div></div>';
-  document.body.appendChild(ov);document.body.style.overflow='hidden';
-  ov.addEventListener('click',function(e){if(e.target===ov){ov.remove();document.body.style.overflow='';}});
-  setTimeout(function(){var cur=ov.querySelector('[style*="NOW"]');if(cur)cur.scrollIntoView({block:'center'});},100);
-}
-
-// ── TOAST ─────────────────────────────────────────────────
-function toast(msg,type){var t=document.createElement('div');t.className='toast'+(type?' '+type:'');t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.remove();},2800);}
-
-// ── INIT ──────────────────────────────────────────────────
+var LNAMES={1:'What is C?',2:'First C Program',3:'Variables & Data Types',4:'Constants',5:'Operators',6:'Input & Output',7:'If-Else',8:'Switch',9:'While Loop',10:'For Loop',11:'Do-While',12:'Break & Continue',13:'Functions',14:'Function Params',15:'Recursion',16:'Arrays 1D',17:'Arrays 2D',18:'Strings',19:'String Fns',20:'Pointers',21:'Pointers+Arrays',22:'Structures',23:'Unions & Enums',24:'File Handling',25:'Dynamic Memory',26:'Preprocessor',27:'Adv Pointers',28:'Final Project'};
+function openDrawer(){var done=getDone();var ov=document.createElement('div');ov.id='mob-drawer';ov.style.cssText='position:fixed;inset:0;z-index:160;background:rgba(0,0,0,.65);display:flex;align-items:flex-end';var panel=document.createElement('div');panel.style.cssText='background:var(--bg);border-radius:18px 18px 0 0;width:100%;max-height:76vh;display:flex;flex-direction:column;animation:slideUp .22s ease';var header=document.createElement('div');header.style.cssText='padding:.82rem .92rem .52rem;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;flex-shrink:0';var title=document.createElement('span');title.style.cssText='font-size:.86rem;font-weight:800;color:var(--ink)';title.textContent='C Course - 28 Lessons';header.appendChild(title);var closeBtn=document.createElement('button');closeBtn.textContent='X';closeBtn.style.cssText='background:none;border:1px solid var(--line);border-radius:5px;width:24px;height:24px;cursor:pointer;color:var(--ink3);font-weight:700';closeBtn.onclick=function(){ov.remove();document.body.style.overflow='';};header.appendChild(closeBtn);panel.appendChild(header);var list=document.createElement('div');list.style.cssText='overflow-y:auto;flex:1;overscroll-behavior:contain';for(var i=1;i<=TOTAL;i++){var name=LNAMES[i]||('Lesson '+i);var dn=done.indexOf(i)>-1,isNow=i===LN;var a=document.createElement('a');a.href=i<=2?'lesson'+('0'+i).slice(-2)+'.html':'#';a.style.cssText='display:flex;align-items:center;gap:.42rem;padding:.4rem .92rem;text-decoration:none;border-bottom:1px solid var(--line);'+(isNow?'color:var(--acc2);font-weight:700;':dn?'color:var(--green);':'color:var(--ink2);');var num=document.createElement('span');num.style.cssText='width:20px;height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.56rem;font-weight:700;flex-shrink:0;'+(isNow?'background:var(--acc);color:#fff;':dn?'background:var(--ga);color:var(--green);':'background:var(--bg3);color:var(--ink3);');num.textContent=(dn&&!isNow)?'v':String(i);a.appendChild(num);var nm=document.createElement('span');nm.style.cssText='font-size:.76rem';nm.textContent=name;a.appendChild(nm);if(isNow){var badge=document.createElement('span');badge.style.cssText='margin-left:auto;font-size:.56rem;background:var(--acc);color:#fff;border-radius:99px;padding:1px 7px';badge.textContent='NOW';a.appendChild(badge);}list.appendChild(a);}panel.appendChild(list);ov.appendChild(panel);document.body.appendChild(ov);document.body.style.overflow='hidden';ov.addEventListener('click',function(e){if(e.target===ov){ov.remove();document.body.style.overflow='';}});}
+function toast(msg,type){var t=document.createElement('div');t.className='toast'+(type?' '+type:'');t.textContent=msg;document.body.appendChild(t);setTimeout(function(){if(t.parentNode)t.remove();},2600);}
 document.addEventListener('DOMContentLoaded',function(){
-  initTheme();initTabs();initEditor();initQuiz();updateProg();
+  initTheme();initLang();initTabs();initEditor();initQuiz();updateProg();
+  if(getDone().length===0){var wb=document.getElementById('wb');if(wb)wb.classList.add('show');}
   var ov=document.getElementById('ai-overlay');if(ov)ov.addEventListener('click',function(e){if(e.target===ov)AI.toggle();});
-  var fab=document.getElementById('mob-fab');
-  if(fab){var mq=window.matchMedia('(max-width:860px)');function syncFab(q){fab.style.display=q.matches?'flex':'none';}syncFab(mq);try{mq.addEventListener('change',syncFab);}catch(e){mq.addListener(syncFab);}}
+  var fab=document.getElementById('mob-fab');if(fab){var mq=window.matchMedia('(max-width:860px)');function sf(q){fab.style.display=q.matches?'flex':'none';}sf(mq);try{mq.addEventListener('change',sf);}catch(e){mq.addListener(sf);}}
 });
 </script>
 </body>
